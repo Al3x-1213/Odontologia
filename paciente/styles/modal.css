@@ -1,0 +1,115 @@
+/* FORMULADO // MODAL */
+
+.disable{
+    display: none;
+}
+
+.modal{
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    background: rgba(0,0,0, 0.5);
+    width: 100vw;
+    height: 100vh;
+}
+
+.form-login{
+    display: flex;
+    position: absolute;
+    top: 15%;
+    left: 40%;
+    gap: 16px;
+    flex-direction: column;
+    padding: 20px;
+    min-width: 25%;
+    min-height: 50%;
+    background: #1b1b32;
+    border-radius: 5%;
+    border: 1px solid #333;
+    transition: 1s;
+}
+
+.form-login:hover{
+    border: 1px solid #b498ff;
+}
+
+.header__form{
+    color: aliceblue;
+    text-align: left;
+}
+
+.header__form>.icon-cross{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5%;
+    color: aliceblue;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+
+.header__form>.icon-cross:hover{
+    color: #b498ff;
+}
+
+.form-login>label{
+    text-align: left;
+    color: aliceblue;
+}
+
+.form-login>input{
+    color: aliceblue;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #e9e2f6;
+    transition: .4s;
+}
+
+.form-login>input:focus{
+    font-size: 1.05em;
+    border-bottom: 1px solid #9d6afcbd;
+}
+
+.sub{
+    height: 60%;
+}
+
+.buttons__form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: #333;
+}
+
+.button__form{
+    margin: 9px;
+    width: 40%; 
+    background-color: #aaeeff;
+    height: 2em;
+    border: 1px solid #333;
+    border-radius: 5%;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.buttons__form>input:hover{
+    background: #6bdaf6;
+}
+
+.button__form>a{
+    text-decoration: none;
+    color: #333;
+}
+
+.buttons__form>button{
+    height: 2.10em;
+    background-color: #FFC300;
+    font-weight: 700;
+}
+
+select {
+    height: 30px;
+    background:#aaeeff;
+    outline: none;
+}

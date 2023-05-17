@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- META ETIQUETAS -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ESTILOS CSS -->
+  <link rel="stylesheet" href="../styles/normalize.css">
+  <link rel="stylesheet" href="../styles/login.css">
+  <link rel="stylesheet" href="../Iconos/style.css">
+
+  <!-- LETRAS UTILIZADAS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+  <title>Consultorio Riccio</title>
+</head>
+
+<body>
+  <div class="container__img">
+    <img src="../img/loginfondo.png" alt="imagen de fondo" class="imgfondo">
+  </div>
+  <a href="loginadmin.html" class="button loginadmin">Iniciar sesion como administrador</a>
+  <div class="flex__container">
+    <form class="form" method="POST" action="../client/validacion.php">
+      <!-- CODIGO DE ICONO -->
+      <div class="icon__form">
+        <div class="icon__head"></div>
+        <div class="icon__body"></div>
+      </div>
+
+      <!-- TITULO -->
+      <h2 class="title__form"> <a href="../index.php">Iniciar Sesión</a> </h2>
+
+      <div class="fields__form">
+        <label for="correo">Correo:</label>
+        <input type="email" maxlength="60" required="true" name="correo" class="input__form" autocomplete="off">
+
+        <label for="clave">Password:</label>
+        <input type="password" maxlength="50" required="true" name="clave" class="input__form">
+
+        <input class="button" type="submit" value="Enviar">
+
+      </div>
+
+    </form>
+  </div>
+</body>
+
+</html>

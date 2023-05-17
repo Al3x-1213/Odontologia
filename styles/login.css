@@ -1,0 +1,141 @@
+html, 
+body {
+  box-sizing: border-box;
+  overflow: hidden;
+  background: linear-gradient(70deg, #30B1C1, #FBC1A4);
+} 
+
+.container__img {
+  position: absolute;
+  z-index: -10;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+
+}
+
+.imgfondo {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.flex__container {
+  height: 100vh;
+  width: 100%;
+}
+
+/* ICONO PRINCIPAL DEL LOGIN */
+
+.icon__form {
+  width: 46%;
+  height: 28%;
+  border: 5px solid #333;
+  border-radius: 50%;
+  margin: 15% auto 2.5%;
+}
+
+.icon__head {
+  width: 32%;
+  height: 32%;
+  border: 4px solid #14f3ca;
+  border-radius: 50%;
+  margin: 22% auto -10%;
+}
+
+.icon__body {
+  width: 72%;
+  height: 32%;
+  border-top: 4px solid #14f3ca;
+  border-radius: 50%;
+  margin: 17.5% auto;
+  overflow: hidden;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 600px;
+  position: relative;
+  top: 100px;
+  left: 35%;
+  border-radius: 2%;
+  box-shadow: 0px 0px 10px 1px #333;
+}
+
+.form__alternative {
+  height: 700px;
+}
+
+.title__form {
+  align-self: center;
+  font-family: 'Lobster', cursive !important;
+  color: #111;
+  font-size: 2em;
+  margin-bottom: 10%;
+}
+
+.fields__form {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 70%;
+  align-self: center;
+}
+
+.input__form {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #333;
+  outline: none;
+  transition: all ease .6s;
+  padding: 10px 0 2px;
+  margin-bottom: 5px
+}
+
+.input__form:focus {
+  font-size: 1.2em;
+}
+
+.button {
+  margin: 5% 0;
+  align-self: center;
+  width: 65%;
+  padding: 5px;
+  font-size: 1.25em;
+  border: none;
+  color: #333;
+  border-radius: 2%;
+  box-shadow: 0 0 10px 1px #333;
+  background: transparent;
+  transition: all ease .6s;
+}
+
+.button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 5px 1px #333;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.loginadmin {
+  width: 300px;
+  background: linear-gradient(45deg, #30B1C1, #FBC1A4);
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 2% 5%;
+  text-align: center;
+}
+
+.t {
+  width: 100%;
+  position: absolute;
+  top: 85px;
+  left: 44%
+}
