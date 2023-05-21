@@ -21,24 +21,21 @@
 </head>
 
 <body>
-  <div class="container__img">
-    <img src="../img/loginfondo.png" alt="imagen de fondo" class="imgfondo">
-  </div>
-  <a href="loginadmin.html" class="button loginadmin">Iniciar sesion como administrador</a>
   <div class="flex__container">
     <form class="form" method="POST" action="../client/validacion.php">
       <!-- CODIGO DE ICONO -->
+      <a href="../"><i class="icon-cross"></i></a>
       <div class="icon__form">
         <div class="icon__head"></div>
         <div class="icon__body"></div>
       </div>
 
       <!-- TITULO -->
-      <h2 class="title__form"> <a href="../index.php">Iniciar Sesión</a> </h2>
+      <h2 class="title__form"> Iniciar Sesión </h2>
 
       <div class="fields__form">
-        <label for="correo">Correo:</label>
-        <input type="email" maxlength="60" required="true" name="correo" class="input__form" autocomplete="off">
+        <label for="correo">Nombre de Usuario:</label>
+        <input type="email" maxlength="50" required="true" name="correo" class="input__form" autocomplete="off">
 
         <label for="clave">Password:</label>
         <input type="password" maxlength="50" required="true" name="clave" class="input__form">

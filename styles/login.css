@@ -1,23 +1,7 @@
 html, 
 body {
   box-sizing: border-box;
-  overflow: hidden;
   background: linear-gradient(70deg, #30B1C1, #FBC1A4);
-} 
-
-.container__img {
-  position: absolute;
-  z-index: -10;
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-
-}
-
-.imgfondo {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
 }
 
 .flex__container {
@@ -26,6 +10,25 @@ body {
 }
 
 /* ICONO PRINCIPAL DEL LOGIN */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 600px;
+  position: relative;
+  z-index: 10;
+  top: 100px;
+  left: 35%;
+  border-radius: 2%;
+  box-shadow: 0px 0px 10px 1px #333;
+}
+
+.icon-cross {
+  position: absolute;
+  margin: 5%;
+  right: 0;
+}
 
 .icon__form {
   width: 46%;
@@ -50,18 +53,6 @@ body {
   border-radius: 50%;
   margin: 17.5% auto;
   overflow: hidden;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  height: 600px;
-  position: relative;
-  top: 100px;
-  left: 35%;
-  border-radius: 2%;
-  box-shadow: 0px 0px 10px 1px #333;
 }
 
 .form__alternative {
