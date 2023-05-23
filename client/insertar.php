@@ -83,7 +83,7 @@ if (!empty($_POST['boton_reg'])){
 
             if($query){
                 ?>
-                <div class= "mensaje"><a href= "login.html">Usuario regitrado correcticamente</a></div>
+                <div class= "mensaje"><a href= "login.html">Usuario regitrado correctamente</a></div>
                 <?php
             }
             else{
