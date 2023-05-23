@@ -1,0 +1,16 @@
+.alerta{
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+
+.mensaje{
+    display: flex;
+    justify-content: center;
+    color: blue;
+}
+
+.mensaje a{
+    text-decoration: none;
+    color: blue;
+}
