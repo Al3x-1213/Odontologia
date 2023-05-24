@@ -1,6 +1,6 @@
 <?php
 
-include '../verificacion_sesion.php';
+include '../client/verificacion_sesion.php';
 
 // session_start();
 // ob_start();
