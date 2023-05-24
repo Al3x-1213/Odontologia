@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'root';
 $passwd = '';
-$nameDB = 'consultorio_riccio';
+$nameDB = 'odontologia';
 $conexion = new mysqli($host, $user, $passwd, $nameDB);
 
 if($conexion->connect_error){

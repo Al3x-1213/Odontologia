@@ -1,13 +1,6 @@
 <?php
-session_start();
-ob_start();
-$sesion = $_SESSION['sesion'];
-$_SESSION['admin'] = 1;
-if ($sesion == null || $sesion == 0) {
-  header('location:../index.php');
-  session_unset();
-  die();
-}; ?>
+include '../verificacion_sesion.php';
+?>
 
 <!DOCTYPE html>
 <html lang="es">
