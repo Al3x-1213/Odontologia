@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-05-2023 a las 02:47:09
+-- Tiempo de generación: 27-05-2023 a las 00:45:15
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -58,7 +58,36 @@ CREATE TABLE IF NOT EXISTS `consultas` (
   KEY `id_causa_consulta` (`id_causa_consulta`),
   KEY `id_doctor` (`id_doctor`),
   KEY `id_status_consulta` (`id_status_consulta`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `consultas`
+--
+
+INSERT INTO `consultas` (`id_consulta`, `id_paciente`, `id_causa_consulta`, `fecha_atencion`, `id_doctor`, `id_status_consulta`, `fecha_solicitud`) VALUES
+(1, 2, 1, '2023-05-29', 1, 1, '2023-05-26'),
+(2, 5, 1, '2023-05-31', 2, 1, '2023-05-26');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `doctores`
+--
+
+CREATE TABLE IF NOT EXISTS `doctores` (
+  `id_doctor` int(1) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(3) NOT NULL,
+  PRIMARY KEY (`id_doctor`),
+  KEY `id_usuario` (`id_usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `doctores`
+--
+
+INSERT INTO `doctores` (`id_doctor`, `id_usuario`) VALUES
+(1, 1),
+(2, 3);
 
 -- --------------------------------------------------------
 
@@ -146,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   UNIQUE KEY `usuario` (`usuario`,`cedula`),
   KEY `id_tipo_usuario` (`id_tipo_usuario`),
   KEY `id_status_usuario` (`id_status_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -154,7 +183,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `usuario`, `clave`, `id_tipo_usuario`, `id_status_usuario`, `nombre`, `apellido`, `cedula`, `edad`, `fecha_nacimiento`, `telefono_1`, `telefono_2`, `correo`, `fecha_registro`) VALUES
 (1, 'veronicatrias', '4955683d760e39b8839cfd5d51db2133', 1, 1, 'Veronica', 'Trias', 12345678, 18, '2004-09-03', '04121234567', '02121234567', 'vero_123@gmail.com', '2023-05-23'),
-(2, 'alexandra123', 'b60f15385b905be9c977c59aa3420fd2', 2, 1, 'Alexandra', 'Sanchez', 32165498, 25, '1998-05-03', '04243216549', '', 'ale321@hotmail.com', '2023-05-23');
+(2, 'alexandra123', 'b60f15385b905be9c977c59aa3420fd2', 2, 1, 'Alexandra', 'Sanchez', 32165498, 25, '1998-05-03', '04243216549', '', 'ale321@hotmail.com', '2023-05-23'),
+(3, 'alejandrourdaneta', '0a2a58cccf143acc6c360e892af6137e', 1, 1, 'Alejandro', 'Urdaneta', 14725836, 22, '2000-12-13', '04241472583', '02121472583', 'alex147@hotmail.com', '2023-05-26'),
+(5, 'david123', 'b60f15385b905be9c977c59aa3420fd2', 2, 1, 'David', 'Trias', 74185296, 21, '2001-09-25', '04167418529', '', 'david_741@gmail.com', '2023-05-26');
 
 --
 -- Restricciones para tablas volcadas
@@ -164,10 +195,16 @@ INSERT INTO `usuarios` (`id_usuario`, `usuario`, `clave`, `id_tipo_usuario`, `id
 -- Filtros para la tabla `consultas`
 --
 ALTER TABLE `consultas`
+  ADD CONSTRAINT `consultas_ibfk_5` FOREIGN KEY (`id_doctor`) REFERENCES `doctores` (`id_doctor`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `consultas_ibfk_2` FOREIGN KEY (`id_causa_consulta`) REFERENCES `causa_consulta` (`id_causa_consulta`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `consultas_ibfk_3` FOREIGN KEY (`id_doctor`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `consultas_ibfk_4` FOREIGN KEY (`id_status_consulta`) REFERENCES `status_consulta` (`id_status_consulta`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `doctores`
+--
+ALTER TABLE `doctores`
+  ADD CONSTRAINT `doctores_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`
