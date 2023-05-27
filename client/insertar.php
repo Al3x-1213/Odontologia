@@ -1,8 +1,11 @@
 <?php
 
 if (!empty($_POST['boton_reg'])){
-    if (empty($_POST['usuario']) || empty($_POST['clave']) || empty($_POST['clave2']) || empty($_POST['nombre'])
-    || empty($_POST['apellido']) || empty($_POST['cedula']) | empty($_POST['nacimiento']) || empty($_POST['telefono1'])){
+
+    // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
+    if (empty($_POST['usuario']) || empty($_POST['clave']) || empty($_POST['clave2'])
+    || empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['cedula'])
+    || empty($_POST['nacimiento']) || empty($_POST['telefono1']) || empty($_POST['correo'])){
     
         ?>
         <div class= "alerta">No deben haber campos vacios</div>
@@ -25,6 +28,7 @@ if (!empty($_POST['boton_reg'])){
         $telefono_2 = $_POST['telefono2'];
         $correo = $_POST['correo'];
 
+        // VERIFICAR QUE AMBAS CONTRASEÑAS SEAN IGUALES
         if ($clave != $clave_confirm){
             ?>
             <div class= "alerta">Las contraseñas deben coincidir</div>

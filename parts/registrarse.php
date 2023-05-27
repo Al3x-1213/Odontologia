@@ -40,24 +40,24 @@
         <label>Usuario:</label>
         <input type="text" maxlength="30" required="true" name="usuario" class="input__form" autocomplete="off">
 
-        <label>Contraseña:</label>
+        <label for="clave">Contraseña:</label>
         <input type="password" maxlength="50" required="true" name="clave" class="input__form">
 
-        <label>Confirmar Contraseña:</label>
+        <label for="clave">Confirmar Contraseña:</label>
         <input type="password" maxlength="50" required="true" name="clave2" class="input__form">
 
         <h3>Datos Personales: </h3>
 
-        <label>Nombre:</label>
+        <label for="nombre">Nombre:</label>
         <input type="text" maxlength="30" required="true" name="nombre" class="input__form" autocomplete="off">
 
-        <label>Apellido:</label>
+        <label for="apellido">Apellido:</label>
         <input type="text" maxlength="30" required="true" name="apellido" class="input__form">
 
         <label>Cédula:</label>
         <input type="number" maxlength="8" required="true" name="cedula" class="input__form">
 
-        <label>Fecha de Nacimiento:</label>
+        <label for="edad">Fecha de Nacimiento:</label>
         <input type="date" required="true" name="nacimiento" class="input__form">
 
         <label>Número de Teléfono Celular:</label>
@@ -66,7 +66,7 @@
         <label>Número de Teléfono (opcional):</label>
         <input type="number" maxlength="11" name="telefono2" class="input__form">
 
-        <label>Correo Electrónico:</label>
+        <label for="correo">Correo Electrónico:</label>
         <input type="email" maxlength="60" name="correo" class="input__form" autocomplete="off">
 
         <input class="button" type="submit" value="Registrarse" name="boton_reg">

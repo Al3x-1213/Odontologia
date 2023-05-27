@@ -1,12 +1,14 @@
 <?php
 
+// POR CORREGIR
+
 include 'conexion.php';
 
 /* datos del formulario de registro */
 
 $id = $_GET['id'];
 
-$peticion = "DELETE FROM paciente1 WHERE id_paciente = '$id'";
+$peticion = "DELETE FROM usuarios WHERE id_usuario = '$id'";
 $eliminar = ($conexion->query($peticion));
 
 session_start();
