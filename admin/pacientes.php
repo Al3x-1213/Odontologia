@@ -26,7 +26,7 @@ include '../verificacion_sesion.php';
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-  <title> Consultorio Riccio Administrador </title>
+  <title>Consultorio Riccio - ADMINISTRADOR</title>
 </head>
 
 <body>
@@ -71,28 +71,33 @@ include '../verificacion_sesion.php';
     <h2 class="dia"> Pacientes </h2>
     <div class="table">
       <div class="thead__table">
-        <div class="thead id">Id</div>
-        <div class="thead">Nombre del Paciente</div>
-        <div class="thead">Numero</div>
-        <div class="thead">Cedula</div>
+        <!-- <div class="thead id">Id</div> -->
+        <div class="thead">Paciente</div>
+        <div class="thead">Cédula</div>
         <div class="thead">Edad</div>
-        <div class="thead">Correo</div>
-        <div class="thead"> Acciones </div>
+        <div class="thead">Fecha de Nacimiento</div>
+        <div class="thead">Télefono</div>
+        <div class="thead">Télefono</div>
+        <div class="thead">Correo Electrónico</div>
+        <div class="thead">Acciones</div>
       </div>
 
       <?php
-      $operator = "SELECT * FROM paciente1";
-      $select = $conexion->query($operator);
-      while ($resultado = mysqli_fetch_array($select)) {
+      $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 2";
+      $query = $conexion->query($consulta);
+      while ($resultado = mysqli_fetch_array($query)) {
       ?>
         <div class="tbody__table">
-          <div class="tbody id"><?php echo $resultado['id_paciente']; ?></div>
+          <!-- <div class="tbody id"><?php //echo $resultado['id_paciente']; ?></div> -->
           <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-          <div class="tbody"><?php echo $resultado['numero']; ?></div>
           <div class="tbody"><?php echo $resultado['cedula']; ?></div>
           <div class="tbody"><?php echo $resultado['edad']; ?></div>
+          <div class="tbody"><?php echo $resultado['fecha_nacimiento']; ?></div>
+          <div class="tbody"><?php echo $resultado['telefono_1']; ?></div>
+          <div class="tbody"><?php echo $resultado['telefono_2']; ?></div>
           <div class="tbody"><?php echo $resultado['correo']; ?></div>
-          <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_paciente']?>"><button class="editar">Editar</button></a> <a href="../client/eliminar.php?id=<?php echo $resultado['id_paciente']?>"><button class="eliminar">Eliminar</button></a></div>
+          <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
+          <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div>
         </div><?php } ?>
     </div>
     <button class="insertar"> Registrar Un Paciente </button>

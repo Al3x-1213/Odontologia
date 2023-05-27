@@ -1,16 +1,5 @@
 <?php
-
 include '../verificacion_sesion.php';
-
-// session_start();
-// ob_start();
-// $sesion = $_SESSION['sesion'];
-// $_SESSION['admin'] = 1;
-// if ($sesion == null || $sesion == 0) {
-//   header('location:../index.php');
-//   session_unset();
-//   die();
-// };
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +26,7 @@ include '../verificacion_sesion.php';
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-  <title> Consultorio Riccio Administrador </title>
+  <title>Consultorio Riccio - ADMINISTRADOR</title>
 </head>
 
 <body>
