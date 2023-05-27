@@ -1,6 +1,41 @@
 <?php
-include '../verificacion_sesion.php';
+include '../client/verificacion_sesion.php';
+
+date_default_timezone_set('America/Caracas');
+$fecha_actual = date("d-m-Y h:i:s");
+
+$dia = date("d");
+$mes = date("m");
+$year = date("Y");
+
+//Agarra de la tabla doctores el id_doctor, para obtener el id de usuario, y hacer la consulkta del nombre del doctor de la tabla usuario
+function nombre_apellido_doctor($id)
+{
+  include '../client/conexion.php';
+  $consulta = "SELECT id_usuario FROM doctores WHERE id_doctor = '$id'";
+  $select = $conexion->query($consulta);
+  $respuesta = mysqli_fetch_array($select);
+  $id = $respuesta['id_usuario'];
+
+  $consulta = "SELECT nombre, apellido FROM usuarios WHERE id_usuario = '$id'";
+  $select = $conexion->query($consulta);
+  $nombre_doctor = array();
+  $respuesta = mysqli_fetch_array($select);
+  $nombre_doctor[0] = $respuesta['nombre'];
+  $nombre_doctor[1] = $respuesta['apellido'];
+  return $nombre_doctor;
+}
+
 ?>
+<!-- // session_start();
+// ob_start();
+// $sesion = $_SESSION['sesion'];
+// $_SESSION['admin'] = 1;
+// if ($sesion == null || $sesion == 0) {
+//   header('location:../index.php');
+//   session_unset();
+//   die();
+// }; -->
 
 <!DOCTYPE html>
 <html lang="es">
@@ -40,16 +75,16 @@ include '../verificacion_sesion.php';
       </div>
 
       <label> Nombre del Paciente: </label>
-      <input type="text" name="nombre" required="true" autocomplete="off">
+      <input type="text" name="nombre" required autocomplete="off">
 
       <label> Apellido del Paciente: </label>
-      <input type="text" name="apellido" required="true" autocomplete="off">
+      <input type="text" name="apellido" required autocomplete="off">
 
       <label> Numero: </label>
-      <input type="number" name="numero" required="true" autocomplete="off" minlength="11">
+      <input type="number" name="numero" required autocomplete="off" minlength="11">
 
       <label> Cedula: </label>
-      <input type="number" name="cedula" required="true" autocomplete="off" minlength="7">
+      <input type="number" name="cedula" required autocomplete="off" minlength="7">
 
       <label> Causa: </label>
       <select name="causa">
@@ -62,16 +97,10 @@ include '../verificacion_sesion.php';
       </select>
 
       <label> Dia: </label>
-      <select name="dia">
-        <option value="lunes">lunes</option>
-        <option value="martes">martes</option>
-        <option value="miercoles">miercoles</option>
-        <option value="jueves">jueves</option>
-        <option value="viernes">viernes</option>
-      </select>
+      <input type="date" name="fecha" required min="">
 
       <label> Nombre del doctor: </label>
-      <input type="text" name="nombre_doctor" required="true" autocomplete="off">
+      <input type="text" name="nombre_doctor" required autocomplete="off">
 
       <div class="buttons__form">
         <input type="submit" value="Enviar" name="send" class="button__form loginSend">
@@ -80,355 +109,90 @@ include '../verificacion_sesion.php';
     </form>
   </div>
 
+  <!-- INICIA LA CONEXION CON LA BASE DE DATOS PARA HACER CONSULTAS -->
   <?php include '../client/conexion.php';
-  $operator = "SELECT * FROM consulta WHERE dia = 'lunes' AND status != 2";
+  $operator = "SELECT * FROM consultas WHERE fecha_atencion = '$year-$mes-$dia'";
   $select = $conexion->query($operator);
 
-  if ($select->num_rows > 0) { ?>
-    <h2 class="dia"> Lunes </h2>
+  //valida que la tabla de consultas de ese dia no esté vacía
+  if ($select->num_rows > 0) {
+    mysqli_close($conexion) ?>
+    <h2 class="dia"> <?php echo $dia . "-" . $mes . "-" . $year ?> </h2>
     <div class="table">
       <div class="thead__table">
-        <div class="thead id">Id</div>
-        <div class="thead">Nombre del Paciente</div>
-        <div class="thead">Numero</div>
-        <div class="thead">Cedula</div>
-        <div class="thead causa">Causa de la Consulta</div>
-        <div class="thead">Nombre de Doctor</div>
+        <div class="thead id"> Id </div>
+        <div class="thead"> Nombre del Paciente </div>
+        <div class="thead"> Numero </div>
+        <div class="thead"> Cedula </div>
+        <div class="thead causa"> Causa de la Consulta </div>
+        <div class="thead"> Nombre de Doctor </div>
         <div class="thead"> Acciones </div>
       </div>
 
       <?php
-      $operator = "SELECT * FROM consulta WHERE dia = 'lunes' AND status = 0";
-      $select = $conexion->query($operator);
-      while ($resultado = mysqli_fetch_array($select)) {
+      include '../client/conexion.php';
+      $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$year-$mes-$dia'";
+      $select = $conexion->query($consulta);
+      while ($datos_consulta = mysqli_fetch_array($select)) {
+        $id_doctor = $datos_consulta['id_doctor'];
+        $doctor = nombre_apellido_doctor($id_doctor);
       ?>
         <div class="tbody__table">
-          <div class="tbody id"><?php echo $resultado['id_consulta']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-          <div class="tbody"><?php echo $resultado['numero']; ?></div>
-          <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-          <div class="tbody causa"><?php echo $resultado['causa']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre_doctora']; ?></div>
-          <div class="tbody"><a href="../client/crud/status1.php?id=<?php echo $resultado['id_consulta']?>"><button class="atendido">Atendido</button></a> <a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a></div>
-        </div><?php } ?>
+          <div class="tbody id"><?php echo $datos_consulta['id_consulta']; ?></div>
+          <div class="tbody nom"><?php echo $datos_consulta['nombre'] . " " . $datos_consulta['apellido']; ?></div>
+          <div class="tbody"><?php echo $datos_consulta['telefono_1']; ?></div>
+          <div class="tbody"><?php echo $datos_consulta['cedula']; ?></div>
+          <div class="tbody causa"><?php echo $datos_consulta['causa_consulta']; ?></div>
+          <div class="tbody nom"><?php echo $doctor[0] . " " . $doctor[1] ?></div>
+          <div class="tbody"><a href="../client/crud/status1.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="atendido">Atendido</button></a> <a href="../client/crud/status2.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Eliminar</button></a></div>
+        </div>
+      <?php }
+      mysqli_close($conexion); ?>
     </div>
 
     <button class="insertar"> Registrar Una Cita </button>
 
-    <?php $operator = "SELECT * FROM consulta WHERE status = 1 AND dia = 'lunes'";
-    $select = $conexion->query($operator); ?>
-
-    <h3 class="dia">Atendidos del Lunes</h3>
+    <h2 class="dia"> Atendidos </h2>
     <div class="table">
       <div class="thead__table">
-        <div class="thead id aten">Id</div>
-        <div class="thead aten">Nombre del Paciente</div>
-        <div class="thead aten">Numero</div>
-        <div class="thead aten">Cedula</div>
-        <div class="thead causa aten">Causa de la Consulta</div>
-        <div class="thead aten">Nombre de Doctor</div>
-        <div class="thead aten"> Acciones </div>
-      </div>
-
-      <?php
-      while ($resultado = mysqli_fetch_array($select)) {
-      ?>
-        <div class="tbody__table">
-          <div class="tbody id"><?php echo $resultado['id_consulta']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-          <div class="tbody"><?php echo $resultado['numero']; ?></div>
-          <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-          <div class="tbody causa"><?php echo $resultado['causa']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre_doctora']; ?></div>
-          <div class="tbody"><a href="../client/crud/status3.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="volver">Volver</button></a> <a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a></div>
-        </div><?php }
-      mysqli_close($conexion) ?> <!-- Para cerrar el while de las consultas atendidas -->
-    </div> 
-  <?php } ?> <!-- Para cerrar el condicional de las consultas -->
-
-  <div class="space"></div>
-
-  <!-- CITAS DEL MARTES -->
-
-  <?php include '../client/conexion.php';
-  $operator = "SELECT * FROM consulta WHERE dia = 'martes'  AND status != 2";
-  $select = $conexion->query($operator);
-
-  if ($select->num_rows > 0) { ?>
-    <h2 class="dia"> Martes </h2>
-    <div class="table">
-      <div class="thead__table">
-        <div class="thead id">Id</div>
-        <div class="thead">Nombre del Paciente</div>
-        <div class="thead">Numero</div>
-        <div class="thead">Cedula</div>
-        <div class="thead causa">Causa de la Consulta</div>
-        <div class="thead">Nombre de Doctor</div>
+        <div class="thead id"> Id </div>
+        <div class="thead"> Nombre del Paciente </div>
+        <div class="thead"> Numero </div>
+        <div class="thead"> Cedula </div>
+        <div class="thead causa"> Causa de la Consulta </div>
+        <div class="thead"> Nombre de Doctor </div>
         <div class="thead"> Acciones </div>
       </div>
 
       <?php
-      $operator = "SELECT * FROM consulta WHERE dia = 'martes' AND status = 0";
-      $select = $conexion->query($operator);
-      while ($resultado = mysqli_fetch_array($select)) {
+      include '../client/conexion.php';
+      $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor WHERE consultas.id_status_consulta = 1 AND consultas.fecha_atencion = '$year-$mes-$dia'";
+      $select = $conexion->query($consulta);
+      while ($datos_consulta = mysqli_fetch_array($select)) {
+        $id_doctor = $datos_consulta['id_doctor'];
+        $doctor = nombre_apellido_doctor($id_doctor);
       ?>
         <div class="tbody__table">
-          <div class="tbody id"><?php echo $resultado['id_consulta']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-          <div class="tbody"><?php echo $resultado['numero']; ?></div>
-          <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-          <div class="tbody causa"><?php echo $resultado['causa']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre_doctora']; ?></div>
-          <div class="tbody"><a href="../client/crud/status1.php?id=<?php echo $resultado['id_consulta']?>"><button class="atendido">Atendido</button></a> <a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a></div>
-        </div><?php } ?>
+          <div class="tbody id"><?php echo $datos_consulta['id_consulta']; ?></div>
+          <div class="tbody nom"><?php echo $datos_consulta['nombre'] . " " . $datos_consulta['apellido']; ?></div>
+          <div class="tbody"><?php echo $datos_consulta['telefono_1']; ?></div>
+          <div class="tbody"><?php echo $datos_consulta['cedula']; ?></div>
+          <div class="tbody causa"><?php echo $datos_consulta['causa_consulta']; ?></div>
+          <div class="tbody nom"><?php echo $doctor[0] . " " . $doctor[1]; ?></div>
+          <a href="../client/crud/status2.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Eliminar</button></a>
+        </div>
     </div>
+    <?php } mysqli_close($conexion); ?>
+  </div>
+<?php } ?> <!-- Para cerrar el condicional de las consultas -->
 
-    <button class="insertar"> Registrar Una Cita </button>
+<div class="space"></div>
 
-    <?php $operator = "SELECT * FROM consulta WHERE status = 1 AND dia = 'martes'";
-    $select = $conexion->query($operator); ?>
 
-    <h3 class="dia">Atendidos del Martes</h3>
-    <div class="table">
-      <div class="thead__table">
-        <div class="thead id aten">Id</div>
-        <div class="thead aten">Nombre del Paciente</div>
-        <div class="thead aten">Numero</div>
-        <div class="thead aten">Cedula</div>
-        <div class="thead causa aten">Causa de la Consulta</div>
-        <div class="thead aten">Nombre de Doctor</div>
-        <div class="thead aten"> Acciones </div>
-      </div>
+<?php include 'components/footer.html' ?>
 
-      <?php
-      while ($resultado = mysqli_fetch_array($select)) {
-      ?>
-        <div class="tbody__table">
-          <div class="tbody id"><?php echo $resultado['id_consulta']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-          <div class="tbody"><?php echo $resultado['numero']; ?></div>
-          <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-          <div class="tbody causa"><?php echo $resultado['causa']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre_doctora']; ?></div>
-          <div class="tbody"><a href="../client/crud/status3.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="volver">Volver</button></a> <a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a></div>
-        </div><?php }
-      mysqli_close($conexion) ?> <!-- Para cerrar el while de las consultas atendidas -->
-    </div>  
-  <?php } ?> <!-- Para cerrar el condicional de las consultas -->
-
-  <div class="space"></div>
-
-  <!-- CITAS DE MIERCOLES -->
-
-  <?php include '../client/conexion.php';
-  $operator = "SELECT * FROM consulta WHERE dia = 'miercoles'  AND status != 2";
-  $select = $conexion->query($operator);
-
-  if ($select->num_rows > 0) { ?>
-    <h2 class="dia"> Miercoles </h2>
-    <div class="table">
-      <div class="thead__table">
-        <div class="thead id">Id</div>
-        <div class="thead">Nombre del Paciente</div>
-        <div class="thead">Numero</div>
-        <div class="thead">Cedula</div>
-        <div class="thead causa">Causa de la Consulta</div>
-        <div class="thead">Nombre de Doctor</div>
-        <div class="thead"> Acciones </div>
-      </div>
-
-      <?php
-      $operator = "SELECT * FROM consulta WHERE dia = 'miercoles' AND status = 0";
-      $select = $conexion->query($operator);
-      while ($resultado = mysqli_fetch_array($select)) {
-      ?>
-        <div class="tbody__table">
-          <div class="tbody id"><?php echo $resultado['id_consulta']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-          <div class="tbody"><?php echo $resultado['numero']; ?></div>
-          <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-          <div class="tbody causa"><?php echo $resultado['causa']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre_doctora']; ?></div>
-          <div class="tbody"><a href="../client/crud/status1.php?id=<?php echo $resultado['id_consulta']?>"><button class="atendido">Atendido</button></a> <a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a></div>
-        </div><?php } ?>
-    </div>
-
-    <button class="insertar"> Registrar Una Cita </button>
-
-    <?php $operator = "SELECT * FROM consulta WHERE status = 1 AND dia = 'miercoles'";
-    $select = $conexion->query($operator); ?>
-
-    <h3 class="dia">Atendidos del Miercoles</h3>
-    <div class="table">
-      <div class="thead__table">
-        <div class="thead id aten">Id</div>
-        <div class="thead aten">Nombre del Paciente</div>
-        <div class="thead aten">Numero</div>
-        <div class="thead aten">Cedula</div>
-        <div class="thead causa aten">Causa de la Consulta</div>
-        <div class="thead aten">Nombre de Doctor</div>
-        <div class="thead aten"> Acciones </div>
-      </div>
-
-      <?php
-      while ($resultado = mysqli_fetch_array($select)) {
-      ?>
-        <div class="tbody__table">
-          <div class="tbody id"><?php echo $resultado['id_consulta']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-          <div class="tbody"><?php echo $resultado['numero']; ?></div>
-          <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-          <div class="tbody causa"><?php echo $resultado['causa']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre_doctora']; ?></div>
-          <div class="tbody"><a href="../client/crud/status3.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="atendido volver">Volver</button></a> <a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a></div>
-        </div><?php }
-      mysqli_close($conexion) ?> <!-- Para cerrar el while de las consultas atendidas -->
-    </div>  
-  <?php } ?> <!-- Para cerrar el condicional de las consultas -->
-
-  <div class="space"></div>
-
-    <!-- CITAS DEL JUEVES-->
-
-  <?php include '../client/conexion.php';
-  $operator = "SELECT * FROM consulta WHERE dia = 'jueves'  AND status != 2";
-  $select = $conexion->query($operator);
-
-  if ($select->num_rows > 0) { ?>
-    <h2 class="dia"> Jueves </h2>
-    <div class="table">
-      <div class="thead__table">
-        <div class="thead id">Id</div>
-        <div class="thead">Nombre del Paciente</div>
-        <div class="thead">Numero</div>
-        <div class="thead">Cedula</div>
-        <div class="thead causa">Causa de la Consulta</div>
-        <div class="thead">Nombre de Doctor</div>
-        <div class="thead"> Acciones </div>
-      </div>
-
-      <?php
-      $operator = "SELECT * FROM consulta WHERE dia = 'jueves' AND status = 0";
-      $select = $conexion->query($operator);
-      while ($resultado = mysqli_fetch_array($select)) {
-      ?>
-        <div class="tbody__table">
-          <div class="tbody id"><?php echo $resultado['id_consulta']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-          <div class="tbody"><?php echo $resultado['numero']; ?></div>
-          <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-          <div class="tbody causa"><?php echo $resultado['causa']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre_doctora']; ?></div>
-          <div class="tbody"><a href="../client/crud/status1.php?id=<?php echo $resultado['id_consulta']?>"><button class="atendido">Atendido</button></a> <a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a></div>
-        </div><?php } ?>
-    </div>
-
-    <button class="insertar"> Registrar Una Cita </button>
-
-    <?php $operator = "SELECT * FROM consulta WHERE status = 1 AND dia = 'jueves'";
-    $select = $conexion->query($operator); ?>
-
-    <h3 class="dia">Atendidos del Jueves</h3>
-    <div class="table">
-      <div class="thead__table">
-        <div class="thead id aten">Id</div>
-        <div class="thead aten">Nombre del Paciente</div>
-        <div class="thead aten">Numero</div>
-        <div class="thead aten">Cedula</div>
-        <div class="thead causa aten">Causa de la Consulta</div>
-        <div class="thead aten">Nombre de Doctor</div>
-        <div class="thead aten"> Acciones </div>
-      </div>
-
-      <?php
-      while ($resultado = mysqli_fetch_array($select)) {
-      ?>
-        <div class="tbody__table">
-          <div class="tbody id"><?php echo $resultado['id_consulta']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-          <div class="tbody"><?php echo $resultado['numero']; ?></div>
-          <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-          <div class="tbody causa"><?php echo $resultado['causa']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre_doctora']; ?></div>
-          <div class="tbody"><a href="../client/crud/status3.php?id=<?php echo $resultado['id_consulta'] ?>"><button class=" volver">Volver</button></a> <a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a></div>
-        </div><?php }
-      mysqli_close($conexion) ?> <!-- Para cerrar el while de las consultas atendidas -->
-    </div>  
-  <?php } ?> <!-- Para cerrar el condicional de las consultas -->
-
-  <div class="space"></div>
-
-  <!-- CITAS DEL VIERNES-->
-
-  <?php include '../client/conexion.php';
-  $operator = "SELECT * FROM consulta WHERE dia = 'viernes'  AND status != 2";
-  $select = $conexion->query($operator);
-
-  if ($select->num_rows > 0) { ?>
-    <h2 class="dia"> Viernes </h2>
-    <div class="table">
-      <div class="thead__table">
-        <div class="thead id">Id</div>
-        <div class="thead">Nombre del Paciente</div>
-        <div class="thead">Numero</div>
-        <div class="thead">Cedula</div>
-        <div class="thead causa">Causa de la Consulta</div>
-        <div class="thead">Nombre de Doctor</div>
-        <div class="thead"> Acciones </div>
-      </div>
-
-      <?php
-      $operator = "SELECT * FROM consulta WHERE dia = 'viernes' AND status = 0";
-      $select = $conexion->query($operator);
-      while ($resultado = mysqli_fetch_array($select)) {
-      ?>
-        <div class="tbody__table">
-          <div class="tbody id"><?php echo $resultado['id_consulta']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-          <div class="tbody"><?php echo $resultado['numero']; ?></div>
-          <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-          <div class="tbody causa"><?php echo $resultado['causa']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre_doctora']; ?></div>
-          <div class="tbody"><a href="../client/crud/status1.php?id=<?php echo $resultado['id_consulta']?>"><button class="atendido">Atendido</button></a> <a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a></div>
-        </div><?php } ?>
-    </div>
-
-    <button class="insertar"> Registrar Una Cita </button>
-
-    <?php $operator = "SELECT * FROM consulta WHERE status = 1 AND dia = 'viernes'";
-    $select = $conexion->query($operator); ?>
-
-    <h3 class="dia">Atendidos del Viernes</h3>
-    <div class="table">
-      <div class="thead__table">
-        <div class="thead id aten">Id</div>
-        <div class="thead aten">Nombre del Paciente</div>
-        <div class="thead aten">Numero</div>
-        <div class="thead aten">Cedula</div>
-        <div class="thead causa aten">Causa de la Consulta</div>
-        <div class="thead aten">Nombre de Doctor</div>
-        <div class="thead aten"> Acciones </div>
-      </div>
-
-      <?php
-      while ($resultado = mysqli_fetch_array($select)) {
-      ?>
-        <div class="tbody__table">
-          <div class="tbody id"><?php echo $resultado['id_consulta']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-          <div class="tbody"><?php echo $resultado['numero']; ?></div>
-          <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-          <div class="tbody causa"><?php echo $resultado['causa']; ?></div>
-          <div class="tbody nom"><?php echo $resultado['nombre_doctora']; ?></div>
-          <div class="tbody"><a href="../client/crud/status3.php?id=<?php echo $resultado['id_consulta'] ?>"><button class=" volver">Volver</button></a> <a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a></div>
-        </div><?php }
-      mysqli_close($conexion) ?> <!-- Para cerrar el while de las consultas atendidas -->
-    </div>  
-  <?php } ?> <!-- Para cerrar el condicional de las consultas -->
-
-  <?php include 'components/footer.html' ?>
-  
 <script src="js/confirm.js"></script>
 <script src="js/modal.js"></script>
 </body>
+
 </html>

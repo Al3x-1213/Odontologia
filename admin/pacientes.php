@@ -1,5 +1,5 @@
 <?php
-include '../verificacion_sesion.php';
+include '../client/verificacion_sesion.php';
 ?>
 
 <!DOCTYPE html>

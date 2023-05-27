@@ -15,7 +15,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 600px;
+  min-height: 600px;
   position: relative;
   z-index: 10;
   top: 100px;
@@ -25,6 +25,7 @@ body {
 }
 
 .icon-cross {
+  width: 40px;
   position: absolute;
   margin: 5%;
   right: 0;
