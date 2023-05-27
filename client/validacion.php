@@ -21,16 +21,19 @@ if (!empty($_POST['boton_log'])){
         $consulta = "SELECT * FROM usuarios WHERE usuario = '$usuario' and clave = '$clave'";
 
         // VARIABLES GLOBALES
-        $tipo_usuario = mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_tipo_usuario'];
+        $id = mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_usuario'];
         $usuario = mysqli_fetch_array(mysqli_query($conexion, $consulta))['usuario'];
+        $tipo_usuario = mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_tipo_usuario'];
 
-        $_SESSION['usuario'] = $usuario; 
+        $_SESSION['id'] = $id;
+        $_SESSION['usuario'] = $usuario;
         $_SESSION['tipo_usuario'] = $tipo_usuario;
 
         // VALIDACIÓN DEL USUARIO INGRESADO
         if(mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_tipo_usuario'] == 1){ // Administrador / Doctor
             if(mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_status_usuario'] == 1){
                 // echo "doctor";
+                // echo $id;
                 header("location: ../admin/index.php");
             }
             else{

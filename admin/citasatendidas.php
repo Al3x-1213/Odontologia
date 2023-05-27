@@ -47,17 +47,29 @@ include '../verificacion_sesion.php';
         <!-- <div class="thead">Télefono</div> -->
         <div class="thead causa">Causa de la Consulta</div>
         <div class="thead">Fecha de Atención</div>
-        <div class="thead">Doctor</div>
+        <!-- <div class="thead">Doctor</div> -->
         <!-- <div class="thead">Fecha de Solicitud</div> -->
         <div class="thead">Acciones</div>
       </div>
 
       <?php
+      // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
+      $id= $_SESSION['id'];
+
+      // OBTENER EL ID_DOCTOR según el ID_USUARIO
+      $consulta = "SELECT id_doctor FROM doctores WHERE id_usuario = '$id'";
+      $query = mysqli_query($conexion, $consulta);
+      
+      $respuesta = mysqli_fetch_array($query);
+      $id_doctor = $respuesta['id_doctor'];
+
       //SELECT * FROM `consultas` INNER JOIN `usuarios` INNER JOIN `causa_consulta` INNER JOIN `doctores` INNER JOIN `status_consulta` ON `consultas`.`id_paciente` = `usuarios`.`id_usuario` AND `consultas`.`id_causa_consulta` = `causa_consulta`.`id_causa_consulta` AND `consultas`.`id_doctor` = `doctores`.`id_doctor` AND `consultas`.`id_status_consulta` = `status_consulta`.`id_status_consulta` WHERE `consultas`.`id_status_consulta` = 1
+      
+      // OBTENER LA INFORMACIÓN DE TODAS LAS CITAS ATENDIDAS POR EL DOCTOR QUE ESTÁ LOGUEADO
       $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
       ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
       AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-      WHERE consultas.id_status_consulta = 1";
+      WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 1";
       $query = mysqli_query($conexion, $consulta);
 
       while ($resultado = mysqli_fetch_array($query)){
@@ -73,17 +85,17 @@ include '../verificacion_sesion.php';
           <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
           <div class="tbody"><?php echo $resultado['fecha_atencion']; ?></div>
 
-          <div class="tbody nom"><?php
-          $id_doctor = $resultado['id_doctor'];
+          <!-- <div class="tbody nom"><?php
+          // $id_doctor = $resultado['id_doctor'];
 
-          $consulta_doctor = "SELECT * FROM doctores INNER JOIN usuarios
-          ON doctores.id_usuario = usuarios.id_usuario WHERE id_doctor = '$id_doctor'";
-          $query_doctor = mysqli_query($conexion, $consulta_doctor);
+          // $consulta = "SELECT * FROM doctores INNER JOIN usuarios
+          // ON doctores.id_usuario = usuarios.id_usuario WHERE id_doctor = '$id_doctor'";
+          // $query = mysqli_query($conexion, $consulta);
 
-          while ($resultado_doctor = mysqli_fetch_array($query_doctor)){
-            echo $resultado_doctor['nombre'] . " " . $resultado_doctor['apellido'];
-          }
-          ?></div>
+          // while ($resultado = mysqli_fetch_array($query)){
+          //   echo $resultado['nombre'] . " " . $resultado['apellido'];
+          // }
+          ?></div> -->
 
           <!-- <div class="tbody"><?php //echo $resultado['fecha_solicitud']; ?></div> -->
           <div class="tbody"><a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a></div>
