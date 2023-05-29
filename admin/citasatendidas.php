@@ -75,7 +75,7 @@ include '../client/verificacion_sesion.php';
       while ($resultado = mysqli_fetch_array($query)){
       ?>
         <div class="tbody__table">
-          <!-- <div class="tbody id"><?php echo $resultado['id_consulta']; ?></div> -->
+          <!-- <div class="tbody id"><?php //echo $resultado['id_consulta']; ?></div> -->
           <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
           <div class="tbody"><?php echo $resultado['cedula']; ?></div>
           <div class="tbody"><?php echo $resultado['edad']; ?></div>

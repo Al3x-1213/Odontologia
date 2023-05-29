@@ -25,17 +25,7 @@ function nombre_apellido_doctor($id)
   $nombre_doctor[1] = $respuesta['apellido'];
   return $nombre_doctor;
 }
-
 ?>
-<!-- // session_start();
-// ob_start();
-// $sesion = $_SESSION['sesion'];
-// $_SESSION['admin'] = 1;
-// if ($sesion == null || $sesion == 0) {
-//   header('location:../index.php');
-//   session_unset();
-//   die();
-// }; -->
 
 <!DOCTYPE html>
 <html lang="es">
@@ -48,6 +38,7 @@ function nombre_apellido_doctor($id)
   <!-- ESTILOS CSS -->
   <link rel="stylesheet" href="../styles/normalize.css">
   <link rel="stylesheet" href="styles/menu.css">
+  <link rel="stylesheet" href="styles/buscador.css">
   <link rel="stylesheet" href="styles/index.css">
   <link rel="stylesheet" href="styles/footer.css">
   <link rel="stylesheet" href="styles/modal.css">
@@ -66,8 +57,10 @@ function nombre_apellido_doctor($id)
 
 <body>
   <?php
-  include 'components/menu.html'; ?>
-
+  include 'components/menu.html';
+  include 'buscador_fechas.html';
+  ?>
+  
   <div class="modal disable">
     <form class="form-login" method="POST" action="../client/crud/insertarCadmin.php">
       <div class="header__form">
