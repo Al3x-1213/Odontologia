@@ -30,16 +30,11 @@ include '../client/verificacion_sesion.php';
     <body>
         <?php
         include 'components/menu.html';
-        include 'buscador_fechas.html';
+        include 'buscador_pacientes.html';
         ?>
         <?php
-        // FECHA PARA BUSCAR
-        $fecha = $_POST['buscar'];
-
-        $fecha_separada = explode('-', $fecha);
-        $day = $fecha_separada[2];
-        $month = $fecha_separada[1];
-        $year = $fecha_separada[0];
+        // PACIENTE PARA BUSCAR
+        $paciente = $_POST['buscar'];
 
         // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
         $id= $_SESSION['id'];
@@ -53,88 +48,94 @@ include '../client/verificacion_sesion.php';
         $respuesta = mysqli_fetch_array($query);
         $id_doctor = $respuesta['id_doctor'];
 
-        // CITAS POR ATENDER: OBTENER LA INFORMACIÓN DE TODAS LAS CITAS POR ATENDER POR EL DOCTOR QUE ESTÁ LOGUEADO EN LA FECHA INGRESADA
-        $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
-        ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
-        AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-        WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fecha'";
-        $query = mysqli_query($conexion, $consulta);
+        // DATOS DEL PACIENTE
+        $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 2 AND cedula = '$paciente'";
+        $query = $conexion->query($consulta);
         ?>
     
-        <h2 class="dia"><?php echo $day . "-" . $month . "-" . $year; ?></h2>
+        <h2 class="dia">Pacientes</h2>
 
         <div class="table">
             <div class="thead__table">
+                <!-- <div class="thead id">Id</div> -->
                 <div class="thead">Paciente</div>
                 <div class="thead">Cédula</div>
                 <div class="thead">Edad</div>
-                <div class="thead causa">Causa de la Consulta</div>
+                <div class="thead">Fecha de Nacimiento</div>
                 <div class="thead">Télefono</div>
                 <div class="thead">Télefono</div>
-                <!-- <div class="thead">Fecha de Atención</div> -->
+                <div class="thead">Correo Electrónico</div>
                 <div class="thead">Acciones</div>
             </div>
 
             <?php
-            while ($resultado = mysqli_fetch_array($query)){
+            while ($resultado = mysqli_fetch_array($query)) {
             ?>
                 <div class="tbody__table">
+                    <!-- <div class="tbody id"><?php //echo $resultado['id_paciente']; ?></div> -->
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                     <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
+                    <div class="tbody"><?php echo $resultado['fecha_nacimiento']; ?></div>
                     <div class="tbody"><?php echo $resultado['telefono_1']; ?></div>
                     <div class="tbody"><?php echo $resultado['telefono_2']; ?></div>
-                    <!-- <div class="tbody"><?php //echo $resultado['fecha_atencion']; ?></div> -->
-
-                    <div class="tbody"><a href="../client/crud/status1.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="atendido">Atendido</button></a>
-                    <a href="../client/crud/status2.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a></div>
+                    <div class="tbody"><?php echo $resultado['correo']; ?></div>
+                    <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
+                    <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div>
                 </div>
             <?php
             }
             ?>
         </div>
+
         <?php
-        // CITAS ATENDIDAS: OBTENER LA INFORMACIÓN DE TODAS LAS CITAS ATENDIDAS POR EL DOCTOR QUE ESTÁ LOGUEADO EN LA FECHA INGRESADA
+        // HISTORIAL DE LAS CONSULTAS DEL PACIENTE
         $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
         ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
         AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-        WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 1 AND consultas.fecha_atencion = '$fecha'";
-        $query = mysqli_query($conexion, $consulta);
+        WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 1 AND usuarios.cedula = '$paciente'";
+        $query = $conexion->query($consulta);
         ?>
-    
-        <h2 class="dia">Atendidos</h2>
+
+        <h2 class="dia">Historial de consultas</h2>
 
         <div class="table">
             <div class="thead__table">
-                <div class="thead">Paciente</div>
-                <div class="thead">Cédula</div>
-                <div class="thead">Edad</div>
+                <!-- <div class="thead id">Id</div> -->
+                <!-- <div class="thead">Paciente</div> -->
+                <!-- <div class="thead">Cédula</div> -->
+                <!-- <div class="thead">Edad</div> -->
+                <!-- <div class="thead">Fecha de Nacimiento</div> -->
+                <!-- <div class="thead">Télefono</div> -->
+                <!-- <div class="thead">Télefono</div> -->
                 <div class="thead causa">Causa de la Consulta</div>
-                <div class="thead">Télefono</div>
-                <div class="thead">Télefono</div>
-                <!-- <div class="thead">Fecha de Atención</div> -->
-                <div class="thead">Acciones</div>
+                <div class="thead">Fecha de Atención</div>
+                <!-- <div class="thead">Doctor</div> -->
+                <!-- <div class="thead">Fecha de Solicitud</div> -->
+                <!-- <div class="thead">Acciones</div> -->
             </div>
 
             <?php
-                while ($resultado = mysqli_fetch_array($query)){
+            while ($resultado = mysqli_fetch_array($query)) {
             ?>
                 <div class="tbody__table">
-                    <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-                    <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-                    <div class="tbody"><?php echo $resultado['edad']; ?></div>
+                    <!-- <div class="tbody id"><?php //echo $resultado['id_consulta']; ?></div> -->
+                    <!-- <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div> -->
+                    <!-- <div class="tbody"><?php echo $resultado['cedula']; ?></div> -->
+                    <!-- <div class="tbody"><?php echo $resultado['edad']; ?></div> -->
+                    <!-- <div class="tbody"><?php //echo $resultado['fecha_nacimiento']; ?></div> -->
+                    <!-- <div class="tbody"><?php //echo $resultado['telefono_1']; ?></div> -->
+                    <!-- <div class="tbody"><?php //echo $resultado['telefono_2']; ?></div> -->
                     <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody"><?php echo $resultado['telefono_1']; ?></div>
-                    <div class="tbody"><?php echo $resultado['telefono_2']; ?></div>
-                    <!-- <div class="tbody"><?php //echo $resultado['fecha_atencion']; ?></div> -->
-
-                    <div class="tbody"><a href="../client/crud/status2.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Eliminar</button></a></div>
+                    <div class="tbody"><?php echo $resultado['fecha_atencion']; ?></div>
+                    <!-- <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
+                    <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div> -->
                 </div>
             <?php
             }
             ?>
         </div>
+        
         <div class="space"></div>
         
         <?php

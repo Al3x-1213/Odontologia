@@ -31,7 +31,9 @@ include '../client/verificacion_sesion.php';
 
 <body>
   <?php
-  include 'components/menu.html'; ?>
+  include 'components/menu.html';
+  include 'buscador_pacientes.html';
+  ?>
 
   <div class="modal disable">
     <form class="form-login" method="POST" action="../client/insertar.php">
