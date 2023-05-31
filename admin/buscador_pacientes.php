@@ -120,9 +120,9 @@ include '../client/verificacion_sesion.php';
             ?>
                 <div class="tbody__table">
                     <!-- <div class="tbody id"><?php //echo $resultado['id_consulta']; ?></div> -->
-                    <!-- <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div> -->
-                    <!-- <div class="tbody"><?php echo $resultado['cedula']; ?></div> -->
-                    <!-- <div class="tbody"><?php echo $resultado['edad']; ?></div> -->
+                    <!-- <div class="tbody nom"><?php //echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div> -->
+                    <!-- <div class="tbody"><?php //echo $resultado['cedula']; ?></div> -->
+                    <!-- <div class="tbody"><?php //echo $resultado['edad']; ?></div> -->
                     <!-- <div class="tbody"><?php //echo $resultado['fecha_nacimiento']; ?></div> -->
                     <!-- <div class="tbody"><?php //echo $resultado['telefono_1']; ?></div> -->
                     <!-- <div class="tbody"><?php //echo $resultado['telefono_2']; ?></div> -->
