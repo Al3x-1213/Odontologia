@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="../styles/login.css">
         <link rel="stylesheet" href="../styles/mensajes.css">
+        <link rel="stylesheet" href="../Iconos/style.css">
 
         <!-- LETRAS UTILIZADAS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,12 +21,10 @@
     </head>
 
     <body>
-        <div class="container__img">
-            <img src="../img/loginfondo.png" alt="imagen de fondo" class="imgfondo">
-        </div>
         <div class="flex__container">
             <form class="form form__alternative" method="POST"> <!--action="../client/insertar.php"-->
 
+                <a href="../"><i class="icon-cross"></i></a>
                 <!-- TITULO -->
                 <h2 class="title__form"><a href="../index.php">Registrarse</a></h2>
 

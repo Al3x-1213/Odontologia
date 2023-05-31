@@ -17,7 +17,7 @@ body {
   width: 400px;
   min-height: 600px;
   position: relative;
-  z-index: 10;
+  z-index: 10000;
   top: 100px;
   left: 35%;
   border-radius: 2%;
@@ -27,7 +27,7 @@ body {
 .icon-cross {
   width: 40px;
   position: absolute;
-  margin: 5%;
+  margin: 5% 0;
   right: 0;
 }
 
@@ -129,5 +129,11 @@ a {
   width: 100%;
   position: absolute;
   top: 85px;
-  left: 44%
+  left: 44%;
+}
+
+@media (600px <= width <= 800px){
+  .title__form{
+    font-size: 20px;
+  }
 }
