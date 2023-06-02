@@ -5,8 +5,15 @@ body {
 }
 
 .flex__container {
-  height: 100vh;
   width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex__container-alternative {
+  height: 100vh;
 }
 
 /* ICONO PRINCIPAL DEL LOGIN */
@@ -14,14 +21,16 @@ body {
 .form {
   display: flex;
   flex-direction: column;
-  width: 400px;
-  min-height: 600px;
-  position: relative;
-  z-index: 10000;
-  top: 100px;
-  left: 35%;
+  width: 425px;
+  height: auto;
   border-radius: 2%;
+  position: relative;
   box-shadow: 0px 0px 10px 1px #333;
+  margin: 30px 0;
+}
+
+.form-alternative {
+  height:600px;
 }
 
 .icon-cross {
@@ -33,7 +42,7 @@ body {
 
 .icon__form {
   width: 46%;
-  height: 28%;
+  height: 30%;
   border: 5px solid #333;
   border-radius: 50%;
   margin: 15% auto 2.5%;
@@ -56,16 +65,12 @@ body {
   overflow: hidden;
 }
 
-.form__alternative {
-  height: 700px;
-}
-
 .title__form {
   align-self: center;
   font-family: 'Lobster', cursive !important;
   color: #111;
   font-size: 2em;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 }
 
 .fields__form {

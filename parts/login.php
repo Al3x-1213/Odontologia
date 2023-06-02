@@ -21,8 +21,8 @@
     </head>
 
     <body>
-        <div class="flex__container">
-            <form class="form" method="POST"> <!--action="../client/validacion.php"-->
+        <div class="flex__container flex__container-alternative">
+            <form class="form form-alternative" method="POST"> <!--action="../client/validacion.php"-->
                 <!-- CODIGO DE ICONO -->
                 <a href="../"><i class="icon-cross"></i></a>
                 <div class="icon__form">
