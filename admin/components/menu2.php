@@ -27,7 +27,7 @@
                 </div>
                 <div class="buscadores">
                     <div class="buscadorFechas">
-                        <form action="buscador_fechas.php" method= "POST">
+                        <form action="buscador.php" method= "POST">
                             <div class="inputs">
                                 <div class="inputRecibe">
                                     Buscar citas: <input type="date" name="buscar">
@@ -39,7 +39,7 @@
                         </form>
                     </div>
                     <div class="buscadorPacientes">
-                        <form action="buscador_pacientes.php" method= "POST">
+                        <form action="buscador.php" method= "POST">
                             <div class="inputs">
                                 <div class="inputRecibe">
                                     Buscar pacientes: <input type="text" placeholder="Número de cédula:" name="buscar">

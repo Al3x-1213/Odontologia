@@ -1,9 +1,10 @@
 /* SEGUNDO MENÚ */
 
 .header {
-  background-color: #3e3d3d;
+  background-color: #33548A;
   box-shadow: 0px 0px 6px rgb(78 78 78);
   height: 40px;
+  padding-bottom: 5px;
 }
 
 .menu2 {
@@ -25,6 +26,7 @@
   color: #E67F4F;
   font-size: 20px;
   margin-left: 5%;
+  font-weight: bold;
   /* border: solid green 1px; */
 }
 
