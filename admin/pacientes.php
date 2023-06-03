@@ -30,7 +30,7 @@ include '../client/verificacion_sesion.php';
     <body>
         <?php
         include 'components/menu.html';
-        include 'buscador_pacientes.html';
+        include 'components/menu2.php';
         ?>
 
         <div class="modal disable">

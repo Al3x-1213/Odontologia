@@ -1,0 +1,29 @@
+/* SEGUNDO MENÚ */
+
+.header{
+    background-color: rgb(234, 237, 243);
+    box-shadow: 0px 0px 6px rgb(78 78 78);
+    height: 40px;
+}
+
+.menu2{
+    display: flex;
+}
+
+/* NOMBRE DE USUARIO */
+
+.nameUser{
+    width: 50%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    /* border: solid green 1px; */
+}
+
+.nameUser a{
+    text-decoration: none;
+    color: rgb(51, 84, 138);
+    font-size: 20px;
+    margin-left: 5%;
+    /* border: solid green 1px; */
+}
