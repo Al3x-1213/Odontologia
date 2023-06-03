@@ -27,7 +27,7 @@ header {
   border-bottom: 1px solid #ededed;
   top: 30px;
   right: 75px;
-  padding: 0 10px;
+  padding: 0 7px;
   opacity: 0;
   transition: .4s all ease;
 }
@@ -55,7 +55,8 @@ header {
 }
 
 .title {
-  width: 20%;
+  font-size: .90em;
+  margin: 0 15px;
   text-decoration: none;
   font-family: 'Raleway', sans-serif !important;
   color: #59f0f8;
