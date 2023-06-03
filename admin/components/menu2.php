@@ -32,8 +32,8 @@
                                 <div class="inputRecibe">
                                     Buscar citas: <input type="date" name="buscar">
                                 </div>
-                                <div class= "botonBuscar">
-                                    <input type="submit" value="Buscar">
+                                <div>
+                                    <input type="submit" value="Buscar" class= "botonBuscar">
                                 </div>
                             </div>
                         </form>
@@ -44,8 +44,8 @@
                                 <div class="inputRecibe">
                                     Buscar pacientes: <input type="text" placeholder="Número de cédula:" name="buscar">
                                 </div>
-                                <div class= "botonBuscar">
-                                    <input type="submit" value="Buscar">
+                                <div>
+                                    <input type="submit" value="Buscar" class= "botonBuscar">
                                 </div>
                             </div>
                         </form>

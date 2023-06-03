@@ -3,6 +3,7 @@ body {
   background: linear-gradient(70deg, #9fe3ec, #e0dada);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  font-size: 16px;
 }
 
 .dia {
