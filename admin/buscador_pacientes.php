@@ -30,7 +30,6 @@ include '../client/verificacion_sesion.php';
     <body>
         <?php
         include 'components/menu.html';
-        include 'buscador_pacientes.html';
         ?>
         <?php
         // PACIENTE PARA BUSCAR

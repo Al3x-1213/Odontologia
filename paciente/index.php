@@ -29,7 +29,8 @@ include '../client/verificacion_sesion.php';
     </head>
     <body>
         <?php
-        include 'components/menu.php';
+        include 'components/menu.html';
+        include 'components/menu2.php';
         ?>
 
         <?php

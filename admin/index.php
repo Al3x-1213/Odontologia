@@ -58,7 +58,7 @@ function nombre_apellido_doctor($id)
 <body>
   <?php
   include 'components/menu.html';
-  include 'buscador_fechas.html';
+  include 'components/menu2.php';
   ?>
   
   <div class="modal disable">

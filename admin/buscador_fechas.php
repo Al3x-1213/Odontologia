@@ -30,7 +30,6 @@ include '../client/verificacion_sesion.php';
     <body>
         <?php
         include 'components/menu.html';
-        include 'buscador_fechas.html';
         ?>
         <?php
         // FECHA PARA BUSCAR
