@@ -49,12 +49,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 20px
   /* border: solid blue 1px; */
 }
 
 .inputRecibe input {
   width: 130px;
-  height: 20px
 }
 
 .botonBuscar {
@@ -62,5 +62,6 @@
   background-color: #E67F4F;
   border: none;
   height: 20px;
+  padding: 3px 5px 0px;
 }
 

@@ -33,7 +33,7 @@
                                     Buscar citas: <input type="date" name="buscar">
                                 </div>
                                 <div>
-                                    <input type="submit" value="Buscar" class= "botonBuscar">
+                                    <button class="botonBuscar"><i class="icon-search"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -45,7 +45,7 @@
                                     Buscar pacientes: <input type="text" placeholder="Número de cédula:" name="buscar">
                                 </div>
                                 <div>
-                                    <input type="submit" value="Buscar" class= "botonBuscar">
+                                    <button class="botonBuscar"><i class="icon-search"></i></button>
                                 </div>
                             </div>
                         </form>
