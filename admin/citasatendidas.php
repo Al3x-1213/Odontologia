@@ -56,12 +56,13 @@ include '../client/verificacion_sesion.php';
                 <!-- <div class="thead id">Id</div> -->
                 <div class="thead">Paciente</div>
                 <div class="thead">Cédula</div>
-                <div class="thead">Edad</div>
                 <!-- <div class="thead">Fecha de Nacimiento</div> -->
                 <!-- <div class="thead">Télefono</div> -->
                 <!-- <div class="thead">Télefono</div> -->
                 <div class="thead causa">Causa de la Consulta</div>
                 <div class="thead">Fecha de Atención</div>
+                <div class="thead"> Hora de inicio </div>
+                <div class="thead"> Hora de culminacion </div>
                 <!-- <div class="thead">Doctor</div> -->
                 <!-- <div class="thead">Fecha de Solicitud</div> -->
                 <div class="thead">Acciones</div>
@@ -74,11 +75,12 @@ include '../client/verificacion_sesion.php';
                     <!-- <div class="tbody id"><?php //echo $resultado['id_consulta']; ?></div> -->
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                     <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-                    <div class="tbody"><?php echo $resultado['edad']; ?></div>
                     <!-- <div class="tbody"><?php //echo $resultado['fecha_nacimiento']; ?></div> -->
                     <!-- <div class="tbody"><?php //echo $resultado['telefono_1']; ?></div> -->
                     <!-- <div class="tbody"><?php //echo $resultado['telefono_2']; ?></div> -->
                     <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
+                    <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>
+                    <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>
                     <div class="tbody"><?php echo $resultado['fecha_atencion']; ?></div>
 
                     <!-- <div class="tbody nom"><?php

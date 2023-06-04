@@ -1,11 +1,10 @@
 /* SEGUNDO MENÚ */
 
 .header {
-  /* background-color: #3e3d3d; */
-  background-color: rgb(234, 237, 243);
-  background-color: rgb(51, 84, 138);
+  background-color: #33548A;
   box-shadow: 0px 0px 6px rgb(78 78 78);
   height: 40px;
+  padding-bottom: 5px;
 }
 
 .menu2 {
@@ -28,6 +27,7 @@
   font-size: 20px;
   font-weight: bold;
   margin-left: 5%;
+  font-weight: bold;
   /* border: solid green 1px; */
 }
 
@@ -50,12 +50,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 20px
   /* border: solid blue 1px; */
 }
 
 .inputRecibe input {
   width: 130px;
-  height: 20px
 }
 
 .botonBuscar {
@@ -63,5 +63,6 @@
   background-color: #E67F4F;
   border: none;
   height: 20px;
+  padding: 3px 5px 0px;
 }
 
