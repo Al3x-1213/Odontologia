@@ -93,8 +93,9 @@ header {
   top: 20px;
   right: 20px;
   font-size: 1.15em;
+  font-weight: bold;
   padding: 5px 15px;
-  background: linear-gradient(45deg, #789dc9, #EAEDF3);
+  background: linear-gradient(45deg, #33548A, #EAEDF3);
   border: none;
   border-radius: 4%;
   box-shadow: 0 0 7px 1px #333;

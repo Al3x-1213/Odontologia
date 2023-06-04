@@ -71,11 +71,11 @@ body {
   background: #dd2222;
 }
 
-.atendido, .volver {
+.atendido {
   background: #b498ff;
 }
 
-.atendido:hover, .volver:hover {
+.atendido:hover {
   background: #9d6afcbd;
 }
 
@@ -96,7 +96,7 @@ body {
   position: relative;
   left: 44%;
   margin: 2% 0 1%;
-  background: linear-gradient(70deg, #30B1C1, #fed7c4);
+  background: linear-gradient(70deg, #789dc9, #EAEDF3);
   border: 1px solid #333;
   padding: 5px 10px;
   font-weight: bold;
