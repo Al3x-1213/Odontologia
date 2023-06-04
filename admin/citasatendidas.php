@@ -79,9 +79,9 @@ include '../client/verificacion_sesion.php';
                     <!-- <div class="tbody"><?php //echo $resultado['telefono_1']; ?></div> -->
                     <!-- <div class="tbody"><?php //echo $resultado['telefono_2']; ?></div> -->
                     <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
+                    <div class="tbody"><?php echo $resultado['fecha_atencion']; ?></div>
                     <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>
                     <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>
-                    <div class="tbody"><?php echo $resultado['fecha_atencion']; ?></div>
 
                     <!-- <div class="tbody nom"><?php
                     // $id_doctor = $resultado['id_doctor'];

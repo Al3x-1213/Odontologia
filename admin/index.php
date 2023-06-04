@@ -103,7 +103,11 @@ function nombre_apellido_doctor($id)
   </div>
 
   <!-- INICIA LA CONEXION CON LA BASE DE DATOS PARA HACER CONSULTAS -->
-  <?php include '../client/conexion.php';
+  <?php
+  // OBTENER EL ID_DOCTOR según el ID_USUARIO
+  include 'obtenerId.php';
+  
+  include '../client/conexion.php';
   $operator = "SELECT * FROM consultas WHERE fecha_atencion = '$year-$mes-$dia'";
   $select = $conexion->query($operator);
 
@@ -113,12 +117,12 @@ function nombre_apellido_doctor($id)
     <h2 class="dia"> <?php echo $dia . "-" . $mes . "-" . $year ?> </h2>
     <div class="table">
       <div class="thead__table">
-        <div class="thead"> Nombre del Paciente </div>
-        <div class="thead"> Numero </div>
-        <div class="thead"> Cedula </div>
-        <div class="thead causa"> Causa de la Consulta </div>
-        <div class="thead"> Hora de inicio </div>
-        <div class="thead"> Hora de culminacion </div>
+        <div class="thead">Paciente</div>
+        <div class="thead">Cédula</div>
+        <div class="thead causa">Causa de la Consulta</div>
+        <div class="thead">Hora de Inicio</div>
+        <div class="thead">Hora de Culminación</div>
+        <div class="thead">Teléfono</div>
         <div class="thead"> Acciones </div>
       </div>
 
@@ -132,11 +136,12 @@ function nombre_apellido_doctor($id)
       ?>
         <div class="tbody__table">
           <div class="tbody nom"><?php echo $datos_consulta['nombre'] . " " . $datos_consulta['apellido']; ?></div>
-          <div class="tbody"><?php echo $datos_consulta['telefono_1']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['cedula']; ?></div>
           <div class="tbody causa"><?php echo $datos_consulta['causa_consulta']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['hora_inicio']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['hora_fin']; ?></div>
+          <div class="tbody"><?php echo $datos_consulta['telefono_1']; ?></div>
+          
           <div class="tbody"><a href="../client/botones/atendido.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="atendido">Atendido</button></a> <a href="../client/botones/cancelar.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a></div>
         </div>
       <?php }
@@ -148,12 +153,12 @@ function nombre_apellido_doctor($id)
     <h2 class="dia"> Atendidos </h2>
     <div class="table">
       <div class="thead__table">
-        <div class="thead"> Nombre del Paciente </div>
-        <div class="thead"> Numero </div>
-        <div class="thead"> Cedula </div>
-        <div class="thead causa"> Causa de la Consulta </div>
-        <div class="thead"> Hora de inicio </div>
-        <div class="thead"> Hora de culminacion </div>
+        <div class="thead">Paciente</div>
+        <div class="thead">Cédula</div>
+        <div class="thead causa">Causa de la Consulta</div>
+        <div class="thead">Hora de Inicio</div>
+        <div class="thead">Hora de Culminación</div>
+        <div class="thead">Teléfono</div>
         <div class="thead"> Acciones </div>
       </div>
 
@@ -164,11 +169,12 @@ function nombre_apellido_doctor($id)
       while ($datos_consulta = mysqli_fetch_array($select)) {?>
         <div class="tbody__table">
           <div class="tbody nom"><?php echo $datos_consulta['nombre'] . " " . $datos_consulta['apellido']; ?></div>
-          <div class="tbody"><?php echo $datos_consulta['telefono_1']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['cedula']; ?></div>
           <div class="tbody causa"><?php echo $datos_consulta['causa_consulta']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['hora_inicio']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['hora_fin']; ?></div>
+          <div class="tbody"><?php echo $datos_consulta['telefono_1']; ?></div>
+          
           <div class="tbody"><a href="../client/botones/cancelar.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a></div>
         </div>
     <?php } mysqli_close($conexion); ?>
