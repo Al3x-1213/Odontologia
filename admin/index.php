@@ -109,6 +109,7 @@ function nombre_apellido_doctor($id)
   
   include '../client/conexion.php';
   $operator = "SELECT * FROM consultas WHERE fecha_atencion = '$year-$mes-$dia'";
+
   $select = $conexion->query($operator);
 
   //valida que la tabla de consultas de ese dia no esté vacía
@@ -128,7 +129,10 @@ function nombre_apellido_doctor($id)
 
       <?php
       include '../client/conexion.php';
-      $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$year-$mes-$dia'";
+      $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores
+      ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
+      WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$year-$mes-$dia'
+      ORDER BY hora_inicio ASC";
       $select = $conexion->query($consulta);
       while ($datos_consulta = mysqli_fetch_array($select)) {
         $id_doctor = $datos_consulta['id_doctor'];
