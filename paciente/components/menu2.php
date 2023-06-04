@@ -7,7 +7,7 @@
 
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
-        <link rel="stylesheet" href="../paciente/styles/menu2.css">
+        <link rel="stylesheet" href="../admin/styles/menu2.css">
         <link rel="stylesheet" href="../Iconos/style.css">
 
         <!-- LETRAS UTILIZADAS -->
@@ -24,7 +24,7 @@
             <div class="menu2">
                 <div class="nameUser">
                     <a href="index.php">@<?php echo $_SESSION['usuario']; ?></a>
-                </div>                
+                </div>
             </div>
         </div>    
     </body>

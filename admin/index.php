@@ -52,7 +52,7 @@ function nombre_apellido_doctor($id)
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-  <title>Consultorio Riccio - ADMINISTRADOR</title>
+  <title>Marisol Díaz - ADMINISTRADOR</title>
 </head>
 
 <body>

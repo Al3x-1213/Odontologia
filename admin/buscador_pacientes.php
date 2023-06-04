@@ -25,11 +25,12 @@ include '../client/verificacion_sesion.php';
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-        <title>Consultorio Riccio - ADMINISTRADOR</title>
+        <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
     <body>
         <?php
         include 'components/menu.html';
+        include 'components/menu2.php';
         ?>
         <?php
         // PACIENTE PARA BUSCAR
@@ -39,15 +40,11 @@ include '../client/verificacion_sesion.php';
         $id= $_SESSION['id'];
 
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
-        include '../client/conexion.php'; //Conexión con base de datos
-
-        $consulta = "SELECT id_doctor FROM doctores WHERE id_usuario = '$id'";
-        $query = mysqli_query($conexion, $consulta);
-      
-        $respuesta = mysqli_fetch_array($query);
-        $id_doctor = $respuesta['id_doctor'];
+        include 'obtenerId.php';
 
         // DATOS DEL PACIENTE
+        include '../client/conexion.php'; //Conexión con base de datos
+        
         $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 2 AND cedula = '$paciente'";
         $query = $conexion->query($consulta);
         ?>

@@ -25,11 +25,12 @@ include '../client/verificacion_sesion.php';
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-        <title>Consultorio Riccio - ADMINISTRADOR</title>
+        <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
     <body>
         <?php
         include 'components/menu.html';
+        include 'components/menu2.php';
         ?>
         <?php
         // FECHA PARA BUSCAR
@@ -40,19 +41,12 @@ include '../client/verificacion_sesion.php';
         $month = $fecha_separada[1];
         $year = $fecha_separada[0];
 
-        // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
-        $id= $_SESSION['id'];
-
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
-        include '../client/conexion.php'; //Conexión con base de datos
-
-        $consulta = "SELECT id_doctor FROM doctores WHERE id_usuario = '$id'";
-        $query = mysqli_query($conexion, $consulta);
-      
-        $respuesta = mysqli_fetch_array($query);
-        $id_doctor = $respuesta['id_doctor'];
+        include 'obtenerId.php';
 
         // CITAS POR ATENDER: OBTENER LA INFORMACIÓN DE TODAS LAS CITAS POR ATENDER POR EL DOCTOR QUE ESTÁ LOGUEADO EN LA FECHA INGRESADA
+        include '../client/conexion.php'; //Conexión con base de datos
+
         $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
         ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
         AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
