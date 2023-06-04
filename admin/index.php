@@ -113,12 +113,10 @@ function nombre_apellido_doctor($id)
     <h2 class="dia"> <?php echo $dia . "-" . $mes . "-" . $year ?> </h2>
     <div class="table">
       <div class="thead__table">
-        <div class="thead id"> Id </div>
         <div class="thead"> Nombre del Paciente </div>
         <div class="thead"> Numero </div>
         <div class="thead"> Cedula </div>
         <div class="thead causa"> Causa de la Consulta </div>
-        <div class="thead"> Nombre de Doctor </div>
         <div class="thead"> Acciones </div>
       </div>
 
@@ -131,12 +129,10 @@ function nombre_apellido_doctor($id)
         $doctor = nombre_apellido_doctor($id_doctor);
       ?>
         <div class="tbody__table">
-          <div class="tbody id"><?php echo $datos_consulta['id_consulta']; ?></div>
           <div class="tbody nom"><?php echo $datos_consulta['nombre'] . " " . $datos_consulta['apellido']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['telefono_1']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['cedula']; ?></div>
           <div class="tbody causa"><?php echo $datos_consulta['causa_consulta']; ?></div>
-          <div class="tbody nom"><?php echo $doctor[0] . " " . $doctor[1] ?></div>
           <div class="tbody"><a href="../client/crud/status1.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="atendido">Atendido</button></a> <a href="../client/crud/status2.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Eliminar</button></a></div>
         </div>
       <?php }
@@ -148,12 +144,10 @@ function nombre_apellido_doctor($id)
     <h2 class="dia"> Atendidos </h2>
     <div class="table">
       <div class="thead__table">
-        <div class="thead id"> Id </div>
         <div class="thead"> Nombre del Paciente </div>
         <div class="thead"> Numero </div>
         <div class="thead"> Cedula </div>
         <div class="thead causa"> Causa de la Consulta </div>
-        <div class="thead"> Nombre de Doctor </div>
         <div class="thead"> Acciones </div>
       </div>
 
@@ -166,13 +160,11 @@ function nombre_apellido_doctor($id)
         $doctor = nombre_apellido_doctor($id_doctor);
       ?>
         <div class="tbody__table">
-          <div class="tbody id"><?php echo $datos_consulta['id_consulta']; ?></div>
           <div class="tbody nom"><?php echo $datos_consulta['nombre'] . " " . $datos_consulta['apellido']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['telefono_1']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['cedula']; ?></div>
           <div class="tbody causa"><?php echo $datos_consulta['causa_consulta']; ?></div>
-          <div class="tbody nom"><?php echo $doctor[0] . " " . $doctor[1]; ?></div>
-          <a href="../client/crud/status2.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Eliminar</button></a>
+          <div class="tbody"><a href="../client/crud/status2.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Eliminar</button></a></div>
         </div>
     </div>
     <?php } mysqli_close($conexion); ?>
