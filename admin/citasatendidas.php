@@ -61,8 +61,8 @@ include '../client/verificacion_sesion.php';
                 <!-- <div class="thead">Télefono</div> -->
                 <div class="thead causa">Causa de la Consulta</div>
                 <div class="thead">Fecha de Atención</div>
-                <div class="thead"> Hora de inicio </div>
-                <div class="thead"> Hora de culminacion </div>
+                <div class="thead">Hora de inicio</div>
+                <div class="thead">Hora de culminación</div>
                 <!-- <div class="thead">Doctor</div> -->
                 <!-- <div class="thead">Fecha de Solicitud</div> -->
                 <div class="thead">Acciones</div>

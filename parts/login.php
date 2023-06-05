@@ -17,7 +17,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
-        <title>Consultorio Riccio - INICIAR SESIÓN</title>
+        <title>Marisol Díaz - INICIAR SESIÓN</title>
     </head>
 
     <body>
@@ -44,6 +44,8 @@
                     <label>Contraseña:</label>
                     <input type="password" maxlength="35" required="true" name="clave" class="input__form">
 
+                    <p>¿No tienes una cuenta? <a href="registrarse.php">Regístrate</a></p>
+                    
                     <input class="button" type="submit" value="Enviar" name="boton_log">
                 </div>
             </form>

@@ -64,12 +64,13 @@ $year = date("Y");
 
       <label> Causa: </label>
       <select name="causa">
-        <option value="Consulta odontologica general">Consulta odontologica general</option>
-        <option value="Montura de breakers">Montura de breakers</option>
-        <option value="Mantenimiento de breakers">Mantenimiento de breakers</option>
-        <option value="Operaciones Menores">Operaciones Menores</option>
-        <option value="Limpieza Buca">Limpieza Bucal</option>
-        <option value="Tratamiento de Caries">Tratamiento de Caries</option>
+        <option value="1">Consulta General</option>
+        <option value="2">Limpieza Bucal</option>
+        <option value="3">Blanqueamiento Dental</option>
+        <option value="4">Extracción de Dientes</option>
+        <option value="5">Eliminar Caries</option>
+        <option value="6">Dientes Artificiales / Dentadura Postiza</option>
+        <option value="7">Alineación Dental</option>
       </select>
 
       <label> Dia: </label>
