@@ -17,7 +17,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
-        <title>Consultorio Riccio</title>
+        <title>Marisol Díaz - REGISTRARSE</title>
     </head>
 
     <body>
@@ -61,10 +61,10 @@
                     <label for="edad">Fecha de Nacimiento:</label>
                     <input type="date" required="true" name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form">
 
-                    <label for="numero">Número de Teléfono Celular:</label>
+                    <label for="numero">Teléfono Celular:</label>
                     <input type="number" maxlength="11" required="true" name="telefono1" class="input__form">
 
-                    <label for="numero">Número de Teléfono (opcional):</label>
+                    <label for="numero">Teléfono (opcional):</label>
                     <input type="number" maxlength="11" name="telefono2" class="input__form">
 
                     <label for="correo">Correo Electrónico:</label>
