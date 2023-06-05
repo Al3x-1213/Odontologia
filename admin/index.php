@@ -8,23 +8,6 @@ $dia = date("d");
 $mes = date("m");
 $year = date("Y");
 
-//Agarra de la tabla doctores el id_doctor, para obtener el id de usuario, y hacer la consulkta del nombre del doctor de la tabla usuario
-function nombre_apellido_doctor($id)
-{
-  include '../client/conexion.php';
-  $consulta = "SELECT id_usuario FROM doctores WHERE id_doctor = '$id'";
-  $select = $conexion->query($consulta);
-  $respuesta = mysqli_fetch_array($select);
-  $id = $respuesta['id_usuario'];
-
-  $consulta = "SELECT nombre, apellido FROM usuarios WHERE id_usuario = '$id'";
-  $select = $conexion->query($consulta);
-  $nombre_doctor = array();
-  $respuesta = mysqli_fetch_array($select);
-  $nombre_doctor[0] = $respuesta['nombre'];
-  $nombre_doctor[1] = $respuesta['apellido'];
-  return $nombre_doctor;
-}
 ?>
 
 <!DOCTYPE html>
@@ -106,9 +89,8 @@ function nombre_apellido_doctor($id)
   <?php
   // OBTENER EL ID_DOCTOR según el ID_USUARIO
   include 'obtenerId.php';
-  
   include '../client/conexion.php';
-  $operator = "SELECT * FROM consultas WHERE fecha_atencion = '$year-$mes-$dia'";
+  $operator = "SELECT * FROM consultas WHERE fecha_atencion = '$year-$mes-$dia' AND id_doctor = '$id_doctor'";
 
   $select = $conexion->query($operator);
 
@@ -128,16 +110,15 @@ function nombre_apellido_doctor($id)
       </div>
 
       <?php
+
       include '../client/conexion.php';
+      
       $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores
       ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
-      WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$year-$mes-$dia'
-      ORDER BY hora_inicio ASC";
+      WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$year-$mes-$dia' AND consultas.id_doctor = '$id_doctor' ORDER BY hora_inicio ASC";
       $select = $conexion->query($consulta);
-      while ($datos_consulta = mysqli_fetch_array($select)) {
-        $id_doctor = $datos_consulta['id_doctor'];
-        $doctor = nombre_apellido_doctor($id_doctor);
-      ?>
+
+      while ($datos_consulta = mysqli_fetch_array($select)) {?>
         <div class="tbody__table">
           <div class="tbody nom"><?php echo $datos_consulta['nombre'] . " " . $datos_consulta['apellido']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['cedula']; ?></div>
@@ -167,9 +148,13 @@ function nombre_apellido_doctor($id)
       </div>
 
       <?php
+
+      include 'obtenerId.php';
       include '../client/conexion.php';
-      $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor WHERE consultas.id_status_consulta = 1 AND consultas.fecha_atencion = '$year-$mes-$dia'";
+
+      $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor WHERE consultas.id_status_consulta = 1 AND consultas.fecha_atencion = '$year-$mes-$dia' AND consultas.id_doctor = '$id_doctor'";
       $select = $conexion->query($consulta);
+
       while ($datos_consulta = mysqli_fetch_array($select)) {?>
         <div class="tbody__table">
           <div class="tbody nom"><?php echo $datos_consulta['nombre'] . " " . $datos_consulta['apellido']; ?></div>
