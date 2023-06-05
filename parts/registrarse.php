@@ -56,10 +56,10 @@
                     <input type="number" maxlength="8" required="true" name="cedula" class="input__form">
 
                     <?php
-                    $limite_fecha = date("Y-m-d"); 
+                    $limiteFecha = date("Y-m-d"); 
                     ?>
                     <label for="edad">Fecha de Nacimiento:</label>
-                    <input type="date" required="true" name="nacimiento" max="<?= $limite_fecha; ?>" class="input__form">
+                    <input type="date" required="true" name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form">
 
                     <label for="numero">Número de Teléfono Celular:</label>
                     <input type="number" maxlength="11" required="true" name="telefono1" class="input__form">

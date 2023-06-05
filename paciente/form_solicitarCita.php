@@ -33,85 +33,82 @@ include '../client/verificacion_sesion.php';
         include 'components/menu2.php';
         ?>
 
-        <?php
-        // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
-        $id= $_SESSION['id'];
+        <form action="solicitarCita.php" method="POST" class="form-login">
+            <h2>Solicitar una Cita</h2>
 
-        // OBTENER LA INFORMACIÓN DE TODAS LAS CITAS A LAS QUE ASISTIÓ EL PACIENTE QUE ESTÁ LOGUEADO
-        include '../client/conexion.php'; //Conexión con base de datos
+            <?php
+            // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
+            include '../client/conexion.php'; //Conexión con base de datos
 
-        $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
-        ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
-        AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-        WHERE consultas.id_status_consulta = 1 AND consultas.id_paciente = '$id'";
+            $consulta = "SELECT * FROM causa_consulta";
+            $query = mysqli_query($conexion, $consulta)
+            ?>
+            <label>Causa: </label>
+            <select name="causa">
+                <option value="0"></option>
+                <?php
+                $i = 0;
+                while ($resultado = mysqli_fetch_array($query)) {
+                    $i = $i + 1;
+                ?>
+                    <option value="<?php echo $i; ?>"><?php echo $resultado['causa_consulta']; ?></option>
+                <?php
+                }
+                ?>
+            </select>
 
-        $query = mysqli_query($conexion, $consulta);
-        ?>
+            <?php
+            // BLOQUEAR DÍAS DEL CALENDARIO PARA QUE LA SOLICITUD SE HAGA CON MÍNIMO TRES DIAS DE ANTICIPACIÓN
+            $day = date("d");
+            $limiteDay = $day + 3;
 
-        <h2 class="dia">Historial de citas</h2>
+            if(strlen($limiteDay) == 1){
+                $limiteDay = "0". $limiteDay;
+            }
+            else{
+                $limiteDay = $limiteDay;
+            }
 
-        <div class="table">
-            <div class="thead__table">
-                <!-- <div class="thead id">Id</div> -->
-                <!-- <div class="thead">Paciente</div> -->
-                <!-- <div class="thead">Cédula</div> -->
-                <!-- <div class="thead">Edad</div> -->
-                <!-- <div class="thead">Fecha de Nacimiento</div> -->
-                <!-- <div class="thead">Télefono</div> -->
-                <!-- <div class="thead">Télefono</div> -->
-                <div class="thead causa">Causa de la Consulta</div>
-                <div class="thead">Fecha de Atención</div>
-                <div class="thead">Doctor</div>
-                <!-- <div class="thead">Fecha de Solicitud</div> -->
-                <!-- <div class="thead">Acciones</div> -->
+            $limiteFecha = date("Y-m-$limiteDay");
+            ?>
+            <label>Fecha de Atención:</label>
+            <input type="date" required="true" name="nacimiento" min="<?= $limiteFecha; ?>" class="input__form">
+
+            <label>Turno:</label>
+            <div class="seleccion">
+                <input type="radio" required="true" name="turno" class=""> Mañana
+                <input type="radio" required="true" name="turno" class=""> Tarde
             </div>
 
             <?php
-            while ($resultado = mysqli_fetch_array($query)) {
+            // CONSULTAR A BASE DE DATOS LOS NOMBRES DE LOS DOCTORES E IMPRIMIRLOS COMO OPCIÓN
+            $consulta = "SELECT * FROM doctores INNER JOIN usuarios ON doctores.id_usuario = usuarios.id_usuario";
+            $query = mysqli_query($conexion, $consulta)
             ?>
-                <div class="tbody__table">
-                    <!-- <div class="tbody id"><?php //echo $resultado['id_consulta']; ?></div> -->
-                    <!-- <div class="tbody nom"><?php //echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div> -->
-                    <!-- <div class="tbody"><?php //echo $resultado['cedula']; ?></div> -->
-                    <!-- <div class="tbody"><?php //echo $resultado['edad']; ?></div> -->
-                    <!-- <div class="tbody"><?php //echo $resultado['fecha_nacimiento']; ?></div> -->
-                    <!-- <div class="tbody"><?php //echo $resultado['telefono_1']; ?></div> -->
-                    <!-- <div class="tbody"><?php //echo $resultado['telefono_2']; ?></div> -->
-                    <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody"><?php echo $resultado['fecha_atencion']; ?></div>
+            <label>Doctor: </label>
+            <select name="causa">
+                <option value="0"></option>
+                <?php
+                $i = 0;
+                while ($resultado = mysqli_fetch_array($query)) {
+                    $i = $i + 1;
+                ?>
+                    <option value="<?php echo $i; ?>"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></option>
+                <?php
+                }
+                ?>
+            </select>
 
-                    <div class="tbody"><?php
-                    $id_doctor = $resultado['id_doctor'];
-
-                    // echo $id_doctor;
-
-                    $consulta = "SELECT * FROM doctores INNER JOIN usuarios
-                    ON doctores.id_usuario = usuarios.id_usuario WHERE id_doctor = '$id_doctor'";
-
-                    // echo $consulta;
-                    $queryDoc = mysqli_query($conexion, $consulta);
-
-                    $resultado = mysqli_fetch_array($queryDoc);
-                    echo $resultado['nombre'] . " " . $resultado['apellido'];                    
-                    ?></div>
-                </div>
-            <?php
-            }
-            ?>
-        </div>
-
-
-
-
-
-
-
-
+            <div class="buttons__form">
+                <input type="reset" value="Borrar" name="clear" class="button__form">
+                <input type="submit" value="Solicitar Cita" name="send" class="button__form loginSend">
+            </div>
+        </form>
 
         <!-- <div class="modal">
             <form class="form-login" method="POST" action="../client/crud/insertarCadmin.php">
                 <div class="header__form">
-                    <h2>Cita</h2> <a href="../index.php"><span class="icon-cross"></span></a>
+                    <h2>Cita</h2> <a href="index.php"><span class="icon-cross"></span></a>
                 </div>
 
                 <label> Nombre del Paciente: </label>
