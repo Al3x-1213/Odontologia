@@ -1,5 +1,11 @@
 <?php
 include '../client/verificacion_sesion.php';
+
+function fecha_nacimiento($fecha){
+    $fecha_nacimiento = explode("-", $fecha);
+    return $fecha = $fecha_nacimiento[2]."-".$fecha_nacimiento[1]."-".$fecha_nacimiento[0];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -110,13 +116,14 @@ include '../client/verificacion_sesion.php';
 
             <?php
             while ($resultado = mysqli_fetch_array($query)) {
+                $fecha_de_nacimiento = fecha_nacimiento($resultado['fecha_nacimiento']);
             ?>
                 <div class="tbody__table">
                     <!-- <div class="tbody id"><?php //echo $resultado['id_paciente']; ?></div> -->
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                     <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody"><?php echo $resultado['fecha_nacimiento']; ?></div>
+                    <div class="tbody"><?php echo $fecha_de_nacimiento; ?></div>
                     <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
 

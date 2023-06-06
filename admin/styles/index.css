@@ -76,32 +76,27 @@ body {
 }
 
 .eliminar {
-  background: #e94444;
+  background: #ea4848;
 }
 
 .eliminar:hover {
-  background: #dd2222;
+  background: #e23838;
 }
 
 .atendido {
-  background: #b498ff;
+  background: #789dc9;
 }
 
 .atendido:hover {
-  background: #9d6afcbd;
+  background: #33548aa6;
 }
 
 .editar {
-  background: #57ddee;
+  background: #789dc9;
 }
 
 .editar:hover {
-  background: #00e1ff;
-}
-
-.aten {
-  background: #4200f7bd;
-  border: 1px solid #333;
+  background: #33548aa6;
 }
 
 .insertar {

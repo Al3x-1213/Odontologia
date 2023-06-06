@@ -1,5 +1,10 @@
 <?php
 include '../client/verificacion_sesion.php';
+
+function fecha_atencion($fecha){
+    $fecha_nacimiento = explode("-", $fecha);
+    return $fecha = $fecha_nacimiento[2]."-".$fecha_nacimiento[1]."-".$fecha_nacimiento[0];
+}
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +75,7 @@ include '../client/verificacion_sesion.php';
 
             <?php
             while ($resultado = mysqli_fetch_array($query)) {
+                $fecha_atencion = fecha_atencion($resultado['fecha_atencion'])
             ?>
                 <div class="tbody__table">
                     <!-- <div class="tbody id"><?php //echo $resultado['id_consulta']; ?></div> -->
@@ -79,7 +85,7 @@ include '../client/verificacion_sesion.php';
                     <!-- <div class="tbody"><?php //echo $resultado['telefono_1']; ?></div> -->
                     <!-- <div class="tbody"><?php //echo $resultado['telefono_2']; ?></div> -->
                     <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody"><?php echo $resultado['fecha_atencion']; ?></div>
+                    <div class="tbody"><?php echo $fecha_atencion; ?></div>
                     <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>
                     <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>
 
