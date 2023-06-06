@@ -29,6 +29,7 @@ body {
   border: 1px solid #789dc9;
   width: 12%;
   min-width: 12%;
+  height: 30px;
   max-height: 50px;
   display: flex;
   justify-content: space-evenly;
@@ -38,6 +39,8 @@ body {
 .thead {
   color: aliceblue;
   background: #3e3d3d;
+  height: 40px;
+  max-height: 50px;
 }
 
 .tbody__table, .thead__table {
@@ -47,6 +50,15 @@ body {
 
 .causa {
   width: 26% !important;
+}
+
+.contacto {
+  display: flex;
+  text-align: center;
+}
+
+.correo {
+  width: 26%;
 }
 
 .eliminar, .atendido, .editar {

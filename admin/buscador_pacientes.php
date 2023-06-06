@@ -40,7 +40,7 @@ include '../client/verificacion_sesion.php';
         $id= $_SESSION['id'];
 
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
-        include 'obtenerId.php';
+        include '../client/obtenerId.php';
 
         // DATOS DEL PACIENTE
         include '../client/conexion.php'; //Conexión con base de datos

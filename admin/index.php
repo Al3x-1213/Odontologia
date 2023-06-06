@@ -89,7 +89,7 @@ $year = date("Y");
   <!-- INICIA LA CONEXION CON LA BASE DE DATOS PARA HACER CONSULTAS -->
   <?php
   // OBTENER EL ID_DOCTOR según el ID_USUARIO
-  include 'obtenerId.php';
+  include '../client/obtenerId.php';
   include '../client/conexion.php';
   $operator = "SELECT * FROM consultas WHERE fecha_atencion = '$year-$mes-$dia' AND id_doctor = '$id_doctor'";
 
@@ -126,7 +126,7 @@ $year = date("Y");
           <div class="tbody causa"><?php echo $datos_consulta['causa_consulta']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['hora_inicio']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['hora_fin']; ?></div>
-          <div class="tbody"><?php echo $datos_consulta['telefono_1']; ?></div>
+          <div class="tbody contacto"><?php echo $datos_consulta['telefono_1']." ".$datos_consulta['telefono_2'] ; ?></div>
           
           <div class="tbody"><a href="../client/botones/atendido.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="atendido">Atendido</button></a> <a href="../client/botones/cancelar.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a></div>
         </div>
@@ -150,7 +150,7 @@ $year = date("Y");
 
       <?php
 
-      include 'obtenerId.php';
+      include '../client/obtenerId.php';
       include '../client/conexion.php';
 
       $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor WHERE consultas.id_status_consulta = 1 AND consultas.fecha_atencion = '$year-$mes-$dia' AND consultas.id_doctor = '$id_doctor'";
@@ -163,7 +163,7 @@ $year = date("Y");
           <div class="tbody causa"><?php echo $datos_consulta['causa_consulta']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['hora_inicio']; ?></div>
           <div class="tbody"><?php echo $datos_consulta['hora_fin']; ?></div>
-          <div class="tbody"><?php echo $datos_consulta['telefono_1']; ?></div>
+          <div class="tbody contacto"><?php echo $datos_consulta['telefono_1']." ".$datos_consulta['telefono_2'] ; ?></div>
           
           <div class="tbody"><a href="../client/botones/cancelar.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a></div>
         </div>

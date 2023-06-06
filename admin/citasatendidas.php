@@ -35,7 +35,7 @@ include '../client/verificacion_sesion.php';
 
         <?php
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
-        include 'obtenerId.php';
+        include '../client/obtenerId.php';
 
         //SELECT * FROM `consultas` INNER JOIN `usuarios` INNER JOIN `causa_consulta` INNER JOIN `doctores` INNER JOIN `status_consulta` ON `consultas`.`id_paciente` = `usuarios`.`id_usuario` AND `consultas`.`id_causa_consulta` = `causa_consulta`.`id_causa_consulta` AND `consultas`.`id_doctor` = `doctores`.`id_doctor` AND `consultas`.`id_status_consulta` = `status_consulta`.`id_status_consulta` WHERE `consultas`.`id_status_consulta` = 1
       

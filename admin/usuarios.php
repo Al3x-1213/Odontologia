@@ -104,8 +104,7 @@ include '../client/verificacion_sesion.php';
                 <div class="thead">Edad</div>
                 <div class="thead">Fecha de Nacimiento</div>
                 <div class="thead">Télefono</div>
-                <div class="thead">Télefono</div>
-                <div class="thead">Correo Electrónico</div>
+                <div class="thead correo">Correo Electrónico</div>
                 <div class="thead">Acciones</div>
             </div>
 
@@ -118,18 +117,18 @@ include '../client/verificacion_sesion.php';
                     <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody"><?php echo $resultado['edad']; ?></div>
                     <div class="tbody"><?php echo $resultado['fecha_nacimiento']; ?></div>
-                    <div class="tbody"><?php echo $resultado['telefono_1']; ?></div>
-                    <div class="tbody"><?php echo $resultado['telefono_2']; ?></div>
-                    <div class="tbody"><?php echo $resultado['correo']; ?></div>
+                    <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
+                    <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
 
                     <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                    <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div>                </div>
+                    <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div>                
+                </div>
             <?php
             }
             ?>
         </div>
 
-        <button class="insertar"> Registrar Un Paciente </button>
+        <button class="insertar"> Registrar Un Usuario </button>
 
         <div class="space"></div>
 

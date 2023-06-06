@@ -42,7 +42,7 @@ include '../client/verificacion_sesion.php';
         $year = $fecha_separada[0];
 
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
-        include 'obtenerId.php';
+        include '../client/obtenerId.php';
 
         // CITAS POR ATENDER: OBTENER LA INFORMACIÓN DE TODAS LAS CITAS POR ATENDER POR EL DOCTOR QUE ESTÁ LOGUEADO EN LA FECHA INGRESADA
         include '../client/conexion.php'; //Conexión con base de datos
