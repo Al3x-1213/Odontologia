@@ -1,6 +1,7 @@
 <?php
 include '../client/verificacion_sesion.php';
-
+?>
+<?php
 function fecha_atencion($fecha){
     $fecha_nacimiento = explode("-", $fecha);
     return $fecha = $fecha_nacimiento[2]."-".$fecha_nacimiento[1]."-".$fecha_nacimiento[0];
@@ -88,18 +89,6 @@ function fecha_atencion($fecha){
                     <div class="tbody"><?php echo $fecha_atencion; ?></div>
                     <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>
                     <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>
-
-                    <!-- <div class="tbody nom"><?php
-                    // $id_doctor = $resultado['id_doctor'];
-
-                    // $consulta = "SELECT * FROM doctores INNER JOIN usuarios
-                    // ON doctores.id_usuario = usuarios.id_usuario WHERE id_doctor = '$id_doctor'";
-                    // $query = mysqli_query($conexion, $consulta);
-
-                    // while ($resultado = mysqli_fetch_array($query)){
-                    //   echo $resultado['nombre'] . " " . $resultado['apellido'];
-                    // }
-                    ?></div> -->
 
                     <!-- <div class="tbody"><?php //echo $resultado['fecha_solicitud']; ?></div> -->
 
