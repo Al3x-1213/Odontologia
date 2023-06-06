@@ -61,7 +61,7 @@
                     <label for="edad">Fecha de Nacimiento:</label>
                     <input type="date" required="true" name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form">
 
-                    <label for="numero">Teléfono Celular:</label>
+                    <label for="numero">Teléfono Celular: </label>
                     <input type="number" maxlength="11" required="true" name="telefono1" class="input__form">
 
                     <label for="numero">Teléfono (opcional):</label>
