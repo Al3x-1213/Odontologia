@@ -29,6 +29,7 @@ body {
   border: 1px solid #789dc9;
   width: 12%;
   min-width: 12%;
+  height: 30px;
   max-height: 50px;
   display: flex;
   justify-content: space-evenly;
@@ -38,6 +39,8 @@ body {
 .thead {
   color: aliceblue;
   background: #3e3d3d;
+  height: 40px;
+  max-height: 50px;
 }
 
 .tbody__table, .thead__table {
@@ -47,6 +50,15 @@ body {
 
 .causa {
   width: 26% !important;
+}
+
+.contacto {
+  display: flex;
+  text-align: center;
+}
+
+.correo {
+  width: 26%;
 }
 
 .eliminar, .atendido, .editar {
@@ -64,32 +76,27 @@ body {
 }
 
 .eliminar {
-  background: #e94444;
+  background: #ea4848;
 }
 
 .eliminar:hover {
-  background: #dd2222;
+  background: #e23838;
 }
 
 .atendido {
-  background: #b498ff;
+  background: #789dc9;
 }
 
 .atendido:hover {
-  background: #9d6afcbd;
+  background: #33548aa6;
 }
 
 .editar {
-  background: #57ddee;
+  background: #789dc9;
 }
 
 .editar:hover {
-  background: #00e1ff;
-}
-
-.aten {
-  background: #4200f7bd;
-  border: 1px solid #333;
+  background: #33548aa6;
 }
 
 .insertar {

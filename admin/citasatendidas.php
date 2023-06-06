@@ -1,5 +1,10 @@
 <?php
 include '../client/verificacion_sesion.php';
+
+function fecha_atencion($fecha){
+    $fecha_nacimiento = explode("-", $fecha);
+    return $fecha = $fecha_nacimiento[2]."-".$fecha_nacimiento[1]."-".$fecha_nacimiento[0];
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +40,7 @@ include '../client/verificacion_sesion.php';
 
         <?php
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
-        include 'obtenerId.php';
+        include '../client/obtenerId.php';
 
         //SELECT * FROM `consultas` INNER JOIN `usuarios` INNER JOIN `causa_consulta` INNER JOIN `doctores` INNER JOIN `status_consulta` ON `consultas`.`id_paciente` = `usuarios`.`id_usuario` AND `consultas`.`id_causa_consulta` = `causa_consulta`.`id_causa_consulta` AND `consultas`.`id_doctor` = `doctores`.`id_doctor` AND `consultas`.`id_status_consulta` = `status_consulta`.`id_status_consulta` WHERE `consultas`.`id_status_consulta` = 1
       
@@ -70,6 +75,7 @@ include '../client/verificacion_sesion.php';
 
             <?php
             while ($resultado = mysqli_fetch_array($query)) {
+                $fecha_atencion = fecha_atencion($resultado['fecha_atencion'])
             ?>
                 <div class="tbody__table">
                     <!-- <div class="tbody id"><?php //echo $resultado['id_consulta']; ?></div> -->
@@ -79,7 +85,7 @@ include '../client/verificacion_sesion.php';
                     <!-- <div class="tbody"><?php //echo $resultado['telefono_1']; ?></div> -->
                     <!-- <div class="tbody"><?php //echo $resultado['telefono_2']; ?></div> -->
                     <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody"><?php echo $resultado['fecha_atencion']; ?></div>
+                    <div class="tbody"><?php echo $fecha_atencion; ?></div>
                     <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>
                     <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>
 
