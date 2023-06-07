@@ -61,6 +61,11 @@ body {
   width: 26%;
 }
 
+.edad {
+  min-width: 4%;
+  width: 4%;
+}
+
 .eliminar, .atendido, .editar {
   padding: 1% 2%;
   font-weight: bold;
@@ -109,6 +114,18 @@ body {
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.table-special{
+  width: 80%;
+}
+
+.thead-special{
+  min-width: 23.25%;
+}
+
+.tbody-special{
+  min-width: 23.25%;
 }
 
 .nom {
