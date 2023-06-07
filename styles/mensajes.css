@@ -1,16 +1,30 @@
-.alerta{
-    display: flex;
-    justify-content: center;
-    color: red;
+.alerta {
+  display: flex;
+  justify-content: center;
+  color: red;
 }
 
-.mensaje{
-    display: flex;
-    justify-content: center;
-    color: blue;
+.mensaje {
+  display: flex;
+  justify-content: center;
+  color: blue;
 }
 
-.mensaje a{
-    text-decoration: none;
-    color: blue;
+.mensaje a {
+  text-decoration: none;
+  color: blue;
+}
+
+.invalido {
+  margin: 5% 0;
+  align-self: center;
+  width: 65%;
+  padding: 5px;
+  font-size: 1.25em;
+  border: none;
+  color: #333;
+  border-radius: 2%;
+  box-shadow: 0 0 10px 1px #333;
+  background-color: #999;
+  cursor: not-allowed;
 }

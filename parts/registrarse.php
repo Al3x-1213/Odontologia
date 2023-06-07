@@ -1,80 +1,110 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <!-- META ETIQUETAS -->
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- ESTILOS CSS -->
-        <link rel="stylesheet" href="../styles/normalize.css">
-        <link rel="stylesheet" href="../styles/login.css">
-        <link rel="stylesheet" href="../styles/mensajes.css">
-        <link rel="stylesheet" href="../Iconos/style.css">
+<head>
+    <!-- META ETIQUETAS -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- LETRAS UTILIZADAS -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <!-- ESTILOS CSS -->
+    <link rel="stylesheet" href="../styles/normalize.css">
+    <link rel="stylesheet" href="../styles/mensajes.css">
+    <link rel="stylesheet" href="../styles/registrarse.css">
+    <link rel="stylesheet" href="../Iconos/style.css">
 
-        <title>Marisol Díaz - REGISTRARSE</title>
-    </head>
+    <!-- LETRAS UTILIZADAS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
-    <body>
-        <div class="flex__container">
-            <form class="form form__alternative" method="POST"> <!--action="../client/insertar.php"-->
+    <title>Marisol Díaz - REGISTRARSE</title>
+</head>
 
-                <a href="../"><i class="icon-cross"></i></a>
-                <!-- TITULO -->
-                <h2 class="title__form"><a href="../index.php">Registrarse</a></h2>
+<body>
+    <div class="flex__container">
+        <form class="form form__alternative" method="POST"> <!--action="../client/insertar.php"-->
 
-                <?php
-                include '../client/insertar.php';
-                ?>
+            <a href="../"><i class="icon-cross"></i></a>
+            <!-- TITULO -->
+            <h2 class="title__form"><a href="../index.php">Registrarse</a></h2>
 
-                <div class="fields__form">
-                    <h3>Tu cuenta: </h3>
+            <?php
+            include '../client/insertar.php';
+            ?>
+            <h3>Tu cuenta: </h3>
 
-                    <label for="nombre">Usuario:</label>
-                    <input type="text" maxlength="30" required="true" name="usuario" class="input__form usuario" autocomplete="off">
+            <div id="grupo_usuario" class="grupo">
+                <label>Usuario:</label>
+                <div class="input-icon"><input type="text" maxlength="30" required name="usuario" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error"></div>
+            </div>
 
-                    <label for="clave">Contraseña:</label>
-                    <input type="password" maxlength="35" required="true" name="clave" class="input__form clave">
+            <div id="grupo_clave" class="grupo">
+                <label>Contraseña:</label>
+                <div class="input-icon"><input type="password" maxlength="35" required name="clave" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error"></div>
+            </div>
 
-                    <label for="clave">Confirmar Contraseña:</label>
-                    <input type="password" maxlength="35" required="true" name="clave2" class="input__form clave2">
+            <div id="grupo_clave2" class="grupo">
+                <label>Confirmar Contraseña:</label>
+                <div class="input-icon"><input type="password" maxlength="35" required name="clave2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error"></div>
+            </div>
 
-                    <h3>Datos Personales: </h3>
+            <h3>Datos Personales: </h3>
 
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" maxlength="25" required="true" name="nombre" class="input__form nombre" autocomplete="off">
+            <div id="grupo_nombre" class="grupo">
+                <label>Nombre:</label>
+                <div class="input-icon"><input type="text" maxlength="25" required name="nombre" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error"></div>
+            </div>
 
-                    <label for="apellido">Apellido:</label>
-                    <input type="text" maxlength="25" required="true" name="apellido" class="input__form apellido">
+            <div id="grupo_apellido" class="grupo">
+                <label>Apellido:</label>
+                <div class="input-icon"><input type="text" maxlength="25" required name="apellido" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error"></div>
+            </div>
 
-                    <label for="cedula">Cédula:</label>
-                    <input type="number" maxlength="8" required="true" name="cedula" class="input__form cedula">
+            <div id="grupo_cedula" class="grupo">
+                <label>Cédula:</label>
+                <div class="input-icon"><input type="number" maxlength="8" required name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error"></div>
+            </div>
 
-                    <?php
-                    $limiteFecha = date("Y-m-d"); 
-                    ?>
-                    <label for="edad">Fecha de Nacimiento:</label>
-                    <input type="date" required="true" name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form nacimiento">
+            <?php
+            $limiteFecha = date("Y-m-d");
+            ?>
 
-                    <label for="numero">Teléfono Celular: </label>
-                    <input type="number" maxlength="11" required="true" name="telefono1" class="input__form telefono1">
+            <div id="grupo_fecha" class="grupo">
+                <label>Fecha de Nacimiento:</label>
+                <div class="input-icon"><input type="date" required="true" name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form base nacimiento"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error"></div>
+            </div>
 
-                    <label for="numero">Teléfono (opcional):</label>
-                    <input type="number" maxlength="11" name="telefono2" class="input__form telefono2">
+            <div id="grupo_telefono" class="grupo">
+                <label>Telefono celular:</label>
+                <div class="input-icon"><input type="number" maxlength="11" required name="telofono1" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error"></div>
+            </div>
 
-                    <label for="correo">Correo Electrónico:</label>
-                    <input type="email" maxlength="60" required="true" name="correo" class="input__form correo" autocomplete="off">
+            <div id="grupo_telefono2" class="grupo">
+                <label>Telefono (Opcional):</label>
+                <div class="input-icon"><input type="number" maxlength="11" required name="telofono2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error"></div>
+            </div>
 
-                    <input class="button" type="submit" value="Registrarse" name="boton_reg">
-                </div>
-            </form>
-        </div>
-    </body>
+            <div id="grupo_correo" class="grupo">
+                <label>Correo Electrónico:</label>
+                <div class="input-icon"><input type="email" maxlength="60" required name="correo" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error"></div>
+            </div>
 
-    <script src="../js/validacionRegistrarse.js"></script>
+            <input class="button" type="submit" value="Registrarse" name="boton_reg">
+        </form>
+    </div>
+</body>
+
+<script src="../js/validacionRegistrarse.js"></script>
+
 </html>

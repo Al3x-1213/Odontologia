@@ -1,0 +1,147 @@
+html,
+body {
+  box-sizing: border-box;
+  background: linear-gradient(100deg, #789DC9, #E67F4F73);
+  color: #333;
+}
+
+/* Formulario en general */
+
+.flex__container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  margin: 5% 0;
+  padding: 2%;
+  width: 425px;
+  height: auto;
+  position: relative;
+  box-shadow: 0px 0px 10px 1px #333;
+  border-radius: 2%;
+}
+
+/* Titulo del formulario */
+
+.title__form {
+  align-self: center;
+  font-family: 'Lobster', cursive !important;
+  color: #111;
+  font-size: 2em;
+  margin-bottom: 5%;
+}
+
+.title__form > a {
+  text-decoration: none;
+  color: #333;
+}
+
+h3 {
+  font-size: 1.5em;
+  padding-left: 5%;
+  font-style: italic;
+}
+
+/* Iconos */
+
+.icon-cross {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 25px;
+  color: #333;
+}
+
+.icon-warning {
+  color: #ea4848;
+  padding: 0 2%;
+}
+
+.icon-checkmark {
+  color: #00a92d;
+  padding: 0 2%;
+}
+
+/* Formulario nivel específico */
+
+.grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  font-size: 1.10em;
+}
+
+label {
+  padding-left: 2.5%;
+}
+
+.input-icon {
+  width: 100%;
+  display: flex;
+}
+
+.input__form {
+  font-size: 0.8em;
+  width: 80%;
+  background: transparent;
+  border: none;
+  outline: none;
+  margin: 2% 3%;
+  transition: .6s all ease;
+}
+
+.input__form:focus {
+  font-size: 1em;
+}
+
+/* efecto de input */
+
+.display {
+  display: none;
+}
+
+.base {
+  border-bottom: 1px solid #333;
+}
+
+.error {
+  border-bottom: 1px solid #ea4848;
+}
+
+.success {
+  border-bottom: 1px solid #00a92d;
+}
+
+.paragraf__error {
+  color: #ea4848;
+  padding: 1px 0;
+}
+
+/* boton de enviar */
+
+.button {
+  margin: 5% 0;
+  align-self: center;
+  width: 65%;
+  padding: 5px;
+  font-size: 1.25em;
+  border: none;
+  color: #333;
+  border-radius: 2%;
+  box-shadow: 0 0 10px 1px #333;
+  background: transparent;
+  transition: all ease .6s;
+}
+
+.button:hover {
+  box-shadow: 0 0 5px 1px #333;
+  cursor: pointer;
+}

@@ -1,22 +1,15 @@
 html, 
 body {
   box-sizing: border-box;
-  /* background: linear-gradient(70deg, #30B1C1, #FBC1A4); */
-  /* background: linear-gradient(90deg, #789DC9, #EAEDF3); */
   background: linear-gradient(100deg, #789DC9, #E67F4F73);
-  /* background: linear-gradient(100deg, #E67F4F73, #789DC9); */
 }
 
 .flex__container {
   width: 100%;
-  height: auto;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.flex__container-alternative {
-  height: 100vh;
 }
 
 /* "X" PARA SALIR */
@@ -128,8 +121,8 @@ a {
 }
 
 .button:hover {
-  cursor: pointer;
   box-shadow: 0 0 5px 1px #333;
+  cursor: pointer;
 }
 
 /* REGISTRARSE */
@@ -140,17 +133,6 @@ p{
 
 p a{
   color: #33548A;
-}
-
-.loginadmin {
-  width: 300px;
-  background: linear-gradient(45deg, #30B1C1, #FBC1A4);
-  padding: 5px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 2% 5%;
-  text-align: center;
 }
 
 .t {

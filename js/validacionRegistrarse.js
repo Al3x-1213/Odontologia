@@ -1,4 +1,4 @@
-const boton = document.querySelector(".button");
+const boton = document.querySelector(".invalido");
 
 //DATOS DE USUARIO
 const usuario = document.querySelector(".usuario");
@@ -14,3 +14,8 @@ const telefono1 = document.querySelector(".telefono1");
 const telefono2 = document.querySelector(".telefono2");
 const correo = document.querySelector(".correo");
 
+// boton.addEventListener("click", (e)=>{
+//     if(usuario.value == "" || usuario.value == null || usuario.value.length > 30 || usuario.value.length <= 2){
+//         e.preventDefault();
+//     }else if()
+// })
