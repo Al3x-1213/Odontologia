@@ -48,7 +48,7 @@ $year = date("Y");
                 </div>
 
                 <label>Cédula: </label>
-                <input type="number" name="cedula" required autocomplete="off" minlength="7">
+                <input type="number" maxlength="8" required="true" name="cedula">
 
                 <?php
                 // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
@@ -86,7 +86,95 @@ $year = date("Y");
                 $limiteFecha = date("Y-m-$limiteDay");
                 ?>
                 <label>Fecha de Atención:</label>
-                <input type="date" required="true" name="nacimiento" min="<?= $limiteFecha; ?>" class="input__form">
+                <input type="date" required="true" name="atencion" min="<?= $limiteFecha; ?>" class="input__form">
+
+                <label>Turno:</label>
+                <div class="seleccion">
+                    <input type="radio" required="true" name="turno" class=""> Mañana
+                    <input type="radio" required="true" name="turno" class=""> Tarde
+                </div>
+
+                <?php
+                // OBTENER EL ID_DOCTOR según el ID_USUARIO Y ENVIARLO DE FORMA OCULTA
+                include '../client/obtenerId.php';
+                ?>
+                <input type="hidden" name= "id_doctor" value= "<?php echo $id_doctor; ?>">
+
+                <div class="buttons__form">
+                    <input type="reset" value="Borrar" class="button__form">
+                    <input type="submit" value="Agendar Cita" class="button__form loginSend" name="boton_c">
+                </div>
+
+                <p>¿El paciente no se encuentra registrado? <a href="">Agenda su cita aquí</a></p>
+            </form>
+        </div>
+        <!-- <div class="modal disable">
+            <form class="form-login" method="POST" action="../client/crud/insertarCadmin.php">
+                <div class="header__form">
+                    <h2>Agendar una Cita</h2> <span class="icon-cross"></span>
+                </div>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" maxlength="25" required="true" name="nombre">
+
+                <label for="apellido">Apellido:</label>
+                <input type="text" maxlength="25" required="true" name="apellido">
+
+                <label>Cédula: </label>
+                <input type="number" maxlength="8" required="true" name="cedula">
+
+                <?php
+                $limiteFecha = date("Y-m-d"); 
+                ?>
+                <label for="edad">Fecha de Nacimiento:</label>
+                <input type="date" required="true" name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form">
+
+                <label for="numero">Teléfono Celular: </label>
+                <input type="number" maxlength="11" required="true" name="telefono1" class="input__form">
+
+                <label for="numero">Teléfono (opcional):</label>
+                <input type="number" maxlength="11" name="telefono2" class="input__form">
+
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" maxlength="60" required="true" name="correo" class="input__form" autocomplete="off">
+
+                <?php
+                // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
+                include '../client/conexion.php'; //Conexión con base de datos
+
+                $consulta = "SELECT * FROM causa_consulta";
+                $query = mysqli_query($conexion, $consulta)
+                ?>
+                <label>Causa: </label>
+                <select name="causa">
+                    <option value="0"></option>
+                    <?php
+                    $i = 0;
+                    while ($resultado = mysqli_fetch_array($query)) {
+                        $i = $i + 1;
+                    ?>
+                        <option value="<?php echo $i; ?>"><?php echo $resultado['causa_consulta']; ?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
+
+                <?php
+                // BLOQUEAR DÍAS DEL CALENDARIO PARA QUE LA SOLICITUD SE HAGA CON MÍNIMO TRES DIAS DE ANTICIPACIÓN
+                $day = date("d");
+                $limiteDay = $day + 3;
+
+                if(strlen($limiteDay) == 1){
+                    $limiteDay = "0". $limiteDay;
+                }
+                else{
+                    $limiteDay = $limiteDay;
+                }
+
+                $limiteFecha = date("Y-m-$limiteDay");
+                ?>
+                <label>Fecha de Atención:</label>
+                <input type="date" required="true" name="atencion" min="<?= $limiteFecha; ?>" class="input__form">
 
                 <label>Turno:</label>
                 <div class="seleccion">
@@ -105,7 +193,7 @@ $year = date("Y");
                     <input type="submit" value="Agendar Cita" name="send" class="button__form loginSend">
                 </div>
             </form>
-        </div>
+        </div> -->
 
         <!-- INICIA LA CONEXION CON LA BASE DE DATOS PARA HACER CONSULTAS -->
         <?php
