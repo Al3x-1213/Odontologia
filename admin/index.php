@@ -21,6 +21,7 @@ $year = date("Y");
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/buscador.css">
         <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="../styles/mensajes.css">
         <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/modal.css">
         <link rel="stylesheet" href="../Iconos/style.css">
@@ -42,10 +43,14 @@ $year = date("Y");
         ?>
         
         <div class="modal disable">
-            <form class="form-login" method="POST" action="../client/crud/insertarCadmin.php">
+            <form class="form-login" method="POST">
                 <div class="header__form">
                     <h2>Agendar una Cita</h2> <span class="icon-cross"></span>
                 </div>
+
+                <?php
+                include '../client/registrarCita.php';
+                ?>
 
                 <label>Cédula: </label>
                 <input type="number" maxlength="8" required="true" name="cedula">
@@ -90,8 +95,8 @@ $year = date("Y");
 
                 <label>Turno:</label>
                 <div class="seleccion">
-                    <input type="radio" required="true" name="turno" class=""> Mañana
-                    <input type="radio" required="true" name="turno" class=""> Tarde
+                    <input type="radio" required="true" value="1" name="turno" class=""> Mañana
+                    <input type="radio" required="true" value="2" name="turno" class=""> Tarde
                 </div>
 
                 <?php
@@ -109,10 +114,16 @@ $year = date("Y");
             </form>
         </div>
         <!-- <div class="modal disable">
-            <form class="form-login" method="POST" action="../client/crud/insertarCadmin.php">
+            <form class="form-login" method="POST">
                 <div class="header__form">
                     <h2>Agendar una Cita</h2> <span class="icon-cross"></span>
                 </div>
+
+                <?php
+                include '../client/registrarCitaSc.php';
+                ?>
+
+                <h3>Datos Personales: </h3>
 
                 <label for="nombre">Nombre:</label>
                 <input type="text" maxlength="25" required="true" name="nombre">
@@ -138,6 +149,8 @@ $year = date("Y");
                 <label for="correo">Correo Electrónico:</label>
                 <input type="email" maxlength="60" required="true" name="correo" class="input__form" autocomplete="off">
 
+                <h3>Datos de la Cita: </h3>
+
                 <?php
                 // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
                 include '../client/conexion.php'; //Conexión con base de datos
@@ -178,8 +191,8 @@ $year = date("Y");
 
                 <label>Turno:</label>
                 <div class="seleccion">
-                    <input type="radio" required="true" name="turno" class=""> Mañana
-                    <input type="radio" required="true" name="turno" class=""> Tarde
+                    <input type="radio" required="true" value="1" name="turno" class=""> Mañana
+                    <input type="radio" required="true" value="2" name="turno" class=""> Tarde
                 </div>
 
                 <?php
@@ -189,8 +202,8 @@ $year = date("Y");
                 <input type="hidden" name= "id_doctor" value= "<?php echo $id_doctor; ?>">
 
                 <div class="buttons__form">
-                    <input type="reset" value="Borrar" name="clear" class="button__form">
-                    <input type="submit" value="Agendar Cita" name="send" class="button__form loginSend">
+                    <input type="reset" value="Borrar" class="button__form">
+                    <input type="submit" value="Agendar Cita" class="button__form loginSend" name="boton_c">
                 </div>
             </form>
         </div> -->
