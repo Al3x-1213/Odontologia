@@ -20,6 +20,7 @@ function fecha_atencion($fecha){
         <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/modal.css">
+        <link rel="stylesheet" href="styles/tabla.css">
         <link rel="stylesheet" href="../Iconos/style.css">
 
         <!-- LETRAS UTILIZADAS -->
@@ -89,12 +90,12 @@ function fecha_atencion($fecha){
 
         <h2 class="dia">Historial de consultas</h2>
 
-        <div class="table table-special">
-            <div class="thead__table thead__table-special">
-                <div class="thead thead-special causa-special">Causa de la Consulta</div>
-                <div class="thead thead-special">Fecha de Atención</div>
-                <div class="thead thead-special">Hora de Inicio</div>
-                <div class="thead thead-special">Hora de Culminación</div>
+        <div class="table table2">
+            <div class="thead__table">
+                <div class="thead thead2">Causa de la Consulta</div>
+                <div class="thead thead2">Fecha de Atención</div>
+                <div class="thead thead2">Hora de Inicio</div>
+                <div class="thead thead2">Hora de Culminación</div>
             </div>
 
             <?php
@@ -109,11 +110,11 @@ function fecha_atencion($fecha){
             while ($resultado = mysqli_fetch_array($query)) {
                 $fecha_atencion = fecha_atencion($resultado['fecha_atencion'])
             ?>
-                <div class="tbody__table tbody__table-special">
-                    <div class="tbody tbody-special causa-special"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody tbody-special"><?php echo $fecha_atencion; ?></div>
-                    <div class="tbody tbody-special"><?php echo $resultado['hora_inicio']; ?></div>
-                    <div class="tbody tbody-special"><?php echo $resultado['hora_fin']; ?></div>
+                <div class="tbody__table">
+                    <div class="tbody tbody2"><?php echo $resultado['causa_consulta']; ?></div>
+                    <div class="tbody tbody2"><?php echo $fecha_atencion; ?></div>
+                    <div class="tbody tbody2"><?php echo $resultado['hora_inicio']; ?></div>
+                    <div class="tbody tbody2"><?php echo $resultado['hora_fin']; ?></div>
                 </div>
             <?php
             }
