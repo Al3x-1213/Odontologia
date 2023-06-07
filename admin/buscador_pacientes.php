@@ -1,5 +1,10 @@
 <?php
 include '../client/verificacion_sesion.php';
+
+function fecha_atencion($fecha){
+    $fecha_nacimiento = explode("-", $fecha);
+    return $fecha = $fecha_nacimiento[2]."-".$fecha_nacimiento[1]."-".$fecha_nacimiento[0];
+}
 ?>
 
 <!DOCTYPE html>
@@ -58,9 +63,8 @@ include '../client/verificacion_sesion.php';
                 <div class="thead">Cédula</div>
                 <div class="thead">Edad</div>
                 <div class="thead">Fecha de Nacimiento</div>
-                <div class="thead">Télefono</div>
-                <div class="thead">Télefono</div>
-                <div class="thead">Correo Electrónico</div>
+                <div class="thead contacto">Télefono</div>
+                <div class="thead correo">Correo Electrónico</div>
                 <div class="thead">Acciones</div>
             </div>
 
@@ -73,9 +77,8 @@ include '../client/verificacion_sesion.php';
                     <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody"><?php echo $resultado['edad']; ?></div>
                     <div class="tbody"><?php echo $resultado['fecha_nacimiento']; ?></div>
-                    <div class="tbody"><?php echo $resultado['telefono_1']; ?></div>
-                    <div class="tbody"><?php echo $resultado['telefono_2']; ?></div>
-                    <div class="tbody"><?php echo $resultado['correo']; ?></div>
+                    <div class="tbody"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
+                    <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
                     <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
                     <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div>
                 </div>
@@ -84,48 +87,33 @@ include '../client/verificacion_sesion.php';
             ?>
         </div>
 
-        <?php
-        // HISTORIAL DE LAS CONSULTAS DEL PACIENTE
-        $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
-        ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
-        AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-        WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 1 AND usuarios.cedula = '$paciente'";
-        $query = $conexion->query($consulta);
-        ?>
-
         <h2 class="dia">Historial de consultas</h2>
 
-        <div class="table">
-            <div class="thead__table">
-                <!-- <div class="thead id">Id</div> -->
-                <!-- <div class="thead">Paciente</div> -->
-                <!-- <div class="thead">Cédula</div> -->
-                <!-- <div class="thead">Edad</div> -->
-                <!-- <div class="thead">Fecha de Nacimiento</div> -->
-                <!-- <div class="thead">Télefono</div> -->
-                <!-- <div class="thead">Télefono</div> -->
-                <div class="thead causa">Causa de la Consulta</div>
-                <div class="thead">Fecha de Atención</div>
-                <!-- <div class="thead">Doctor</div> -->
-                <!-- <div class="thead">Fecha de Solicitud</div> -->
-                <!-- <div class="thead">Acciones</div> -->
+        <div class="table table-special">
+            <div class="thead__table thead__table-special">
+                <div class="thead thead-special causa-special">Causa de la Consulta</div>
+                <div class="thead thead-special">Fecha de Atención</div>
+                <div class="thead thead-special">Hora de Inicio</div>
+                <div class="thead thead-special">Hora de Culminación</div>
             </div>
 
             <?php
+
+            // HISTORIAL DE LAS CONSULTAS DEL PACIENTE
+            $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
+            ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
+            AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
+            WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 1 AND usuarios.cedula = '$paciente'";
+            $query = $conexion->query($consulta);
+
             while ($resultado = mysqli_fetch_array($query)) {
+                $fecha_atencion = fecha_atencion($resultado['fecha_atencion'])
             ?>
-                <div class="tbody__table">
-                    <!-- <div class="tbody id"><?php //echo $resultado['id_consulta']; ?></div> -->
-                    <!-- <div class="tbody nom"><?php //echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div> -->
-                    <!-- <div class="tbody"><?php //echo $resultado['cedula']; ?></div> -->
-                    <!-- <div class="tbody"><?php //echo $resultado['edad']; ?></div> -->
-                    <!-- <div class="tbody"><?php //echo $resultado['fecha_nacimiento']; ?></div> -->
-                    <!-- <div class="tbody"><?php //echo $resultado['telefono_1']; ?></div> -->
-                    <!-- <div class="tbody"><?php //echo $resultado['telefono_2']; ?></div> -->
-                    <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody"><?php echo $resultado['fecha_atencion']; ?></div>
-                    <!-- <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                    <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div> -->
+                <div class="tbody__table tbody__table-special">
+                    <div class="tbody tbody-special causa-special"><?php echo $resultado['causa_consulta']; ?></div>
+                    <div class="tbody tbody-special"><?php echo $fecha_atencion; ?></div>
+                    <div class="tbody tbody-special"><?php echo $resultado['hora_inicio']; ?></div>
+                    <div class="tbody tbody-special"><?php echo $resultado['hora_fin']; ?></div>
                 </div>
             <?php
             }
