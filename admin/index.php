@@ -48,7 +48,7 @@ $year = date("Y");
                 </div>
 
                 <label>Cédula: </label>
-                <input type="number" name="cedula" required autocomplete="off" minlength="7">
+                <input type="number" maxlength="8" required="true" name="cedula">
 
                 <?php
                 // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN

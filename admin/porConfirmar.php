@@ -41,7 +41,6 @@ function fecha_atencion($fecha){
         <?php
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
         include '../client/obtenerId.php';
-        echo $id_doctor;
       
         // OBTENER LA INFORMACIÓN DE TODAS LAS CITAS POR CONFIRMAR DEL DOCTOR QUE ESTÁ LOGUEADO
         include '../client/conexion.php'; //Conexión con base de datos
