@@ -23,7 +23,7 @@
 
 <body>
     <div class="flex__container">
-        <form class="form form__alternative" method="POST"> <!--action="../client/insertar.php"-->
+        <form id="formulario" class="form" method="POST"> <!--action="../client/insertar.php"-->
 
             <a href="../"><i class="icon-cross"></i></a>
             <!-- TITULO -->
@@ -78,11 +78,11 @@
 
             <div id="grupo_fecha" class="grupo">
                 <label>Fecha de Nacimiento:</label>
-                <div class="input-icon"><input type="date" required="true" name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form base nacimiento"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="input-icon"><input type="date" required="true" name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
                 <div class="paragraf__error"></div>
             </div>
 
-            <div id="grupo_telefono" class="grupo">
+            <div id="grupo_telefono1" class="grupo">
                 <label>Telefono celular:</label>
                 <div class="input-icon"><input type="number" maxlength="11" required name="telofono1" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
                 <div class="paragraf__error"></div>
