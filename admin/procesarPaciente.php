@@ -62,9 +62,11 @@ function fecha_atencion($fecha){
 
         <h2 class="dia"><?php echo "Confirmar Cita de ".$resultado['nombre']." ".$resultado["apellido"] ?></h2>
 
-        <form method="POST">
+        <form action="../client/botones/confirmar.php" method="POST">
 
-            <?php include "../client/botones/confirmar.php" ?>
+            <?php
+            // include "../client/botones/confirmar.php"
+            ?>
 
             <div class="table">
                 <div class="thead__table">
@@ -92,7 +94,7 @@ function fecha_atencion($fecha){
                         <div class="tbody"> <input type="time" name="hora_inicio"> </div>
                         <div class="tbody"> <input type="time" name="hora_fin">  </div>
                         
-                        <!-- <div class="tbody"><a href="../client/botones/confirmar.php?id=<?php echo $resultado['id_consulta']?>"><button class="atendido"> Co </button></a></div> -->
+                        <!-- <div class="tbody"><a href="../client/botones/confirmar.php?id=<?php // echo $resultado['id_consulta']?>"><button class="atendido"> Co </button></a></div> -->
                     </div>
             </div>
 
