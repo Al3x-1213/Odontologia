@@ -37,19 +37,19 @@
             <div id="grupo_usuario" class="grupo">
                 <label>Usuario:</label>
                 <div class="input-icon"><input type="text" maxlength="30" required name="usuario" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="paragraf__error display"> Usuario no puede estar vacío y sólo puede tener: numeros y letras y  algunos caractéres como . - _ </div>
             </div>
 
             <div id="grupo_clave" class="grupo">
                 <label>Contraseña:</label>
                 <div class="input-icon"><input type="password" maxlength="35" required name="clave" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="paragraf__error display"> Contraseña no puede tener menos de 4 caracteres y no puede estar vacia </div>
             </div>
 
             <div id="grupo_clave2" class="grupo">
                 <label>Confirmar Contraseña:</label>
                 <div class="input-icon"><input type="password" maxlength="35" required name="clave2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="paragraf__error display"> Contraseña no coincide </div>
             </div>
 
             <h3>Datos Personales: </h3>
@@ -57,19 +57,19 @@
             <div id="grupo_nombre" class="grupo">
                 <label>Nombre:</label>
                 <div class="input-icon"><input type="text" maxlength="25" required name="nombre" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="paragraf__error display"> Nombre no puede tener numeros ni caracteres especiales </div>
             </div>
 
             <div id="grupo_apellido" class="grupo">
                 <label>Apellido:</label>
                 <div class="input-icon"><input type="text" maxlength="25" required name="apellido" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="paragraf__error display"> Apellido no puede tener numeros ni caracteres especiales </div>
             </div>
 
             <div id="grupo_cedula" class="grupo">
                 <label>Cédula:</label>
                 <div class="input-icon"><input type="number" maxlength="8" required name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="paragraf__error display"> Cedula tiene que tener de 7 a 8 caractéres </div>
             </div>
 
             <?php
@@ -78,26 +78,26 @@
 
             <div id="grupo_fecha" class="grupo">
                 <label>Fecha de Nacimiento:</label>
-                <div class="input-icon"><input type="date" required="true" name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="input-icon"><input type="date" required name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error display"> la fecha no puede ser la misma o posterior a la de hoy </div>
             </div>
 
             <div id="grupo_telefono1" class="grupo">
                 <label>Telefono celular:</label>
-                <div class="input-icon"><input type="number" maxlength="11" required name="telofono1" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="input-icon"><input type="number" maxlength="11" required name="telefono1" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error display"> Telefono sólo puede tener 11 caracteres </div>
             </div>
 
             <div id="grupo_telefono2" class="grupo">
                 <label>Telefono (Opcional):</label>
-                <div class="input-icon"><input type="number" maxlength="11" required name="telofono2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="input-icon"><input type="number" maxlength="11" required name="telefono2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="paragraf__error display"> Telefono sólo puede tener 11 caracteres </div>
             </div>
 
             <div id="grupo_correo" class="grupo">
                 <label>Correo Electrónico:</label>
                 <div class="input-icon"><input type="email" maxlength="60" required name="correo" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="paragraf__error display"> Correo debe contener @ y . </div>
             </div>
 
             <input class="button" type="submit" value="Registrarse" name="boton_reg">

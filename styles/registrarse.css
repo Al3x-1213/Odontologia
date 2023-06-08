@@ -123,6 +123,8 @@ label {
 .paragraf__error {
   color: #ea4848;
   padding: 1px 0;
+  margin: 0 15px 20px;
+  font-size: 0.85em;
 }
 
 /* boton de enviar */

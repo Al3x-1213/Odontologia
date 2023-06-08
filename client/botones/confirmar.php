@@ -11,9 +11,7 @@ $update = "UPDATE consultas SET id_status_consulta = 2, hora_inicio = '$hora_ini
 $consulta = $conexion->query($update);
 
 if($consulta == 1){
-    header('location: ../porConfirmar.php');
-}else{
-    header('location: ../index.php');
+    header('location: ../../admin/porConfirmar.php');
 }
 
 ?>
