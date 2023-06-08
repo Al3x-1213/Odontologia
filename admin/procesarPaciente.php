@@ -54,10 +54,53 @@ function fecha_atencion($fecha){
 
         $id = $_GET['id'];
 
-        $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta WHERE consultas.id_consulta = '$id'"
+        $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta WHERE consultas.id_consulta = '$id'";
+
+        $query = mysqli_query($conexion, $consulta);
+        $resultado = mysqli_fetch_array($query);
         ?>
 
-        <h2 class="dia"><?php $dia."-".$mes."-".$year ?></h2>
+        <h2 class="dia"><?php echo "Confirmar Cita de ".$resultado['nombre']." ".$resultado["apellido"] ?></h2>
+
+        <form method="POST">
+
+            <?php include "../client/botones/confirmar.php" ?>
+
+            <div class="table">
+                <div class="thead__table">
+                    <div class="thead">Paciente</div>
+                    <div class="thead">Cédula</div>
+                    <div class="thead edad">Edad</div>
+                    <div class="thead causa">Causa de la Consulta</div>
+                    <div class="thead"> Telefono </div>
+                    <div class="thead">Hora de Inicio</div>
+                    <div class="thead">Hora de Culminación</div>
+                </div>
+
+                <?php
+                    $fecha_atencion = fecha_atencion($resultado['fecha_atencion'])
+                ?>
+                    <div class="tbody__table">
+
+                        <input type="hidden" name="id_consulta" value="<?php echo $resultado['id_consulta'] ?>">
+
+                        <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
+                        <div class="tbody"><?php echo $resultado['cedula']; ?></div>
+                        <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
+                        <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
+                        <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
+                        <div class="tbody"> <input type="time" name="hora_inicio"> </div>
+                        <div class="tbody"> <input type="time" name="hora_fin">  </div>
+                        
+                        <!-- <div class="tbody"><a href="../client/botones/confirmar.php?id=<?php echo $resultado['id_consulta']?>"><button class="atendido"> Co </button></a></div> -->
+                    </div>
+            </div>
+
+            <input type="submit" class="confirmar" value="Confirmar Cita">
+
+        </form>
+
+        <h2 class="dia"><?php echo $fecha_atencion ?></h2>
 
         <div class="table">
             <div class="thead__table">
@@ -65,9 +108,9 @@ function fecha_atencion($fecha){
                 <div class="thead">Cédula</div>
                 <div class="thead edad">Edad</div>
                 <div class="thead causa">Causa de la Consulta</div>
+                <div class="thead"> Telefono </div>
                 <div class="thead">Hora de Inicio</div>
-                <div class="thead">Hora de Culminación</div>
-                <div class="thead">Acciones</div>
+                <div class="thead correo"> Hora de Culminación </div>
             </div>
 
             <?php
@@ -77,26 +120,22 @@ function fecha_atencion($fecha){
             AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
             WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$resultado[fecha_atencion]' ORDER BY hora_inicio ASC";
 
-            $query = mysqli_query($conexion, $consulta);
-
             while ($resultado = mysqli_fetch_array($query)) {
-                $fecha_atencion = fecha_atencion($resultado['fecha_atencion'])
             ?>
                 <div class="tbody__table">
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                     <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                     <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>
-                    <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>
-                    
-                    <!-- <div class="tbody"><a href="../client/botones/confirmar.php?id=<?php echo $resultado['id_consulta']?>"><button class="atendido"> Co </button></a></div> -->
+                    <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
+                    <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>       
+                    <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>      
                 </div>
             <?php
             }
             ?>
         </div>
-
+        
         <div class="space"></div>
 
         <?php

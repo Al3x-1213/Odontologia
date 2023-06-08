@@ -116,6 +116,18 @@ body {
   cursor: pointer;
 }
 
+.confirmar {
+  position: relative;
+  left: 44%;
+  margin: 2% 0 1%;
+  background: linear-gradient(70deg, #789dc9, #EAEDF3);
+  border: 1px solid #333;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .nom {
   text-transform: capitalize;
 }
