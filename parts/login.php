@@ -44,9 +44,9 @@
                     <label>Contraseña:</label>
                     <input type="password" maxlength="35" required="true" name="clave" class="input__form">
 
-                    <p>¿No tienes una cuenta? <a href="registrarse.php">Regístrate</a></p>
-                    
                     <input class="button" type="submit" value="Enviar" name="boton_log">
+
+                    <p>¿No tienes una cuenta? <a href="registrarse.php">Regístrate</a></p>
                 </div>
             </form>
         </div>

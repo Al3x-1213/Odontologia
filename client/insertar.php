@@ -13,7 +13,6 @@ if (!empty($_POST['boton_reg'])){
     }
     else{
         //DATOS DEL FORMULARIO DE REGISTRO
-
         $usuario = $_POST['usuario'];
         $clave = $_POST['clave'];
         $clave_confirm = $_POST['clave2'];
@@ -56,7 +55,6 @@ if (!empty($_POST['boton_reg'])){
             $year_actual = $fecha_actual['year'];
 
             //Edad
-
             if($month_actual > $month){
                 $edad = $year_actual - $year;
             }
@@ -76,7 +74,6 @@ if (!empty($_POST['boton_reg'])){
             }
 
             //HACER REGISTRO EN BASE DE DATOS
-
             include 'conexion.php'; //Conexión con base de datos
 
             $clave= md5($clave);

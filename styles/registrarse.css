@@ -125,6 +125,17 @@ label {
   padding: 1px 0;
 }
 
+/* INICIAR SESIÓN */
+
+p{
+  text-align: center;
+}
+
+p a{
+  text-decoration: none;
+  color: #33548A;
+}
+
 /* boton de enviar */
 
 .button {
