@@ -41,11 +41,15 @@ $year = date("Y");
         include 'components/menu.html';
         include 'components/menu2.php';
         ?>
+
+        <div class="insertar">
+            <button>Registrar una Cita</button>
+        </div>
         
         <div class="modal disable">
             <form class="form-login" method="POST">
                 <div class="header__form">
-                    <h2>Agendar una Cita</h2> <span class="icon-cross"></span>
+                    <h2>Registrar una Cita</h2> <span class="icon-cross"></span>
                 </div>
 
                 <?php
@@ -116,7 +120,7 @@ $year = date("Y");
         <!-- <div class="modal disable">
             <form class="form-login" method="POST">
                 <div class="header__form">
-                    <h2>Agendar una Cita</h2> <span class="icon-cross"></span>
+                    <h2>Registrar una Cita</h2> <span class="icon-cross"></span>
                 </div>
 
                 <?php
@@ -258,7 +262,7 @@ $year = date("Y");
                 mysqli_close($conexion); ?>
             </div>
 
-        <button class="insertar"> Registrar Una Cita </button>
+        <!-- <button class="insertar"> Registrar Una Cita </button> -->
         
         <h2 class="dia"> Atendidos </h2>
         

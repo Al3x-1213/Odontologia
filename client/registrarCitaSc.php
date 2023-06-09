@@ -65,7 +65,7 @@ if (!empty($_POST['boton_c'])){
             $edad = $edad - 1;
         }
 
-        //HACER REGISTRO EN BASE DE DATOS
+        //HACER REGISTRO EN BASE DE DATOS - TABLA USUARIOS
         include '../client/conexion.php'; //Conexión con base de datos
 
         $consulta = "INSERT INTO usuarios VALUES(NULL, '', '', '$tipo_usuario', '$status_usuario', '$nombre',
@@ -82,6 +82,7 @@ if (!empty($_POST['boton_c'])){
             $respuesta = mysqli_fetch_array($query);
             $id_paciente = $respuesta['id_usuario'];
 
+            //HACER REGISTRO EN BASE DE DATOS - TABLA CONSULTAS
             $consulta = "INSERT INTO consultas VALUES(NULL, '$id_paciente', '$causa', '$fechaAtencion', '$turno', '', '', '$id_doctor', '$id_status_consulta', now())";
             $query = mysqli_query($conexion, $consulta);
 
