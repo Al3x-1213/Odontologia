@@ -45,11 +45,11 @@ $year = date("Y");
         <div class="insertar">
             <button>Registrar una Cita</button>
         </div>
-        
+
         <div class="modal disable">
             <form class="form-login" method="POST">
                 <div class="header__form">
-                    <h2>Registrar una Cita</h2> <span class="icon-cross"></span>
+                    <h2>Agendar una Cita</h2> <span class="icon-cross"></span>
                 </div>
 
                 <?php
@@ -120,7 +120,7 @@ $year = date("Y");
         <!-- <div class="modal disable">
             <form class="form-login" method="POST">
                 <div class="header__form">
-                    <h2>Registrar una Cita</h2> <span class="icon-cross"></span>
+                    <h2>Agendar una Cita</h2> <span class="icon-cross"></span>
                 </div>
 
                 <?php

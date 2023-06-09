@@ -27,43 +27,7 @@ if (!empty($_POST['boton_c'])){
         $id_status_consulta = 3;
 
         // CALCULAR EDAD
-
-        //Fecha de nacimiento
-        $nacimiento = $_POST['nacimiento'];
-
-        $fecha_separada = explode('-', $nacimiento);
-        $day = $fecha_separada[2];
-        $month = $fecha_separada[1];
-        $yearN = $fecha_separada[0];
-
-        //Fecha Actual
-        date_default_timezone_set('America/Caracas');
-
-        $fecha_actual = getdate();
-
-        $day_actual = $fecha_actual['mday'];
-        $month_actual = $fecha_actual['mon'];
-        $year_actual = $fecha_actual['year'];
-
-        //Edad
-
-        if($month_actual > $month){
-            $edad = $year_actual - $yearN;
-        }
-        elseif($month_actual == $month && $day_actual == $day){
-            $edad = $year_actual - $yearN;
-        }
-        elseif($month_actual == $month && $day_actual > $day){
-            $edad = $year_actual - $yearN;
-        }
-        elseif($month_actual == $month && $day_actual < $day){
-            $edad = $year_actual - $yearN;
-            $edad = $edad - 1;
-        }
-        else{
-            $edad = $year_actual - $yearN;
-            $edad = $edad - 1;
-        }
+        include 'calcularEdad.php';
 
         //HACER REGISTRO EN BASE DE DATOS - TABLA USUARIOS
         include '../client/conexion.php'; //Conexión con base de datos

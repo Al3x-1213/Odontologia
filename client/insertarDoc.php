@@ -35,42 +35,7 @@ if (!empty($_POST['boton_reg'])){
         }
         else{            
             // CALCULAR EDAD
-            
-            //Fecha de nacimiento
-            $nacimiento = $_POST['nacimiento'];
-
-            $fecha_separada = explode('-', $nacimiento);
-            $day = $fecha_separada[2];
-            $month = $fecha_separada[1];
-            $year = $fecha_separada[0];
-
-            //Fecha Actual
-            date_default_timezone_set('America/Caracas');
-
-            $fecha_actual = getdate();
-
-            $day_actual = $fecha_actual['mday'];
-            $month_actual = $fecha_actual['mon'];
-            $year_actual = $fecha_actual['year'];
-
-            //Edad
-            if($month_actual > $month){
-                $edad = $year_actual - $year;
-            }
-            elseif($month_actual == $month && $day_actual == $day){
-                $edad = $year_actual - $year;
-            }
-            elseif($month_actual == $month && $day_actual > $day){
-                $edad = $year_actual - $year;
-            }
-            elseif($month_actual == $month && $day_actual < $day){
-                $edad = $year_actual - $year;
-                $edad = $edad - 1;
-            }
-            else{
-                $edad = $year_actual - $year;
-                $edad = $edad - 1;
-            }
+            include 'calcularEdad.php';
 
             // HACER EL REGISTRO SEGÚN EL TIPO DE USUARIO QUE SE ESTÉ REGISTRANDO
             include 'conexion.php'; //Conexión con base de datos
