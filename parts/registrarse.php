@@ -76,7 +76,7 @@
             $limiteFecha = date("Y-m-d");
             ?>
 
-            <div id="grupo_fecha" class="grupo">
+            <div id="grupo_nacimiento" class="grupo">
                 <label>Fecha de Nacimiento:</label>
                 <div class="input-icon"><input type="date" required name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
                 <div class="paragraf__error display"> la fecha no puede ser la misma o posterior a la de hoy </div>

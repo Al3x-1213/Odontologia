@@ -4,7 +4,7 @@ const formulario = document.getElementById("formulario");
 const inputs = document.querySelectorAll('.grupo input');
 
 const expresiones = {
-    usuario: /^[a-zA-Z0-9\_\-]{3,35}$/, // Letras, numeros, guion y guion_bajo
+    usuario: /^[a-zA-Z0-9\_\-\.\/]{3,35}$/, // Letras, numeros, guion y guion_bajo
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,25}$/, // Letras y espacios, pueden llevar acentos.
     password: /^.{4,35}$/, // 4 a 12 digitos.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -36,13 +36,13 @@ const error = (grupo) => {
     document.querySelector(`#grupo_${grupo} .paragraf__error`).classList.remove("display");
 }
 
-// const obtenerFecha = ()=>{
-//     var fecha = new Date();
-//     year = fecha.getFullYear();
-//     mes = fecha.getMonth()
-//     dia = fecha.getDate();
-//     return fecha = [dia, mes, year];
-// }
+const obtenerFecha = ()=>{
+    var fecha = new Date();
+    year = fecha.getFullYear();
+    mes = fecha.getMonth()+1;
+    dia = fecha.getDate();
+    return fecha = [year, mes, dia];
+}
 
 const validarFormulario = (e) => {
     switch (e.target.name) {
@@ -107,19 +107,19 @@ const validarFormulario = (e) => {
                 cedula = false;
             }
         break;
-        // case "nacimiento":
+        case "nacimiento":
 
-        //     fecha = obtenerFecha();
-        //     fecha_nacimiento = e.target.value.split("/");
+            fecha = obtenerFecha();
+            fecha_nacimiento = e.target.value.split("-");
 
-        //     if(fecha_nacimiento[0] >= fecha[0] || fecha_nacimiento[1] >= fecha[1] || fecha_nacimiento[2] >= fecha[2]){
-        //         error(e.target.name);
-        //         nacimiento = false;
-        //     }else{
-        //         success(e.target.name);
-        //         nacimiento = true;
-        //     }
-        // break;
+            if(fecha_nacimiento[0] > fecha[0] || fecha_nacimiento[1] > fecha[1] || fecha_nacimiento[2] >= fecha[2]){
+                error(e.target.name);
+                nacimiento = false;
+            }else{
+                success(e.target.name);
+                nacimiento = true;
+            }
+        break;
         case "telefono1":
             if(expresiones.telefono.test(e.target.value)){
                 telefono1 = true;
