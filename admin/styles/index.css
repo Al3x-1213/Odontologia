@@ -29,9 +29,10 @@ body {
   border: 1px solid #789dc9;
   width: 12%;
   min-width: 12%;
-  height: 30px;
+  height: 40px;
   max-height: 50px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
 }
@@ -39,7 +40,7 @@ body {
 .thead {
   color: aliceblue;
   background: #3e3d3d;
-  height: 40px;
+  height: 50px;
   max-height: 50px;
 }
 
@@ -97,11 +98,11 @@ body {
 }
 
 .procesar {
-  background: #789dc9;
+  background: #E67F4F;
 }
 
 .procesar:hover{
-  background: #33548aa6;
+  background: #df703c;
 }
 
 .editar {
@@ -148,4 +149,8 @@ body {
 
 .space {
   height: 225px;
+}
+
+.nombre_paciente {
+  color: #E67F4F;
 }

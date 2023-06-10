@@ -55,7 +55,7 @@
 }
 
 .header__form>.icon-cross:hover{
-    color: #33548A;
+    color: #E67F4FAA;
 }
 .form-login>input{
     color: #EAEDF3;
@@ -107,9 +107,9 @@ select {
 
 p{
     text-align: center;
-  }
+}
   
-  p a{
-    text-decoration: none;
+p .link{
     color: #E67F4F;
-  }
+    cursor: pointer;
+}

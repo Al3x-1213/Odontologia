@@ -60,17 +60,17 @@ function fecha_atencion($fecha){
         $resultado = mysqli_fetch_array($query);
         ?>
 
-        <h2 class="dia"><?php echo "Confirmar Cita de ".$resultado['nombre']." ".$resultado["apellido"] ?></h2>
+        <h2 class="dia"><?php echo "Confirmar Cita de <span class=nombre_paciente>".$resultado['nombre']." ".$resultado["apellido"]."</span>" ?></h2>
 
         <form method="POST" action="../client/botones/confirmar.php">
 
             <div class="table">
                 <div class="thead__table">
-                    <div class="thead">Paciente</div>
                     <div class="thead">Cédula</div>
                     <div class="thead edad">Edad</div>
                     <div class="thead causa">Causa de la Consulta</div>
                     <div class="thead"> Telefono </div>
+                    <div class="thead"> Turno </div>
                     <div class="thead">Hora de Inicio</div>
                     <div class="thead">Hora de Culminación</div>
                 </div>
@@ -82,11 +82,11 @@ function fecha_atencion($fecha){
 
                         <input type="hidden" name="id_consulta" value="<?php echo $resultado['id_consulta'] ?>">
 
-                        <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                         <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                         <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                         <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
                         <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
+                        <div class="tbody"><?php echo $resultado['turno_consulta']; ?></div>
                         <div class="tbody"> <input type="time" name="hora_inicio"> </div>
                         <div class="tbody"> <input type="time" name="hora_fin">  </div>
                     </div>
@@ -96,7 +96,7 @@ function fecha_atencion($fecha){
 
         </form>
 
-        <h2 class="dia"><?php echo $fecha_atencion ?></h2>
+        <h2 class="dia"><?php echo "Citas del ".$fecha_atencion ?></h2>
 
         <div class="table">
             <div class="thead__table">

@@ -158,3 +158,18 @@ p a{
   box-shadow: 0 0 5px 1px #333;
   cursor: pointer;
 }
+
+/* MODAL PARA REGISTRAR SIN CUENTA   */
+
+select {
+  height: 1.5em;
+  background-color: transparent;
+  width: 80%;
+  margin: 10px 12px;
+  outline: none;
+  color: #333;
+}
+
+.hora {
+  margin: 15px 0;
+}
