@@ -32,6 +32,9 @@
             <?php
             include '../client/insertar.php';
             ?>
+
+            <p>¿Eres un paciente regular pero no tienes cuenta? <a href="registrarseSc.php">Regístrate aqui</a></p>
+
             <h3>Tu cuenta: </h3>
 
             <div id="grupo_usuario" class="grupo">
@@ -101,6 +104,8 @@
             </div>
 
             <input class="button" type="submit" value="Registrarse" name="boton_reg">
+
+            <p>¿Tienes una cuenta? <a href="login.php">Inicia Sesión</a></p>
         </form>
     </div>
 </body>

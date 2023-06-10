@@ -39,14 +39,18 @@ function fecha_nacimiento($fecha){
         include 'components/menu2.php';
         ?>
 
+        <div class="insertar">
+            <button>Registrar un Usuario</button>
+        </div>
+
         <div class="modal disable">
             <form class="form-login" method="POST"> <!--action="../client/insertar.php"-->
                 <div class="header__form">
-                    <h2>Registrar un paciente</h2> <span class="icon-cross"></span>
+                    <h2>Registrar un Usuario</h2> <span class="icon-cross"></span>
                 </div>
 
                 <?php
-                include '../client/insertar.php';
+                include '../client/insertarDoc.php';
                 ?>
 
                 <h3>Tu cuenta: </h3>
@@ -59,6 +63,13 @@ function fecha_nacimiento($fecha){
 
                 <label for="clave">Confirmar Contraseña:</label>
                 <input type="password" maxlength="35" required="true" name="clave2" class="input__form">
+
+                <label for="clave">Tipo de Usuario:</label>
+                <div class="seleccion">
+                    <input type="radio" required="true" value="1" name="tipoUser" class=""> Doctor
+                    <input type="radio" required="true" value="2" name="tipoUser" class=""> Paciente
+                </div>
+
 
                 <h3>Datos Personales: </h3>
 
@@ -135,7 +146,7 @@ function fecha_nacimiento($fecha){
             ?>
         </div>
 
-        <button class="insertar"> Registrar Un Usuario </button>
+        <!-- <button class="insertar"> Registrar Un Usuario </button> -->
 
         <div class="space"></div>
 

@@ -1,7 +1,6 @@
 <?php
 
 if (!empty($_POST['boton_reg'])){
-
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
     if (empty($_POST['usuario']) || empty($_POST['clave']) || empty($_POST['clave2'])
     || empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['cedula'])
@@ -13,7 +12,6 @@ if (!empty($_POST['boton_reg'])){
     }
     else{
         //DATOS DEL FORMULARIO DE REGISTRO
-
         $usuario = $_POST['usuario'];
         $clave = $_POST['clave'];
         $clave_confirm = $_POST['clave2'];
@@ -37,46 +35,9 @@ if (!empty($_POST['boton_reg'])){
         }
         else{
             // CALCULAR EDAD
-
-            //Fecha de nacimiento
-            $nacimiento = $_POST['nacimiento'];
-
-            $fecha_separada = explode('-', $nacimiento);
-            $day = $fecha_separada[2];
-            $month = $fecha_separada[1];
-            $year = $fecha_separada[0];
-
-            //Fecha Actual
-            date_default_timezone_set('America/Caracas');
-
-            $fecha_actual = getdate();
-
-            $day_actual = $fecha_actual['mday'];
-            $month_actual = $fecha_actual['mon'];
-            $year_actual = $fecha_actual['year'];
-
-            //Edad
-
-            if($month_actual > $month){
-                $edad = $year_actual - $year;
-            }
-            elseif($month_actual == $month && $day_actual == $day){
-                $edad = $year_actual - $year;
-            }
-            elseif($month_actual == $month && $day_actual > $day){
-                $edad = $year_actual - $year;
-            }
-            elseif($month_actual == $month && $day_actual < $day){
-                $edad = $year_actual - $year;
-                $edad = $edad - 1;
-            }
-            else{
-                $edad = $year_actual - $year;
-                $edad = $edad - 1;
-            }
+            include 'calcularEdad.php';
 
             //HACER REGISTRO EN BASE DE DATOS
-
             include 'conexion.php'; //Conexión con base de datos
 
             $clave= md5($clave);
@@ -87,7 +48,7 @@ if (!empty($_POST['boton_reg'])){
 
             if($query){
                 ?>
-                <div class= "mensaje"><a href= "login.html">Usuario regitrado correctamente</a></div>
+                <div class= "mensaje"><a href= "login.php">Usuario regitrado correctamente</a></div>
                 <?php
             }
             else{
@@ -98,25 +59,5 @@ if (!empty($_POST['boton_reg'])){
         }
     }
 }
-
-
-// $clave = md5($contra);
-
-// $peticion = "INSERT INTO paciente1 (id_paciente, nombre, apellido, cedula, edad, correo, numero, clave, fecha) VALUE (NULL, '$nombre', '$apellido', '$cedula', '$edad', '$correo', '$numero', '$clave', now())";
-
-// $insertar = ($conexion->query($peticion));
-
-// session_start();
-// ob_start();
-// $sesion = $_SESSION['sesion'];
-// $admin = $_SESSION['admin'];
-
-// if($insertar == 1 && $sesion == 1 && $admin == 1){
-//     mysqli_close($conexion);
-//     header('location: ../admin/pacientes.php');
-// }else if($insertar == 1 && $sesion != 1 || $admin != 1){
-//     mysqli_close($conexion);
-//     header('location: ../index.php');
-// }
 
 ?>

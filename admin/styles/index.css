@@ -104,7 +104,7 @@ body {
   background: #33548aa6;
 }
 
-.insertar {
+/* .insertar {
   position: relative;
   left: 44%;
   margin: 2% 0 1%;
@@ -114,6 +114,28 @@ body {
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
+} */
+
+.insertar{
+  /* border: solid red 1px; */
+  margin-top: 10px;
+  display: flex;
+  justify-content: left;
+}
+
+.insertar button{
+  width: 180px;
+  margin: 1% 2% 1% 2%;
+  padding: 5px 10px;
+
+  /* background: linear-gradient(70deg, #789dc9, #EAEDF3); */
+  background-color: #EAEDF3;
+  border: solid #789DC9 2px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+
+
 }
 
 .confirmar {
