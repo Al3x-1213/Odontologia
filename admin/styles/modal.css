@@ -21,13 +21,13 @@
 }
 
 .form-login{
-    max-height: 700px;
+    max-height: 75%;
     overflow-y: scroll;
     position: relative;
     display: flex;
     gap: 16px;
     flex-direction: column;
-    padding: 20px;
+    padding: 30px;
     min-width: 35%;
     min-height: 50%;
     background: #3e3d3d;
@@ -109,7 +109,11 @@ p{
     text-align: center;
 }
   
-p .link{
+p{
+    text-align: center;
+}
+  
+p a{
+    text-decoration: none;
     color: #E67F4F;
-    cursor: pointer;
 }

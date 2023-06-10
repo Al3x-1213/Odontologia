@@ -70,7 +70,7 @@
                 <input type="submit" value="Agendar Cita" class="button__form loginSend" name="boton_c">
             </div>
 
-            <p>¿El paciente no se encuentra registrado? <a href="parts/modalRegistrarSc.php">Agenda su cita aquí</span></p>
+            <p>¿El paciente no se encuentra registrado? <a href="parts/modalRegistrarSc.php">Agenda su cita aquí</a></p>
         </form>
     </div>
 </div>
