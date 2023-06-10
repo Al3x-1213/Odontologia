@@ -78,7 +78,7 @@ function fecha_atencion($fecha){
                     <div class="tbody"><?php echo $fecha_atencion; ?></div>
                     <div class="tbody"><?php echo $resultado['turno_consulta']; ?></div>
                     
-                    <div class="tbody"><a href="procesarPaciente.php?id=<?php echo $resultado['id_consulta']?>"><button class="atendido"> Procesar </button></a></div>
+                    <div class="tbody"><a href="procesarPaciente.php?id=<?php echo $resultado['id_consulta']?>"><button class="procesar"> Procesar </button></a></div>
                 </div>
             <?php
             }

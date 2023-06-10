@@ -33,7 +33,7 @@
             include '../client/insertar.php';
             ?>
 
-            <p>¿Eres un paciente regular pero no tienes cuenta? <a href="registrarseSc.php">Regístrate aqui</a></p>
+            <p>¿Ha pedido cita previamente pero no tiene cuenta? <a href="registrarseSc.php">Regístrate aqui</a></p>
 
             <h3>Tu cuenta: </h3>
 

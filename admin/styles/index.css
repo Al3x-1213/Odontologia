@@ -66,7 +66,7 @@ body {
   width: 4%;
 }
 
-.eliminar, .atendido, .editar {
+.eliminar, .atendido, .editar, .procesar {
   padding: 1% 2%;
   font-weight: bold;
   border: 1px solid #333;
@@ -96,6 +96,14 @@ body {
   background: #33548aa6;
 }
 
+.procesar {
+  background: #789dc9;
+}
+
+.procesar:hover{
+  background: #33548aa6;
+}
+
 .editar {
   background: #789dc9;
 }
@@ -104,20 +112,7 @@ body {
   background: #33548aa6;
 }
 
-/* .insertar {
-  position: relative;
-  left: 44%;
-  margin: 2% 0 1%;
-  background: linear-gradient(70deg, #789dc9, #EAEDF3);
-  border: 1px solid #333;
-  padding: 5px 10px;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-} */
-
 .insertar{
-  /* border: solid red 1px; */
   margin-top: 10px;
   display: flex;
   justify-content: left;
@@ -127,15 +122,12 @@ body {
   width: 180px;
   margin: 1% 2% 1% 2%;
   padding: 5px 10px;
-
   /* background: linear-gradient(70deg, #789dc9, #EAEDF3); */
   background-color: #EAEDF3;
   border: solid #789DC9 2px;
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
-
-
 }
 
 .confirmar {

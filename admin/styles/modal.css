@@ -8,34 +8,41 @@
     position: fixed;
     z-index: 20;
     top: 0;
-    background: rgba(0,0,0, 0.5);
+    background: linear-gradient(45deg, #EAEDF377, #33548A77);
     width: 100vw;
     height: 100vh;
 }
 
-.form-login{
+.flex-container {
+    height: 100%;
     display: flex;
-    position: absolute;
-    top: 15%;
-    left: 40%;
+    justify-content: center;
+    align-items:center;
+}
+
+.form-login{
+    max-height: 700px;
+    overflow-y: scroll;
+    position: relative;
+    display: flex;
     gap: 16px;
     flex-direction: column;
     padding: 20px;
-    min-width: 25%;
+    min-width: 35%;
     min-height: 50%;
-    background: #1b1b32;
-    border-radius: 5%;
+    background: #3e3d3d;
+    color: #EAEDF3;
     border: 1px solid #333;
+    border-radius: 5%;
     transition: 1s;
 }
 
-.form-login:hover{
-    border: 1px solid #b498ff;
+.form-login::-webkit-scrollbar {
+    display: none;
 }
 
-.header__form{
-    color: aliceblue;
-    text-align: left;
+.form-login:hover{
+    border: 1px solid #789dc9;
 }
 
 .header__form>.icon-cross{
@@ -43,36 +50,25 @@
     top: 0;
     right: 0;
     margin: 5%;
-    color: aliceblue;
     cursor: pointer;
     transition: all .4s ease;
 }
 
 .header__form>.icon-cross:hover{
-    color: #b498ff;
+    color: #33548A;
 }
-
-.form-login>label{
-    text-align: left;
-    color: aliceblue;
-}
-
 .form-login>input{
-    color: aliceblue;
+    color: #EAEDF3;
     background: transparent;
     outline: none;
     border: none;
-    border-bottom: 1px solid #e9e2f6;
+    border-bottom: 1px solid #789dc9;
     transition: .4s;
 }
 
 .form-login>input:focus{
     font-size: 1.05em;
-    border-bottom: 1px solid #9d6afcbd;
-}
-
-.sub{
-    height: 60%;
+    border-bottom: 1px solid #33548A;
 }
 
 .buttons__form{
@@ -83,18 +79,18 @@
 }
 
 .button__form{
-    margin: 9px;
+    margin: 10px;
     width: 40%; 
-    background-color: #aaeeff;
+    background-color: #789dc9;
     height: 2em;
     border: 1px solid #333;
     border-radius: 5%;
     cursor: pointer;
-    transition: .4s;
+    transition: .6s;
 }
 
 .buttons__form>input:hover{
-    background: #6bdaf6;
+    background: #33548A;
 }
 
 .button__form>a{
@@ -102,14 +98,18 @@
     color: #333;
 }
 
-.buttons__form>button{
-    height: 2.10em;
-    background-color: #FFC300;
-    font-weight: 700;
-}
-
 select {
     height: 30px;
-    background:#aaeeff;
+    color: #333;
+    background-color: #789dc9;
     outline: none;
 }
+
+p{
+    text-align: center;
+  }
+  
+  p a{
+    text-decoration: none;
+    color: #E67F4F;
+  }
