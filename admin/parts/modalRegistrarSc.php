@@ -1,3 +1,6 @@
+<?php
+include '../../client/verificacion_sesion.php';?>
+
 <!DOCTYPE html>
 <html lang="es">
 

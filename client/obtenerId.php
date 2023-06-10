@@ -4,7 +4,7 @@
 $id= $_SESSION['id'];
 
 // OBTENER EL ID_DOCTOR según el ID_USUARIO
-include '../client/conexion.php'; //Conexión con base de datos
+include 'conexion.php'; //Conexión con base de datos
 
 $consulta = "SELECT id_doctor FROM doctores WHERE id_usuario = '$id'";
 $query = mysqli_query($conexion, $consulta);
