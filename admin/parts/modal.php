@@ -1,5 +1,5 @@
-<div class="insertar">
-    <button>Registrar una Cita</button>
+<div>
+    <button class="insertar">Registrar una Cita</button>
 </div>
 
 <div class="modal disable">
