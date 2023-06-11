@@ -142,7 +142,7 @@ $year = date("Y");
 
         <?php
         include 'components/footer.html';
-        include '../client/eliminar_no_atendidas.php'
+        include '../client/eliminar_no_atendidas.php';
         ?>
 
         <script src="js/confirm.js"></script>
