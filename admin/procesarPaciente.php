@@ -87,8 +87,8 @@ function fecha_atencion($fecha){
                         <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
                         <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
                         <div class="tbody"><?php echo $resultado['turno_consulta']; ?></div>
-                        <div class="tbody"> <input type="time" name="hora_inicio"> </div>
-                        <div class="tbody"> <input type="time" name="hora_fin">  </div>
+                        <div class="tbody"> <input type="time" required name="hora_inicio"> </div>
+                        <div class="tbody"> <input type="time" required name="hora_fin">  </div>
                     </div>
             </div>
 

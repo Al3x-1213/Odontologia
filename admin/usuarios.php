@@ -115,7 +115,7 @@ function fecha_nacimiento($fecha){
 
         <h2 class="dia">Pacientes</h2>
 
-        <div class="table">
+        <div class="table"> <!--slice-->
             <div class="thead__table">
                 <!-- <div class="thead id">Id</div> -->
                 <div class="thead">Paciente</div>
