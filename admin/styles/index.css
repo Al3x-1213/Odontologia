@@ -60,11 +60,16 @@ body {
 
 .correo {
   width: 26%;
+  overflow-x: hidden;
 }
 
 .edad {
   min-width: 4%;
   width: 4%;
+}
+
+.cedula {
+  min-width: 5%;
 }
 
 .eliminar, .atendido, .editar, .procesar {
@@ -114,12 +119,6 @@ body {
 }
 
 .insertar{
-  margin-top: 10px;
-  display: flex;
-  justify-content: left;
-}
-
-.insertar button{
   width: 180px;
   margin: 1% 2% 1% 2%;
   padding: 5px 10px;

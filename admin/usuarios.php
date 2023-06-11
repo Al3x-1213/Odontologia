@@ -39,8 +39,8 @@ function fecha_nacimiento($fecha){
         include 'components/menu2.php';
         ?>
 
-        <div class="insertar">
-            <button>Registrar un Usuario</button>
+        <div >
+            <button class="insertar">Registrar un Usuario</button>
         </div>
 
         <div class="modal disable">
@@ -119,8 +119,9 @@ function fecha_nacimiento($fecha){
             <div class="thead__table">
                 <!-- <div class="thead id">Id</div> -->
                 <div class="thead">Paciente</div>
-                <div class="thead">Cédula</div>
-                <div class="thead">Edad</div>
+                <div class="thead">Usuario</div>
+                <div class="thead cedula">Cédula</div>
+                <div class="thead edad">Edad</div>
                 <div class="thead">Fecha de Nacimiento</div>
                 <div class="thead">Télefono</div>
                 <div class="thead correo">Correo Electrónico</div>
@@ -134,8 +135,9 @@ function fecha_nacimiento($fecha){
                 <div class="tbody__table">
                     <!-- <div class="tbody id"><?php //echo $resultado['id_paciente']; ?></div> -->
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-                    <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-                    <div class="tbody"><?php echo $resultado['edad']; ?></div>
+                    <div class="tbody"><?php echo $resultado['usuario']; ?></div>
+                    <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
+                    <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                     <div class="tbody"><?php echo $fecha_de_nacimiento; ?></div>
                     <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>

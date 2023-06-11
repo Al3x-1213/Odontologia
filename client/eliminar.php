@@ -17,7 +17,7 @@ $sesion = $_SESSION['sesion'];
 
 if($eliminar == 1 && $sesion == 1){
     mysqli_close($conexion);
-    header("location:../admin/pacientes.php");
+    header("location:../admin/usuarios.php");
 }
 
 ?>
