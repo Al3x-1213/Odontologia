@@ -36,7 +36,7 @@
             <div id="grupo_cedula" class="grupo">
                 <label>Cédula:</label>
                 <div class="input-icon"><input type="number" maxlength="8" required name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="paragraf__error display"></div>
             </div>
 
             <h3>Tu cuenta: </h3>

@@ -1,7 +1,7 @@
 <?php
 include '../client/verificacion_sesion.php';
 
-function fecha_atencion($fecha){
+function fecha_arreglado($fecha){
     $fecha_nacimiento = explode("-", $fecha);
     return $fecha = $fecha_nacimiento[2]."-".$fecha_nacimiento[1]."-".$fecha_nacimiento[0];
 }
@@ -71,13 +71,14 @@ function fecha_atencion($fecha){
 
             <?php
             while ($resultado = mysqli_fetch_array($query)) {
+                $fecha_arreglado = fecha_arreglado($resultado['fecha_nacimiento'])
             ?>
                 <div class="tbody__table">
                     <!-- <div class="tbody id"><?php //echo $resultado['id_paciente']; ?></div> -->
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                     <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody"><?php echo $resultado['fecha_nacimiento']; ?></div>
+                    <div class="tbody"><?php echo $fecha_arreglado; ?></div>
                     <div class="tbody"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
                     <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
