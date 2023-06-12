@@ -19,6 +19,7 @@ function fecha_nacimiento($fecha){
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/usuarios.css">
         <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/modal.css">
         <link rel="stylesheet" href="../Iconos/style.css">
@@ -106,14 +107,109 @@ function fecha_nacimiento($fecha){
             </div>
         </div>
 
+        <h2 class="dia">Usuarios</h2>
+
+        <div class="users">
+            <div><a href="#">Todos</a></div>
+            <div><a href="#">Pacientes</a></div>
+            <div><a href="#">Doctores</a></div>
+        </div>
+
+
         <?php
         include '../client/conexion.php'; //Conexión con base de datos
 
+        // TODOS LOS USUARIOS ----------------------------------------------------------------------------------------------------
+        $consulta = "SELECT * FROM usuarios";
+        $query = mysqli_query($conexion, $consulta);
+        ?>
+
+        <div class="table"> <!--slice-->
+            <div class="thead__table">
+                <!-- <div class="thead id">Id</div> -->
+                <div class="thead">Paciente</div>
+                <div class="thead">Usuario</div>
+                <div class="thead cedula">Cédula</div>
+                <div class="thead edad">Edad</div>
+                <div class="thead">Fecha de Nacimiento</div>
+                <div class="thead">Télefono</div>
+                <div class="thead correo">Correo Electrónico</div>
+                <div class="thead">Acciones</div>
+            </div>
+
+            <?php
+            while ($resultado = mysqli_fetch_array($query)) {
+                $fecha_de_nacimiento = fecha_nacimiento($resultado['fecha_nacimiento']);
+            ?>
+                <div class="tbody__table">
+                    <!-- <div class="tbody id"><?php //echo $resultado['id_paciente']; ?></div> -->
+                    <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
+                    <div class="tbody"><?php echo $resultado['usuario']; ?></div>
+                    <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
+                    <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
+                    <div class="tbody"><?php echo $fecha_de_nacimiento; ?></div>
+                    <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
+                    <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
+
+                    <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
+                    <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div>                
+                </div>
+            <?php
+            }
+            ?>
+        </div>
+
+        <?php
+        include '../client/conexion.php'; //Conexión con base de datos
+
+        // PACIENTES ----------------------------------------------------------------------------------------------------
         $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 2";
         $query = mysqli_query($conexion, $consulta);
         ?>
 
-        <h2 class="dia">Pacientes</h2>
+        <div class="table"> <!--slice-->
+            <div class="thead__table">
+                <!-- <div class="thead id">Id</div> -->
+                <div class="thead">Paciente</div>
+                <div class="thead">Usuario</div>
+                <div class="thead cedula">Cédula</div>
+                <div class="thead edad">Edad</div>
+                <div class="thead">Fecha de Nacimiento</div>
+                <div class="thead">Télefono</div>
+                <div class="thead correo">Correo Electrónico</div>
+                <div class="thead">Acciones</div>
+            </div>
+
+            <?php
+            while ($resultado = mysqli_fetch_array($query)) {
+                $fecha_de_nacimiento = fecha_nacimiento($resultado['fecha_nacimiento']);
+            ?>
+                <div class="tbody__table">
+                    <!-- <div class="tbody id"><?php //echo $resultado['id_paciente']; ?></div> -->
+                    <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
+                    <div class="tbody"><?php echo $resultado['usuario']; ?></div>
+                    <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
+                    <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
+                    <div class="tbody"><?php echo $fecha_de_nacimiento; ?></div>
+                    <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
+                    <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
+
+                    <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
+                    <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div>                
+                </div>
+            <?php
+            }
+            ?>
+        </div>
+
+        <?php
+        include '../client/conexion.php'; //Conexión con base de datos
+
+        // DOCTORES ----------------------------------------------------------------------------------------------------
+        // $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 2";
+        $consulta = "SELECT * FROM doctores INNER JOIN usuarios ON doctores.id_usuario = usuarios.id_usuario";
+        $query = mysqli_query($conexion, $consulta);
+        ?>
 
         <div class="table"> <!--slice-->
             <div class="thead__table">
