@@ -1,0 +1,16 @@
+.users{
+    display: flex;
+    justify-content: center;
+    /* border: solid red 1px; */
+}
+
+.users div{
+    width: 10%;
+    text-align: center;
+    margin: 10px;
+    /* border: solid green 1px; */
+}
+
+.users div a{
+    text-decoration: none;
+}
