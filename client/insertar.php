@@ -14,7 +14,7 @@ if (!empty($_POST['boton_reg'])){
         //DATOS DEL FORMULARIO DE REGISTRO
         $usuario = $_POST['usuario'];
         $clave = $_POST['clave'];
-        $clave_confirm = $_POST['clave2'];
+        $claveConfirm = $_POST['clave2'];
         $tipo_usuario = "2";
         $status_usuario = "1";
 
@@ -27,7 +27,7 @@ if (!empty($_POST['boton_reg'])){
         $correo = $_POST['correo'];
 
         // VERIFICAR QUE AMBAS CONTRASEÑAS SEAN IGUALES
-        if ($clave != $clave_confirm){
+        if ($clave != $claveConfirm){
             ?>
             <div class= "alerta">Las contraseñas deben coincidir</div>
             <div class= "alerta">Por favor verificar</div>

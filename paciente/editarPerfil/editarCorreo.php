@@ -52,7 +52,7 @@ include '../../client/verificacion_sesion.php';
 
         <h2 class="dia">Editar Perfil de Usuario</h2>
         
-        <div class="editTelefonoP">
+        <div class="card editCorreo">
             <div class="thead">
                 <div class="row">
                     <div class="column">Correo Electrónico: </div>

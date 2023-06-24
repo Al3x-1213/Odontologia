@@ -119,7 +119,7 @@ function ordenarFecha($fecha){
                     <div class="row b">
                         <div class="column">Usuario</div>
                         <div class="column"><?php echo $resultado['usuario']; ?></div>
-                        <div class="column i"><a href="#">icono</a></div>
+                        <div class="column i"><a href="editarPerfil/editarUsuario.php">icono</a></div>
                     </div>
                     <div class="row b">
                         <div class="column">Contraseña</div>
@@ -135,7 +135,7 @@ function ordenarFecha($fecha){
                             }
                             ?>
                         </div>
-                        <div class="column i"><a href="#">icono</a></div>
+                        <div class="column i"><a href="editarPerfil/editarClave.php">icono</a></div>
                     </div>
                 </div>
             </div>

@@ -12,13 +12,17 @@ body {
     font-size: 34px;
 }
 
-.editTelefonoP{
+.card{
     width: 50%;
     height: 274px;
     justify-content: center;
-    margin: 5% auto;
+    margin: 4% auto;
     border-radius: 10px;
     box-shadow: 0 0 10px 1px #333;
+}
+
+.editclave{
+    height: 390px;
 }
 
 .thead .row{
@@ -43,6 +47,8 @@ body {
 
 form .inputs{
     display: flex;
+    /* border: solid green 1px; */
+
 }
 
 .inputs .input{
@@ -52,6 +58,7 @@ form .inputs{
 
 .inputs .input .inputUpdate{
     background-color: transparent;
+    margin-bottom: 40px;
     border: none;
     border-bottom: solid #E67F4F 2px;
     outline: none;

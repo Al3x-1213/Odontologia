@@ -44,7 +44,7 @@ include '../../client/verificacion_sesion.php';
         // OBTENER LA INFORMACIÓN DEL PACIENTE QUE ESTÁ LOGUEADO
         include '../../client/conexion.php'; //Conexión con base de datos
 
-        $consulta = "SELECT telefono_1 FROM usuarios WHERE id_usuario = '$id'";
+        $consulta = "SELECT clave FROM usuarios WHERE id_usuario = '$id'";
         $query = mysqli_query($conexion, $consulta);
 
         $resultado = mysqli_fetch_array($query);
@@ -52,18 +52,16 @@ include '../../client/verificacion_sesion.php';
 
         <h2 class="dia">Editar Perfil de Usuario</h2>
         
-        <div class="card editTelefonoP">
+        <div class="card editclave">
             <div class="thead">
                 <div class="row">
-                    <div class="column">Télefono Principal: </div>
+                    <div class="column">Contraseña: </div>
                     <div class="mensaje">
                         <?php
-                        include '../../client/updateTelefonoP.php';
+                        include '../../client/updateClave.php';
                         ?>
                     </div>
-                    
                 </div>
-                
             </div>
             <div class="tbody">
                 <div class="row">
@@ -71,7 +69,9 @@ include '../../client/verificacion_sesion.php';
                         <form method="POST">
                             <div class="inputs">
                                 <div class="input">
-                                    <input type="number" required name="telefono1" value="<?php echo $resultado['telefono_1']; ?>" class="inputUpdate">
+                                    <input type="password" required name="claveAnt" placeholder="Ingresa tu contraseña anterior" class="inputUpdate">
+                                    <input type="password" required name="clave" placeholder="Nueva contraseña" class="inputUpdate">
+                                    <input type="password" required name="clave2" placeholder="Confirmar contraseña" class="inputUpdate">
                                 </div>
                                 <div class="button">
                                     <input type="submit" value="Enviar" name="boton_upd">
