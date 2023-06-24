@@ -3,7 +3,6 @@
 if (!empty($_POST['boton_upd'])){
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
     if (empty($_POST['telefono2'])){
-    
         ?>
         <div class= "alerta">No deben haber campos vacios</div>
         <?php
