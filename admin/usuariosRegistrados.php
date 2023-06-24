@@ -6,6 +6,12 @@ function fecha_nacimiento($fecha){
     return $fecha = $fecha_nacimiento[2]."-".$fecha_nacimiento[1]."-".$fecha_nacimiento[0];
 }
 
+$tableShow = $_GET['value'];
+
+if($tableShow == '' || $tableShow == null){
+    $tableShow = 1;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -110,9 +116,9 @@ function fecha_nacimiento($fecha){
         <h2 class="dia">Usuarios</h2>
 
         <div class="users">
-            <div><a href="#">Todos</a></div>
-            <div><a href="#">Pacientes</a></div>
-            <div><a href="#">Doctores</a></div>
+            <div class="dia"><a class="<?php if($tableShow == 1){?>selection<?php }else{?><?php } ?>" href="usuariosRegistrados.php?value=<?php echo 1 ?>">Todos</a></div>
+            <div class="dia"><a class="<?php if($tableShow == 2){?>selection<?php }else{?><?php } ?>" href="usuariosRegistrados.php?value=<?php echo 2 ?>">Pacientes</a></div>
+            <div class="dia"><a class="<?php if($tableShow == 3){?>selection<?php }else{?><?php } ?>" href="usuariosRegistrados.php?value=<?php echo 3 ?>">Doctores</a></div>
         </div>
 
 
@@ -120,13 +126,10 @@ function fecha_nacimiento($fecha){
         include '../client/conexion.php'; //Conexión con base de datos
 
         // TODOS LOS USUARIOS ----------------------------------------------------------------------------------------------------
-        $consulta = "SELECT * FROM usuarios";
-        $query = mysqli_query($conexion, $consulta);
         ?>
 
-        <div class="table"> <!--slice-->
+        <div class="table slice <?php if($tableShow == 1){?>active<?php }else{?> desactive <?php } ?>"> <!--slice-->
             <div class="thead__table">
-                <!-- <div class="thead id">Id</div> -->
                 <div class="thead">Paciente</div>
                 <div class="thead">Usuario</div>
                 <div class="thead cedula">Cédula</div>
@@ -138,6 +141,8 @@ function fecha_nacimiento($fecha){
             </div>
 
             <?php
+            $consulta = "SELECT * FROM usuarios";
+            $query = mysqli_query($conexion, $consulta);
             while ($resultado = mysqli_fetch_array($query)) {
                 $fecha_de_nacimiento = fecha_nacimiento($resultado['fecha_nacimiento']);
             ?>
@@ -167,7 +172,7 @@ function fecha_nacimiento($fecha){
         $query = mysqli_query($conexion, $consulta);
         ?>
 
-        <div class="table"> <!--slice-->
+        <div class="table slice <?php if($tableShow == 2){?>active<?php }else{?>desactive<?php } ?>">
             <div class="thead__table">
                 <!-- <div class="thead id">Id</div> -->
                 <div class="thead">Paciente</div>
@@ -211,7 +216,7 @@ function fecha_nacimiento($fecha){
         $query = mysqli_query($conexion, $consulta);
         ?>
 
-        <div class="table"> <!--slice-->
+        <div class="table slice <?php if($tableShow == 3){?>active<?php }else{?> desactive <?php } ?>"> <!--slice-->
             <div class="thead__table">
                 <!-- <div class="thead id">Id</div> -->
                 <div class="thead">Paciente</div>
