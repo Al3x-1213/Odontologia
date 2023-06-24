@@ -1,0 +1,64 @@
+html,
+body {
+    /* background: linear-gradient(70deg, #9fe3ec, #e0dada); */
+    background: linear-gradient(30deg, #789DC9, #EAEDF3);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.dia {
+    text-align: center;
+    font-family: 'Lobster' !important;
+    font-size: 34px;
+}
+
+.editTelefonoP{
+    width: 50%;
+    height: 274px;
+    justify-content: center;
+    margin: 5% auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 1px #333;
+}
+
+.thead .row{
+    padding: 50px 40px 60px 80px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.mensaje{
+    font-size: 17px;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+.tbody .row{
+    padding: 25px 80px 50px 80px;
+}
+
+.tbody{
+    font-size: 20px;
+}
+
+form .inputs{
+    display: flex;
+}
+
+.inputs .input{
+    width: 50%;
+    /* border: solid rebeccapurple 1px; */
+}
+
+.inputs .input .inputUpdate{
+    background-color: transparent;
+    border: none;
+    border-bottom: solid #E67F4F 2px;
+    outline: none;
+}
+
+.inputs .button{
+    width: 50%;
+    text-align: right;
+    /* border: solid rebeccapurple 1px; */
+}

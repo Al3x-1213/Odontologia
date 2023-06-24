@@ -1,0 +1,49 @@
+html,
+body {
+    /* background: linear-gradient(70deg, #9fe3ec, #e0dada); */
+    background: linear-gradient(30deg, #789DC9, #EAEDF3);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.dia {
+    text-align: center;
+    font-family: 'Lobster' !important;
+    font-size: 34px;
+}
+
+.table{
+    width: 85%;
+    justify-content: center;
+    margin: 3% auto;
+    box-shadow: 0 0 10px 1px #333;
+}
+
+.thead .row{
+    padding: 40px 40px 60px 40px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.tbody .row{
+    display: flex;
+    padding: 25px 40px 25px 40px;
+    border-bottom: solid #6E6E6E 1px;
+    /* border: solid green 1px; */
+}
+
+.tbody .b{
+    border-bottom: solid #6E6E6E 1px;
+}
+
+.tbody .column{
+    width: 40%;
+    font-size: 20px;
+    /* border: solid tomato 1px; */
+}
+
+.tbody .i{
+    width: 20%;
+    text-align: right;
+    /* border: solid tomato 1px; */
+}
