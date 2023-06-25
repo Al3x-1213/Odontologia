@@ -12,10 +12,13 @@ body {
     font-size: 34px;
 }
 
+/* TABLAS CON LA INFORMACIÓN */
+
 .table{
     width: 85%;
     justify-content: center;
     margin: 3% auto;
+    border-radius: 10px;
     box-shadow: 0 0 10px 1px #333;
 }
 
@@ -46,4 +49,10 @@ body {
     width: 20%;
     text-align: right;
     /* border: solid tomato 1px; */
+}
+
+.table a{
+    text-decoration: none;
+    font-size: 22px;
+    color: #E67F4F;
 }
