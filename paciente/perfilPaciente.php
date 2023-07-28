@@ -59,67 +59,78 @@ function ordenarFecha($fecha){
         while($resultado = mysqli_fetch_array($query)){
             $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento'])
         ?>
-            <div class="table basicInformation">
-                <div class="thead">
-                    <div class="row">
-                        <div class="column">Información Básica</div>
+            <div class="tables">
+                <div class="table basicInformation">
+                    <div class="thead">
+                        <div class="row">
+                            <div class="column">Información Básica</div>
+                        </div>
+                    </div>
+                    <div class="tbody">
+                        <div class="row b">
+                            <div class="column">Nombre</div>
+                            <div class="column"><?php echo $resultado['nombre']. " ". $resultado['apellido']; ?></div>
+                        </div>
+                        <div class="row b">
+                            <div class="column">Cédula</div>
+                            <div class="column"><?php echo $resultado['cedula']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="column">Fecha de Nacimiento</div>
+                            <div class="column"><?php echo $fechaNacimiento; ?></div>
+                        </div> 
                     </div>
                 </div>
-                <div class="tbody">
-                    <div class="row b">
-                        <div class="column">Nombre</div>
-                        <div class="column"><?php echo $resultado['nombre']. " ". $resultado['apellido']; ?></div>
-                        <!-- <div class="column i"><a href="#">icono</a></div> -->
+
+                <div class="table contactInformation">
+                    <div class="thead">
+                        <div class="row">
+                            <div class="column">Información de Contacto</div>
+                            <div class="buttonEditable hide"><input type="submit" form="editPhoneP" value="Guardar Cambios" name="boton_upd"></div>
+                        </div>
                     </div>
-                    <div class="row b">
-                        <div class="column">Cédula</div>
-                        <div class="column"><?php echo $resultado['cedula']; ?></div>
-                        <!-- <div class="column i"><a href="#">icono</a></div> -->
+                    <div class="tbody">
+                        <div class="row b">
+                            <div class="column">Télefono Principal</div>
+                            <div class="column divEditable"><?php echo $resultado['telefono_1']; ?></div>
+                            <div class="inputEditable hide">
+                                <form action="../client/updateTelefonoP.php" method="POST" id="editPhoneP">
+                                    <input type="number" maxlength="11" required name="telefono1">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row b">
+                            <div class="column">Télefono Secundario</div>
+                            <div class="column divEditable"><?php echo $resultado['telefono_2']; ?></div>
+                            <div class="inputEditable hide">
+                                <form action="../client/updateTelefonoS.php" method="POST" id="editPhoneP">
+                                    <input type="number" maxlength="11" required name="telefono2">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="column">Correo Electrónico</div>
+                            <div class="column divEditable"><?php echo $resultado['correo']; ?></div>
+                            <div class="inputEditable hide">
+                                <form action="../client/updateCorreo.php" method="POST" id="editPhoneP">
+                                <input type="email" maxlength="60" required name="correo">
+                                </form>
+                            </div>
+                        </div> 
                     </div>
-                    <div class="row">
-                        <div class="column">Fecha de Nacimiento</div>
-                        <div class="column"><?php echo $fechaNacimiento; ?></div>
-                        <!-- <div class="column i"><a href="#">icono</a></div> -->
-                    </div> 
                 </div>
             </div>
-
-            <div class="table contactInformation">
+            <div class="tableAccount">
+            <div class="table account">
                 <div class="thead">
                     <div class="row">
-                        <div class="column">Información de Contacto</div>
-                    </div>
-                </div>
-                <div class="tbody">
-                    <div class="row b">
-                        <div class="column">Télefono Principal</div>
-                        <div class="column"><?php echo $resultado['telefono_1']; ?></div>
-                        <div class="column i"><a href="editarPerfil/editarTelefonoP.php"><i class="icon-arrow_forward_ios"></i></a></div>
-                    </div>
-                    <div class="row b">
-                        <div class="column">Télefono Secundario</div>
-                        <div class="column"><?php echo $resultado['telefono_2']; ?></div>
-                        <div class="column i"><a href="editarPerfil/editarTelefonoS.php"><i class="icon-arrow_forward_ios"></i></a></div>
-                    </div>
-                    <div class="row">
-                        <div class="column">Correo Electrónico</div>
-                        <div class="column"><?php echo $resultado['correo']; ?></div>
-                        <div class="column i"><a href="editarPerfil/editarCorreo.php"><i class="icon-arrow_forward_ios"></i></a></div>
-                    </div> 
-                </div>
-            </div>
-
-            <div class="table profile">
-                <div class="thead">
-                    <div class="row">
-                        <div class="column">Perfil</div>
+                        <div class="column">Cuenta de Usuario</div>
                     </div>
                 </div>
                 <div class="tbody">
                     <div class="row b">
                         <div class="column">Usuario</div>
                         <div class="column"><?php echo $resultado['usuario']; ?></div>
-                        <div class="column i"><a href="editarPerfil/editarUsuario.php"><i class="icon-arrow_forward_ios"></i></a></div>
                     </div>
                     <div class="row b">
                         <div class="column">Contraseña</div>
@@ -135,12 +146,24 @@ function ordenarFecha($fecha){
                             }
                             ?>
                         </div>
-                        <div class="column i"><a href="editarPerfil/editarClave.php"><i class="icon-arrow_forward_ios"></i></a></div>
                     </div>
                 </div>
             </div>
+            </div>
+
         <?php
         }
         ?>
     </body>
+    <script>
+        let divEditable = document.querySelector(".divEditable");
+        let buttonEditable = document.querySelector(".buttonEditable");
+        let inputEditable = document.querySelector(".inputEditable");
+
+        divEditable.addEventListener("dblclick", function(){
+            buttonEditable.classList.remove("hide");
+            inputEditable.classList.remove("hide");
+            divEditable.classList.add("hide");
+        });   
+    </script>
 </html>

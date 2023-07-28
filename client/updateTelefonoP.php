@@ -1,4 +1,7 @@
 <?php
+include '../client/verificacion_sesion.php';
+?>
+<?php
 
 if (!empty($_POST['boton_upd'])){
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
@@ -19,8 +22,9 @@ if (!empty($_POST['boton_upd'])){
 
         $consulta = "UPDATE usuarios SET telefono_1 = '$telefono_1' WHERE id_usuario = '$id'";
         $query = mysqli_query($conexion, $consulta);
-
+        
         if($query){
+            header("location: ../paciente/perfilPaciente.php");
             ?>
             <div class= "mensaje"><a href= "../perfilPaciente.php">Actualizado correctamente</a></div>
             <?php

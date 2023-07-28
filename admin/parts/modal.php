@@ -4,7 +4,7 @@
 
 <div class="modal disable">
     <div class="flex-container">
-        <form class="form-login" method="POST">
+        <form id="formulario" class="form-login" method="POST">
             <div class="header__form">
                 <h2>Agendar una Cita</h2> <span class="icon-cross"></span>
             </div>
@@ -13,8 +13,16 @@
             include '../client/registrarCita.php';
             ?>
 
-            <label>Cédula: </label>
-            <input type="number" maxlength="8" required="true" name="cedula">
+            <div id="grupo_cedula" class="grupo">
+                <label>Cédula:</label>
+                <div class="input-icon">
+                    <input type="number" maxlength="8" required name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i><i class="icon-checkmark display"></i>
+                </div>
+                <div class="paragraf__error display">La cédula debe tener 7 u 8 caractéres</div>
+            </div>
+
+            <!-- <label>Cédula: </label>
+            <input type="number" maxlength="8" required="true" name="cedula"> -->
 
             <?php
             // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
@@ -74,3 +82,4 @@
         </form>
     </div>
 </div>
+<script src="../js/validacionRegistrarse.js"></script>
