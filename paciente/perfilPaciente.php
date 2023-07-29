@@ -86,84 +86,75 @@ function ordenarFecha($fecha){
                     <div class="thead">
                         <div class="row">
                             <div class="column">Información de Contacto</div>
-                            <div class="buttonEditable hide"><input type="submit" form="editPhoneP" value="Guardar Cambios" name="boton_upd"></div>
+                            <div class="buttonEditable hide"><input type="submit" form="editContactInformation" value="Guardar Cambios" name="boton_upd"></div>
                         </div>
                     </div>
-                    <div class="tbody">
-                        <div class="row b">
-                            <div class="column">Télefono Principal</div>
-                            <div class="column divEditable"><?php echo $resultado['telefono_1']; ?></div>
-                            <div class="inputEditable hide">
-                                <form action="../client/updateTelefonoP.php" method="POST" id="editPhoneP">
-                                    <input type="number" maxlength="11" required name="telefono1">
-                                </form>
+                    <form action="../client/updateContactInformation.php" method="post" id="editContactInformation">
+                        <div class="tbody">
+                            <div class="row b">
+                                <div class="column">Télefono Principal</div>
+                                <div class="column" id="divEditable1"><?php echo $resultado['telefono_1']; ?></div>
+                                <div class="inputEditable hide" id="inputEditable1">
+                                    <input type="number" maxlength="11" required value="<?php echo $resultado['telefono_1']; ?>" name="telefono1">
+                                </div>
                             </div>
+                            <div class="row b">
+                                <div class="column">Télefono Secundario</div>
+                                <div class="column" id="divEditable2"><?php echo $resultado['telefono_2']; ?></div>
+                                <div class="inputEditable hide" id="inputEditable2">
+                                    <input type="number" maxlength="11" required value="<?php echo $resultado['telefono_2']; ?>" name="telefono2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="column">Correo Electrónico</div>
+                                <div class="column" id="divEditable3"><?php echo $resultado['correo']; ?></div>
+                                <div class="inputEditable hide" id="inputEditable3">
+                                    <input type="email" maxlength="60" required value="<?php echo $resultado['correo']; ?>" name="correo">
+                                </div>
+                            </div> 
                         </div>
-                        <div class="row b">
-                            <div class="column">Télefono Secundario</div>
-                            <div class="column divEditable"><?php echo $resultado['telefono_2']; ?></div>
-                            <div class="inputEditable hide">
-                                <form action="../client/updateTelefonoS.php" method="POST" id="editPhoneP">
-                                    <input type="number" maxlength="11" required name="telefono2">
-                                </form>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="column">Correo Electrónico</div>
-                            <div class="column divEditable"><?php echo $resultado['correo']; ?></div>
-                            <div class="inputEditable hide">
-                                <form action="../client/updateCorreo.php" method="POST" id="editPhoneP">
-                                <input type="email" maxlength="60" required name="correo">
-                                </form>
-                            </div>
-                        </div> 
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="tableAccount">
-            <div class="table account">
+            <div class="table accountInformation">
                 <div class="thead">
                     <div class="row">
                         <div class="column">Cuenta de Usuario</div>
+                        <div class="buttonEditable2 hide"><input type="submit" form="editAccountInformation" value="Guardar Cambios" name="boton_upd"></div>
                     </div>
                 </div>
-                <div class="tbody">
-                    <div class="row b">
-                        <div class="column">Usuario</div>
-                        <div class="column"><?php echo $resultado['usuario']; ?></div>
-                    </div>
-                    <div class="row b">
-                        <div class="column">Contraseña</div>
-                        <div class="column">
-                            <?php
-                            $clave = $resultado['clave'];
-                            $claveArray = str_split($clave);
+                <form action="../client/updateUsuario.php" method="post" id="editAccountInformation">
+                    <div class="tbody">
+                        <div class="row b">
+                            <div class="column">Usuario</div>
+                            <div class="column" id="divEditable4"><?php echo $resultado['usuario']; ?></div>
+                            <div class="inputEditable hide" id="inputEditable4">
+                                <input type="text" maxlength="30" required value="<?php echo $resultado['usuario']; ?>" name="usuario">
+                            </div>
+                        </div>
+                        <div class="row b">
+                            <div class="column">Contraseña</div>
+                            <div class="column">
+                                <?php
+                                $clave = $resultado['clave'];
+                                $claveArray = str_split($clave);
 
-                            $contador = 0;
-                            foreach($claveArray as $elemento){
-                                $contador = $contador + 1;
-                                echo "*";
-                            }
-                            ?>
+                                $contador = 0;
+                                foreach($claveArray as $elemento){
+                                    $contador = $contador + 1;
+                                    echo "*";
+                                }
+                                ?>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             </div>
-
         <?php
         }
         ?>
     </body>
-    <script>
-        let divEditable = document.querySelector(".divEditable");
-        let buttonEditable = document.querySelector(".buttonEditable");
-        let inputEditable = document.querySelector(".inputEditable");
-
-        divEditable.addEventListener("dblclick", function(){
-            buttonEditable.classList.remove("hide");
-            inputEditable.classList.remove("hide");
-            divEditable.classList.add("hide");
-        });   
-    </script>
+    <script src="js/editarPerfil.js"></script>
 </html>

@@ -46,7 +46,7 @@ body {
     margin-bottom: 3%;
 }
 
-.account{
+.accountInformation{
     width: 70%;
 }
 
@@ -55,17 +55,22 @@ body {
     padding: 40px 40px 60px 40px;
     font-size: 25px;
     font-weight: bold;
+    /* border: solid blue 1px; */
 }
 
 
 .thead .row .column{
     /* border: solid red 1px; */
-    width: 72%;
+    width: 60%;
 }
 
-.buttonEditable{
+.buttonEditable, .buttonEditable2{
+    width: 40%;
+    float: right;
     /* border: solid green 1px; */
     font-size: 18px;
+    display: flex;
+    justify-content: right;
 }
 
 .hide{
@@ -92,10 +97,18 @@ body {
 /* INPUT PARA EDITAR */
 
 .inputEditable input{
-    width: 55%;
+    /* width: 55%; */
     background: transparent;
     border: none;
     outline: none;
     border-bottom: solid #333 1px;
     font-size: 20px;
+}
+
+#inputEditable1 input, #inputEditable2 input{
+    width: 55%;
+}
+
+#inputEditable3 input{
+    width: 100%;
 }
