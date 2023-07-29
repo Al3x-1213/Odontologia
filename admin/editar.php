@@ -29,7 +29,7 @@ include '../client/verificacion_sesion.php';
 $id = $_GET['id'];
 
 include '../client/conexion.php';
-$consulta = "SELECT * FROM paciente1 WHERE id_paciente = '$id'";
+$consulta = "SELECT * FROM usuarios WHERE id_usuario = '$id'";
 $select = ($conexion->query($consulta));
 
 $resultado = mysqli_fetch_array($select);
@@ -37,10 +37,10 @@ $resultado = mysqli_fetch_array($select);
 
 <body>
   <div class="flex__container">
-    <form class="form form__alternative" method="POST" action="../client/actualizar.php?id=<?php echo $resultado['id_paciente'] ?>">
+    <form class="form form__alternative" method="POST">
 
       <!-- TITULO -->
-      <h2 class="title__form"><a href="pacientes.php">Actualizar</a></h2>
+      <h2 class="title__form"><a href="pacientes.php">Editar</a></h2>
 
       <div class="fields__form">
 
@@ -61,9 +61,6 @@ $resultado = mysqli_fetch_array($select);
 
         <label for="correo">Correo:</label>
         <input type="email" maxlength="60" required="true" name="correo" class="input__form" autocomplete="off" value="<?php echo $resultado['correo'] ?>">
-
-        <label for="clave">Password:</label>
-        <input type="password" maxlength="50" required="true" name="clave" class="input__form" value="<?php echo $resultado['clave'] ?>">
 
         <input class="button" type="submit" value="Enviar">
 

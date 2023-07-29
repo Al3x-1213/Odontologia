@@ -25,8 +25,8 @@ if($tableShow == '' || $tableShow == null){
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/index.css">
-        <link rel="stylesheet" href="styles/usuarios.css">
         <link rel="stylesheet" href="styles/footer.css">
+        <link rel="stylesheet" href="styles/usuarios.css">
         <link rel="stylesheet" href="styles/modal.css">
         <link rel="stylesheet" href="../Iconos/style.css">
 
