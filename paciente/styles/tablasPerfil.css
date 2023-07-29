@@ -12,23 +12,69 @@ body {
     font-size: 34px;
 }
 
+/* TABLAS CON LA INFORMACIÓN */
+
+.tables{
+    display: flex;
+    /* box-shadow: 0 0 10px 1px #333; */
+    margin: 3%;
+
+}
+
 .table{
-    width: 85%;
-    justify-content: center;
+    width: 50%;
+    /* background-color: #333; */
+    border: solid #333 3px;
+    border-radius: 5px;
+    /* justify-content: center;
     margin: 3% auto;
-    box-shadow: 0 0 10px 1px #333;
+    border-radius: 10px; */
+}
+
+.basicInformation{
+    margin-right: 1%;
+}
+
+.contactInformation{
+    margin-left: 1%;
+}
+
+.tableAccount{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3%;
+}
+
+.account{
+    width: 70%;
 }
 
 .thead .row{
+    display: flex;
     padding: 40px 40px 60px 40px;
     font-size: 25px;
     font-weight: bold;
 }
 
+
+.thead .row .column{
+    /* border: solid red 1px; */
+    width: 72%;
+}
+
+.buttonEditable{
+    /* border: solid green 1px; */
+    font-size: 18px;
+}
+
+.hide{
+    display: none;
+}
+
 .tbody .row{
     display: flex;
-    padding: 25px 40px 25px 40px;
-    border-bottom: solid #6E6E6E 1px;
+    padding: 25px 40px 20px 40px;
     /* border: solid green 1px; */
 }
 
@@ -37,13 +83,19 @@ body {
 }
 
 .tbody .column{
-    width: 40%;
+    width: 50%;
+    height: 30px;
     font-size: 20px;
     /* border: solid tomato 1px; */
 }
 
-.tbody .i{
-    width: 20%;
-    text-align: right;
-    /* border: solid tomato 1px; */
+/* INPUT PARA EDITAR */
+
+.inputEditable input{
+    width: 55%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: solid #333 1px;
+    font-size: 20px;
 }
