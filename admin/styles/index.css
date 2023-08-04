@@ -43,6 +43,10 @@ body {
   height: 50px;
   max-height: 50px;
 }
+/* 
+.tbody__table{
+  border: solid red 1px;
+} */
 
 .tbody__table, .thead__table {
   display: flex;
@@ -56,6 +60,8 @@ body {
 .contacto {
   display: flex;
   text-align: center;
+  line-height: 20px;
+
 }
 
 .correo {
