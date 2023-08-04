@@ -46,28 +46,30 @@
     border: 1px solid #789DC9;
 }
 
-.header__form>.icon-cross{
+.header__form > .icon-cross{
     position: absolute;
     top: 0;
     right: 0;
     margin: 5%;
     cursor: pointer;
+    color: #EAEDF3;
     transition: all .4s ease;
 }
 
 .header__form>.icon-cross:hover{
     color: #E67F4FAA;
 }
-.form-login>input{
+
+.input__form{
     color: #EAEDF3;
-    background: transparent;
+    background: transparent !important;
     outline: none;
     border: none;
     border-bottom: 1px solid #789DC9;
     transition: .4s;
 }
 
-.form-login>input:focus{
+.input__form:focus{
     font-size: 1.05em;
     border-bottom: 1px solid #33548A;
 }
@@ -129,10 +131,6 @@ p a{
     border-bottom: 1px solid #ea4848;
 }
   
-.success{
-    border-bottom: 1px solid #00a92d;
-}
-  
 .paragraf__error{
     color: #ea4848;
     padding: 1px 0;
@@ -150,12 +148,12 @@ p a{
     color: #333;
 }
   
-  .icon-warning{
+.icon-warning{
     color: #ea4848;
     padding: 0 2%;
 }
   
-  .icon-checkmark{
+.confirm{
     color: #00a92d;
     padding: 0 2%;
 }

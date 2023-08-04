@@ -13,16 +13,16 @@
             include '../client/registrarCita.php';
             ?>
 
-            <div id="grupo_cedula" class="grupo">
+            <!-- <div id="grupo_cedula" class="grupo">
                 <label>Cédula:</label>
                 <div class="input-icon">
-                    <input type="number" maxlength="8" required name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i><i class="icon-checkmark display"></i>
+                    <input type="number" maxlength="8" required name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i><i class="icon-checkmark confirm display"></i>
                 </div>
                 <div class="paragraf__error display">La cédula debe tener 7 u 8 caractéres</div>
-            </div>
+            </div>-->
 
-            <!-- <label>Cédula: </label>
-            <input type="number" maxlength="8" required="true" name="cedula"> -->
+            <label>Cédula: </label>
+            <input type="number" maxlength="8" required="true" name="cedula" class="input__form">
 
             <?php
             // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN

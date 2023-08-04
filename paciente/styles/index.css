@@ -13,7 +13,7 @@ body {
 }
 
 .table {
-  width: 98%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,8 +28,8 @@ body {
   padding: 8px;
   border: 1px solid #14a9e9;
   /* border: 1px solid #33548A; */
-  width: 15%;
-  max-width: 15%;
+  width: 20%;
+  max-width: 20%;
   text-align: center;
   max-height: 50px;
 }
