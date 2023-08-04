@@ -1,6 +1,6 @@
 html,
 body {
-  background: linear-gradient(70deg, #9fe3ec, #e0dada);
+  background: linear-gradient(45deg, #789dc9, #EAEDF3);
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-size: 16px;
@@ -43,6 +43,10 @@ body {
   height: 50px;
   max-height: 50px;
 }
+/* 
+.tbody__table{
+  border: solid red 1px;
+} */
 
 .tbody__table, .thead__table {
   display: flex;
@@ -56,6 +60,8 @@ body {
 .contacto {
   display: flex;
   text-align: center;
+  line-height: 20px;
+
 }
 
 .correo {
