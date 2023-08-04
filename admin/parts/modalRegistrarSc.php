@@ -153,6 +153,6 @@ include '../../client/verificacion_sesion.php';
         </form>
     </div>
 
-<script src="../../js/validacionRegistrarse.js"></script>
+<!-- <script src="../../js/validacionRegistrarse.js"></script> -->
 </body>
 </html>

@@ -82,4 +82,4 @@
         </form>
     </div>
 </div>
-<script src="../js/validacionRegistrarse.js"></script>
+<!-- <script src="../js/validacionRegistrarse.js"></script> -->

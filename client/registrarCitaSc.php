@@ -32,7 +32,7 @@ if (!empty($_POST['boton_c'])){
         //HACER REGISTRO EN BASE DE DATOS - TABLA USUARIOS
         include '../client/conexion.php'; //Conexión con base de datos
 
-        $consulta = "INSERT INTO usuarios VALUES(NULL, '', '', '$tipo_usuario', '$status_usuario', '$nombre',
+        $consulta = "INSERT INTO usuarios VALUES(NULL, NULL, NULL,  '$tipo_usuario', '$status_usuario', '$nombre',
         '$apellido','$cedula', '$edad', '$nacimiento', '$telefono_1', '$telefono_2',  '$correo', now())";
         $query = mysqli_query($conexion, $consulta);
 
@@ -47,10 +47,10 @@ if (!empty($_POST['boton_c'])){
             $id_paciente = $respuesta['id_usuario'];
 
             //HACER REGISTRO EN BASE DE DATOS - TABLA CONSULTAS
-            $consulta = "INSERT INTO consultas VALUES(NULL, '$id_paciente', '$causa', '$fechaAtencion', '$turno', '', '', '$id_doctor', '$id_status_consulta', now())";
+            $consulta = "INSERT INTO consultas VALUES(NULL, '$id_paciente', '$causa', '$fechaAtencion', '$turno', NULL, NULL, '$id_doctor', '$id_status_consulta', now())";
             $query = mysqli_query($conexion, $consulta);
 
-            if($query){
+            if($query == 1){
                 ?>
                 <div class= "mensaje"><a href= "#">Cita agendada correctamente</a></div>
                 <?php
