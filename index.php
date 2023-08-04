@@ -28,7 +28,7 @@ $_SESSION['sesion'] = 0;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-  <title>Consultorio Mirasol Díaz</title>
+  <title>Consultorio MARISOL DÍAZ</title>
 </head>
 
 <body>
@@ -43,23 +43,23 @@ $_SESSION['sesion'] = 0;
       Magni beatae, porro expedita exercitationem autem id modi, illum dolore asperiores alias velit nam assumenda ipsa perspiciatis similique adipisci. Itaque mollitia excepturi ex molestias soluta, ab sed repellat unde perspiciatis?</p>
     </div>
     <aside class="text__container text2">
-      <h3> Que ofrecemos? </h3>
+      <h3>¿Que ofrecemos?</h3>
       <ul>
-        <li> Consulta odontologica general </li>
-        <li> montura y mantenimiento de breakers </li>
-        <li> operaciones de menores </li>
+        <li>Consulta Diagnóstica</li>
+        <li>Limpieza Bucal</li>
+        <li>Blanqueamiento Dental</li>
         <li> limpieza bucal </li>
-        <li> Tratamiento de caries </li>
+        <li>Obturación de Caries</li>
       </ul>
     </aside>
   </div>
 
   <div class="contactanos">
     <div class="address">
-      <h3> Contactenos </h3>
+      <h3> Contáctenos </h3>
       <a name="contactanos"></a>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad illo sapiente nulla dolor odit? Autem facere eligendi tempora saepe quas aliquid blanditiis, vitae laboriosam necessitatibus ullam itaque aut obcaecati! Fuga!</p>
-      <p>telefono: <b>+58 xxxx xxxx  ||  +58 xxxx xxxx</b></p>
+      <p>Teléfono: <b>+58 xxxx xxxx  ||  +58 xxxx xxxx</b></p>
     </div>
     <div class="imgadd">
       <img src="img/direccion.jpeg" alt="direccion de consultio riccio" class="direccion">
