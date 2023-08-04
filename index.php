@@ -43,7 +43,7 @@ $_SESSION['sesion'] = 0;
       Magni beatae, porro expedita exercitationem autem id modi, illum dolore asperiores alias velit nam assumenda ipsa perspiciatis similique adipisci. Itaque mollitia excepturi ex molestias soluta, ab sed repellat unde perspiciatis?</p>
     </div>
     <aside class="text__container text2">
-      <h3>¿Que ofrecemos?</h3>
+      <h3>¿Qué ofrecemos?</h3>
       <ul>
         <li>Consulta Diagnóstica</li>
         <li>Limpieza Bucal</li>

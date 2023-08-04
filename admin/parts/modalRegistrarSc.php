@@ -147,7 +147,7 @@ include '../../client/verificacion_sesion.php';
             <input type="hidden" name="id_doctor" value="<?php echo $id_doctor; ?>">
 
             <div class="buttons__form">
-                <input type="reset" value="Borrar" class="button__form">
+                <input type="reset" value="Borrar" class="button__form remove">
                 <input type="submit" value="Agendar Cita" class="button__form loginSend" name="boton_c">
             </div>
         </form>

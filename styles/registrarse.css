@@ -173,3 +173,21 @@ select {
 .hora {
   margin: 15px 0;
 }
+
+/* Botones */
+
+.buttons__form{
+  display: flex;
+  justify-content: space-around;
+}
+
+.button__form{
+  width: 30%;
+  max-height: 10%;
+  background-color: #789dc9;
+  border:solid #333 1px;
+  border-radius: 2px;
+  margin: 3%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
