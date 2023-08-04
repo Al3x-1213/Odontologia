@@ -45,7 +45,7 @@ if (!empty($_POST['boton_reg'])){
                 $clave= md5($clave);
 
                 $consulta = "INSERT INTO usuarios VALUES(NULL, '$usuario', '$clave', '$tipo_usuario', '$status_usuario',
-                '$nombre', '$apellido', '$cedula', '$edad', '$nacimiento', '$telefono_1', '$telefono_2',  '$correo', now())";
+                '$nombre', '$apellido', '$cedula', '$edad', '$nacimiento', '$telefono_1', '$telefono_2',  '$correo', '$id_discapacidad', '$id_discapacidad', now())";
                 $query = mysqli_query($conexion, $consulta);
 
                 if($query){
@@ -84,7 +84,7 @@ if (!empty($_POST['boton_reg'])){
                 $clave= md5($clave);
 
                 $consulta = "INSERT INTO usuarios VALUES(NULL, '$usuario', '$clave', '$tipo_usuario', '$status_usuario',
-                '$nombre', '$apellido', '$cedula', '$edad', '$nacimiento', '$telefono_1', '$telefono_2',  '$correo', now())";
+                '$nombre', '$apellido', '$cedula', '$edad', '$nacimiento', '$telefono_1', '$telefono_2',  '$correo', '$id_discapacidad', '$id_discapacidad', now())";
                 $query = mysqli_query($conexion, $consulta);
 
                 if($query){
