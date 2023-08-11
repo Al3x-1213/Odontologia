@@ -1,3 +1,9 @@
+<?php
+session_start();
+ob_start();
+session_destroy();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -22,7 +28,7 @@
 
     <body>
         <div class="flex__container flex__container-alternative">
-            <form class="form form-alternative" method="POST"> <!--action="../client/validacion.php"-->
+            <form class="form form-alternative" method="POST">
                 <!-- CODIGO DE ICONO -->
                 <a href="../"><i class="icon-cross"></i></a>
                 <div class="icon__form">

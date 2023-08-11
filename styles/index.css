@@ -1,6 +1,7 @@
 html,
 body {
   background: linear-gradient(45deg, #789dc9, #EAEDF3);
+  /* background-color: #789cc981; */
   background-repeat: no-repeat;
   background-attachment: fixed;
   scroll-behavior: smooth;

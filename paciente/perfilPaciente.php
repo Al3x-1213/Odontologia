@@ -102,7 +102,7 @@ function ordenarFecha($fecha){
                                 <div class="column">Télefono Secundario</div>
                                 <div class="column" id="divEditable2"><?php echo $resultado['telefono_2']; ?></div>
                                 <div class="inputEditable hide" id="inputEditable2">
-                                    <input type="number" maxlength="11" required value="<?php echo $resultado['telefono_2']; ?>" name="telefono2">
+                                    <input type="number" maxlength="11" value="<?php echo $resultado['telefono_2']; ?>" name="telefono2">
                                 </div>
                             </div>
                             <div class="row">

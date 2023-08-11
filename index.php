@@ -1,11 +1,11 @@
 <?php 
 session_start();
 ob_start();
-$_SESSION['sesion'] = 0;
+session_destroy();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <!-- META ETIQUETAS -->
@@ -48,7 +48,7 @@ $_SESSION['sesion'] = 0;
         <li>Consulta Diagnóstica</li>
         <li>Limpieza Bucal</li>
         <li>Blanqueamiento Dental</li>
-        <li> limpieza bucal </li>
+        <li>Limpieza bucal</li>
         <li>Obturación de Caries</li>
       </ul>
     </aside>
