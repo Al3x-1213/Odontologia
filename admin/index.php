@@ -48,7 +48,7 @@ $year = date("Y");
         <?php
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
         include '../client/obtenerId.php';
-        include '../client/conexion.php';
+        include '../client/connection.php';
         $operator = "SELECT * FROM consultas WHERE fecha_atencion = '$year-$mes-$dia' AND id_doctor = '$id_doctor' AND id_status_consulta != 3 AND id_status_consulta != 4";
         $select = $conexion->query($operator);
 

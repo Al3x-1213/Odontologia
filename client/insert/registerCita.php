@@ -13,8 +13,8 @@ if (!empty($_POST['boton_c'])){
         $causa = $_POST['causa'];
         $fechaAtencion = $_POST['atencion'];
         $turno = $_POST['turno'];
-        $id_doctor = $_POST['id_doctor'];
-        $id_status_consulta = 3;
+        $idDoctor = $_POST['id_doctor'];
+        $idStatusConsulta = 3;
 
         // VERIFICAR QUE EL USUARIO CON LA CÉDULA INGRESADA SE ENCUENTRE REGISTRADO
 
@@ -35,7 +35,7 @@ if (!empty($_POST['boton_c'])){
             $id_paciente = $respuesta['id_usuario'];
 
             // INGRESAR LA CONSULTA A BASE DE DATOS
-            $consulta = "INSERT INTO consultas VALUES(NULL, '$id_paciente', '$causa', '$fechaAtencion', '$turno', '', '', '$id_doctor', '$id_status_consulta', now())";
+            $consulta = "INSERT INTO consultas VALUES(NULL, '$id_paciente', '$causa', '$fechaAtencion', '$turno', '', '', '$idDoctor', '$idStatusConsulta', now())";
             $query = mysqli_query($conexion, $consulta);
 
             if($query){

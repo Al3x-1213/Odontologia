@@ -37,7 +37,7 @@ include '../../client/verificationSession.php';
             </div>
 
             <?php
-            include '../../client/registerCitaSc.php';
+            include '../../client/insert/registerCitaSc.php';
             ?>
 
             <h3>Datos Personales: </h3>
@@ -87,11 +87,27 @@ include '../../client/verificationSession.php';
                 <div class="paragraf__error display"> Correo debe contener @ y . </div>
             </div>
 
+            <!------------------------------------------------>
+
+            <label>¿Tiene alguna Discapacidad:</label>
+            <div class="hora">
+                <input type="radio" required value="2" name="discapacidad" class=""> Sí
+                <input type="radio" required value="1" name="discapacidad" class=""> No
+            </div>
+
+            <label>¿Tiene alguna Alergia:</label>
+            <div class="hora">
+                <input type="radio" required value="2" name="alergia" class=""> Sí
+                <input type="radio" required value="1" name="alergia" class=""> No
+            </div>
+
+            <!------------------------------------------------>
+
             <h3>Datos de la Cita: </h3>
 
             <?php
             // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
-            include '../../client/conexion.php'; //Conexión con base de datos
+            include '../../client/connection.php'; //Conexión con base de datos
 
             $consulta = "SELECT * FROM causa_consulta";
             $query = mysqli_query($conexion, $consulta)

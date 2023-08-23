@@ -2,16 +2,17 @@
 
 if (!empty($_POST['boton_c'])){
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
-    if (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['cedula']) || empty($_POST['nacimiento'])|| empty($_POST['telefono1'])
-    || empty($_POST['correo']) || empty($_POST['causa']) || empty($_POST['atencion']) || empty($_POST['turno']) || empty($_POST['id_doctor'])){
+    if (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['cedula']) || empty($_POST['nacimiento'])
+    || empty($_POST['telefono1']) || empty($_POST['correo']) || empty($_POST['discapacidad']) || empty($_POST['alergia'])
+    || empty($_POST['causa']) || empty($_POST['atencion']) || empty($_POST['turno']) || empty($_POST['id_doctor'])){
         ?>
         <div class= "alerta">No deben haber campos vacios</div>
         <?php
     }
     else{
         //DATOS DEL FORMULARIO
-        $tipo_usuario = "2";
-        $status_usuario = "3";
+        $tipoUsuario = "2";
+        $statusUsuario = "3";
 
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
@@ -20,20 +21,23 @@ if (!empty($_POST['boton_c'])){
         $telefono_1 = $_POST['telefono1'];
         $telefono_2 = $_POST['telefono2'];
         $correo = $_POST['correo'];
+        $discapacidad = $_POST['discapacidad'];
+        $alergia = $_POST['alergia'];
+
         $causa = $_POST['causa'];
         $fechaAtencion = $_POST['atencion'];
         $turno = $_POST['turno'];
-        $id_doctor = $_POST['id_doctor'];
-        $id_status_consulta = 3;
+        $idDoctor = $_POST['id_doctor'];
+        $idStatusConsulta = 3;
 
         // CALCULAR EDAD
-        include 'calcularEdad.php';
+        include '../../client/calcularEdad.php';
 
         //HACER REGISTRO EN BASE DE DATOS - TABLA USUARIOS
-        include '../client/conexion.php'; //Conexión con base de datos
+        include '../../client/connection.php'; //Conexión con base de datos
 
-        $consulta = "INSERT INTO usuarios VALUES(NULL, '', '', '$tipo_usuario', '$status_usuario', '$nombre',
-        '$apellido','$cedula', '$edad', '$nacimiento', '$telefono_1', '$telefono_2',  '$correo', now())";
+        $consulta = "INSERT INTO usuarios VALUES(NULL, '', '', '$tipoUsuario', '$statusUsuario', '$nombre', '$apellido',
+        '$cedula', '$edad', '$nacimiento', '$telefono_1', '$telefono_2', '$correo', '$discapacidad', '$alergia', now())";
         $query = mysqli_query($conexion, $consulta);
 
         if($query){
@@ -47,7 +51,7 @@ if (!empty($_POST['boton_c'])){
             $id_paciente = $respuesta['id_usuario'];
 
             //HACER REGISTRO EN BASE DE DATOS - TABLA CONSULTAS
-            $consulta = "INSERT INTO consultas VALUES(NULL, '$id_paciente', '$causa', '$fechaAtencion', '$turno', '', '', '$id_doctor', '$id_status_consulta', now())";
+            $consulta = "INSERT INTO consultas VALUES(NULL, '$id_paciente', '$causa', '$fechaAtencion', '$turno', '', '', '$idDoctor', '$idStatusConsulta', now())";
             $query = mysqli_query($conexion, $consulta);
 
             if($query){
