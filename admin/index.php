@@ -1,5 +1,5 @@
 <?php
-include '../client/verificacion_sesion.php';
+include '../client/verificationSession.php';
 
 date_default_timezone_set('America/Caracas');
 $fecha_actual = date("d-m-Y h:i:s");
@@ -54,7 +54,7 @@ $year = date("Y");
 
         //valida que la tabla de consultas de ese dia no esté vacía
         if($select->num_rows == 0){ ?>
-            <h2 class="dia">No hay pacientes por atender para hoy</h2> <?php
+            <h2 class="dia">No Hay Pacientes Por Atender Para Hoy</h2> <?php
         }else{
             mysqli_close($conexion) ?>
             <h2 class="dia"> <?php echo $dia . "-" . $mes . "-" . $year ?> </h2>
@@ -71,7 +71,7 @@ $year = date("Y");
                 </div>
 
                 <?php
-                include '../client/conexion.php';
+                include '../client/connection.php';
       
                 $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores
                 ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor

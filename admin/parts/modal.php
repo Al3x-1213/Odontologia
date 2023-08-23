@@ -10,7 +10,7 @@
             </div>
 
             <?php
-            include '../client/registrarCita.php';
+            include '../client/insert/registerCita.php';
             ?>
 
             <!-- <div id="grupo_cedula" class="grupo">
@@ -26,7 +26,7 @@
 
             <?php
             // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
-            include '../client/conexion.php'; //Conexión con base de datos
+            include '../client/connection.php'; //Conexión con base de datos
 
             $consulta = "SELECT * FROM causa_consulta";
             $query = mysqli_query($conexion, $consulta)
@@ -78,7 +78,7 @@
                 <input type="submit" value="Agendar Cita" class="button__form loginSend" name="boton_c">
             </div>
 
-            <p>¿El paciente no se encuentra registrado? <a href="parts/modalRegistrarSc.php">Agenda su cita aquí</a></p>
+            <p>¿El paciente no se encuentra registrado? <a href="parts/modalRegisterSc.php">Agenda su cita aquí</a></p>
         </form>
     </div>
 </div>

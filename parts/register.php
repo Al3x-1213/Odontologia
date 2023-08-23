@@ -37,10 +37,10 @@ session_destroy();
             <h2 class="title__form"><a href="../index.php">Registrarse</a></h2>
 
             <?php
-            include '../client/insertar.php';
+            include '../client/insert/insert.php';
             ?>
 
-            <p>¿Ha pedido cita previamente pero no tiene cuenta? <a href="registrarseSc.php">Regístrate aqui</a></p>
+            <p>¿Ha pedido cita previamente pero no tiene cuenta? <a href="registerSc.php">Regístrate aqui</a></p>
 
             <h3>Tu cuenta: </h3>
 

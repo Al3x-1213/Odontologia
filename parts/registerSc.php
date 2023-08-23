@@ -30,7 +30,7 @@
             <h2 class="title__form"><a href="../index.php">Registrarse</a></h2>
 
             <?php
-            include '../client/insertarSc.php';
+            include '../client/insert/insertSc.php';
             ?>
 
             <div id="grupo_cedula" class="grupo">

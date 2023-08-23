@@ -40,7 +40,7 @@ session_destroy();
                 <h2 class="title__form">Iniciar Sesión</h2>
 
                 <?php
-                include '../client/validacion.php';
+                include '../client/validationLogin.php';
                 ?>
 
                 <div class="fields__form">
@@ -52,7 +52,7 @@ session_destroy();
 
                     <input class="button" type="submit" value="Enviar" name="boton_log">
 
-                    <p>¿No tienes una cuenta? <a href="registrarse.php">Regístrate</a></p>
+                    <p>¿No tienes una cuenta? <a href="register.php">Regístrate</a></p>
                 </div>
             </form>
         </div>

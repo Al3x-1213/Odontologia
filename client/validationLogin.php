@@ -16,7 +16,7 @@ if (!empty($_POST['boton_log'])){
         session_start(); // Inicia una sesión
         ob_start();
 
-        include 'conexion.php'; // Conexión con base de datos
+        include 'connection.php'; // Conexión con base de datos
 
         $consulta = "SELECT * FROM usuarios WHERE usuario = '$usuario' and clave = '$clave'";
 

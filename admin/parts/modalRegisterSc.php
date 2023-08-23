@@ -1,5 +1,5 @@
 <?php
-include '../../client/verificacion_sesion.php';
+include '../../client/verificationSession.php';
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ include '../../client/verificacion_sesion.php';
             </div>
 
             <?php
-            include '../../client/registrarCitaSc.php';
+            include '../../client/registerCitaSc.php';
             ?>
 
             <h3>Datos Personales: </h3>

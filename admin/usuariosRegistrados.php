@@ -58,7 +58,7 @@ if($tableShow == '' || $tableShow == null){
                     </div>
 
                     <?php
-                    include '../client/insertarDoc.php';
+                    include '../client/insert/insertDoctor.php';
                     ?>
 
                     <h3>Tu cuenta: </h3>
@@ -107,7 +107,7 @@ if($tableShow == '' || $tableShow == null){
 
                     <div class="buttons__form">
                         <input type="reset" value="Borrar" name="clear" class="button__form">
-                        <input type="submit" value="Registrar Paciente" name="boton_reg" class="button__form loginSend">
+                        <input type="submit" value="Registrar Usuario" name="boton_reg" class="button__form loginSend">
                     </div>
                 </form>
             </div>
