@@ -1,6 +1,6 @@
 <?php 
 
-include '../verificacion_sesion.php';
+include '../verificationSession.php';
 
 include '../conexion.php';
 

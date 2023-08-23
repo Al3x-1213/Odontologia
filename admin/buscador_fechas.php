@@ -1,5 +1,5 @@
 <?php
-include '../client/verificacion_sesion.php';
+include '../client/verificationSession.php';
 
 date_default_timezone_set('America/Caracas');
 $fecha_actual = date("d-m-Y h:i:s");

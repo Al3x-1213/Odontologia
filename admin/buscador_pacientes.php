@@ -1,5 +1,5 @@
 <?php
-include '../client/verificacion_sesion.php';
+include '../client/verificationSession.php';
 
 function fecha_arreglado($fecha){
     $fecha_nacimiento = explode("-", $fecha);

@@ -88,8 +88,10 @@ $year = date("Y");
                         <div class="tbody"><?php echo $datos_consulta['hora_fin']; ?></div>
                         <div class="tbody contacto"><?php echo $datos_consulta['telefono_1']." ".$datos_consulta['telefono_2'] ; ?></div>
           
-                        <div class="tbody"><a href="../client/botones/atendido.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="atendido">Atendido</button></a>
-                        <a href="../client/botones/cancelar.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a></div>
+                        <div class="tbody">
+                            <a href="../client/botones/atendido.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="atendido">Atendido</button></a>
+                            <a href="../client/botones/cancelar.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a>
+                        </div>
                     </div>
                 <?php
                 }

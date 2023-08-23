@@ -1,8 +1,7 @@
 <?php 
+include '../verificationSession.php';
 
-include '../verificacion_sesion.php';
-
-include '../conexion.php';
+include '../connection.php';
 
 $id = $_GET['id'];
 
