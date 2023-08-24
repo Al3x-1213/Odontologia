@@ -1,9 +1,9 @@
 <?php
 include '../client/verificationSession.php';
 
-function fecha_atencion($fecha){
-    $fecha_nacimiento = explode("-", $fecha);
-    return $fecha = $fecha_nacimiento[2]."-".$fecha_nacimiento[1]."-".$fecha_nacimiento[0];
+function ordenarFecha($fechaOrdenada){
+    $fecha = explode("-", $fechaOrdenada);
+    return $fechaOrdenada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
 }
 ?>
 
@@ -68,17 +68,19 @@ function fecha_atencion($fecha){
             $query = mysqli_query($conexion, $consulta);
 
             while ($resultado = mysqli_fetch_array($query)) {
-                $fecha_atencion = fecha_atencion($resultado['fecha_atencion'])
+                $fechaAtencion = ordenarFecha($resultado['fecha_atencion'])
             ?>
                 <div class="tbody__table">
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                     <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                     <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody"><?php echo $fecha_atencion; ?></div>
+                    <div class="tbody"><?php echo $fechaAtencion; ?></div>
                     <div class="tbody"><?php echo $resultado['turno_consulta']; ?></div>
                     
-                    <div class="tbody"><a href="procesarPaciente.php?id=<?php echo $resultado['id_consulta']?>"><button class="procesar"> Procesar </button></a></div>
+                    <div class="tbody">
+                        <a href="procesarPaciente.php?id=<?php echo $resultado['id_consulta']?>"><button class="procesar"> Procesar </button></a>
+                    </div>
                 </div>
             <?php
             }
