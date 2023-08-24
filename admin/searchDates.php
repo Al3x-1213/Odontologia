@@ -70,7 +70,7 @@ $year = date("Y");
 
                 <?php
                 // CITAS POR ATENDER: OBTENER LA INFORMACIÓN DE TODAS LAS CITAS POR ATENDER POR EL DOCTOR QUE ESTÁ LOGUEADO EN LA FECHA INGRESADA
-                include '../client/conexion.php'; //Conexión con base de datos
+                include '../client/connection.php'; //Conexión con base de datos
 
                 $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
                 ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta

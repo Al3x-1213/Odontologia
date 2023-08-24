@@ -27,7 +27,7 @@
                 </div>
                 <div class="buscadores">
                     <div class="buscadorFechas">
-                        <form action="buscador_fechas.php" method= "POST">
+                        <form action="searchDates.php" method= "POST">
                             <div class="inputs">
                                 <div class="inputRecibe">
                                     Buscar citas: <input type="date" name="buscar">
