@@ -75,7 +75,8 @@ $year = date("Y");
                 $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
                 ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
                 AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-                WHERE consultas.id_doctor = '$id_doctor' AND consultas.fecha_atencion = '$fecha' AND consultas.id_status_consulta != 3";
+                WHERE consultas.id_doctor = '$id_doctor' AND consultas.fecha_atencion = '$fecha' AND consultas.id_status_consulta != 3
+                ORDER BY hora_inicio ASC";
                 $query = mysqli_query($conexion, $consulta);
 
                 while ($resultado = mysqli_fetch_array($query)){
@@ -88,10 +89,10 @@ $year = date("Y");
                         <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>
                         <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>
                         <div class="tbody contacto"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
-                        <!-- <div class="tbody"><?php //echo $resultado['fecha_atencion']; ?></div> -->
 
                         <div class="tbody">
-                        <a href="../client/botones/cancelar.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a></div>
+                            <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a>
+                        </div>
                     </div>
                 <?php
                 }
@@ -110,7 +111,6 @@ $year = date("Y");
                     <div class="thead">Hora de Inicio</div>
                     <div class="thead">Hora Final</div>
                     <div class="thead">Télefono</div>
-                    <!-- <div class="thead">Fecha de Atención</div> -->
                     <div class="thead">Acciones</div>
                 </div>
 
@@ -119,7 +119,8 @@ $year = date("Y");
                 $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
                 ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
                 AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-                WHERE consultas.id_doctor = '$id_doctor' AND consultas.fecha_atencion = '$fecha' AND  consultas.id_status_consulta != 4";
+                WHERE consultas.id_doctor = '$id_doctor' AND consultas.fecha_atencion = '$fecha' AND  consultas.id_status_consulta != 4
+                ORDER BY hora_inicio ASC";
                 $query = mysqli_query($conexion, $consulta);
 
                 while ($resultado = mysqli_fetch_array($query)){
@@ -132,10 +133,9 @@ $year = date("Y");
                         <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>
                         <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>
                         <div class="tbody"><?php echo $resultado['telefono_1']. " " . $resultado['telefono_2']; ?></div>
-                        <!-- <div class="tbody"><?php //echo $resultado['fecha_atencion']; ?></div> -->
 
                         <div class="tbody">
-                        <a href="../client/botones/cancelar.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a></div>
+                        <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a></div>
                     </div>
                 <?php
                 }
