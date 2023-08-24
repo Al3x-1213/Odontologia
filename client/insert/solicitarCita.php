@@ -18,7 +18,7 @@ if (!empty($_POST['boton_c'])){
         $id_status_consulta = 3;
 
         // INGRESAR LA CONSULTA A BASE DE DATOS
-        include '../client/conexion.php'; //Conexión con base de datos
+        include '../client/connection.php'; //Conexión con base de datos
 
         $consulta = "INSERT INTO consultas VALUES(NULL, '$id_paciente', '$causa', '$fechaAtencion', '$turno', '', '', '$id_doctor', '$id_status_consulta', now())";        
         $query = mysqli_query($conexion, $consulta);

@@ -28,7 +28,7 @@ include '../client/verificationSession.php';
 
 $id = $_GET['id'];
 
-include '../client/conexion.php';
+include '../client/connection.php';
 $consulta = "SELECT * FROM usuarios WHERE id_usuario = '$id'";
 $select = ($conexion->query($consulta));
 

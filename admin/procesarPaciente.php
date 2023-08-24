@@ -50,7 +50,7 @@ function fecha_atencion($fecha){
         include '../client/obtenerId.php';
       
         // OBTENER LA INFORMACIÓN DE TODAS LAS CITAS POR CONFIRMAR DEL DOCTOR QUE ESTÁ LOGUEADO
-        include '../client/conexion.php'; //Conexión con base de datos
+        include '../client/connection.php'; //Conexión con base de datos
 
         $id = $_GET['id'];
 

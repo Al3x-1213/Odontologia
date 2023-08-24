@@ -1,6 +1,6 @@
 <?php
 
-include 'conexion.php';
+include 'connection.php';
 
 $select = "SELECT * FROM consultas WHERE id_status_consulta = 2";
 $consulta = $conexion->query($select);

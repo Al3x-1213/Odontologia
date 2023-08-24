@@ -4,7 +4,7 @@ $id = $_POST['id_consulta'];
 $hora_inicio = $_POST['hora_inicio'];
 $hora_fin = $_POST['hora_fin'];
 
-include '../conexion.php';
+include '../connection.php';
 
 $update = "UPDATE consultas SET id_status_consulta = 2, hora_inicio = '$hora_inicio', hora_fin = '$hora_fin' WHERE id_consulta = '$id'";
 

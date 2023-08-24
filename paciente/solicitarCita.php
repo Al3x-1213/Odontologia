@@ -42,7 +42,7 @@ include '../client/verificationSession.php';
 
                 <?php
                 // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
-                include '../client/conexion.php'; //Conexión con base de datos
+                include '../client/connection.php'; //Conexión con base de datos
 
                 $consulta = "SELECT * FROM causa_consulta";
                 $query = mysqli_query($conexion, $consulta)

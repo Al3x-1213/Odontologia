@@ -17,7 +17,7 @@ if (!empty($_POST['boton_upd'])){
         $claveConfirm = $_POST['clave2'];
 
         // CONFIRMAR QUE LA CONTRASEÑA ANTERIOR SEA CORRECTA
-        include 'conexion.php'; //Conexión con base de datos
+        include 'connection.php'; //Conexión con base de datos
 
         $consulta = "SELECT clave FROM usuarios WHERE id_usuario = '$id'";
         $query = mysqli_query($conexion, $consulta);

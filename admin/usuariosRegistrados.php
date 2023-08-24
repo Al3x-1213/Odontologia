@@ -123,7 +123,7 @@ if($tableShow == '' || $tableShow == null){
 
 
         <?php
-        include '../client/conexion.php'; //Conexión con base de datos
+        include '../client/connection.php'; //Conexión con base de datos
 
         // TODOS LOS USUARIOS ----------------------------------------------------------------------------------------------------
         ?>

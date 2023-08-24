@@ -42,7 +42,7 @@ include '../../client/verificationSession.php';
         $id= $_SESSION['id'];
 
         // OBTENER LA INFORMACIÓN DEL PACIENTE QUE ESTÁ LOGUEADO
-        include '../../client/conexion.php'; //Conexión con base de datos
+        include '../../client/connection.php'; //Conexión con base de datos
 
         $consulta = "SELECT clave FROM usuarios WHERE id_usuario = '$id'";
         $query = mysqli_query($conexion, $consulta);

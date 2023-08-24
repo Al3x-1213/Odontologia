@@ -49,7 +49,7 @@ function fecha_arreglado($fecha){
         include '../../client/obtenerId.php';
 
         // DATOS DEL PACIENTE
-        include '../client/conexion.php'; //Conexión con base de datos
+        include '../client/connection.php'; //Conexión con base de datos
         
         $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 2 AND cedula = '$paciente'";
         $query = $conexion->query($consulta);

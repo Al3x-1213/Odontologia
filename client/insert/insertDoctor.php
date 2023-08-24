@@ -38,7 +38,7 @@ if (!empty($_POST['boton_reg'])){
             include 'calcularEdad.php';
 
             // HACER EL REGISTRO SEGÚN EL TIPO DE USUARIO QUE SE ESTÉ REGISTRANDO
-            include 'conexion.php'; //Conexión con base de datos
+            include 'connection.php'; //Conexión con base de datos
 
             if($tipo_usuario == 1){
                 // HACER REGISTRO EN BASE DE DATOS - TABLA USUARIOS

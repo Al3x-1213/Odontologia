@@ -17,7 +17,7 @@ if (!empty($_POST['boton_reg'])){
         $clave_confirm = $_POST['clave2'];
 
         // VERIFICAR QUE EL USUARIO CON LA CÉDULA INGRESADA SE ENCUENTRE REGISTRADO
-        include '../client/conexion.php'; //Conexión con base de datos
+        include '../client/connection.php'; //Conexión con base de datos
 
         $consulta = "SELECT * FROM usuarios WHERE cedula = '$cedula'";
         $query = mysqli_query($conexion, $consulta);

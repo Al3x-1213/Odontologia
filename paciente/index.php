@@ -44,7 +44,7 @@ include '../client/verificationSession.php';
         $id= $_SESSION['id'];
 
         // OBTENER LA INFORMACIÓN DE TODAS LAS CITAS A LAS QUE ASISTIÓ EL PACIENTE QUE ESTÁ LOGUEADO
-        include '../client/conexion.php'; //Conexión con base de datos
+        include '../client/connection.php'; //Conexión con base de datos
 
         $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
         ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta

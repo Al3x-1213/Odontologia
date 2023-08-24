@@ -38,7 +38,7 @@ if (!empty($_POST['boton_reg'])){
             include 'calcularEdad.php';
 
             //HACER REGISTRO EN BASE DE DATOS
-            include 'conexion.php'; //Conexión con base de datos
+            include 'connection.php'; //Conexión con base de datos
 
             $clave= md5($clave);
 

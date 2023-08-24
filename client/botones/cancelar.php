@@ -2,7 +2,7 @@
 
 include '../verificationSession.php';
 
-include '../conexion.php';
+include '../connection.php';
 
 $id = $_GET['id'];
 

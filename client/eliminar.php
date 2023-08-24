@@ -2,7 +2,7 @@
 
 // POR CORREGIR
 
-include 'conexion.php';
+include 'connection.php';
 
 /* datos del formulario de registro */
 

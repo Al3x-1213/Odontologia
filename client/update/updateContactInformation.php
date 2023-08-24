@@ -20,7 +20,7 @@ if (!empty($_POST['boton_upd'])){
         $correo = $_POST['correo'];
 
         //HACER REGISTRO EN BASE DE DATOS
-        include 'conexion.php'; //Conexión con base de datos
+        include 'connection.php'; //Conexión con base de datos
 
         $consulta = "UPDATE usuarios SET telefono_1 = '$telefono_1', telefono_2 = '$telefono_2', correo = '$correo' WHERE id_usuario = '$id'";
         $query = mysqli_query($conexion, $consulta);
