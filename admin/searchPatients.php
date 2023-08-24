@@ -42,11 +42,11 @@ function fecha_arreglado($fecha){
         // PACIENTE PARA BUSCAR
         $paciente = $_POST['buscar'];
 
-        // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
-        $id= $_SESSION['id'];
+        // // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
+        // $id= $_SESSION['id'];
 
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
-        include '../../client/obtenerId.php';
+        include '../client/obtenerId.php';
 
         // DATOS DEL PACIENTE
         include '../client/connection.php'; //Conexión con base de datos
@@ -59,7 +59,6 @@ function fecha_arreglado($fecha){
 
         <div class="table">
             <div class="thead__table">
-                <!-- <div class="thead id">Id</div> -->
                 <div class="thead">Paciente</div>
                 <div class="thead">Cédula</div>
                 <div class="thead">Edad</div>
@@ -71,18 +70,19 @@ function fecha_arreglado($fecha){
 
             <?php
             while ($resultado = mysqli_fetch_array($query)) {
-                $fecha_arreglado = fecha_arreglado($resultado['fecha_nacimiento'])
+                $fechaNacimiento = fecha_arreglado($resultado['fecha_nacimiento'])
             ?>
                 <div class="tbody__table">
-                    <!-- <div class="tbody id"><?php //echo $resultado['id_paciente']; ?></div> -->
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                     <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody"><?php echo $fecha_arreglado; ?></div>
+                    <div class="tbody"><?php echo $fechaNacimiento; ?></div>
                     <div class="tbody"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
-                    <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                    <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div>
+                    <div class="tbody">
+                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
+                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a>
+                    </div>
                 </div>
             <?php
             }
@@ -102,18 +102,21 @@ function fecha_arreglado($fecha){
             <?php
 
             // HISTORIAL DE LAS CONSULTAS DEL PACIENTE
-            $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
+            $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
             ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
             AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-            WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 1 AND usuarios.cedula = '$paciente'";
-            $query = $conexion->query($consulta);
+            WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = '1' AND usuarios.cedula = '$paciente'
+            ORDER BY fecha_atencion DESC";
+            // echo $consulta;
+            // $query = $conexion->query($consulta);
+            $query = mysqli_query($conexion, $consulta);
 
             while ($resultado = mysqli_fetch_array($query)) {
-                $fecha_atencion = fecha_atencion($resultado['fecha_atencion'])
+                $fechaAtencion = fecha_arreglado($resultado['fecha_atencion'])
             ?>
                 <div class="tbody__table">
                     <div class="tbody tbody2"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody tbody2"><?php echo $fecha_atencion; ?></div>
+                    <div class="tbody tbody2"><?php echo $fechaAtencion; ?></div>
                     <div class="tbody tbody2"><?php echo $resultado['hora_inicio']; ?></div>
                     <div class="tbody tbody2"><?php echo $resultado['hora_fin']; ?></div>
                 </div>

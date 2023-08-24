@@ -39,7 +39,7 @@
                         </form>
                     </div>
                     <div class="buscadorPacientes">
-                        <form action="buscador_pacientes.php" method= "POST">
+                        <form action="searchPatients.php" method= "POST">
                             <div class="inputs">
                                 <div class="inputRecibe">
                                     Buscar pacientes: <input type="text" placeholder="Número de cédula:" name="buscar">
