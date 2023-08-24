@@ -2,9 +2,9 @@
 include '../client/verificationSession.php';
 ?>
 <?php
-function fecha_atencion($fecha){
-    $fecha_atencion = explode("-", $fecha);
-    return $fecha = $fecha_atencion[2]."-".$fecha_atencion[1]."-".$fecha_atencion[0];
+function ordenarFecha($fechaOrdenada){
+    $fecha = explode("-", $fechaOrdenada);
+    return $fechaOrdenada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
 }
 ?>
 
@@ -61,28 +61,28 @@ function fecha_atencion($fecha){
             <div class="thead__table">
                 <div class="thead">Paciente</div>
                 <div class="thead">Cédula</div>
-                <!-- <div class="thead">Télefono</div> -->
                 <div class="thead causa">Causa de la Consulta</div>
                 <div class="thead">Fecha de Atención</div>
                 <div class="thead">Hora de inicio</div>
                 <div class="thead">Hora de culminación</div>
-                <div class="thead">Acciones</div>
+                <!-- <div class="thead">Acciones</div> -->
             </div>
 
             <?php
             while ($resultado = mysqli_fetch_array($query)) {
-                $fecha_atencion = fecha_atencion($resultado['fecha_atencion'])
+                $fechaAtencion = ordenarFecha($resultado['fecha_atencion'])
             ?>
                 <div class="tbody__table">
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                     <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-                    <!-- <div class="tbody contacto"><?php //echo $resultado['telefono_1']. " " .['telefono_2']; ?></div> -->
                     <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody"><?php echo $fecha_atencion; ?></div>
+                    <div class="tbody"><?php echo $fechaAtencion; ?></div>
                     <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>
                     <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>
 
-                    <div class="tbody"><a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a></div>
+                    <!-- <div class="tbody">
+                        <a href="../client/crud/status2.php?id=<?php echo $resultado['id_consulta']?>"><button class="eliminar">Eliminar</button></a>
+                    </div> -->
                 </div>
             <?php
             }
