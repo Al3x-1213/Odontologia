@@ -79,7 +79,7 @@ function ordenarFecha($fechaOrdenada){
                     <div class="tbody"><?php echo $resultado['turno_consulta']; ?></div>
                     
                     <div class="tbody">
-                        <a href="procesarPaciente.php?id=<?php echo $resultado['id_consulta']?>"><button class="procesar"> Procesar </button></a>
+                        <a href="processPatient.php?id=<?php echo $resultado['id_consulta']?>"><button class="procesar"> Procesar </button></a>
                     </div>
                 </div>
             <?php
