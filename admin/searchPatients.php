@@ -1,9 +1,9 @@
 <?php
 include '../client/verificationSession.php';
 
-function fecha_arreglado($fecha){
-    $fecha_nacimiento = explode("-", $fecha);
-    return $fecha = $fecha_nacimiento[2]."-".$fecha_nacimiento[1]."-".$fecha_nacimiento[0];
+function ordenarFecha($fechaOrdenada){
+    $fecha = explode("-", $fechaOrdenada);
+    return $fechaOrdenada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
 }
 ?>
 
@@ -70,7 +70,7 @@ function fecha_arreglado($fecha){
 
             <?php
             while ($resultado = mysqli_fetch_array($query)) {
-                $fechaNacimiento = fecha_arreglado($resultado['fecha_nacimiento'])
+                $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento'])
             ?>
                 <div class="tbody__table">
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
@@ -112,7 +112,7 @@ function fecha_arreglado($fecha){
             $query = mysqli_query($conexion, $consulta);
 
             while ($resultado = mysqli_fetch_array($query)) {
-                $fechaAtencion = fecha_arreglado($resultado['fecha_atencion'])
+                $fechaAtencion = ordenarFecha($resultado['fecha_atencion'])
             ?>
                 <div class="tbody__table">
                     <div class="tbody tbody2"><?php echo $resultado['causa_consulta']; ?></div>
