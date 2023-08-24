@@ -1,16 +1,16 @@
 <?php
 include '../client/verificationSession.php';
 
-date_default_timezone_set('America/Caracas');
-$fecha_actual = date("d-m-Y h:i:s");
+// date_default_timezone_set('America/Caracas');
+// $fecha_actual = date("d-m-Y h:i:s");
 
-$dia = date("d");
-$mes = date("m");
-$year = date("Y");
+// $dia = date("d");
+// $mes = date("m");
+// $year = date("Y");
 
-function fecha_atencion($fecha){
-    $fecha_nacimiento = explode("-", $fecha);
-    return $fecha = $fecha_nacimiento[2]."-".$fecha_nacimiento[1]."-".$fecha_nacimiento[0];
+function ordenarFecha($fechaOrdenada){
+    $fecha = explode("-", $fechaOrdenada);
+    return $fechaOrdenada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
 }
 ?>
 
@@ -54,7 +54,10 @@ function fecha_atencion($fecha){
 
         $id = $_GET['id'];
 
-        $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta WHERE consultas.id_consulta = '$id'";
+        $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
+        ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
+        AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
+        WHERE consultas.id_consulta = '$id'";
 
         $query = mysqli_query($conexion, $consulta);
         $resultado = mysqli_fetch_array($query);
@@ -63,7 +66,6 @@ function fecha_atencion($fecha){
         <h2 class="dia"><?php echo "Confirmar Cita de <span class=nombre_paciente>".$resultado['nombre']." ".$resultado["apellido"]."</span>" ?></h2>
 
         <form method="POST" action="../client/botones/confirmar.php">
-
             <div class="table">
                 <div class="thead__table">
                     <div class="thead">Cédula</div>
@@ -75,9 +77,6 @@ function fecha_atencion($fecha){
                     <div class="thead">Hora de Culminación</div>
                 </div>
 
-                <?php
-                    $fecha_atencion = fecha_atencion($resultado['fecha_atencion'])
-                ?>
                     <div class="tbody__table">
 
                         <input type="hidden" name="id_consulta" value="<?php echo $resultado['id_consulta'] ?>">
@@ -93,10 +92,13 @@ function fecha_atencion($fecha){
             </div>
 
             <input type="submit" class="confirmar" value="Confirmar Cita">
-
         </form>
 
-        <h2 class="dia"><?php echo "Citas del ".$fecha_atencion ?></h2>
+        <?php
+        $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
+        ?>
+
+        <h2 class="dia"><?php echo "Citas del ".$fechaAtencion; ?></h2>
 
         <div class="table">
             <div class="thead__table">
@@ -110,20 +112,22 @@ function fecha_atencion($fecha){
             </div>
 
             <?php
+            $fechaAtencion = $resultado['fecha_atencion'];
 
             $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
             ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
             AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-            WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$resultado[fecha_atencion]' ORDER BY hora_inicio ASC";
-
-            while ($resultado = mysqli_fetch_array($query)) {
+            WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaAtencion'
+            ORDER BY hora_inicio ASC";
+            
+            while ($resultado = mysqli_fetch_array($query)){
             ?>
                 <div class="tbody__table">
-                    <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
+                    <div class="tbody nom"><?php echo $resultado['nombre'] . " ". $resultado['apellido']; ?></div>
                     <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                     <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
+                    <div class="tbody contacto"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
                     <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>       
                     <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>      
                 </div>
