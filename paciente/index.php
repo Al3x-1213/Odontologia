@@ -1,6 +1,12 @@
 <?php
 include '../client/verificationSession.php';
 ?>
+<?php
+function ordenarFecha($fechaOrdenada){
+    $fecha = explode("-", $fechaOrdenada);
+    return $fechaOrdenada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
+}
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -29,12 +35,6 @@ include '../client/verificationSession.php';
     </head>
     <body>
         <?php
-
-        function fecha_atencion($fecha){
-            $fecha_atencion = explode("-", $fecha);
-            return $fecha = $fecha_atencion[2]."-".$fecha_atencion[1]."-".$fecha_atencion[0];
-        }
-
         include 'components/menu.html';
         include 'components/menu2.php';
         ?>
@@ -49,7 +49,8 @@ include '../client/verificationSession.php';
         $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
         ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
         AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-        WHERE consultas.id_status_consulta = 1 AND consultas.id_paciente = '$id'";
+        WHERE consultas.id_status_consulta = 1 AND consultas.id_paciente = '$id'
+        ORDER BY fecha_atencion DESC";
 
         $query = mysqli_query($conexion, $consulta);
         ?>
@@ -69,9 +70,9 @@ include '../client/verificationSession.php';
                 <div class="tbody__table">
                     <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
                     <?php
-                    $fecha = fecha_atencion($resultado['fecha_atencion']);
+                    $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
                     ?>
-                    <div class="tbody"><?php echo $fecha; ?></div>
+                    <div class="tbody"><?php echo $fechaAtencion; ?></div>
 
                     <div class="tbody"><?php
                     $id_doctor = $resultado['id_doctor'];
