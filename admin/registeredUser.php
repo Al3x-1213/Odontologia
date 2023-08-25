@@ -132,9 +132,9 @@ if($tableShow == '' || $tableShow == null){
         <h2 class="dia">Usuarios</h2>
 
         <div class="users">
-            <div class="dia"><a class="<?php if($tableShow == 1){?>selection<?php }else{?><?php } ?>" href="usuariosRegistrados.php?value=<?php echo 1 ?>">Todos</a></div>
-            <div class="dia"><a class="<?php if($tableShow == 2){?>selection<?php }else{?><?php } ?>" href="usuariosRegistrados.php?value=<?php echo 2 ?>">Pacientes</a></div>
-            <div class="dia"><a class="<?php if($tableShow == 3){?>selection<?php }else{?><?php } ?>" href="usuariosRegistrados.php?value=<?php echo 3 ?>">Doctores</a></div>
+            <div class="dia"><a class="<?php if($tableShow == 1){?>selection<?php }else{?><?php } ?>" href="registeredUser.php?value=<?php echo 1 ?>">Todos</a></div>
+            <div class="dia"><a class="<?php if($tableShow == 2){?>selection<?php }else{?><?php } ?>" href="registeredUser.php?value=<?php echo 2 ?>">Pacientes</a></div>
+            <div class="dia"><a class="<?php if($tableShow == 3){?>selection<?php }else{?><?php } ?>" href="registeredUser.php?value=<?php echo 3 ?>">Doctores</a></div>
         </div>
 
 
