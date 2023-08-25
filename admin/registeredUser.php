@@ -1,9 +1,9 @@
 <?php
 include '../client/verificationSession.php';
 
-function fecha_nacimiento($fecha){
-    $fecha_nacimiento = explode("-", $fecha);
-    return $fecha = $fecha_nacimiento[2]."-".$fecha_nacimiento[1]."-".$fecha_nacimiento[0];
+function ordenarFecha($fechaOrdenada){
+    $fecha = explode("-", $fechaOrdenada);
+    return $fechaOrdenada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
 }
 
 $tableShow = $_GET['value'];
@@ -105,6 +105,22 @@ if($tableShow == '' || $tableShow == null){
                     <label for="correo">Correo Electrónico:</label>
                     <input type="email" maxlength="60" required="true" name="correo" class="input__form" autocomplete="off">
 
+                    <!------------------------------------------------>
+
+                    <label>¿Tiene alguna Discapacidad:</label>
+                    <div class="hora">
+                        <input type="radio" required value="2" name="discapacidad" class=""> Sí
+                        <input type="radio" required value="1" name="discapacidad" class=""> No
+                    </div>
+
+                    <label>¿Tiene alguna Alergia:</label>
+                    <div class="hora">
+                        <input type="radio" required value="2" name="alergia" class=""> Sí
+                        <input type="radio" required value="1" name="alergia" class=""> No
+                    </div>
+
+                    <!------------------------------------------------>
+
                     <div class="buttons__form">
                         <input type="reset" value="Borrar" name="clear" class="button__form">
                         <input type="submit" value="Registrar Usuario" name="boton_reg" class="button__form loginSend">
@@ -144,15 +160,14 @@ if($tableShow == '' || $tableShow == null){
             $consulta = "SELECT * FROM usuarios";
             $query = mysqli_query($conexion, $consulta);
             while ($resultado = mysqli_fetch_array($query)) {
-                $fecha_de_nacimiento = fecha_nacimiento($resultado['fecha_nacimiento']);
+                $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento']);
             ?>
                 <div class="tbody__table">
-                    <!-- <div class="tbody id"><?php //echo $resultado['id_paciente']; ?></div> -->
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                     <div class="tbody"><?php echo $resultado['usuario']; ?></div>
                     <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody"><?php echo $fecha_de_nacimiento; ?></div>
+                    <div class="tbody"><?php echo $fechaNacimiento; ?></div>
                     <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
 
@@ -174,7 +189,6 @@ if($tableShow == '' || $tableShow == null){
 
         <div class="table slice <?php if($tableShow == 2){?>active<?php }else{?>desactive<?php } ?>">
             <div class="thead__table">
-                <!-- <div class="thead id">Id</div> -->
                 <div class="thead">Paciente</div>
                 <div class="thead">Usuario</div>
                 <div class="thead cedula">Cédula</div>
@@ -187,15 +201,14 @@ if($tableShow == '' || $tableShow == null){
 
             <?php
             while ($resultado = mysqli_fetch_array($query)) {
-                $fecha_de_nacimiento = fecha_nacimiento($resultado['fecha_nacimiento']);
+                $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento']);
             ?>
                 <div class="tbody__table">
-                    <!-- <div class="tbody id"><?php //echo $resultado['id_paciente']; ?></div> -->
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                     <div class="tbody"><?php echo $resultado['usuario']; ?></div>
                     <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody"><?php echo $fecha_de_nacimiento; ?></div>
+                    <div class="tbody"><?php echo $fechaNacimiento; ?></div>
                     <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
 
@@ -218,7 +231,6 @@ if($tableShow == '' || $tableShow == null){
 
         <div class="table slice <?php if($tableShow == 3){?>active<?php }else{?> desactive <?php } ?>"> <!--slice-->
             <div class="thead__table">
-                <!-- <div class="thead id">Id</div> -->
                 <div class="thead">Paciente</div>
                 <div class="thead">Usuario</div>
                 <div class="thead cedula">Cédula</div>
@@ -231,15 +243,14 @@ if($tableShow == '' || $tableShow == null){
 
             <?php
             while ($resultado = mysqli_fetch_array($query)) {
-                $fecha_de_nacimiento = fecha_nacimiento($resultado['fecha_nacimiento']);
+                $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento']);
             ?>
                 <div class="tbody__table">
-                    <!-- <div class="tbody id"><?php //echo $resultado['id_paciente']; ?></div> -->
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                     <div class="tbody"><?php echo $resultado['usuario']; ?></div>
                     <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody"><?php echo $fecha_de_nacimiento; ?></div>
+                    <div class="tbody"><?php echo $fechaNacimiento; ?></div>
                     <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
 
