@@ -37,7 +37,7 @@ include '../client/verificationSession.php';
                 <h2>Solicitar una Cita</h2>
 
                 <?php
-                include '../client/solicitarCita.php'
+                include '../client/insert/solicitarCita.php'
                 ?>
 
                 <?php
