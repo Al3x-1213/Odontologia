@@ -14,7 +14,7 @@ body {
 }
 
 .table {
-  width: 1200px;
+  width: 95%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,7 +28,7 @@ body {
 .thead, .tbody {
   padding: 8px;
   border: 1px solid #789dc9;
-  width: 12%;
+  width: 15%;
   min-width: 12%;
   height: 40px;
   max-height: 50px;

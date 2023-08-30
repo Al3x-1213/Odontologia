@@ -41,7 +41,7 @@ header {
 .item__menu > a {
   color: aliceblue;
   text-decoration: none;
-  font-size: 1.15em;
+  font-size: 1em;
 }
 
 .item__menu > a:hover {
@@ -61,7 +61,7 @@ header {
 }
 
 .title {
-  font-size: .90em;
+  font-size: .75em;
   margin: 0 15px;
   text-decoration: none;
   font-family: 'Raleway', sans-serif !important;
