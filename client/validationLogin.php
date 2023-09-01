@@ -40,7 +40,7 @@ if (!empty($_POST['boton_log'])){
                 <?php
             }
         }
-        elseif(mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_tipo_usuario'] == 2){ // Paciente
+        else if(mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_tipo_usuario'] == 2){ // Paciente
             if(mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_status_usuario'] == 1){
                 header("location: ../paciente/index.php");
             }

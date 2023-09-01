@@ -107,19 +107,6 @@ const validarFormulario = (e) => {
                 cedula = false;
             }
         break;
-        case "nacimiento":
-
-            fecha = obtenerFecha();
-            fecha_nacimiento = e.target.value.split("-");
-
-            if(fecha_nacimiento[0] > fecha[0] || fecha_nacimiento[1] > fecha[1] || fecha_nacimiento[2] >= fecha[2]){
-                error(e.target.name);
-                nacimiento = false;
-            }else{
-                success(e.target.name);
-                nacimiento = true;
-            }
-        break;
         case "telefono1":
             if(expresiones.telefono.test(e.target.value)){
                 telefono1 = true;

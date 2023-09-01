@@ -42,8 +42,7 @@ if (!empty($_POST['boton_reg'])){
 
             $clave= md5($clave);
 
-            $consulta = "INSERT INTO usuarios VALUES(NULL, '$usuario', '$clave', '$tipo_usuario', '$status_usuario',
-            '$nombre', '$apellido', '$cedula', '$edad', '$nacimiento', '$telefono_1', '$telefono_2',  '$correo', now())";
+            $consulta = "INSERT INTO usuarios (id_usuario, usuario, clave, id_tipo_usuario, id_status_usuario, nombre, apellido, cedula, edad, fecha_nacimiento, telefono_1, telefono_2, correo, id_discapacidad, id_alergia, fecha_registro) VALUES (NULL, '$usuario', '$clave', '$tipo_usuario', '$status_usuario', '$nombre', '$apellido', '$cedula', '$edad', '$nacimiento', '$telefono_1', '$telefono_2',  '$correo', NULL, NULL, now())";
             $query = mysqli_query($conexion, $consulta);
 
             if($query){

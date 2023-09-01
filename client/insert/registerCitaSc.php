@@ -36,27 +36,23 @@ if (!empty($_POST['boton_c'])){
         //HACER REGISTRO EN BASE DE DATOS - TABLA USUARIOS
         include '../../client/connection.php'; //Conexión con base de datos
 
-        $consulta = "INSERT INTO usuarios VALUES(NULL, '', '', '$tipoUsuario', '$statusUsuario', '$nombre', '$apellido',
+        $consulta = "INSERT INTO usuarios (id_usuario, usuario, clave, id_tipo_usuario, id_status_usuario, nombre, apellido, cedula, edad, fecha_nacimiento, telefono_1, telefono_2, correo, id_discapacidad, id_alergia, fecha_registro) VALUES (NULL, NULL, NULL, '$tipoUsuario', '$statusUsuario', '$nombre', '$apellido',
         '$cedula', '$edad', '$nacimiento', '$telefono_1', '$telefono_2', '$correo', '$discapacidad', '$alergia', now())";
         $query = mysqli_query($conexion, $consulta);
 
-        if($query){
-            ?>
-            <!-- <div class= "mensaje"><a href= "#">Cita agendada correctamente</a></div> -->
-            <?php
+        if($query == 1){
             $consulta = "SELECT id_usuario FROM usuarios WHERE cedula = '$cedula'";
-            $query = mysqli_query($conexion, $consulta);
+            $query1 = mysqli_query($conexion, $consulta);
 
-            $respuesta = mysqli_fetch_array($query);
-            $id_paciente = $respuesta['id_usuario'];
+            $id_paciente = mysqli_fetch_array($query1)['id_usuario'];
 
             //HACER REGISTRO EN BASE DE DATOS - TABLA CONSULTAS
-            $consulta = "INSERT INTO consultas VALUES(NULL, '$id_paciente', '$causa', '$fechaAtencion', '$turno', '', '', '$idDoctor', '$idStatusConsulta', now())";
-            $query = mysqli_query($conexion, $consulta);
+            $consulta = "INSERT INTO consultas (id_consulta, id_paciente, id_causa_consulta, fecha_atencion, id_turno_consulta, hora_inicio, hora_fin, id_doctor, id_status_consulta, fecha_solicitud) VALUES (NULL, '$id_paciente', '$causa', '$fechaAtencion', '$turno', NULL, NULL, '$idDoctor', '$idStatusConsulta', now())";
+            $query1 = mysqli_query($conexion, $consulta);
 
-            if($query){
+            if($query1){
                 ?>
-                <div class= "mensaje"><a href= "#">Cita agendada correctamente</a></div>
+                <div class= "mensaje"><a href= "../index.php">Cita agendada correctamente</a></div>
                 <?php
             }
             else{
@@ -67,10 +63,9 @@ if (!empty($_POST['boton_c'])){
         }
         else{
             ?>
-            <div class= "alerta">No se pudo realizar el registro</div>
+            <div class= "alerta">No se pudo realizar el aja</div>
             <?php
         }
     }
 }
-
 ?>
