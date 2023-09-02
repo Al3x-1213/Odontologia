@@ -42,9 +42,6 @@ function ordenarFecha($fechaOrdenada){
         // PACIENTE PARA BUSCAR
         $paciente = $_POST['buscar'];
 
-        // // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
-        // $id= $_SESSION['id'];
-
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
         include '../client/obtenerId.php';
 
