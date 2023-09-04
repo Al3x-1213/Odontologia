@@ -65,6 +65,6 @@
                 </div>
             </div>
         </div>
-        <script src="../js/searchFilter.js"></script>
+        <script src="js/searchFilter.js"></script>
     </body>
 </html>

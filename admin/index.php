@@ -19,7 +19,7 @@ $year = date("Y");
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
-        <link rel="stylesheet" href="styles/buscador.css">
+        <!-- <link rel="stylesheet" href="styles/buscador.css"> -->
         <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="../styles/mensajes.css">
         <link rel="stylesheet" href="styles/footer.css">
