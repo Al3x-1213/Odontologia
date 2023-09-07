@@ -1,8 +1,11 @@
 <?php
 include '../client/verificationSession.php';
 
+include '../client/orderDate.php';
+?>
+<?php
 date_default_timezone_set('America/Caracas');
-$fecha_actual = date("d-m-Y h:i:s");
+$fechaActual = date("Y-m-d");
 
 $dia = date("d");
 $mes = date("m");
@@ -41,12 +44,12 @@ $year = date("Y");
         ?>
         <?php
         // FECHA PARA BUSCAR
-        $fecha = $_POST['buscar'];
+        $fechaBuscar = $_POST['buscar'];
 
-        $fecha_separada = explode('-', $fecha);
-        $day = $fecha_separada[2];
-        $month = $fecha_separada[1];
-        $Year = $fecha_separada[0];
+        $fechaSeparada = explode('-', $fechaBuscar);
+        $day = $fechaSeparada[2];
+        $month = $fechaSeparada[1];
+        $Year = $fechaSeparada[0];
 
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
         include '../client/obtenerId.php';?>
@@ -54,7 +57,7 @@ $year = date("Y");
         <?php 
         if($day >= $dia && $month >= $mes && $Year >= $year){
         ?>
-            <h2 class="dia"><?php echo $day . "-" . $month . "-" . $Year; ?></h2>
+            <h2 class="dia"><?php echo ordenarFecha($fechaBuscar); ?></h2>
 
             <div class="table">
                 <div class="thead__table">
@@ -75,19 +78,21 @@ $year = date("Y");
                 $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
                 ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
                 AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-                WHERE consultas.id_doctor = '$id_doctor' AND consultas.fecha_atencion = '$fecha' AND consultas.id_status_consulta != 3
+                WHERE consultas.id_doctor = '$id_doctor' AND consultas.fecha_atencion = '$fechaBuscar' AND consultas.id_status_consulta != 3
                 ORDER BY hora_inicio ASC";
                 $query = mysqli_query($conexion, $consulta);
 
                 while ($resultado = mysqli_fetch_array($query)){
+                    $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+                    $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
                 ?>
                     <div class="tbody__table">
                         <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                         <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                         <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                         <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                        <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>
-                        <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>
+                        <div class="tbody"><?php echo $horaInicio; ?></div>
+                        <div class="tbody"><?php echo $horaFin; ?></div>
                         <div class="tbody contacto"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
 
                         <div class="tbody">
@@ -100,7 +105,7 @@ $year = date("Y");
             </div>
             <?php
         }else{ ?>
-            <h2 class="dia"><?php echo $day . "-" . $month . "-" . $Year; ?></h2>
+            <h2 class="dia"><?php echo ordenarFecha($fechaBuscar); ?></h2>
 
             <div class="table">
                 <div class="thead__table">
@@ -111,38 +116,41 @@ $year = date("Y");
                     <div class="thead">Hora de Inicio</div>
                     <div class="thead">Hora Final</div>
                     <div class="thead">Télefono</div>
-                    <div class="thead">Acciones</div>
+                    <!-- <div class="thead">Acciones</div> -->
                 </div>
 
                 <?php
-
                 $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
                 ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
                 AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-                WHERE consultas.id_doctor = '$id_doctor' AND consultas.fecha_atencion = '$fecha' AND  consultas.id_status_consulta != 4
+                WHERE consultas.id_doctor = '$id_doctor' AND consultas.fecha_atencion = '$fechaBuscar' AND  consultas.id_status_consulta != 4
                 ORDER BY hora_inicio ASC";
                 $query = mysqli_query($conexion, $consulta);
 
                 while ($resultado = mysqli_fetch_array($query)){
+                    $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+                    $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
                 ?>
                     <div class="tbody__table">
                         <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
                         <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                         <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                         <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                        <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>
-                        <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>
+                        <div class="tbody"><?php echo $horaInicio; ?></div>
+                        <div class="tbody"><?php echo $horaFin; ?></div>
                         <div class="tbody"><?php echo $resultado['telefono_1']. " " . $resultado['telefono_2']; ?></div>
 
-                        <div class="tbody">
-                        <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a></div>
+                        <!-- <div class="tbody">
+                            <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a>
+                        </div> -->
                     </div>
                 <?php
                 }
                 ?>
             </div>
         <?php 
-        } 
+        }
+        mysqli_close($conexion);
         ?>
 
         <div class="space"></div>

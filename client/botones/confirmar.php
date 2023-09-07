@@ -25,6 +25,7 @@ $horaAtencion = date("g:i a",strtotime($horaInicio)); // Cambiar a formato 12 ho
 include '../connection.php';
 
 $consulta = "UPDATE consultas SET id_status_consulta = 2, hora_inicio = '$horaInicio', hora_fin = '$horaFin' WHERE id_consulta = '$id'";
+echo $consulta;
 $query = mysqli_query($conexion, $consulta);
 
 if($query){

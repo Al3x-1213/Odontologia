@@ -134,11 +134,12 @@ if($tableShow == '' || $tableShow == null){
             <div class="dia"><a class="<?php if($tableShow == 3){?>selection<?php }else{?><?php } ?>" href="registeredUser.php?value=<?php echo 3 ?>">Doctores</a></div>
         </div>
 
-
         <?php
         include '../client/connection.php'; //Conexión con base de datos
 
-        // TODOS LOS USUARIOS ----------------------------------------------------------------------------------------------------
+        // TODOS LOS USUARIOS
+        $consulta = "SELECT * FROM usuarios";
+        $query = mysqli_query($conexion, $consulta);
         ?>
 
         <div class="table slice <?php if($tableShow == 1){?>active<?php }else{?> desactive <?php } ?>"> <!--slice-->
@@ -154,8 +155,6 @@ if($tableShow == '' || $tableShow == null){
             </div>
 
             <?php
-            $consulta = "SELECT * FROM usuarios";
-            $query = mysqli_query($conexion, $consulta);
             while ($resultado = mysqli_fetch_array($query)) {
                 $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento']);
             ?>
@@ -168,8 +167,10 @@ if($tableShow == '' || $tableShow == null){
                     <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
 
-                    <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                    <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div>                
+                    <div class="tbody">
+                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
+                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a>
+                    </div>                
                 </div>
             <?php
             }
@@ -177,9 +178,7 @@ if($tableShow == '' || $tableShow == null){
         </div>
 
         <?php
-        include '../client/conexion.php'; //Conexión con base de datos
-
-        // PACIENTES ----------------------------------------------------------------------------------------------------
+        // PACIENTES
         $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 2";
         $query = mysqli_query($conexion, $consulta);
         ?>
@@ -209,8 +208,10 @@ if($tableShow == '' || $tableShow == null){
                     <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
 
-                    <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                    <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div>                
+                    <div class="tbody">
+                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
+                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a>
+                    </div>                
                 </div>
             <?php
             }
@@ -218,11 +219,9 @@ if($tableShow == '' || $tableShow == null){
         </div>
 
         <?php
-        include '../client/conexion.php'; //Conexión con base de datos
-
-        // DOCTORES ----------------------------------------------------------------------------------------------------
-        // $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 2";
-        $consulta = "SELECT * FROM doctores INNER JOIN usuarios ON doctores.id_usuario = usuarios.id_usuario";
+        // DOCTORES
+        $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 1";
+        // $consulta = "SELECT * FROM doctores INNER JOIN usuarios ON doctores.id_usuario = usuarios.id_usuario";
         $query = mysqli_query($conexion, $consulta);
         ?>
 
@@ -251,21 +250,21 @@ if($tableShow == '' || $tableShow == null){
                     <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
 
-                    <div class="tbody"><a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                    <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a></div>                
+                    <div class="tbody">
+                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
+                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a>
+                    </div>                
                 </div>
             <?php
             }
             ?>
         </div>
-
-        <!-- <button class="insertar"> Registrar Un Usuario </button> -->
-
-        <div class="space"></div>
-
+        
         <?php
         mysqli_close($conexion);
         ?>
+
+        <div class="space"></div>
 
         <?php
         include 'components/footer.html';
