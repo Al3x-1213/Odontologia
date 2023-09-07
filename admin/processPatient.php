@@ -77,18 +77,19 @@ function ordenarFecha($fechaOrdenada){
                     <div class="thead">Hora de Culminación</div>
                 </div>
 
-                    <div class="tbody__table">
+                <div class="tbody__table">
 
-                        <input type="hidden" name="id_consulta" value="<?php echo $resultado['id_consulta'] ?>">
+                    <input type="hidden" name="id_consulta" value="<?php echo $resultado['id_consulta'] ?>">
 
-                        <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-                        <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
-                        <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                        <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
-                        <div class="tbody"><?php echo $resultado['turno_consulta']; ?></div>
-                        <div class="tbody"> <input type="time" required name="hora_inicio"> </div>
-                        <div class="tbody"> <input type="time" required name="hora_fin">  </div>
-                    </div>
+                    <div class="tbody"><?php echo $resultado['cedula']; ?></div>
+                    <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
+                    <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
+                    <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
+                    <div class="tbody"><?php echo $resultado['turno_consulta']; ?></div>
+                    <div class="tbody"><input type="time" required name="hora_inicio"></div>
+                    <div class="tbody"><input type="time" required name="hora_fin"></div>
+                    <input type="hidden" value="<?php echo $resultado['fecha_atencion']; ?>" name="fechaAtencion">
+                </div>
             </div>
 
             <input type="submit" class="confirmar" value="Confirmar Cita">
