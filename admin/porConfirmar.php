@@ -1,10 +1,7 @@
 <?php
 include '../client/verificationSession.php';
 
-function ordenarFecha($fechaOrdenada){
-    $fecha = explode("-", $fechaOrdenada);
-    return $fechaOrdenada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
-}
+include '../client/orderDate.php';
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +64,7 @@ function ordenarFecha($fechaOrdenada){
             ORDER BY fecha_atencion ASC";
             $query = mysqli_query($conexion, $consulta);
 
-            while ($resultado = mysqli_fetch_array($query)) {
+            while ($resultado = mysqli_fetch_array($query)){
                 $fechaAtencion = ordenarFecha($resultado['fecha_atencion'])
             ?>
                 <div class="tbody__table">

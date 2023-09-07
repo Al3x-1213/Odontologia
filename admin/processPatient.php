@@ -1,17 +1,14 @@
 <?php
 include '../client/verificationSession.php';
 
+include '../client/orderDate.php';
+
 // date_default_timezone_set('America/Caracas');
 // $fecha_actual = date("d-m-Y h:i:s");
 
 // $dia = date("d");
 // $mes = date("m");
 // $year = date("Y");
-
-function ordenarFecha($fechaOrdenada){
-    $fecha = explode("-", $fechaOrdenada);
-    return $fechaOrdenada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
-}
 ?>
 
 <!DOCTYPE html>

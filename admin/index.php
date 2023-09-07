@@ -1,6 +1,7 @@
 <?php
 include '../client/verificationSession.php';
-
+?>
+<?php
 date_default_timezone_set('America/Caracas');
 $fecha_actual = date("d-m-Y h:i:s");
 
@@ -48,6 +49,7 @@ $year = date("Y");
         <?php
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
         include '../client/obtenerId.php';
+        
         include '../client/connection.php';
         $operator = "SELECT * FROM consultas WHERE fecha_atencion = '$year-$mes-$dia' AND id_doctor = '$id_doctor' AND id_status_consulta != 3 AND id_status_consulta != 4";
         $select = $conexion->query($operator);
@@ -115,7 +117,6 @@ $year = date("Y");
 
                 <?php
                 include '../client/obtenerId.php';
-                include '../client/conexion.php';
 
                 $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores
                 ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
@@ -140,7 +141,7 @@ $year = date("Y");
             </div>
         <?php
         }
-        ?> <!-- Para cerrar el condicional de las consultas -->
+        ?>
 
         <div class="space"></div>
 

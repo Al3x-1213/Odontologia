@@ -1,11 +1,7 @@
 <?php
 include '../client/verificationSession.php';
-?>
-<?php
-function ordenarFecha($fechaOrdenada){
-    $fecha = explode("-", $fechaOrdenada);
-    return $fechaOrdenada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
-}
+
+include '../client/orderDate.php';
 ?>
 
 <!DOCTYPE html>
