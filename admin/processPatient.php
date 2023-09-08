@@ -89,8 +89,6 @@ include '../client/orderDate.php';
                     <?php
                     }
                     ?>
-                    
-                    
                     <input type="hidden" value="<?php echo $resultado['fecha_atencion']; ?>" name="fechaAtencion">
                 </div>
             </div>
