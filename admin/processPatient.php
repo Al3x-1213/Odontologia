@@ -75,8 +75,22 @@ include '../client/orderDate.php';
                     <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
                     <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
                     <div class="tbody"><?php echo $resultado['turno_consulta']; ?></div>
-                    <div class="tbody"><input type="time" required name="hora_inicio"></div>
-                    <div class="tbody"><input type="time" required name="hora_fin"></div>
+                    <?php
+                    if ($resultado['id_turno_consulta'] == 1){
+                    ?>
+                        <div class="tbody"><input type="time" required min="08:00" max="12:00" name="hora_inicio"></div>
+                        <div class="tbody"><input type="time" required min="08:00" max="12:00" name="hora_fin"></div>
+                    <?php
+                    }
+                    elseif ($resultado['id_turno_consulta'] == 2){
+                    ?>
+                        <div class="tbody"><input type="time" required min="13:00" max="16:00" name="hora_inicio"></div>
+                        <div class="tbody"><input type="time" required min="13:00" max="16:00" name="hora_fin"></div>
+                    <?php
+                    }
+                    ?>
+                    
+                    
                     <input type="hidden" value="<?php echo $resultado['fecha_atencion']; ?>" name="fechaAtencion">
                 </div>
             </div>
