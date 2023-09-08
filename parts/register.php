@@ -30,15 +30,11 @@ session_destroy();
 
 <body>
     <div class="flex__container">
-        <form id="formulario" class="form" method="POST"> <!--action="../client/insertar.php"-->
+        <form id="formulario" class="form" method="POST" action="../client/insert/insert.php">
 
             <a href="../"><i class="icon-cross"></i></a>
             <!-- TITULO -->
             <h2 class="title__form"><a href="../index.php">Registrarse</a></h2>
-
-            <?php
-            include '../client/insert/insert.php';
-            ?>
 
             <p>¿Ha pedido cita previamente pero no tiene cuenta? <a href="registerSc.php">Regístrate aqui</a></p>
 
@@ -100,7 +96,7 @@ session_destroy();
 
             <div id="grupo_telefono2" class="grupo">
                 <label>Telefono (Opcional):</label>
-                <div class="input-icon"><input type="number" maxlength="11" required name="telefono2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
+                <div class="input-icon"><input type="number" maxlength="11" name="telefono2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
                 <div class="paragraf__error display"> Telefono sólo puede tener 11 caracteres </div>
             </div>
 
@@ -108,6 +104,18 @@ session_destroy();
                 <label>Correo Electrónico:</label>
                 <div class="input-icon"><input type="email" maxlength="60" required name="correo" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
                 <div class="paragraf__error display"> Correo debe contener @ y . </div>
+            </div>
+
+            <label>¿Tiene alguna Discapacidad:</label>
+            <div class="hora">
+                <input type="radio" required value="2" name="discapacidad" class=""> Sí
+                <input type="radio" required value="1" name="discapacidad" class=""> No
+            </div>
+
+            <label>¿Es alergico a algun medicamento:</label>
+            <div class="hora">
+                <input type="radio" required value="2" name="alergia" class=""> Sí
+                <input type="radio" required value="1" name="alergia" class=""> No
             </div>
 
             <input class="button" type="submit" value="Registrarse" name="boton_reg">
