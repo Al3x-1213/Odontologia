@@ -38,7 +38,7 @@
                                     Buscar citas: <input type="date" name="buscar">
                                 </div>
                                 <div>
-                                    <button class="botonBuscar"><i class="icon-search"></i></button>
+                                    <button title="Buscar" class="botonBuscar"><i class="icon-search"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -52,7 +52,7 @@
                                     <label for="search">Buscar pacientes: </label><input type="text" placeholder="Datos del Paciente:" name="search" id="search">
                                 </div>
                                 <!-- <div>
-                                    <button class="botonBuscar"><i class="icon-search"></i></button>
+                                    <button title="Buscar" class="botonBuscar"><i class="icon-search"></i></button>
                                 </div> -->
                             </div>
                             <div>

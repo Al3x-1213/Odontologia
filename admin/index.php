@@ -96,8 +96,10 @@ $fechaActual = date("Y-m-d");
                         <div class="tbody contacto"><?php echo $resultado['telefono_1']." ".$resultado['telefono_2'] ; ?></div>
             
                         <div class="tbody">
-                            <a href="../client/botones/atendido.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="atendido">Atendido</button></a>
-                            <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a>
+                            <!-- <a href="../client/botones/atendido.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="atendido">Atendido</button></a> -->
+                            <!-- <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a> -->
+                            <a href="../client/botones/atendido.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="atendido"><i class="icon-checkmark icon"></i></button></a>
+                            <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancelar"><i class="icon-undo2 icon"></i></button></a>
                         </div>
                     </div>
                 <?php

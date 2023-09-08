@@ -64,5 +64,7 @@
   border: none;
   height: 20px;
   padding: 3px 5px 0px;
+  cursor: pointer;
+  cursor: hand;
 }
 
