@@ -79,50 +79,43 @@ body {
   min-width: 5%;
 }
 
-.eliminar, .atendido, .editar, .procesar {
-  padding: 1% 2%;
-  font-weight: bold;
-  border: 1px solid #333;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all ease .4s;
+/* BOTONES */
+
+a{
+  text-decoration: none;
 }
 
-.eliminar > a, .atendido > a {
-  text-decoration: none;
+.atendido, .cancelar, .procesar, .modificar, .eliminar{
+  background: transparent;
+  cursor: pointer;
+  cursor: hand;
+  border: none;
+  border-radius: 2px;
+}
+
+.atendido i, .cancelar i, .procesar i, .modificar i, .eliminar i{
+  padding: 2px;
   color: #333;
 }
 
-.eliminar {
-  background: #ea4848;
+.atendido i, .procesar i{
+  font-size: 150%;
 }
 
-.eliminar:hover {
-  background: #e23838;
+.cancelar i, .modificar i, .eliminar i{
+  font-size: 130%;
 }
 
-.atendido {
-  background: #789dc9;
+.atendido i:hover{
+  color: rgb(0, 255, 0);
 }
 
-.atendido:hover {
-  background: #33548aa6;
+.procesar i:hover, .modificar i:hover{
+  color: rgb(0, 0, 255);
 }
 
-.procesar {
-  background: #E67F4F;
-}
-
-.procesar:hover{
-  background: #df703c;
-}
-
-.editar {
-  background: #789dc9;
-}
-
-.editar:hover {
-  background: #33548aa6;
+.cancelar i:hover, .eliminar i:hover{
+  color: rgb(255, 0, 0);
 }
 
 .insertar{

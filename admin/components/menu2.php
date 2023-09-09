@@ -18,6 +18,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
+        <style type="text/css">
+            ul {
+                list-style-type: none;
+            }
+	</style>
     </head>
     <body>
         <div class="header">
@@ -33,25 +38,33 @@
                                     Buscar citas: <input type="date" name="buscar">
                                 </div>
                                 <div>
-                                    <button class="botonBuscar"><i class="icon-search"></i></button>
+                                    <button title="Buscar" class="botonBuscar"><i class="icon-search"></i></button>
                                 </div>
                             </div>
                         </form>
                     </div>
+                    
                     <div class="buscadorPacientes">
-                        <form action="searchPatients.php" method= "POST">
+                        <!-- <form action="searchPatients.php" method= "POST"> -->
+                        <form action="" method= "POST" autocomplete="off">
                             <div class="inputs">
                                 <div class="inputRecibe">
-                                    Buscar pacientes: <input type="text" placeholder="Número de cédula:" name="buscar">
+                                    <label for="search">Buscar pacientes: </label><input type="text" placeholder="Datos del Paciente:" name="search" id="search">
                                 </div>
-                                <div>
-                                    <button class="botonBuscar"><i class="icon-search"></i></button>
-                                </div>
+                                <!-- <div>
+                                    <button title="Buscar" class="botonBuscar"><i class="icon-search"></i></button>
+                                </div> -->
+                            </div>
+                            <div>
+                                <ul id="filter"></ul>
                             </div>
                         </form>
+
+                        
                     </div> 
                 </div>
             </div>
-        </div>    
+        </div>
+        <script src="js/searchFilter.js"></script>
     </body>
 </html>

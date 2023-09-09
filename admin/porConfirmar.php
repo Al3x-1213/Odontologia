@@ -1,10 +1,7 @@
 <?php
 include '../client/verificationSession.php';
 
-function ordenarFecha($fechaOrdenada){
-    $fecha = explode("-", $fechaOrdenada);
-    return $fechaOrdenada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
-}
+include '../client/orderDate.php';
 ?>
 
 <!DOCTYPE html>
@@ -39,11 +36,18 @@ function ordenarFecha($fechaOrdenada){
         ?>
 
         <?php
-        // OBTENER EL ID_DOCTOR según el ID_USUARIO
+        // OBTENER EL ID_DOCTOR SEGÚN EL ID_USUARIO
         include '../client/obtenerId.php';
       
         // OBTENER LA INFORMACIÓN DE TODAS LAS CITAS POR CONFIRMAR DEL DOCTOR QUE ESTÁ LOGUEADO
         include '../client/connection.php'; //Conexión con base de datos
+
+        $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
+        ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
+        AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
+        WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 3
+        ORDER BY fecha_atencion ASC";
+        $query = mysqli_query($conexion, $consulta);
         ?>
 
         <h2 class="dia">Citas por Confirmar</h2>
@@ -60,15 +64,8 @@ function ordenarFecha($fechaOrdenada){
             </div>
 
             <?php
-            $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
-            ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
-            AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-            WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 3
-            ORDER BY fecha_atencion ASC";
-            $query = mysqli_query($conexion, $consulta);
-
-            while ($resultado = mysqli_fetch_array($query)) {
-                $fechaAtencion = ordenarFecha($resultado['fecha_atencion'])
+            while ($resultado = mysqli_fetch_array($query)){
+                $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
             ?>
                 <div class="tbody__table">
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
@@ -79,19 +76,17 @@ function ordenarFecha($fechaOrdenada){
                     <div class="tbody"><?php echo $resultado['turno_consulta']; ?></div>
                     
                     <div class="tbody">
-                        <a href="processPatient.php?id=<?php echo $resultado['id_consulta']?>"><button class="procesar"> Procesar </button></a>
+                        <!-- <a href="processPatient.php?id=<?php echo $resultado['id_consulta']?>"><button class="procesar">Procesar</button></a> -->
+                        <a href="processPatient.php?id=<?php echo $resultado['id_consulta']?>"><button title="Procesar" class="procesar"><i class="icon-cogs icon"></i></button></a>
                     </div>
                 </div>
             <?php
             }
+            mysqli_close($conexion);
             ?>
         </div>
 
         <div class="space"></div>
-
-        <?php
-        mysqli_close($conexion);
-        ?>
         
         <?php
         include 'components/footer.html';

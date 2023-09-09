@@ -1,12 +1,11 @@
 <?php
 include '../client/verificationSession.php';
 
+include '../client/orderDate.php';
+?>
+<?php
 date_default_timezone_set('America/Caracas');
-$fecha_actual = date("d-m-Y h:i:s");
-
-$dia = date("d");
-$mes = date("m");
-$year = date("Y");
+$fechaActual = date("Y-m-d");
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +18,7 @@ $year = date("Y");
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
-        <link rel="stylesheet" href="styles/buscador.css">
+        <!-- <link rel="stylesheet" href="styles/buscador.css"> -->
         <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="../styles/mensajes.css">
         <link rel="stylesheet" href="styles/footer.css">
@@ -44,20 +43,33 @@ $year = date("Y");
         include 'parts/modal.php';
         ?>
 
-        <!-- INICIA LA CONEXION CON LA BASE DE DATOS PARA HACER CONSULTAS -->
         <?php
-        // OBTENER EL ID_DOCTOR según el ID_USUARIO
+        // OBTENER EL ID_DOCTOR SEGÚN EL ID_USUARIO
         include '../client/obtenerId.php';
+        
+        // OBTENER LA INFORMACIÓN DE LAS CITAS PARA EL DÍA ACTUAL
         include '../client/connection.php';
-        $operator = "SELECT * FROM consultas WHERE fecha_atencion = '$year-$mes-$dia' AND id_doctor = '$id_doctor' AND id_status_consulta != 3 AND id_status_consulta != 4";
-        $select = $conexion->query($operator);
 
-        //valida que la tabla de consultas de ese dia no esté vacía
-        if($select->num_rows == 0){ ?>
-            <h2 class="dia">No Hay Pacientes Por Atender Para Hoy</h2> <?php
-        }else{
-            mysqli_close($conexion) ?>
-            <h2 class="dia"> <?php echo $dia . "-" . $mes . "-" . $year ?> </h2>
+        $consulta = "SELECT * FROM consultas WHERE fecha_atencion = '$fechaActual' AND id_doctor = '$id_doctor'
+        AND id_status_consulta != 3 AND id_status_consulta != 4";
+        $query = mysqli_query($conexion, $consulta);
+
+        // VALIDACIÓN PARA COMPROBAR QUE LA TABLA NO ESTÉ VACIA
+        if($query->num_rows == 0){
+        ?>
+            <h2 class="dia">No Hay Pacientes Por Atender Para Hoy</h2>
+        <?php
+        }
+        else
+        {     
+            $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores
+            ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
+            WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$id_doctor'
+            ORDER BY hora_inicio ASC";
+            $query = mysqli_query($conexion, $consulta);
+        ?>
+        
+            <h2 class="dia"><?php echo ordenarFecha($fechaActual); ?></h2>
             
             <div class="table">
                 <div class="thead__table">
@@ -71,35 +83,38 @@ $year = date("Y");
                 </div>
 
                 <?php
-                include '../client/connection.php';
-      
-                $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores
-                ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
-                WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$year-$mes-$dia' AND consultas.id_doctor = '$id_doctor'
-                ORDER BY hora_inicio ASC";
-                $select = $conexion->query($consulta);
-
-                while ($datos_consulta = mysqli_fetch_array($select)) {?>
+                while ($resultado = mysqli_fetch_array($query)){
+                    $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+                    $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
+                ?>
                     <div class="tbody__table">
-                        <div class="tbody nom"><?php echo $datos_consulta['nombre'] . " " . $datos_consulta['apellido']; ?></div>
-                        <div class="tbody"><?php echo $datos_consulta['cedula']; ?></div>
-                        <div class="tbody causa"><?php echo $datos_consulta['causa_consulta']; ?></div>
-                        <div class="tbody"><?php echo $datos_consulta['hora_inicio']; ?></div>
-                        <div class="tbody"><?php echo $datos_consulta['hora_fin']; ?></div>
-                        <div class="tbody contacto"><?php echo $datos_consulta['telefono_1']." ".$datos_consulta['telefono_2'] ; ?></div>
-          
+                        <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
+                        <div class="tbody"><?php echo $resultado['cedula']; ?></div>
+                        <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
+                        <div class="tbody"><?php echo $horaInicio; ?></div>
+                        <div class="tbody"><?php echo $horaFin; ?></div>
+                        <div class="tbody contacto"><?php echo $resultado['telefono_1']." ".$resultado['telefono_2'] ; ?></div>
+            
                         <div class="tbody">
-                            <a href="../client/botones/atendido.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="atendido">Atendido</button></a>
-                            <a href="../client/botones/cancelar.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a>
+                            <!-- <a href="../client/botones/atendido.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="atendido">Atendido</button></a> -->
+                            <!-- <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a> -->
+                            <a href="../client/botones/atendido.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="atendido"><i class="icon-checkmark1 icon"></i></button></a>
+                            <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancelar"><i class="icon-cross icon"></i></button></a>
                         </div>
                     </div>
                 <?php
                 }
-                mysqli_close($conexion); ?>
+                ?>
             </div>
 
-            <!-- <button class="insertar"> Registrar Una Cita </button> -->
-            
+            <?php
+            $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores
+            ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
+            WHERE consultas.id_status_consulta = 1 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$id_doctor'
+            ORDER BY hora_inicio DESC";
+            $query = mysqli_query($conexion, $consulta);
+            ?>
+        
             <h2 class="dia"> Atendidos </h2>
             
             <div class="table">
@@ -114,33 +129,28 @@ $year = date("Y");
                 </div>
 
                 <?php
-                include '../client/obtenerId.php';
-                include '../client/conexion.php';
-
-                $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores
-                ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
-                WHERE consultas.id_status_consulta = 1 AND consultas.fecha_atencion = '$year-$mes-$dia' AND consultas.id_doctor = '$id_doctor'
-                ORDER BY hora_inicio DESC";
-                $select = $conexion->query($consulta);
-
-                while ($datos_consulta = mysqli_fetch_array($select)) {?>
+                while ($resultado = mysqli_fetch_array($query)){
+                    $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+                    $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
+                ?>
                     <div class="tbody__table">
-                        <div class="tbody nom"><?php echo $datos_consulta['nombre'] . " " . $datos_consulta['apellido']; ?></div>
-                        <div class="tbody"><?php echo $datos_consulta['cedula']; ?></div>
-                        <div class="tbody causa"><?php echo $datos_consulta['causa_consulta']; ?></div>
-                        <div class="tbody"><?php echo $datos_consulta['hora_inicio']; ?></div>
-                        <div class="tbody"><?php echo $datos_consulta['hora_fin']; ?></div>
-                        <div class="tbody contacto"><?php echo $datos_consulta['telefono_1']." ".$datos_consulta['telefono_2'] ; ?></div>
-            
-                        <div class="tbody"><a href="../client/botones/cancelar.php?id=<?php echo $datos_consulta['id_consulta'] ?>"><button class="eliminar">Eliminar</button></a></div>
+                        <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
+                        <div class="tbody"><?php echo $resultado['cedula']; ?></div>
+                        <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
+                        <div class="tbody"><?php echo $horaInicio; ?></div>
+                        <div class="tbody"><?php echo $horaFin; ?></div>
+                        <div class="tbody contacto"><?php echo $resultado['telefono_1']." ".$resultado['telefono_2'] ; ?></div>
+                
+                        <div class="tbody"><a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="eliminar">Eliminar</button></a></div>
                     </div>
                 <?php
                 }
-                mysqli_close($conexion); ?>
+                ?>
             </div>
         <?php
         }
-        ?> <!-- Para cerrar el condicional de las consultas -->
+        mysqli_close($conexion);
+        ?>
 
         <div class="space"></div>
 

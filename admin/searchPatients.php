@@ -1,10 +1,7 @@
 <?php
 include '../client/verificationSession.php';
 
-function ordenarFecha($fechaOrdenada){
-    $fecha = explode("-", $fechaOrdenada);
-    return $fechaOrdenada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
-}
+include '../client/orderDate.php';
 ?>
 
 <!DOCTYPE html>
@@ -42,9 +39,6 @@ function ordenarFecha($fechaOrdenada){
         // PACIENTE PARA BUSCAR
         $paciente = $_POST['buscar'];
 
-        // // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
-        // $id= $_SESSION['id'];
-
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
         include '../client/obtenerId.php';
 
@@ -70,7 +64,7 @@ function ordenarFecha($fechaOrdenada){
 
             <?php
             while ($resultado = mysqli_fetch_array($query)) {
-                $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento'])
+                $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento']);
             ?>
                 <div class="tbody__table">
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
@@ -112,18 +106,24 @@ function ordenarFecha($fechaOrdenada){
             $query = mysqli_query($conexion, $consulta);
 
             while ($resultado = mysqli_fetch_array($query)) {
-                $fechaAtencion = ordenarFecha($resultado['fecha_atencion'])
+                $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
+                $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+                $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
             ?>
                 <div class="tbody__table">
                     <div class="tbody tbody2"><?php echo $resultado['causa_consulta']; ?></div>
                     <div class="tbody tbody2"><?php echo $fechaAtencion; ?></div>
-                    <div class="tbody tbody2"><?php echo $resultado['hora_inicio']; ?></div>
-                    <div class="tbody tbody2"><?php echo $resultado['hora_fin']; ?></div>
+                    <div class="tbody tbody2"><?php echo $horaInicio; ?></div>
+                    <div class="tbody tbody2"><?php echo $horaFin; ?></div>
                 </div>
             <?php
             }
             ?>
         </div>
+
+        <?php
+        mysqli_close($conexion);
+        ?>
         
         <div class="space"></div>
         

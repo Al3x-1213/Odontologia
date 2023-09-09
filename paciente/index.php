@@ -1,11 +1,7 @@
 <?php
 include '../client/verificationSession.php';
-?>
-<?php
-function ordenarFecha($fechaOrdenada){
-    $fecha = explode("-", $fechaOrdenada);
-    return $fechaOrdenada = $fecha[2]."-".$fecha[1]."-".$fecha[0];
-}
+
+include '../client/orderDate.php';
 ?>
 
 <!DOCTYPE html>
@@ -77,12 +73,9 @@ function ordenarFecha($fechaOrdenada){
                     <div class="tbody"><?php
                     $id_doctor = $resultado['id_doctor'];
 
-                    // echo $id_doctor;
-
                     $consulta = "SELECT * FROM doctores INNER JOIN usuarios
                     ON doctores.id_usuario = usuarios.id_usuario WHERE id_doctor = '$id_doctor'";
 
-                    // echo $consulta;
                     $queryDoc = mysqli_query($conexion, $consulta);
 
                     $resultado = mysqli_fetch_array($queryDoc);
@@ -91,6 +84,7 @@ function ordenarFecha($fechaOrdenada){
                 </div>
             <?php
             }
+            mysqli_close($conexion);
             ?>
         </div>
 
