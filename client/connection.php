@@ -2,9 +2,9 @@
 
 $host = 'localhost';
 $user = 'root';
-$passwd = '';
-$nameDB = 'consultorio';
-$conexion = new mysqli($host, $user, $passwd, $nameDB);
+$password = '';
+$dataBase = 'consultorio';
+$conexion = new mysqli($host, $user, $password, $dataBase);
 
 if($conexion->connect_error){
     die('Error de conexión: ' . $conexion->connect_error);
