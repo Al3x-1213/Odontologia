@@ -108,14 +108,14 @@ session_destroy();
 
             <label>¿Tiene alguna Discapacidad:</label>
             <div class="hora">
-                <input type="radio" required value="2" name="discapacidad" class=""> Sí
-                <input type="radio" required value="1" name="discapacidad" class=""> No
+                <input type="radio" required value="2" name="discapacidad"> Sí
+                <input type="radio" required value="1" name="discapacidad"> No
             </div>
 
             <label>¿Es alergico a algun medicamento:</label>
             <div class="hora">
-                <input type="radio" required value="2" name="alergia" class=""> Sí
-                <input type="radio" required value="1" name="alergia" class=""> No
+                <input type="radio" required value="2" name="alergia"> Sí
+                <input type="radio" required value="1" name="alergia"> No
             </div>
 
             <input class="button" type="submit" value="Registrarse" name="boton_reg">
