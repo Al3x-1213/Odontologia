@@ -1,6 +1,6 @@
 <?php
 
-require '../client/connectionSearch.php';
+include '../client/connectionSearch.php';
 
 $conexion = new Database();
 $pdo = $conexion->conectar();
