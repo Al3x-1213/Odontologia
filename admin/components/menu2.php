@@ -1,3 +1,12 @@
+	<!-- <form action="" method="post" autocomplete="off">
+		<div>
+			<label for="search">Buscar:</label>
+			<input type="text" name="search" id="search">
+
+			<ul id="filter"></ul>
+		</div>
+	</form> -->
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -19,10 +28,25 @@
         <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
         <style type="text/css">
-            ul {
+            /* ul {
                 list-style-type: none;
+                width: 300px;
+                height: auto;
+                position: absolute;
+                margin-top: 10px;
+                margin-left: 10px;
+                color: #333;
             }
-	</style>
+
+            li {
+                background-color: #EEEEEE;
+                border-top: 1px solid #9e9e9e;
+                padding: 5px;
+                width: 100%;
+                float: left;
+                cursor: pointer;
+            } */
+        </style>
     </head>
     <body>
         <div class="header">
@@ -44,8 +68,7 @@
                         </form>
                     </div>
                     
-                    <div class="buscadorPacientes">
-                        <!-- <form action="searchPatients.php" method= "POST"> -->
+                    <div class="searchPatients">
                         <form action="" method= "POST" autocomplete="off">
                             <div class="inputs">
                                 <div class="inputRecibe">
@@ -55,12 +78,10 @@
                                     <button title="Buscar" class="botonBuscar"><i class="icon-search"></i></button>
                                 </div> -->
                             </div>
-                            <div>
+                            <div class="filter">
                                 <ul id="filter"></ul>
                             </div>
                         </form>
-
-                        
                     </div> 
                 </div>
             </div>
