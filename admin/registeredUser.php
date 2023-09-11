@@ -1,5 +1,5 @@
 <?php
-include '../client/verificationSession.php';
+include '../client/verificationSessionAdmin.php';
 
 include '../client/orderDate.php';
 

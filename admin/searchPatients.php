@@ -37,7 +37,7 @@ include '../client/orderDate.php';
         ?>
         <?php
         // PACIENTE PARA BUSCAR
-        $paciente = $_POST['buscar'];
+        $id_user = $_GET['id'];
 
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
         include '../client/obtenerId.php';
@@ -45,7 +45,7 @@ include '../client/orderDate.php';
         // DATOS DEL PACIENTE
         include '../client/connection.php'; //Conexión con base de datos
         
-        $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 2 AND cedula = '$paciente'";
+        $consulta = "SELECT * FROM usuarios WHERE id_usuario = '$id_user' AND id_tipo_usuario = 2";
         $query = $conexion->query($consulta);
         ?>
     
@@ -132,6 +132,5 @@ include '../client/orderDate.php';
         ?>
 
         <script src="js/confirm.js"></script>
-        <script src="js/modal.js"></script>
     </body>
 </html>

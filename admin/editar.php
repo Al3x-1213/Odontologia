@@ -1,5 +1,5 @@
 <?php
-include '../client/verificationSession.php';
+include '../client/verificationSessionAdmin.php';
 ?>
 
 <!DOCTYPE html>
