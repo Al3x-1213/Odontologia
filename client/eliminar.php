@@ -1,5 +1,9 @@
 <?php
 
+session_start();
+ob_start();
+$sesion = $_SESSION['sesion'];
+
 // POR CORREGIR
 
 include 'connection.php';
@@ -11,13 +15,9 @@ $id = $_GET['id'];
 $peticion = "DELETE FROM usuarios WHERE id_usuario = '$id'";
 $eliminar = ($conexion->query($peticion));
 
-session_start();
-ob_start();
-$sesion = $_SESSION['sesion'];
-
-if($eliminar == 1 && $sesion == 1){
+if($eliminar == 1){
     mysqli_close($conexion);
-    header("location:../admin/usuarios.php");
+    header("location:../admin/registeredUser.php");
 }
 
 ?>

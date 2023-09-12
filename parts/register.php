@@ -42,40 +42,70 @@ session_destroy();
 
             <div id="grupo_usuario" class="grupo">
                 <label>Usuario:</label>
-                <div class="input-icon"><input type="text" maxlength="30" required name="usuario" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
-                <div class="paragraf__error display"> Usuario no puede estar vacío y sólo puede tener: numeros y letras y  algunos caractéres como . - _ </div>
+                <div class="input-icon"><input type="text" maxlength="30" required name="usuario" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display"> 
+                    <p>Usuario no puede estar vacío<br>No pueden ser menos de 4 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter especial no permitido</p>
+                </div>
             </div>
 
             <div id="grupo_clave" class="grupo">
                 <label>Contraseña:</label>
-                <div class="input-icon"><input type="password" maxlength="35" required name="clave" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
-                <div class="paragraf__error display"> Contraseña no puede tener menos de 4 caracteres y no puede estar vacia </div>
+                <div class="input-icon"><input type="password" maxlength="35" required name="clave" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display"> 
+                    <p>Debe tener al menos 8 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Debe tener al menos 1 caracter especial <br>Debe que tener al menos una letra en mayuscula</p>
+                </div>
             </div>
 
             <div id="grupo_clave2" class="grupo">
                 <label>Confirmar Contraseña:</label>
-                <div class="input-icon"><input type="password" maxlength="35" required name="clave2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
-                <div class="paragraf__error display"> Contraseña no coincide </div>
+                <div class="input-icon"><input type="password" maxlength="35" required name="clave2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display"> 
+                    <p>La clave debe coincidir</p>
+                </div>
+                <div class="paragraf__error2 display"> 
+                    <p>Este campo no puede estar vacío<br>Debe tener al menos 8 caracteres</p>
+                </div>
             </div>
 
             <h3>Datos Personales: </h3>
 
             <div id="grupo_nombre" class="grupo">
                 <label>Nombre:</label>
-                <div class="input-icon"><input type="text" maxlength="25" required name="nombre" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
-                <div class="paragraf__error display"> Nombre no puede tener numeros ni caracteres especiales </div>
+                <div class="input-icon"><input type="text" maxlength="25" required name="nombre" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display"> 
+                    <p>Nombre no puede estar vacío<br>No pueden ser menos de 3 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Carácter no permitido</p>
+                </div>
             </div>
 
             <div id="grupo_apellido" class="grupo">
                 <label>Apellido:</label>
                 <div class="input-icon"><input type="text" maxlength="25" required name="apellido" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
-                <div class="paragraf__error display"> Apellido no puede tener numeros ni caracteres especiales </div>
+                <div class="paragraf__error1 display"> 
+                    <p>Apellido no puede estar vacío<br>No pueden ser menos de 3 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter no permitido</p>
+                </div>
             </div>
 
             <div id="grupo_cedula" class="grupo">
                 <label>Cédula:</label>
                 <div class="input-icon"><input type="number" maxlength="8" required name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
-                <div class="paragraf__error display"> Cedula tiene que tener de 7 a 8 caractéres </div>
+                <div class="paragraf__error1 display"> 
+                    <p>Cedula no puede estar vacío</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter permitido</p>
+                </div>
             </div>
 
             <?php
@@ -85,25 +115,39 @@ session_destroy();
             <div id="grupo_nacimiento" class="grupo">
                 <label>Fecha de Nacimiento:</label>
                 <div class="input-icon"><input type="date" required name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
-                <div class="paragraf__error display"> la fecha no puede ser la misma o posterior a la de hoy </div>
             </div>
 
             <div id="grupo_telefono1" class="grupo">
                 <label>Telefono celular:</label>
                 <div class="input-icon"><input type="number" maxlength="11" required name="telefono1" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
-                <div class="paragraf__error display"> Telefono sólo puede tener 11 caracteres </div>
+                <div class="paragraf__error1 display"> 
+                    <p>Usuario no puede estar vacío<br>No pueden ser menos de 4 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter especial no permitido</p>
+                </div>
             </div>
 
             <div id="grupo_telefono2" class="grupo">
                 <label>Telefono (Opcional):</label>
                 <div class="input-icon"><input type="number" maxlength="11" name="telefono2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
-                <div class="paragraf__error display"> Telefono sólo puede tener 11 caracteres </div>
+                <div class="paragraf__error1 display"> 
+                    <p>Usuario no puede estar vacío<br>No pueden ser menos de 4 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter especial no permitido</p>
+                </div>
             </div>
 
             <div id="grupo_correo" class="grupo">
                 <label>Correo Electrónico:</label>
                 <div class="input-icon"><input type="email" maxlength="60" required name="correo" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
-                <div class="paragraf__error display"> Correo debe contener @ y . </div>
+                <div class="paragraf__error1 display"> 
+                    <p>Usuario no puede estar vacío<br>No pueden ser menos de 4 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter especial no permitido</p>
+                </div>
             </div>
 
             <label>¿Tiene alguna Discapacidad:</label>

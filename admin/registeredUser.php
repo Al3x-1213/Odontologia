@@ -49,68 +49,65 @@ if($tableShow == '' || $tableShow == null){
 
         <div class="modal disable">
             <div class="flex-container">
-                <form class="form-login" method="POST"> <!--action="../client/insertar.php"-->
+                <form class="form-login" method="POST" action="../client/insert/insertRegistered.php">
+
                     <div class="header__form">
                         <h2>Registrar un Usuario</h2> <span class="icon-cross"></span>
                     </div>
 
-                    <?php
-                    include '../client/insert/insertDoctor.php';
-                    ?>
-
                     <h3>Tu cuenta: </h3>
 
                     <label for="nombre">Usuario:</label>
-                    <input type="text" maxlength="30" required="true" name="usuario" class="input__form" autocomplete="off">
+                    <input type="text" maxlength="30" required name="usuario" class="input__form" autocomplete="off">
 
                     <label for="clave">Contraseña:</label>
-                    <input type="password" maxlength="35" required="true" name="clave" class="input__form">
+                    <input type="password" maxlength="35" required name="clave" class="input__form">
 
                     <label for="clave">Confirmar Contraseña:</label>
-                    <input type="password" maxlength="35" required="true" name="clave2" class="input__form">
+                    <input type="password" maxlength="35" required name="clave2" class="input__form">
 
                     <label for="clave">Tipo de Usuario:</label>
                     <div class="seleccion">
-                        <input type="radio" required="true" value="1" name="tipoUser" class=""> Doctor
-                        <input type="radio" required="true" value="2" name="tipoUser" class=""> Paciente
+                        <input type="radio" required value="1" name="tipoUser"> Doctor
+                        <input type="radio" required value="2" name="tipoUser"> Paciente
                     </div>
 
 
                     <h3>Datos Personales: </h3>
 
                     <label for="nombre">Nombre:</label>
-                    <input type="text" maxlength="25" required="true" name="nombre" class="input__form" autocomplete="off">
+                    <input type="text" maxlength="25" required name="nombre" class="input__form" autocomplete="off">
 
                     <label for="apellido">Apellido:</label>
-                    <input type="text" maxlength="25" required="true" name="apellido" class="input__form">
+                    <input type="text" maxlength="25" required name="apellido" class="input__form">
 
                     <label for="cedula">Cédula:</label>
-                    <input type="number" maxlength="8" required="true" name="cedula" class="input__form">
+                    <input type="number" maxlength="8" required name="cedula" class="input__form">
 
                     <?php
                     $limite_fecha = date("Y-m-d"); 
                     ?>
                     <label for="edad">Fecha de Nacimiento:</label>
-                    <input type="date" required="true" name="nacimiento" max="<?= $limite_fecha; ?>" class="input__form">
+                    <input type="date" required name="nacimiento" max="<?= $limite_fecha; ?>" class="input__form">
 
                     <label for="numero">Número de Teléfono Celular:</label>
-                    <input type="number" maxlength="11" required="true" name="telefono1" class="input__form">
+                    <input type="number" maxlength="11" required name="telefono1" class="input__form">
 
                     <label for="numero">Número de Teléfono (opcional):</label>
                     <input type="number" maxlength="11" name="telefono2" class="input__form">
 
                     <label for="correo">Correo Electrónico:</label>
-                    <input type="email" maxlength="60" required="true" name="correo" class="input__form" autocomplete="off">
+                    <input type="email" maxlength="60" required name="correo" class="input__form" autocomplete="off">
 
                     <!------------------------------------------------>
 
-                    <label>¿Tiene alguna Discapacidad:</label>
+                    <label>¿Tiene alguna Discapacidad?:</label>
                     <div class="hora">
                         <input type="radio" required value="2" name="discapacidad" class=""> Sí
                         <input type="radio" required value="1" name="discapacidad" class=""> No
                     </div>
 
-                    <label>¿Tiene alguna Alergia:</label>
+                    <label>¿Tiene alguna Alergia?:</label>
                     <div class="hora">
                         <input type="radio" required value="2" name="alergia" class=""> Sí
                         <input type="radio" required value="1" name="alergia" class=""> No
