@@ -88,7 +88,7 @@ session_destroy();
 
             <div id="grupo_apellido" class="grupo">
                 <label>Apellido:</label>
-                <div class="input-icon"><input type="text" maxlength="25" required name="apellido" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
+                <div class="input-icon"><input type="text" maxlength="25" required name="apellido" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
                 <div class="paragraf__error1 display"> 
                     <p>Apellido no puede estar vacío<br>No pueden ser menos de 3 caracteres</p>
                 </div>
@@ -99,12 +99,12 @@ session_destroy();
 
             <div id="grupo_cedula" class="grupo">
                 <label>Cédula:</label>
-                <div class="input-icon"><input type="number" maxlength="8" required name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
+                <div class="input-icon"><input type="number" maxlength="8" required name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
                 <div class="paragraf__error1 display"> 
-                    <p>Cedula no puede estar vacío</p>
+                    <p>El campo no debe estar vacío</p>
                 </div>
                 <div class="paragraf__error2 display">
-                    <p>Caracter permitido</p>
+                    <p>Caracter no permitido</p>
                 </div>
             </div>
 
@@ -114,39 +114,39 @@ session_destroy();
 
             <div id="grupo_nacimiento" class="grupo">
                 <label>Fecha de Nacimiento:</label>
-                <div class="input-icon"><input type="date" required name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
+                <div class="input-icon"><input type="date" required name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
             </div>
 
             <div id="grupo_telefono1" class="grupo">
                 <label>Telefono celular:</label>
-                <div class="input-icon"><input type="number" maxlength="11" required name="telefono1" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
+                <div class="input-icon"><input type="number" maxlength="11" required name="telefono1" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
                 <div class="paragraf__error1 display"> 
-                    <p>Usuario no puede estar vacío<br>No pueden ser menos de 4 caracteres</p>
+                    <p>El campo no debe estar vacío <br>Deben haber 11 digitos</p>
                 </div>
                 <div class="paragraf__error2 display">
-                    <p>Caracter especial no permitido</p>
+                    <p>Caracter no permitido</p>
                 </div>
             </div>
 
             <div id="grupo_telefono2" class="grupo">
                 <label>Telefono (Opcional):</label>
-                <div class="input-icon"><input type="number" maxlength="11" name="telefono2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
+                <div class="input-icon"><input type="number" maxlength="11" name="telefono2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
                 <div class="paragraf__error1 display"> 
-                    <p>Usuario no puede estar vacío<br>No pueden ser menos de 4 caracteres</p>
+                    <p>Deben haber 11 digitos</p>
                 </div>
                 <div class="paragraf__error2 display">
-                    <p>Caracter especial no permitido</p>
+                    <p>Caracter no permitido</p>
                 </div>
             </div>
 
             <div id="grupo_correo" class="grupo">
                 <label>Correo Electrónico:</label>
-                <div class="input-icon"><input type="email" maxlength="60" required name="correo" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark confirm display"></i></div>
+                <div class="input-icon"><input type="email" maxlength="60" required name="correo" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
                 <div class="paragraf__error1 display"> 
-                    <p>Usuario no puede estar vacío<br>No pueden ser menos de 4 caracteres</p>
+                    <p>debe contener "@" y "."</p>
                 </div>
                 <div class="paragraf__error2 display">
-                    <p>Caracter especial no permitido</p>
+                    <p>El campo no puede estar vacío<br>No debe tener más 60 caracteres<br>No debe tener menos de 11 caracteres</p>
                 </div>
             </div>
 
