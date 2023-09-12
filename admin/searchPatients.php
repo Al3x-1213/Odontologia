@@ -1,5 +1,5 @@
 <?php
-include '../client/verificationSession.php';
+include '../client/verificationSessionAdmin.php';
 
 include '../client/orderDate.php';
 ?>
@@ -37,7 +37,7 @@ include '../client/orderDate.php';
         ?>
         <?php
         // PACIENTE PARA BUSCAR
-        $paciente = $_POST['buscar'];
+        $id_user = $_GET['id'];
 
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
         include '../client/obtenerId.php';
@@ -45,7 +45,7 @@ include '../client/orderDate.php';
         // DATOS DEL PACIENTE
         include '../client/connection.php'; //Conexión con base de datos
         
-        $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 2 AND cedula = '$paciente'";
+        $consulta = "SELECT * FROM usuarios WHERE id_usuario = '$id_user' AND id_tipo_usuario = 2";
         $query = $conexion->query($consulta);
         ?>
     
@@ -74,8 +74,8 @@ include '../client/orderDate.php';
                     <div class="tbody"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
                     <div class="tbody">
-                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a>
+                        <a href="../client/botones/atendido.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Editar" class="modificar"><i class="icon-pencil icon"></i></button></a>
+                        <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Eliminar" class="cancelar"><i class="icon-bin icon"></i></button></a>
                     </div>
                 </div>
             <?php
@@ -132,6 +132,5 @@ include '../client/orderDate.php';
         ?>
 
         <script src="js/confirm.js"></script>
-        <script src="js/modal.js"></script>
     </body>
 </html>

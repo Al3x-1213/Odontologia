@@ -1,5 +1,5 @@
 <?php
-include '../client/verificationSession.php';
+include '../client/verificationSessionPatient.php';
 
 include '../client/orderDate.php';
 ?>
@@ -87,60 +87,5 @@ include '../client/orderDate.php';
             mysqli_close($conexion);
             ?>
         </div>
-
-
-
-
-
-
-
-
-
-        <!-- <div class="modal">
-            <form class="form-login" method="POST" action="../client/crud/insertarCadmin.php">
-                <div class="header__form">
-                    <h2>Cita</h2> <a href="../index.php"><span class="icon-cross"></span></a>
-                </div>
-
-                <label> Nombre del Paciente: </label>
-                <input type="text" name="nombre" required="true" autocomplete="off">
-
-                <label> Apellido del Paciente: </label>
-                <input type="text" name="apellido" required="true" autocomplete="off">
-
-                <label> Numero: </label>
-                <input type="number" name="numero" required="true" autocomplete="off" minlength="11">
-
-                <label> Cedula: </label>
-                <input type="number" name="cedula" required="true" autocomplete="off" minlength="7">
-
-                <label> Causa: </label>
-                <select name="causa">
-                    <option value="Consulta odontologica general">Consulta odontologica general</option>
-                    <option value="Montura de breakers">Montura de breakers</option>
-                    <option value="Mantenimiento de breakers">Mantenimiento de breakers</option>
-                    <option value="Operaciones Menores">Operaciones Menores</option>
-                    <option value="Limpieza Buca">Limpieza Bucal</option>
-                    <option value="Tratamiento de Caries">Tratamiento de Caries</option>
-                </select>
-
-                <label> Dia: </label>
-                <select name="dia">
-                    <option value="lunes">lunes</option>
-                    <option value="martes">martes</option>
-                    <option value="miercoles">miercoles</option>
-                    <option value="jueves">jueves</option>
-                    <option value="viernes">viernes</option>
-                </select>
-
-                <label> Nombre del doctor: </label>
-                <input type="text" name="nombre_doctor" required="true" autocomplete="off">
-
-                <div class="buttons__form">
-                    <input type="submit" value="Iniciar Sesión" name="send" class="button__form loginSend">
-                    <input type="reset" value="Borrar" name="clear" class="button__form">
-                </div>
-            </form>
-        </div> -->
     </body>
 </html>

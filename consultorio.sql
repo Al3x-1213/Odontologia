@@ -1,20 +1,21 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
--- http://www.phpmyadmin.net
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 30-08-2023 a las 13:13:35
--- Versión del servidor: 5.5.24-log
--- Versión de PHP: 5.4.3
+-- Tiempo de generación: 04-09-2023 a las 15:33:04
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.10
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `consultorio`
@@ -26,18 +27,18 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `alergias`
 --
 
-CREATE TABLE IF NOT EXISTS `alergias` (
-  `id_alergia` int(1) NOT NULL AUTO_INCREMENT,
-  `alergia` varchar(30) NOT NULL,
-  PRIMARY KEY (`id_alergia`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+CREATE TABLE `alergias` (
+  `id_alergia` int(1) NOT NULL,
+  `alergia` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `alergias`
 --
 
 INSERT INTO `alergias` (`id_alergia`, `alergia`) VALUES
-(1, 'Sin alergia');
+(1, 'Sin alergia'),
+(2, 'con alergia');
 
 -- --------------------------------------------------------
 
@@ -45,13 +46,11 @@ INSERT INTO `alergias` (`id_alergia`, `alergia`) VALUES
 -- Estructura de tabla para la tabla `causa_consulta`
 --
 
-CREATE TABLE IF NOT EXISTS `causa_consulta` (
-  `id_causa_consulta` int(1) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `causa_consulta` (
+  `id_causa_consulta` int(1) NOT NULL,
   `causa_consulta` varchar(80) NOT NULL,
-  `id_seguro` int(1) NOT NULL,
-  PRIMARY KEY (`id_causa_consulta`),
-  KEY `id_seguro` (`id_seguro`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `id_seguro` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `causa_consulta`
@@ -73,24 +72,18 @@ INSERT INTO `causa_consulta` (`id_causa_consulta`, `causa_consulta`, `id_seguro`
 -- Estructura de tabla para la tabla `consultas`
 --
 
-CREATE TABLE IF NOT EXISTS `consultas` (
-  `id_consulta` int(4) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `consultas` (
+  `id_consulta` int(4) NOT NULL,
   `id_paciente` int(3) NOT NULL,
   `id_causa_consulta` int(1) NOT NULL,
   `fecha_atencion` date NOT NULL,
   `id_turno_consulta` int(1) NOT NULL,
-  `hora_inicio` time NOT NULL,
-  `hora_fin` time NOT NULL,
+  `hora_inicio` time DEFAULT NULL,
+  `hora_fin` time DEFAULT NULL,
   `id_doctor` int(1) NOT NULL,
   `id_status_consulta` int(1) NOT NULL,
-  `fecha_solicitud` date NOT NULL,
-  PRIMARY KEY (`id_consulta`),
-  KEY `id_paciente` (`id_paciente`),
-  KEY `id_causa_consulta` (`id_causa_consulta`),
-  KEY `id_doctor` (`id_doctor`),
-  KEY `id_status_consulta` (`id_status_consulta`),
-  KEY `id_turno_consulta` (`id_turno_consulta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `fecha_solicitud` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `consultas`
@@ -102,8 +95,14 @@ INSERT INTO `consultas` (`id_consulta`, `id_paciente`, `id_causa_consulta`, `fec
 (3, 4, 2, '2023-08-04', 2, '15:00:00', '15:30:00', 1, 2, '2023-08-03'),
 (4, 5, 1, '2023-08-07', 1, '08:00:00', '08:30:00', 1, 2, '2023-08-03'),
 (5, 6, 2, '2023-08-08', 2, '13:00:00', '13:30:00', 1, 2, '2023-08-03'),
-(6, 9, 1, '2023-08-24', 1, '00:00:00', '00:00:00', 1, 1, '2023-08-23'),
-(7, 9, 2, '2023-08-25', 1, '00:00:00', '00:00:00', 1, 2, '2023-08-01');
+(6, 9, 1, '2023-08-24', 1, '00:00:00', '00:00:00', 3, 1, '2023-08-23'),
+(7, 9, 2, '2023-08-25', 1, '00:00:00', '00:00:00', 1, 2, '2023-08-01'),
+(8, 4, 1, '2023-08-31', 1, NULL, NULL, 1, 3, '2023-08-30'),
+(9, 9, 6, '2023-09-01', 1, '08:45:00', '09:30:00', 3, 2, '2023-08-30'),
+(10, 4, 6, '2023-09-01', 2, '23:43:00', '00:00:00', 3, 2, '2023-08-30'),
+(12, 12, 5, '2023-09-01', 1, NULL, NULL, 3, 3, '2023-08-30'),
+(13, 17, 1, '2023-09-01', 1, NULL, NULL, 3, 3, '2023-08-30'),
+(14, 18, 4, '2023-09-01', 1, NULL, NULL, 3, 3, '2023-08-30');
 
 -- --------------------------------------------------------
 
@@ -111,11 +110,10 @@ INSERT INTO `consultas` (`id_consulta`, `id_paciente`, `id_causa_consulta`, `fec
 -- Estructura de tabla para la tabla `discapacidad`
 --
 
-CREATE TABLE IF NOT EXISTS `discapacidad` (
-  `id_discapacidad` int(1) NOT NULL AUTO_INCREMENT,
-  `discapacidad` varchar(16) NOT NULL,
-  PRIMARY KEY (`id_discapacidad`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+CREATE TABLE `discapacidad` (
+  `id_discapacidad` int(1) NOT NULL,
+  `discapacidad` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `discapacidad`
@@ -131,13 +129,10 @@ INSERT INTO `discapacidad` (`id_discapacidad`, `discapacidad`) VALUES
 -- Estructura de tabla para la tabla `doctores`
 --
 
-CREATE TABLE IF NOT EXISTS `doctores` (
-  `id_doctor` int(1) NOT NULL AUTO_INCREMENT,
-  `id_usuario` int(3) NOT NULL,
-  PRIMARY KEY (`id_doctor`),
-  UNIQUE KEY `id_usuario_2` (`id_usuario`),
-  KEY `id_usuario` (`id_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+CREATE TABLE `doctores` (
+  `id_doctor` int(1) NOT NULL,
+  `id_usuario` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `doctores`
@@ -154,11 +149,10 @@ INSERT INTO `doctores` (`id_doctor`, `id_usuario`) VALUES
 -- Estructura de tabla para la tabla `seguro`
 --
 
-CREATE TABLE IF NOT EXISTS `seguro` (
-  `id_seguro` int(1) NOT NULL AUTO_INCREMENT,
-  `seguro` varchar(10) NOT NULL,
-  PRIMARY KEY (`id_seguro`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+CREATE TABLE `seguro` (
+  `id_seguro` int(1) NOT NULL,
+  `seguro` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `seguro`
@@ -174,11 +168,10 @@ INSERT INTO `seguro` (`id_seguro`, `seguro`) VALUES
 -- Estructura de tabla para la tabla `status_consulta`
 --
 
-CREATE TABLE IF NOT EXISTS `status_consulta` (
-  `id_status_consulta` int(1) NOT NULL AUTO_INCREMENT,
-  `status_consulta` varchar(15) NOT NULL,
-  PRIMARY KEY (`id_status_consulta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+CREATE TABLE `status_consulta` (
+  `id_status_consulta` int(1) NOT NULL,
+  `status_consulta` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `status_consulta`
@@ -196,11 +189,10 @@ INSERT INTO `status_consulta` (`id_status_consulta`, `status_consulta`) VALUES
 -- Estructura de tabla para la tabla `status_usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `status_usuario` (
-  `id_status_usuario` int(1) NOT NULL AUTO_INCREMENT,
-  `status_usuario` varchar(10) NOT NULL,
-  PRIMARY KEY (`id_status_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+CREATE TABLE `status_usuario` (
+  `id_status_usuario` int(1) NOT NULL,
+  `status_usuario` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `status_usuario`
@@ -217,11 +209,10 @@ INSERT INTO `status_usuario` (`id_status_usuario`, `status_usuario`) VALUES
 -- Estructura de tabla para la tabla `tipo_usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `tipo_usuario` (
-  `id_tipo_usuario` int(1) NOT NULL AUTO_INCREMENT,
-  `tipo_usuario` varchar(15) NOT NULL,
-  PRIMARY KEY (`id_tipo_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+CREATE TABLE `tipo_usuario` (
+  `id_tipo_usuario` int(1) NOT NULL,
+  `tipo_usuario` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tipo_usuario`
@@ -237,11 +228,10 @@ INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `tipo_usuario`) VALUES
 -- Estructura de tabla para la tabla `turno_consulta`
 --
 
-CREATE TABLE IF NOT EXISTS `turno_consulta` (
-  `id_turno_consulta` int(1) NOT NULL AUTO_INCREMENT,
-  `turno_consulta` varchar(6) NOT NULL,
-  PRIMARY KEY (`id_turno_consulta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+CREATE TABLE `turno_consulta` (
+  `id_turno_consulta` int(1) NOT NULL,
+  `turno_consulta` varchar(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `turno_consulta`
@@ -257,10 +247,10 @@ INSERT INTO `turno_consulta` (`id_turno_consulta`, `turno_consulta`) VALUES
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id_usuario` int(3) NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(30) NOT NULL,
-  `clave` varchar(50) NOT NULL,
+CREATE TABLE `usuarios` (
+  `id_usuario` int(3) NOT NULL,
+  `usuario` varchar(30) DEFAULT NULL,
+  `clave` varchar(50) DEFAULT NULL,
   `id_tipo_usuario` int(1) NOT NULL,
   `id_status_usuario` int(1) NOT NULL,
   `nombre` varchar(25) NOT NULL,
@@ -269,18 +259,12 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `edad` int(2) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `telefono_1` varchar(11) NOT NULL,
-  `telefono_2` varchar(11) NOT NULL,
+  `telefono_2` varchar(11) DEFAULT NULL,
   `correo` varchar(60) NOT NULL,
-  `id_discapacidad` int(1) NOT NULL,
-  `id_alergia` int(1) NOT NULL,
-  `fecha_registro` date NOT NULL,
-  PRIMARY KEY (`id_usuario`),
-  UNIQUE KEY `cedula` (`cedula`),
-  KEY `id_tipo_usuario` (`id_tipo_usuario`),
-  KEY `id_status_usuario` (`id_status_usuario`),
-  KEY `id_discapacidad` (`id_discapacidad`),
-  KEY `id_alergia` (`id_alergia`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `id_discapacidad` int(1) DEFAULT NULL,
+  `id_alergia` int(1) DEFAULT NULL,
+  `fecha_registro` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -294,8 +278,166 @@ INSERT INTO `usuarios` (`id_usuario`, `usuario`, `clave`, `id_tipo_usuario`, `id
 (5, '', '', 2, 3, 'Marta', 'Osorio', 8125496, 56, '1967-01-17', '04263245698', '', 'osoriomarta1967@hotmail.com', 2, 1, '2023-08-03'),
 (6, '', '', 2, 3, 'Saul', 'Peña', 28564128, 22, '2000-11-08', '04125487632', '', 'saulpeña08@gmail.com', 2, 1, '2023-08-03'),
 (7, 'veronicatrias', '4955683d760e39b8839cfd5d51db2133', 1, 1, 'Veronica', 'Trias', 30565326, 18, '2004-09-03', '04128050440', '02121234567', 'veronicatrias@gmail.com', 1, 1, '2023-08-23'),
-(8, 'alejandrourdaneta', '0a2a58cccf143acc6c360e892af6137e', 1, 1, 'Alejandro', 'Urdaneta', 32165498, 22, '2000-12-13', '04242124928', '02123216549', 'alejandrourdaneta@gmail.com', 1, 1, '2023-08-23'),
-(9, 'david123', 'b60f15385b905be9c977c59aa3420fd2', 2, 1, 'David', 'Trias', 45678912, 12, '2010-09-25', '04124567891', '', 'davidtrias@gmail.com', 1, 1, '2023-08-23');
+(8, 'alex1213', '5d41402abc4b2a76b9719d911017c592', 1, 1, 'Alejandro', 'Urdaneta', 32165498, 22, '2000-12-13', '04242124928', '02123216549', 'alejandrourdaneta@gmail.com', 1, 1, '2023-08-23'),
+(9, 'david123', 'b60f15385b905be9c977c59aa3420fd2', 2, 1, 'David', 'Trias', 45678912, 12, '2010-09-25', '04124567891', '', 'davidtrias@gmail.com', 1, 1, '2023-08-23'),
+(12, NULL, NULL, 2, 3, 'angeli', 'guillen', 23443646, 32, '2023-08-30', '0464345054', '436634564', 'a@h.com', 1, 1, '2023-08-30'),
+(17, NULL, NULL, 2, 3, 'alex', 'urdaneta', 28424292, 22, '2000-12-13', '04242124928', '02124812132', 'alejandrourdaneta1213@gmail.com', 1, 2, '2023-08-30'),
+(18, NULL, NULL, 2, 3, 'elwin', 'Tusa', 54234534, 0, '2023-08-01', '12345678909', '23456789098', 'et@h.com', 1, 2, '2023-08-30'),
+(20, 'yoao', '1234', 2, 1, 'joao', 'perez', 34562534, 38, '2000-09-01', '22324563465', '25465464524', 'joaoperez@hotmail.com', 1, 1, '2023-09-02'),
+(21, 'alexito', '4515618360b4cad0eb3a09225c07dfd4', 2, 1, 'alexis', 'arias', 34563255, 20, '2003-06-11', '43524359435', '43524359435', 'aarias@hotmail.com', 1, 1, '2023-09-02');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `alergias`
+--
+ALTER TABLE `alergias`
+  ADD PRIMARY KEY (`id_alergia`);
+
+--
+-- Indices de la tabla `causa_consulta`
+--
+ALTER TABLE `causa_consulta`
+  ADD PRIMARY KEY (`id_causa_consulta`),
+  ADD KEY `id_seguro` (`id_seguro`);
+
+--
+-- Indices de la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  ADD PRIMARY KEY (`id_consulta`),
+  ADD KEY `id_paciente` (`id_paciente`),
+  ADD KEY `id_causa_consulta` (`id_causa_consulta`),
+  ADD KEY `id_doctor` (`id_doctor`),
+  ADD KEY `id_status_consulta` (`id_status_consulta`),
+  ADD KEY `id_turno_consulta` (`id_turno_consulta`);
+
+--
+-- Indices de la tabla `discapacidad`
+--
+ALTER TABLE `discapacidad`
+  ADD PRIMARY KEY (`id_discapacidad`);
+
+--
+-- Indices de la tabla `doctores`
+--
+ALTER TABLE `doctores`
+  ADD PRIMARY KEY (`id_doctor`),
+  ADD UNIQUE KEY `id_usuario_2` (`id_usuario`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `seguro`
+--
+ALTER TABLE `seguro`
+  ADD PRIMARY KEY (`id_seguro`);
+
+--
+-- Indices de la tabla `status_consulta`
+--
+ALTER TABLE `status_consulta`
+  ADD PRIMARY KEY (`id_status_consulta`);
+
+--
+-- Indices de la tabla `status_usuario`
+--
+ALTER TABLE `status_usuario`
+  ADD PRIMARY KEY (`id_status_usuario`);
+
+--
+-- Indices de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  ADD PRIMARY KEY (`id_tipo_usuario`);
+
+--
+-- Indices de la tabla `turno_consulta`
+--
+ALTER TABLE `turno_consulta`
+  ADD PRIMARY KEY (`id_turno_consulta`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `cedula` (`cedula`),
+  ADD KEY `id_tipo_usuario` (`id_tipo_usuario`),
+  ADD KEY `id_status_usuario` (`id_status_usuario`),
+  ADD KEY `id_discapacidad` (`id_discapacidad`),
+  ADD KEY `id_alergia` (`id_alergia`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `alergias`
+--
+ALTER TABLE `alergias`
+  MODIFY `id_alergia` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `causa_consulta`
+--
+ALTER TABLE `causa_consulta`
+  MODIFY `id_causa_consulta` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  MODIFY `id_consulta` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `discapacidad`
+--
+ALTER TABLE `discapacidad`
+  MODIFY `id_discapacidad` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `doctores`
+--
+ALTER TABLE `doctores`
+  MODIFY `id_doctor` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `seguro`
+--
+ALTER TABLE `seguro`
+  MODIFY `id_seguro` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `status_consulta`
+--
+ALTER TABLE `status_consulta`
+  MODIFY `id_status_consulta` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `status_usuario`
+--
+ALTER TABLE `status_usuario`
+  MODIFY `id_status_usuario` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  MODIFY `id_tipo_usuario` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `turno_consulta`
+--
+ALTER TABLE `turno_consulta`
+  MODIFY `id_turno_consulta` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Restricciones para tablas volcadas
@@ -331,6 +473,7 @@ ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`id_status_usuario`) REFERENCES `status_usuario` (`id_status_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `usuarios_ibfk_3` FOREIGN KEY (`id_discapacidad`) REFERENCES `discapacidad` (`id_discapacidad`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `usuarios_ibfk_4` FOREIGN KEY (`id_alergia`) REFERENCES `alergias` (`id_alergia`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

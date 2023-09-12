@@ -76,19 +76,39 @@
 
 .searchPatients .filter ul{
   list-style-type: none;
-  /* height: auto; */
-  /* position: absolute; */
-  /* margin-top: 10px; */
-  /* margin-left: 10px; */
+  position: absolute; 
+  margin-top: 15px;
+  right: 1px;
   color: #000000;
+  max-height: 11.5%;
+  width: 270px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.searchPatients .filter ul::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.searchPatients .filter ul:hover::-webkit-scrollbar-thumb {
+  background-color: #09C;
 }
 
 .searchPatients .filter li{
   background-color: #EAEDF3;
-  /* border-top: 1px solid #9e9e9e; */
+  border-top: 1px solid #9e9e9e;
   padding: 5px;
-  /* width: 100%; */
-  /* float: left; */
-  /* cursor: pointer; */
+  width: 100%;
+  float: left;
+  cursor: pointer;
 }
 
+.searchPatients .filter li a {
+  color: #000;
+}
+
+.cedulaSearch {
+  color: #555;
+  font-size: 0.85em;
+}
