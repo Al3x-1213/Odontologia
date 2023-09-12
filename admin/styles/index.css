@@ -107,15 +107,19 @@ a{
 }
 
 .atendido i:hover{
-  color: rgb(0, 255, 0);
+  color: #00ff00;
 }
 
 .procesar i:hover, .modificar i:hover{
-  color: rgb(0, 0, 255);
+  color: #0000ff;
 }
 
 .cancelar i:hover, .eliminar i:hover{
-  color: rgb(255, 0, 0);
+  color: #ff0000;
+}
+
+.imprimir i:hover{
+  color: #E67F4F;
 }
 
 .insertar{

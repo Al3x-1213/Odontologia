@@ -37,7 +37,7 @@ include '../client/orderDate.php';
         ?>
         <?php
         // PACIENTE PARA BUSCAR
-        $id_user = $_GET['id'];
+        $idPaciente = $_GET['id'];
 
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
         include '../client/obtenerId.php';
@@ -45,7 +45,7 @@ include '../client/orderDate.php';
         // DATOS DEL PACIENTE
         include '../client/connection.php'; //Conexión con base de datos
         
-        $consulta = "SELECT * FROM usuarios WHERE id_usuario = '$id_user' AND id_tipo_usuario = 2";
+        $consulta = "SELECT * FROM usuarios WHERE id_usuario = '$idPaciente' AND id_tipo_usuario = 2";
         $query = $conexion->query($consulta);
         ?>
     
@@ -74,6 +74,7 @@ include '../client/orderDate.php';
                     <div class="tbody"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
                     <div class="tbody">
+                        <a href="../client/botones/imprimirConstancia.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Constancia" class="imprimir"><i class="icon-printer icon"></i></button></a>
                         <a href="../client/botones/atendido.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Editar" class="modificar"><i class="icon-pencil icon"></i></button></a>
                         <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Eliminar" class="cancelar"><i class="icon-bin icon"></i></button></a>
                     </div>
@@ -94,15 +95,12 @@ include '../client/orderDate.php';
             </div>
 
             <?php
-
             // HISTORIAL DE LAS CONSULTAS DEL PACIENTE
             $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
             ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
             AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-            WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = '1' AND usuarios.cedula = '$paciente'
+            WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = '1' AND consultas.id_paciente = '$idPaciente'
             ORDER BY fecha_atencion DESC";
-            // echo $consulta;
-            // $query = $conexion->query($consulta);
             $query = mysqli_query($conexion, $consulta);
 
             while ($resultado = mysqli_fetch_array($query)) {

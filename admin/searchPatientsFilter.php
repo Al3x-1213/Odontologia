@@ -7,14 +7,13 @@ $pdo = $conexion->conectar();
 
 $buscar = $_POST["search"];
 
-$consulta = "SELECT id_usuario, nombre, apellido, cedula FROM usuarios WHERE nombre LIKE ? OR apellido LIKE ? OR cedula LIKE ? ORDER BY nombre ASC";
+$consulta = "SELECT id_usuario, nombre, apellido, cedula FROM usuarios WHERE (nombre LIKE ? OR apellido LIKE ? OR cedula LIKE ?) AND id_tipo_usuario = 2 ORDER BY nombre ASC";
 $query = $pdo->prepare($consulta);
 $query->execute([$buscar . '%', $buscar . '%', $buscar . '%']);
 
 $contenido = "";
 
 while ($resultado = $query->fetch(PDO::FETCH_ASSOC)) {
-    // $contenido .= "<li onclick=\"mostrar('" . $resultado["nombre"] . "')\">" . $resultado["nombre"] . " - " . $resultado["apellido"] . "</li>";
     $contenido .= "<li><a href='searchPatients.php?id=".$resultado['id_usuario']."'>". $resultado["nombre"]. " ". $resultado["apellido"]. "<span class='cedulaSearch'> (".  $resultado["cedula"]. ") </span>". "</a></li>";
 }
 
