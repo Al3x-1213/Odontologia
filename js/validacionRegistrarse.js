@@ -17,8 +17,13 @@ function CharacterSpecials(str) {
     return regex.test(str);
 }
 
-function CharacterNoAllow(str) {
+function CharacterNoAllowN(str) {
     var regex = /[!@#$%^&*()+\=\[\]{};':"\\|,<>\?]+[0-9]/;
+    return regex.test(str);
+}
+
+function CharacterNoAllowC(str) {
+    var regex = /._-[!@#$%^&*()+\=\[\]{};':"\\|,<>\?]+[a-zA-ZÀ-ÿ]/;
     return regex.test(str);
 }
 
@@ -83,8 +88,8 @@ const validarFormulario = (e) => {
                 clave = false;
             }else{
                 success(e.target.name);
-                clave = true;
                 claves[0] = e.target.value;
+                clave = true;
             }
         break;
         case "clave2":
@@ -103,62 +108,74 @@ const validarFormulario = (e) => {
             }
         break;
         case "nombre":
-            if(CharacterNoAllow(e.target.value)){
-                error(e.target.name, 1);
-                nombre = false;
-            }else if(expresiones.nombre.test(e.target.value)){
+            if(expresiones.nombre.test(e.target.value)){
                 success(e.target.name);
                 nombre = true;
+            }else if(CharacterNoAllowN(e.target.value)){
+                error(e.target.name, 1);
+                nombre = false;
             }else{
                 error(e.target.name, 2);
                 nombre = false;
             }
         break;
         case "apellido":
-            if(!expresiones.nombre.test(e.target.value)){
-                error(e.target.name, 1);
-                nombre = false;
-            }else if(CharacterNoAllow(e.target.value)){
-                error(e.target.name, 2);
-                nombre = false;
-            }else{
+            if(expresiones.nombre.test(e.target.value)){
                 success(e.target.name);
-                nombre = true;
+                apellido = true;
+            }else if(CharacterNoAllowN(e.target.value)){
+                error(e.target.name, 1);
+                apellido = false;
+            }else{
+                error(e.target.name, 2);
+                apellido = false;
             }
         break;
         case "cedula":
             if(expresiones.cedula.test(e.target.value)){
-                cedula = true;
                 success(e.target.name);
+                cedula = true;
+            }else if(CharacterNoAllowC(e.target.value)){
+                error(e.target.name, 2);
+                cedula = false;
             }else{
-                error(e.target.name);
+                error(e.target.name, 1);
                 cedula = false;
             }
         break;
         case "telefono1":
             if(expresiones.telefono.test(e.target.value)){
-                telefono1 = true;
                 success(e.target.name);
+                telefono1 = true;
+            }else if(CharacterNoAllowC(e.target.value)){
+                error(e.target.name, 2);
+                telefono1 = false;
             }else{
-                error(e.target.name);
+                error(e.target.name, 1);
                 telefono1 = false;
             }
         break;
         case "telefono2":
-            if(expresiones.telefono.test(e.target.value)){
-                telefono2 = true;
+            if(e.target.value.length == 0 || e.target.value.length == 11){
                 success(e.target.name);
+                telefono2 = true;
+            }else if(CharacterNoAllowC(e.target.value)){
+                error(e.target.name, 2);
+                telefono2 = false;
             }else{
-                error(e.target.name);
+                error(e.target.name, 1);
                 telefono2 = false;
             }
         break;
         case "correo":
             if(expresiones.correo.test(e.target.value)){
-                correo = true;
                 success(e.target.name);
+                correo = true;
+            }else if(e.target.value.lenght <= 11 || e.target.value.lenght > 60){
+                error(e.target.name, 2);
+                correo = false;
             }else{
-                error(e.target.name);
+                error(e.target.name, 1);
                 correo = false;
             }
         break;
