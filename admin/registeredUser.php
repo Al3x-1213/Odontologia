@@ -165,10 +165,8 @@ if($tableShow == '' || $tableShow == null){
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
 
                     <div class="tbody">
-                        <!-- <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a> -->
-                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Modificar" class="modificar"><i class="icon-pencil icon"></i></button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Eliminar" class="eliminar"><i class="icon-bin icon"></i></button></a>
+                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Eliminar" class="delete"><i class="icon-bin icon"></i></button></a>
                     </div>                
                 </div>
             <?php
@@ -208,10 +206,8 @@ if($tableShow == '' || $tableShow == null){
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
 
                     <div class="tbody">
-                        <!-- <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a> -->
-                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Modificar" class="modificar"><i class="icon-pencil icon"></i></button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Eliminar" class="eliminar"><i class="icon-bin icon"></i></button></a>
+                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Eliminar" class="delete"><i class="icon-bin icon"></i></button></a>
                     </div>                
                 </div>
             <?php
@@ -252,10 +248,8 @@ if($tableShow == '' || $tableShow == null){
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
 
                     <div class="tbody">
-                        <!-- <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a> -->
-                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Modificar" class="modificar"><i class="icon-pencil icon"></i></button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Eliminar" class="eliminar"><i class="icon-bin icon"></i></button></a>
+                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Eliminar" class="delete"><i class="icon-bin icon"></i></button></a>
                     </div>                
                 </div>
             <?php

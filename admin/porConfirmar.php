@@ -76,8 +76,7 @@ include '../client/orderDate.php';
                     <div class="tbody"><?php echo $resultado['turno_consulta']; ?></div>
                     
                     <div class="tbody">
-                        <!-- <a href="processPatient.php?id=<?php echo $resultado['id_consulta']?>"><button class="procesar">Procesar</button></a> -->
-                        <a href="processPatient.php?id=<?php echo $resultado['id_consulta']?>"><button title="Procesar" class="procesar"><i class="icon-cogs icon"></i></button></a>
+                        <a href="processPatient.php?id=<?php echo $resultado['id_consulta']?>"><button title="Procesar" class="process"><i class="icon-cogs icon"></i></button></a>
                     </div>
                 </div>
             <?php

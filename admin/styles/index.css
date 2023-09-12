@@ -85,7 +85,7 @@ a{
   text-decoration: none;
 }
 
-.atendido, .cancelar, .procesar, .modificar, .eliminar{
+.attend, .cancel, .process, .update, .delete, .print{
   background: transparent;
   cursor: pointer;
   cursor: hand;
@@ -93,32 +93,32 @@ a{
   border-radius: 2px;
 }
 
-.atendido i, .cancelar i, .procesar i, .modificar i, .eliminar i{
+.attend i, .cancel i, .process i, .update i, .delete i, .print i{
   padding: 2px;
   color: #333;
 }
 
-.atendido i, .procesar i{
+.attend i, .process i{
   font-size: 150%;
 }
 
-.cancelar i, .modificar i, .eliminar i{
+.cancel i, .update i, .delete i, .print i{
   font-size: 130%;
 }
 
-.atendido i:hover{
+.attend i:hover{
   color: #00ff00;
 }
 
-.procesar i:hover, .modificar i:hover{
+.process i:hover, .update i:hover{
   color: #0000ff;
 }
 
-.cancelar i:hover, .eliminar i:hover{
+.cancel i:hover, .delete i:hover{
   color: #ff0000;
 }
 
-.imprimir i:hover{
+.print i:hover{
   color: #E67F4F;
 }
 
