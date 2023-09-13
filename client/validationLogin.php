@@ -13,12 +13,12 @@ if (!empty($_POST['boton_log'])){
         $clave = $_POST['clave'];
         $clave = md5($clave);
 
-        session_start(); // Inicia una sesión
+        session_start();
         ob_start();
 
         include 'connection.php'; // Conexión con base de datos
 
-        $consulta = "SELECT * FROM usuarios WHERE usuario = '$usuario' and clave = '$clave'";
+        $consulta = "SELECT * FROM cuentas WHERE usuario = '$usuario' and clave = '$clave'";
 
         // VARIABLES GLOBALES
         $id = mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_usuario'];
@@ -30,7 +30,7 @@ if (!empty($_POST['boton_log'])){
         $_SESSION['tipo_usuario'] = $tipo_usuario;
 
         // VALIDACIÓN DEL USUARIO INGRESADO
-        if(mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_tipo_usuario'] == 1){ // Administrador / Doctor
+        if(mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_tipo_usuario'] == 1){ // Administrador - Doctor
             if(mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_status_usuario'] == 1){
                 header("location: ../admin/index.php");
             }
