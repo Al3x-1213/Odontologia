@@ -17,10 +17,9 @@ if (!empty($_POST['boton_c'])){
         $idStatusConsulta = 3;
 
         // VERIFICAR QUE EL USUARIO CON LA CÉDULA INGRESADA SE ENCUENTRE REGISTRADO
-
         include '../connection.php'; //Conexión con base de datos
 
-        $consulta = "SELECT id_usuario FROM usuarios WHERE cedula = '$cedula'";
+        $consulta = "SELECT id_dato_personal FROM datos_personales WHERE cedula = '$cedula'";
         $query = mysqli_query($conexion, $consulta);
 
         $resultado= mysqli_num_rows($query);
@@ -32,10 +31,12 @@ if (!empty($_POST['boton_c'])){
         }
         else{
             $respuesta = mysqli_fetch_array($query);
-            $id_paciente = $respuesta['id_usuario'];
+            $idPaciente = $respuesta['id_dato_personal'];
 
             // INGRESAR LA CONSULTA A BASE DE DATOS
-            $consulta = "INSERT INTO consultas (id_consulta, id_paciente, id_causa_consulta, fecha_atencion, id_turno_consulta, hora_inicio, hora_fin, id_doctor, id_status_consulta, fecha_solicitud) VALUES (NULL, '$id_paciente', '$causa', '$fechaAtencion', '$turno', NULL, NULL, '$idDoctor', '$idStatusConsulta', now())";
+            $consulta = "INSERT INTO consultas (id_consulta, id_paciente, id_causa_consulta, fecha_atencion, id_turno_consulta,
+            hora_inicio, hora_fin, id_doctor, id_status_consulta, fecha_solicitud) VALUES (NULL, '$idPaciente', '$causa',
+            '$fechaAtencion', '$turno', NULL, NULL, '$idDoctor', '$idStatusConsulta', now())";
             $query = mysqli_query($conexion, $consulta);
 
             if($query){

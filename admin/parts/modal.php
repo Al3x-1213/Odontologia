@@ -31,7 +31,7 @@
             $consulta = "SELECT * FROM causa_consulta";
             $query = mysqli_query($conexion, $consulta)
             ?>
-            <label>Causa: </label>
+            <label>Motivo: </label>
             <select name="causa">
                 <option value="0"></option>
                 <?php
@@ -46,20 +46,12 @@
             </select>
 
             <?php
-            // BLOQUEAR DÍAS DEL CALENDARIO PARA QUE LA SOLICITUD SE HAGA CON MÍNIMO TRES DIAS DE ANTICIPACIÓN
-            $day = date("d");
-            $limiteDay = $day + 3;
-
-            if (strlen($limiteDay) == 1) {
-                $limiteDay = "0" . $limiteDay;
-            } else {
-                $limiteDay = $limiteDay;
-            }
-
-            $limiteFecha = date("Y-m-$limiteDay");
+            // BLOQUEAR DÍAS DEL CALENDARIO
+            date_default_timezone_set('America/Caracas');
+            $fechaActual = date("Y-m-d");
             ?>
             <label>Fecha de Atención:</label>
-            <input type="date" required="true" name="atencion" min="<?= $limiteFecha; ?>" class="input__form">
+            <input type="date" required="true" name="atencion" min="<?= $fechaActual; ?>" class="input__form">
 
             <label>Turno:</label>
             <div class="seleccion">
@@ -71,7 +63,7 @@
             // OBTENER EL ID_DOCTOR según el ID_USUARIO Y ENVIARLO DE FORMA OCULTA
             include '../client/obtenerId.php';
             ?>
-            <input type="hidden" name="id_doctor" value="<?php echo $id_doctor; ?>">
+            <input type="hidden" name="id_doctor" value="<?php echo $idDoctor; ?>">
 
             <div class="buttons__form">
                 <input type="reset" value="Borrar" class="button__form">
