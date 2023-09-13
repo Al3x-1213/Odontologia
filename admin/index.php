@@ -63,7 +63,7 @@ $fechaActual = date("Y-m-d");
         else
         {     
             $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores
-            ON consultas.id_paciente = datos_personales.id_datos_personales AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
+            ON consultas.id_paciente = datos_personales.id_dato_personal AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
             WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$idDoctor'
             ORDER BY hora_inicio ASC";
             $query = mysqli_query($conexion, $consulta);
@@ -107,7 +107,7 @@ $fechaActual = date("Y-m-d");
 
             <?php
             $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores
-            ON consultas.id_paciente = datos_personales.id_datos_personales AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
+            ON consultas.id_paciente = datos_personales.id_dato_personal AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
             WHERE consultas.id_status_consulta = 1 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$idDoctor'
             ORDER BY hora_inicio DESC";
             $query = mysqli_query($conexion, $consulta);
