@@ -50,7 +50,7 @@ $fechaActual = date("Y-m-d");
         // OBTENER LA INFORMACIÓN DE LAS CITAS PARA EL DÍA ACTUAL
         include '../client/connection.php';
 
-        $consulta = "SELECT * FROM consultas WHERE fecha_atencion = '$fechaActual' AND id_doctor = '$id_doctor'
+        $consulta = "SELECT * FROM consultas WHERE fecha_atencion = '$fechaActual' AND id_doctor = '$idDoctor'
         AND id_status_consulta != 3 AND id_status_consulta != 4";
         $query = mysqli_query($conexion, $consulta);
 
@@ -62,9 +62,9 @@ $fechaActual = date("Y-m-d");
         }
         else
         {     
-            $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores
-            ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
-            WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$id_doctor'
+            $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores
+            ON consultas.id_paciente = datos_personales.id_datos_personales AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
+            WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$idDoctor'
             ORDER BY hora_inicio ASC";
             $query = mysqli_query($conexion, $consulta);
         ?>
@@ -106,9 +106,9 @@ $fechaActual = date("Y-m-d");
             </div>
 
             <?php
-            $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores
-            ON consultas.id_paciente = usuarios.id_usuario AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
-            WHERE consultas.id_status_consulta = 1 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$id_doctor'
+            $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores
+            ON consultas.id_paciente = datos_personales.id_datos_personales AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
+            WHERE consultas.id_status_consulta = 1 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$idDoctor'
             ORDER BY hora_inicio DESC";
             $query = mysqli_query($conexion, $consulta);
             ?>
