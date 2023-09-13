@@ -33,24 +33,28 @@ if (!empty($_POST['boton_c'])){
         // CALCULAR EDAD
         include '../../client/calcularEdad.php';
 
-        //HACER REGISTRO EN BASE DE DATOS - TABLA USUARIOS
+        //HACER REGISTRO EN BASE DE DATOS - TABLA DATOS_PERSONALES
         include '../../client/connection.php'; //Conexión con base de datos
 
-        $consulta = "INSERT INTO usuarios (id_usuario, usuario, clave, id_tipo_usuario, id_status_usuario, nombre, apellido, cedula, edad, fecha_nacimiento, telefono_1, telefono_2, correo, id_discapacidad, id_alergia, fecha_registro) VALUES (NULL, NULL, NULL, '$tipoUsuario', '$statusUsuario', '$nombre', '$apellido',
-        '$cedula', '$edad', '$nacimiento', '$telefono_1', '$telefono_2', '$correo', '$discapacidad', '$alergia', now())";
+        $consulta = "INSERT INTO datos_personales (id_dato_personal, nombre, apellido, cedula, edad, fecha_nacimiento, telefono_1,
+        telefono_2, correo, id_discapacidad, id_alergia, fecha_registro) VALUES (NULL, '$nombre', '$apellido', '$cedula',
+        '$edad', '$nacimiento', '$telefono_1', '$telefono_2', '$correo', '$discapacidad', '$alergia', now())";
         $query = mysqli_query($conexion, $consulta);
 
-        if($query == 1){
-            $consulta = "SELECT id_usuario FROM usuarios WHERE cedula = '$cedula'";
-            $query1 = mysqli_query($conexion, $consulta);
+        if($query){
+            $consulta = "SELECT id_dato_personal FROM datos_personales WHERE cedula = '$cedula'";
+            $query = mysqli_query($conexion, $consulta);
 
-            $id_paciente = mysqli_fetch_array($query1)['id_usuario'];
+            $resultado = mysqli_fetch_array($query);
+            $idPaciente = $resultado['id_dato_personal'];
 
             //HACER REGISTRO EN BASE DE DATOS - TABLA CONSULTAS
-            $consulta = "INSERT INTO consultas (id_consulta, id_paciente, id_causa_consulta, fecha_atencion, id_turno_consulta, hora_inicio, hora_fin, id_doctor, id_status_consulta, fecha_solicitud) VALUES (NULL, '$id_paciente', '$causa', '$fechaAtencion', '$turno', NULL, NULL, '$idDoctor', '$idStatusConsulta', now())";
-            $query1 = mysqli_query($conexion, $consulta);
+            $consulta = "INSERT INTO consultas (id_consulta, id_paciente, id_causa_consulta, fecha_atencion, id_turno_consulta,
+            hora_inicio, hora_fin, id_doctor, id_status_consulta, fecha_solicitud) VALUES (NULL, '$idPaciente', '$causa',
+            '$fechaAtencion', '$turno', NULL, NULL, '$idDoctor', '$idStatusConsulta', now())";
+            $query = mysqli_query($conexion, $consulta);
 
-            if($query1){
+            if($query){
                 ?>
                 <div class= "mensaje"><a href= "../index.php">Cita agendada correctamente</a></div>
                 <?php
@@ -68,4 +72,5 @@ if (!empty($_POST['boton_c'])){
         }
     }
 }
+
 ?>

@@ -1,5 +1,5 @@
 <?php
-include '../../client/verificationSession.php';
+include '../../client/verificationSessionAdmin.php';
 ?>
 
 <!DOCTYPE html>
@@ -61,11 +61,13 @@ include '../../client/verificationSession.php';
             </div>
 
             <?php
-            $limiteFecha = date("Y-m-d");
+            // BLOQUEAR DÍAS DEL CALENDARIO
+            date_default_timezone_set('America/Caracas');
+            $fechaActual = date("Y-m-d");
             ?>
             <div id="grupo_nacimiento" class="grupo">
                 <label>Fecha de Nacimiento:</label>
-                <div class="input-icon"><input type="date" required name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
+                <div class="input-icon"><input type="date" required name="nacimiento" max="<?= $fechaActual; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
                 <div class="paragraf__error display"> la fecha no puede ser la misma o posterior a la de hoy </div>
             </div>
 
@@ -114,7 +116,7 @@ include '../../client/verificationSession.php';
             ?>
 
             <div id="grupo_causa" class="grupo">
-                <label>Causa: </label>
+                <label>Motivo: </label>
                 <select name="causa">
                     <option value="0"></option>
                     <?php
@@ -130,22 +132,13 @@ include '../../client/verificationSession.php';
             </div>
 
             <?php
-            // BLOQUEAR DÍAS DEL CALENDARIO PARA QUE LA SOLICITUD SE HAGA CON MÍNIMO TRES DIAS DE ANTICIPACIÓN
-            $day = date("d");
-            $limiteDay = $day + 3;
-
-            if (strlen($limiteDay) == 1) {
-                $limiteDay = "0" . $limiteDay;
-            } else {
-                $limiteDay = $limiteDay;
-            }
-
-            $limiteFecha = date("Y-m-$limiteDay");
+            // BLOQUEAR DÍAS DEL CALENDARIO
+            date_default_timezone_set('America/Caracas');
+            $fechaActual = date("Y-m-d");
             ?>
-
             <div id="grupo_atencion" class="grupo">
                 <label>Fecha de Atención:</label>
-                <input type="date" required name="atencion" min="<?= $limiteFecha; ?>" class="input__form base">
+                <input type="date" required name="atencion" min="<?= $fechaActual; ?>" class="input__form base">
             </div>
             
             <div id="grupo_seleccion" class="grupo">
@@ -160,7 +153,7 @@ include '../../client/verificationSession.php';
             // OBTENER EL ID_DOCTOR según el ID_USUARIO Y ENVIARLO DE FORMA OCULTA
             include '../../client/obtenerId.php';
             ?>
-            <input type="hidden" name="id_doctor" value="<?php echo $id_doctor; ?>">
+            <input type="hidden" name="id_doctor" value="<?php echo $idDoctor; ?>">
 
             <div class="buttons__form">
                 <input type="reset" value="Borrar" class="button__form remove">
