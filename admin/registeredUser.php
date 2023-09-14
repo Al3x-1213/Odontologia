@@ -135,14 +135,14 @@ if($tableShow == '' || $tableShow == null){
         include '../client/connection.php'; //Conexión con base de datos
 
         // TODOS LOS USUARIOS
-        $consulta = "SELECT * FROM usuarios";
+        $consulta = "SELECT * FROM datos_personales";
         $query = mysqli_query($conexion, $consulta);
         ?>
 
         <div class="table slice <?php if($tableShow == 1){?>active<?php }else{?> desactive <?php } ?>"> <!--slice-->
             <div class="thead__table">
                 <div class="thead">Paciente</div>
-                <div class="thead">Usuario</div>
+                <!-- <div class="thead">Usuario</div> -->
                 <div class="thead cedula">Cédula</div>
                 <div class="thead edad">Edad</div>
                 <div class="thead">Fecha de Nacimiento</div>
@@ -157,7 +157,7 @@ if($tableShow == '' || $tableShow == null){
             ?>
                 <div class="tbody__table">
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-                    <div class="tbody"><?php echo $resultado['usuario']; ?></div>
+                    <!-- <div class="tbody"><?php echo $resultado['usuario']; ?></div> -->
                     <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                     <div class="tbody"><?php echo $fechaNacimiento; ?></div>
@@ -183,7 +183,7 @@ if($tableShow == '' || $tableShow == null){
         <div class="table slice <?php if($tableShow == 2){?>active<?php }else{?>desactive<?php } ?>">
             <div class="thead__table">
                 <div class="thead">Paciente</div>
-                <div class="thead">Usuario</div>
+                <!-- <div class="thead">Usuario</div> -->
                 <div class="thead cedula">Cédula</div>
                 <div class="thead edad">Edad</div>
                 <div class="thead">Fecha de Nacimiento</div>
@@ -198,7 +198,7 @@ if($tableShow == '' || $tableShow == null){
             ?>
                 <div class="tbody__table">
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-                    <div class="tbody"><?php echo $resultado['usuario']; ?></div>
+                    <!-- <div class="tbody"><?php echo $resultado['usuario']; ?></div> -->
                     <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                     <div class="tbody"><?php echo $fechaNacimiento; ?></div>
@@ -225,7 +225,7 @@ if($tableShow == '' || $tableShow == null){
         <div class="table slice <?php if($tableShow == 3){?>active<?php }else{?> desactive <?php } ?>"> <!--slice-->
             <div class="thead__table">
                 <div class="thead">Paciente</div>
-                <div class="thead">Usuario</div>
+                <!-- <div class="thead">Usuario</div> -->
                 <div class="thead cedula">Cédula</div>
                 <div class="thead edad">Edad</div>
                 <div class="thead">Fecha de Nacimiento</div>
@@ -240,7 +240,7 @@ if($tableShow == '' || $tableShow == null){
             ?>
                 <div class="tbody__table">
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-                    <div class="tbody"><?php echo $resultado['usuario']; ?></div>
+                    <!-- <div class="tbody"><?php echo $resultado['usuario']; ?></div> -->
                     <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                     <div class="tbody"><?php echo $fechaNacimiento; ?></div>
