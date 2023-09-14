@@ -4,10 +4,16 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-$id = $_POST['id_consulta'];
+$idConsulta = $_POST['id_consulta'];
 $fechaAtencion = $_POST['fechaAtencion'];
 $horaInicio = $_POST['hora_inicio'];
 $horaFin = $_POST['hora_fin'];
+
+// echo $idConsulta. "<br>";
+// echo $fechaAtencion. "<br>";
+// echo $horaInicio. "<br>";
+// echo $horaFin. "<br>";
+
 
 // FECHA DE ATENCIÓN
 include '../orderDate.php';
@@ -24,26 +30,33 @@ $horaAtencion = date("g:i a",strtotime($horaInicio)); // Cambiar a formato 12 ho
 // ASIGNACIÓN DEL HORARIO EN EL QUE EL PACIENTE SERÁ ATENDIDO
 include '../connection.php';
 
-$consulta = "UPDATE consultas SET id_status_consulta = 2, hora_inicio = '$horaInicio', hora_fin = '$horaFin' WHERE id_consulta = '$id'";
-echo $consulta;
+$consulta = "UPDATE consultas SET id_status_consulta = 2, hora_inicio = '$horaInicio', hora_fin = '$horaFin' WHERE id_consulta = '$idConsulta'";
+// echo $consulta;
 $query = mysqli_query($conexion, $consulta);
 
 if($query){
+    // echo "si";
     // OBTENER EL ID DEL PACIENTE QUE SERÁ ATENDIDO
-    $consulta = "SELECT id_paciente FROM consultas WHERE id_consulta = '$id'";
+    $consulta = "SELECT id_paciente FROM consultas WHERE id_consulta = '$idConsulta'";
     $query = mysqli_query($conexion, $consulta);
 
     $respuesta = mysqli_fetch_array($query);
     $idPaciente = $respuesta['id_paciente'];
+    // echo $idPaciente;
 
     // OBTENER LA INFORMACIÓN DEL PACIENTE QUE SERÁ ATENDIDO
-    $consulta = "SELECT nombre, apellido, correo FROM usuarios WHERE id_usuario = '$idPaciente'";
+    $consulta = "SELECT nombre, apellido, correo FROM datos_personales WHERE id_dato_personal = '$idPaciente'";
+    // echo $consulta;
     $query = mysqli_query($conexion, $consulta);
 
     $respuesta = mysqli_fetch_array($query);
     $nombre = $respuesta['nombre'];
     $apellido = $respuesta['apellido'];
     $correo = $respuesta['correo'];
+
+    // echo $nombre. "<br>";
+    // echo $apellido. "<br>";
+    // echo $correo. "<br>";
 
     //ENVIAR MENSAJE DE CONFIRMACIÓN AL PACIENTE POR CORREO
 
