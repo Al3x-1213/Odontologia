@@ -75,10 +75,10 @@ $year = date("Y");
                 // CITAS POR ATENDER: OBTENER LA INFORMACIÓN DE TODAS LAS CITAS POR ATENDER POR EL DOCTOR QUE ESTÁ LOGUEADO EN LA FECHA INGRESADA
                 include '../client/connection.php'; //Conexión con base de datos
 
-                $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
-                ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
+                $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
+                ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
                 AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-                WHERE consultas.id_doctor = '$id_doctor' AND consultas.fecha_atencion = '$fechaBuscar' AND consultas.id_status_consulta != 3
+                WHERE consultas.id_doctor = '$idDoctor' AND consultas.fecha_atencion = '$fechaBuscar' AND consultas.id_status_consulta != 3
                 ORDER BY hora_inicio ASC";
                 $query = mysqli_query($conexion, $consulta);
 
@@ -96,7 +96,7 @@ $year = date("Y");
                         <div class="tbody contacto"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
 
                         <div class="tbody">
-                            <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="eliminar">Cancelar</button></a>
+                            <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon"></i></button></a>
                         </div>
                     </div>
                 <?php
@@ -120,10 +120,10 @@ $year = date("Y");
                 </div>
 
                 <?php
-                $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
-                ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
+                $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
+                ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
                 AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-                WHERE consultas.id_doctor = '$id_doctor' AND consultas.fecha_atencion = '$fechaBuscar' AND  consultas.id_status_consulta != 4
+                WHERE consultas.id_doctor = '$idDoctor' AND consultas.fecha_atencion = '$fechaBuscar' AND  consultas.id_status_consulta != 4
                 ORDER BY hora_inicio ASC";
                 $query = mysqli_query($conexion, $consulta);
 
