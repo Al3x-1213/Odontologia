@@ -40,12 +40,14 @@ include '../client/orderDate.php';
 
         <?php
         // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
-        $id= $_SESSION['id'];
+        $idUsuario = $_SESSION['id'];
 
         // OBTENER LA INFORMACIÓN DEL PACIENTE QUE ESTÁ LOGUEADO
         include '../client/connection.php'; //Conexión con base de datos
 
-        $consulta = "SELECT * FROM usuarios WHERE id_usuario = '$id'";
+        $consulta = "SELECT * FROM datos_personales INNER JOIN cuentas
+        ON datos_personales.id_dato_personal = cuentas.id_dato_personal
+        WHERE id_cuenta = '$idUsuario'";
         $query = mysqli_query($conexion, $consulta);
         ?>
 
@@ -85,7 +87,7 @@ include '../client/orderDate.php';
                             <div class="buttonEditable hide"><input type="submit" form="editContactInformation" value="Guardar Cambios" name="boton_upd"></div>
                         </div>
                     </div>
-                    <form action="../client/updateContactInformation.php" method="post" id="editContactInformation">
+                    <form action="../client/update/updateContactInformation.php" method="post" id="editContactInformation">
                         <div class="tbody">
                             <div class="row b">
                                 <div class="column">Télefono Principal</div>
