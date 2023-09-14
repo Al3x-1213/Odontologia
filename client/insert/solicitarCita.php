@@ -9,7 +9,7 @@ if (!empty($_POST['boton_c'])){
     }
     else{
         // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
-        $id= $_SESSION['id'];
+        $idPaciente= $_SESSION['id'];
 
         //DATOS DEL FORMULARIO
         $causa = $_POST['causa'];
@@ -21,8 +21,10 @@ if (!empty($_POST['boton_c'])){
         // INGRESAR LA CONSULTA A BASE DE DATOS
         include '../client/connection.php'; //Conexión con base de datos
 
-        $consulta = "INSERT INTO consultas VALUES(NULL, '$id', '$causa', '$fechaAtencion',
-        '$turno', '', '', '$idDoctor', '$idStatusConsulta', now())";
+        $consulta = "INSERT INTO consultas (id_consulta, id_paciente, id_causa_consulta, fecha_atencion, id_turno_consulta,
+        hora_inicio, hora_fin, id_doctor, id_status_consulta, fecha_solicitud) VALUES(NULL, '$idPaciente', '$causa',
+        '$fechaAtencion', '$turno', NULL, NULL, '$idDoctor', '$idStatusConsulta', now())";
+        // echo $consulta;
         $query = mysqli_query($conexion, $consulta);
 
         if($query){
