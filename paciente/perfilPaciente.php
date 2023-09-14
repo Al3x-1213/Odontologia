@@ -122,7 +122,7 @@ include '../client/orderDate.php';
                         <div class="buttonEditable2 hide"><input type="submit" form="editAccountInformation" value="Guardar Cambios" name="boton_upd"></div>
                     </div>
                 </div>
-                <form action="../client/updateUsuario.php" method="post" id="editAccountInformation">
+                <form action="../client/update/updateUser.php" method="post" id="editAccountInformation">
                     <div class="tbody">
                         <div class="row b">
                             <div class="column">Usuario</div>
