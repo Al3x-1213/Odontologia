@@ -32,7 +32,7 @@ function CharacterUpper(str) {
     return regex.test(str);
 }
 
-var usuario = false, clave = false, clave2 = false, nombre = false, apellido = false, cedula = false, telefono1 = false, telefono2 = false, correo = false;
+var usuario = false, clave = false, clave2 = false, nombre = false, apellido = false, cedula = false, nacimiento = false, telefono1 = false, telefono2 = true, correo = false;
 
 var claves = [];
 
@@ -57,12 +57,30 @@ const error = (grupo, error) => {
     document.querySelector(`#grupo_${grupo} .paragraf__error${error}`).style.display = "block";
 }
 
-const obtenerFecha = ()=>{
+const getDate = ()=>{
     var fecha = new Date();
     year = fecha.getFullYear();
-    mes = fecha.getMonth()+1;
-    dia = fecha.getDate();
-    return fecha = [year, mes, dia];
+    month = fecha.getMonth()+1;
+    day = fecha.getDate();
+    return date = [year, month, day];
+}
+
+const compareDate = (born)=>{
+    date = getDate();
+    born = born.split("-");
+    if(!(born[0] < date[0])){
+        if(!(born[1] < date[1])){
+            if(!(born[2] <= date[2])){
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return true;
+        }
+    }else{
+        return true;
+    }
 }
 
 const validarFormulario = (e) => {
@@ -83,7 +101,12 @@ const validarFormulario = (e) => {
             if(!expresiones.password.test(e.target.value)){
                 error(e.target.name, 1);
                 clave = false;
-            }else if(!CharacterUpper(e.target.value) && !CharacterSpecials(e.target.value)){
+            }else if(!CharacterUpper(e.target.value)){
+                document.querySelector(`#grupo_clave .paragraf__error1`).style.display = "none";
+                error(e.target.name, 2);
+                clave = false;
+            }else if(!CharacterSpecials(e.target.value)){
+                document.querySelector(`#grupo_clave .paragraf__error1`).style.display = "none";
                 error(e.target.name, 2);
                 clave = false;
             }else{
@@ -143,6 +166,17 @@ const validarFormulario = (e) => {
                 cedula = false;
             }
         break;
+        case "nacimiento":
+            if(compareDate(e.target.value)){
+                success(e.target.name);
+                nacimiento = true;
+                console.log(e.target.name);
+            }else if(e.target.value.lenght == 0){
+                nacimiento = false;
+            }else{
+                error(e.target.name, 2);
+                nacimiento = false;
+            }
         case "telefono1":
             if(expresiones.telefono.test(e.target.value)){
                 success(e.target.name);

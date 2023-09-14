@@ -115,6 +115,12 @@ session_destroy();
             <div id="grupo_nacimiento" class="grupo">
                 <label>Fecha de Nacimiento:</label>
                 <div class="input-icon"><input type="date" required name="nacimiento" max="<?= $limiteFecha; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display"> 
+                    <p>El campo no debe estar vacío</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Fecha no puede ser mayor a la fecha de hoy</p>
+                </div>
             </div>
 
             <div id="grupo_telefono1" class="grupo">

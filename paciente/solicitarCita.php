@@ -55,7 +55,7 @@ include '../client/verificationSessionPatient.php';
                     while ($resultado = mysqli_fetch_array($query)) {
                         $i = $i + 1;
                     ?>
-                        <option value="<?php echo $i; ?>"><?php echo $resultado['causa_consulta']; ?></option>
+                    <option value="<?php echo $i; ?>"><?php echo $resultado['causa_consulta']; ?></option>
                     <?php
                     }
                     ?>
@@ -63,25 +63,15 @@ include '../client/verificationSessionPatient.php';
 
                 <?php
                 // BLOQUEAR DÍAS DEL CALENDARIO PARA QUE LA SOLICITUD SE HAGA CON MÍNIMO TRES DIAS DE ANTICIPACIÓN
-                $day = date("d");
-                $limiteDay = $day + 3;
 
-                if(strlen($limiteDay) == 1){
-                    $limiteDay = "0". $limiteDay;
-                }
-                else{
-                    $limiteDay = $limiteDay;
-                }
-
-                $limiteFecha = date("Y-m-$limiteDay");
                 ?>
                 <label>Fecha de Atención:</label>
-                <input type="date" required="true" name="atencion" min="<?= $limiteFecha; ?>" class="input__form">
+                <input type="date" required name="atencion" class="input__form">
 
                 <label>Turno:</label>
                 <div class="seleccion">
-                    <input type="radio" required="true" value="1" name="turno" class=""> Mañana
-                    <input type="radio" required="true" value="2" name="turno" class=""> Tarde
+                    <input type="radio" required value="1" name="turno" class=""> Mañana
+                    <input type="radio" required value="2" name="turno" class=""> Tarde
                 </div>
 
                 <?php
