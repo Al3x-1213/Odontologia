@@ -49,7 +49,11 @@ if($tableShow == '' || $tableShow == null){
 
         <div class="modal disable">
             <div class="flex-container">
-                <form class="form-login" method="POST" action="../client/insert/insertRegistered.php">
+                <form action="../client/insert/insertDoctor.php" method="POST" class="form-login">
+
+                    <?php
+                    // include '../client/insert/insertDoctor.php';
+                    ?>
 
                     <div class="header__form">
                         <h2>Registrar un Usuario</h2> <span class="icon-cross"></span>
