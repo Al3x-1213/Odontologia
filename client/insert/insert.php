@@ -1,24 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <!-- META ETIQUETAS -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- ESTILOS CSS -->
-    <link rel="stylesheet" href="../../styles/normalize.css">
-    <link rel="stylesheet" href="../../styles/insert.css">
-
-    <!-- LETRAS UTILIZADAS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-
-    <title>Marisol Díaz - REGISTRARSE</title>
-</head>
-
 <?php
 
 if (!empty($_POST['boton_reg'])){
@@ -34,8 +13,8 @@ if (!empty($_POST['boton_reg'])){
         $usuario = $_POST['usuario'];
         $clave = $_POST['clave'];
         $claveConfirm = $_POST['clave2'];
-        $tipo_usuario = "2";
-        $status_usuario = "1";
+        $tipoUsuario = "2";
+        $statusUsuario = "1";
 
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
@@ -50,37 +29,63 @@ if (!empty($_POST['boton_reg'])){
         // VERIFICAR QUE AMBAS CONTRASEÑAS SEAN IGUALES
         if ($clave != $claveConfirm){
             ?>
-               <div class= "alerta">Las contraseñas deben coincidir</div>
-               <div class= "alerta">Por favor verificar</div>
-//          <?php
+            <div class= "alerta">Las contraseñas deben coincidir</div>
+            <div class= "alerta">Por favor verificar</div>
+            <?php
         }
         else{
             // CALCULAR EDAD
-            include '../calcularEdad.php';
+            // include '../calcularEdad.php';
+            include '../client/calcularEdad.php';
 
             //HACER REGISTRO EN BASE DE DATOS
-            include '../connection.php'; //Conexión con base de datos
+            // include '../connection.php'; //Conexión con base de datos
+            include '../client/connection.php'; //Conexión con base de datos
 
-            $clave= md5($clave);
-
-            $consulta = "INSERT INTO usuarios (id_usuario, usuario, clave, id_tipo_usuario, id_status_usuario, nombre, apellido, cedula, edad, fecha_nacimiento, telefono_1, telefono_2, correo, id_discapacidad, id_alergia, fecha_registro) VALUES (NULL, '$usuario', '$clave', '$tipo_usuario', '$status_usuario', '$nombre', '$apellido', '$cedula', '$edad', '$nacimiento', '$telefono_1', '$telefono_2',  '$correo', '$discapacidad', '$alergia', now())";
+            $consulta = "INSERT INTO datos_personales (id_dato_personal, nombre, apellido, cedula, edad, fecha_nacimiento, telefono_1,
+            telefono_2, correo, id_discapacidad, id_alergia, fecha_registro) VALUES (NULL, '$nombre', '$apellido', '$cedula',
+            '$edad', '$nacimiento', '$telefono_1', '$telefono_2', '$correo', '$discapacidad', '$alergia', now())";
             $query = mysqli_query($conexion, $consulta);
 
-            if($query){
-                header ("location: ../../parts/login.php");
-            }else{
-                header ("location: ../../parts/register.php");
+            if ($query){
+                $consulta = "SELECT id_dato_personal FROM datos_personales WHERE cedula = '$cedula'";
+                $query = mysqli_query($conexion, $consulta);
+        
+                $respuesta = mysqli_fetch_array($query);
+                $idDatoPersonal = $respuesta['id_dato_personal'];
+
+                $clave = md5($clave);
+
+                // HACER REGISTRO EN BASE DE DATOS - TABLA CUENTAS
+                $consulta = "INSERT INTO cuentas (id_cuenta, usuario, clave, id_dato_personal, id_tipo_usuario, id_status_usuario)
+                VALUES (NULL, '$usuario', '$clave', '$idDatoPersonal', '$tipoUsuario', '$statusUsuario')";
+                $query = mysqli_query($conexion, $consulta);
+
+                if($query){
+                    // header ("location: ../../parts/login.php");
+                    ?>
+                    <div class= "mensaje"><a href= "login.php">Usuario regitrado correctamente</a></div> 
+                    <?php
+                }else{
+                    // header ("location: ../../parts/register.php");
+                    ?>
+                    <div class= "alerta">No se pudo realizar el registro</div> 
+                    <?php
+                }
+            }
+            else{
                 ?>
                 <div class= "alerta">No se pudo realizar el registro</div> 
                 <?php
             }
         }
-   }
+    }
 }
+
 ?>
 
-<body>
+<!-- <body>
 
 <div class= "mensaje"><a href= "../../parts/login.php">Usuario regitrado correctamente</a></div>
 
-</body>
+</body> -->

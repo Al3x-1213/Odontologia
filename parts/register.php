@@ -30,13 +30,17 @@ session_destroy();
 
 <body>
     <div class="flex__container">
-        <form id="formulario" class="form" method="POST" action="../client/insert/insert.php">
+        <form method="POST" id="formulario" class="form"> <!-- action="../client/insert/insert.php" -->
 
             <a href="../"><i class="icon-cross"></i></a>
             <!-- TITULO -->
             <h2 class="title__form"><a href="../index.php">Registrarse</a></h2>
 
             <p>¿Ha pedido cita previamente pero no tiene cuenta? <a href="registerSc.php">Regístrate aqui</a></p>
+
+            <?php
+            include '../client/insert/insert.php';
+            ?>
 
             <h3>Tu cuenta: </h3>
 
