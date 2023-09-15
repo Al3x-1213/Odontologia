@@ -17,7 +17,7 @@ $idPaciente = $_GET['id'];
 
 include '../connection.php';
 
-$consulta = "SELECT nombre, apellido, cedula, edad FROM usuarios WHERE id_usuario = '$idPaciente'";
+$consulta = "SELECT nombre, apellido, cedula, edad FROM datos_personales WHERE id_dato_personal = '$idPaciente'";
 $query = mysqli_query($conexion, $consulta);
 
 $respuesta = mysqli_fetch_array($query);

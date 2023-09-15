@@ -19,4 +19,6 @@
 
 <?php
 
+echo phpversion();
+
 ?>

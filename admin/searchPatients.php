@@ -74,9 +74,9 @@ include '../client/orderDate.php';
                     <div class="tbody"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
                     <div class="tbody">
-                        <a href="../client/botones/printConstancy.php?id=<?php echo $resultado['id_usuario']?>"><button title="Constancia" class="print"><i class="icon-printer icon"></i></button></a>
-                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Eliminar" class="delete"><i class="icon-bin icon"></i></button></a>
+                        <a href="../client/botones/printConstancy.php?id=<?php echo $resultado['id_dato_personal']?>"><button title="Constancia" class="print"><i class="icon-printer icon"></i></button></a>
+                        <a href="editar.php?id=<?php echo $resultado['id_datos_personal']?>"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_dato_personal']?>"><button title="Eliminar" class="delete"><i class="icon-bin icon"></i></button></a>
                     </div>
                 </div>
             <?php
