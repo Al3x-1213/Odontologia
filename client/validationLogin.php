@@ -13,25 +13,29 @@ if (!empty($_POST['boton_log'])){
         $clave = $_POST['clave'];
         $clave = md5($clave);
 
-        session_start(); // Inicia una sesión
+        session_start();
         ob_start();
 
         include 'connection.php'; // Conexión con base de datos
 
-        $consulta = "SELECT * FROM usuarios WHERE usuario = '$usuario' and clave = '$clave'";
+        $consulta = "SELECT * FROM cuentas WHERE usuario = '$usuario' and clave = '$clave'";
+        $query = mysqli_query($conexion, $consulta);
+
+        $respuesta = mysqli_fetch_array($query);
+
+        $idUsuario = $respuesta['id_cuenta'];
+        $usuario = $respuesta['usuario'];
+        $tipoUsuario = $respuesta['id_tipo_usuario'];
+        $statusUsuario = $respuesta['id_status_usuario'];
 
         // VARIABLES GLOBALES
-        $id = mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_usuario'];
-        $usuario = mysqli_fetch_array(mysqli_query($conexion, $consulta))['usuario'];
-        $tipo_usuario = mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_tipo_usuario'];
-
-        $_SESSION['id'] = $id;
+        $_SESSION['id'] = $idUsuario;
         $_SESSION['usuario'] = $usuario;
-        $_SESSION['tipo_usuario'] = $tipo_usuario;
+        $_SESSION['tipo_usuario'] = $tipoUsuario;
 
         // VALIDACIÓN DEL USUARIO INGRESADO
-        if(mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_tipo_usuario'] == 1){ // Administrador / Doctor
-            if(mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_status_usuario'] == 1){
+        if($tipoUsuario == 1){ // Administrador - Doctor
+            if($statusUsuario == 1){
                 header("location: ../admin/index.php");
             }
             else{
@@ -40,8 +44,8 @@ if (!empty($_POST['boton_log'])){
                 <?php
             }
         }
-        else if(mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_tipo_usuario'] == 2){ // Paciente
-            if(mysqli_fetch_array(mysqli_query($conexion, $consulta))['id_status_usuario'] == 1){
+        else if($tipoUsuario == 2){ // Paciente
+            if($statusUsuario == 1){
                 header("location: ../paciente/index.php");
             }
             else{

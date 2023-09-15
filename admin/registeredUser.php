@@ -28,12 +28,12 @@ if($tableShow == '' || $tableShow == null){
         <link rel="stylesheet" href="../Iconos/style.css">
 
         <!-- LETRAS UTILIZADAS -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet"> -->
 
         <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
@@ -49,7 +49,11 @@ if($tableShow == '' || $tableShow == null){
 
         <div class="modal disable">
             <div class="flex-container">
-                <form class="form-login" method="POST" action="../client/insert/insertRegistered.php">
+                <form action="../client/insert/insertDoctor.php" method="POST" class="form-login">
+
+                    <?php
+                    // include '../client/insert/insertDoctor.php';
+                    ?>
 
                     <div class="header__form">
                         <h2>Registrar un Usuario</h2> <span class="icon-cross"></span>
@@ -135,14 +139,14 @@ if($tableShow == '' || $tableShow == null){
         include '../client/connection.php'; //Conexión con base de datos
 
         // TODOS LOS USUARIOS
-        $consulta = "SELECT * FROM usuarios";
+        $consulta = "SELECT * FROM datos_personales";
         $query = mysqli_query($conexion, $consulta);
         ?>
 
         <div class="table slice <?php if($tableShow == 1){?>active<?php }else{?> desactive <?php } ?>"> <!--slice-->
             <div class="thead__table">
                 <div class="thead">Paciente</div>
-                <div class="thead">Usuario</div>
+                <!-- <div class="thead">Usuario</div> -->
                 <div class="thead cedula">Cédula</div>
                 <div class="thead edad">Edad</div>
                 <div class="thead">Fecha de Nacimiento</div>
@@ -157,7 +161,7 @@ if($tableShow == '' || $tableShow == null){
             ?>
                 <div class="tbody__table">
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-                    <div class="tbody"><?php echo $resultado['usuario']; ?></div>
+                    <!-- <div class="tbody"><?php echo $resultado['usuario']; ?></div> -->
                     <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                     <div class="tbody"><?php echo $fechaNacimiento; ?></div>
@@ -165,97 +169,8 @@ if($tableShow == '' || $tableShow == null){
                     <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
 
                     <div class="tbody">
-                        <!-- <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a> -->
-                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Modificar" class="modificar"><i class="icon-pencil icon"></i></button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Eliminar" class="eliminar"><i class="icon-bin icon"></i></button></a>
-                    </div>                
-                </div>
-            <?php
-            }
-            ?>
-        </div>
-
-        <?php
-        // PACIENTES
-        $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 2";
-        $query = mysqli_query($conexion, $consulta);
-        ?>
-
-        <div class="table slice <?php if($tableShow == 2){?>active<?php }else{?>desactive<?php } ?>">
-            <div class="thead__table">
-                <div class="thead">Paciente</div>
-                <div class="thead">Usuario</div>
-                <div class="thead cedula">Cédula</div>
-                <div class="thead edad">Edad</div>
-                <div class="thead">Fecha de Nacimiento</div>
-                <div class="thead">Télefono</div>
-                <div class="thead correo">Correo Electrónico</div>
-                <div class="thead">Acciones</div>
-            </div>
-
-            <?php
-            while ($resultado = mysqli_fetch_array($query)) {
-                $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento']);
-            ?>
-                <div class="tbody__table">
-                    <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-                    <div class="tbody"><?php echo $resultado['usuario']; ?></div>
-                    <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
-                    <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody"><?php echo $fechaNacimiento; ?></div>
-                    <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
-                    <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
-
-                    <div class="tbody">
-                        <!-- <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a> -->
-                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Modificar" class="modificar"><i class="icon-pencil icon"></i></button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Eliminar" class="eliminar"><i class="icon-bin icon"></i></button></a>
-                    </div>                
-                </div>
-            <?php
-            }
-            ?>
-        </div>
-
-        <?php
-        // DOCTORES
-        $consulta = "SELECT * FROM usuarios WHERE id_tipo_usuario = 1";
-        // $consulta = "SELECT * FROM doctores INNER JOIN usuarios ON doctores.id_usuario = usuarios.id_usuario";
-        $query = mysqli_query($conexion, $consulta);
-        ?>
-
-        <div class="table slice <?php if($tableShow == 3){?>active<?php }else{?> desactive <?php } ?>"> <!--slice-->
-            <div class="thead__table">
-                <div class="thead">Paciente</div>
-                <div class="thead">Usuario</div>
-                <div class="thead cedula">Cédula</div>
-                <div class="thead edad">Edad</div>
-                <div class="thead">Fecha de Nacimiento</div>
-                <div class="thead">Télefono</div>
-                <div class="thead correo">Correo Electrónico</div>
-                <div class="thead">Acciones</div>
-            </div>
-
-            <?php
-            while ($resultado = mysqli_fetch_array($query)) {
-                $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento']);
-            ?>
-                <div class="tbody__table">
-                    <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-                    <div class="tbody"><?php echo $resultado['usuario']; ?></div>
-                    <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
-                    <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody"><?php echo $fechaNacimiento; ?></div>
-                    <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
-                    <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
-
-                    <div class="tbody">
-                        <!-- <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button class="editar">Editar</button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button class="eliminar">Eliminar</button></a> -->
-                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Modificar" class="modificar"><i class="icon-pencil icon"></i></button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Eliminar" class="eliminar"><i class="icon-bin icon"></i></button></a>
+                        <a href="editar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_usuario']?>"><button title="Eliminar" class="delete"><i class="icon-bin icon"></i></button></a>
                     </div>                
                 </div>
             <?php

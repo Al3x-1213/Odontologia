@@ -2,7 +2,7 @@
 
 class Database{
     private $host = "localhost";
-    private $dataBase = "consultorio";
+    private $dataBase = "odontologia";
     private $user = "root";
     private $password = "";
     private $charset = "utf8";

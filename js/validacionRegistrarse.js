@@ -218,7 +218,6 @@ const validarFormulario = (e) => {
 
 inputs.forEach(input => {
     input.addEventListener("blur", validarFormulario);
-    input.addEventListener("keyup", validarFormulario);
 });
 
 formulario.addEventListener("submit", (e)=>{

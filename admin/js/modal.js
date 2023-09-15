@@ -1,12 +1,10 @@
-const buttons = document.querySelectorAll(".insertar");
+const button = document.querySelector(".insertar");
 const modal = document.querySelector(".modal");
 
-buttons.forEach(button=>{
-    button.addEventListener("click", ()=>{
-        modal.classList.remove("disable");
-    })
+button.addEventListener("click", () => {
+    modal.classList.remove("disable");
 })
 
-document.querySelector(".icon-cross").addEventListener("click", ()=>{
+document.querySelector(".icon-cross").addEventListener("click", () => {
     modal.classList.add("disable");
 })

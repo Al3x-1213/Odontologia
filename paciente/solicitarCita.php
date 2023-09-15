@@ -62,11 +62,12 @@ include '../client/verificationSessionPatient.php';
                 </select>
 
                 <?php
-                // BLOQUEAR DÍAS DEL CALENDARIO PARA QUE LA SOLICITUD SE HAGA CON MÍNIMO TRES DIAS DE ANTICIPACIÓN
-
+                // BLOQUEAR DÍAS DEL CALENDARIO
+                date_default_timezone_set('America/Caracas');
+                $fechaActual = date("Y-m-d");
                 ?>
                 <label>Fecha de Atención:</label>
-                <input type="date" required name="atencion" class="input__form">
+                <input type="date" required="true" name="atencion" min="<?= $fechaActual; ?>" class="input__form">
 
                 <label>Turno:</label>
                 <div class="seleccion">
@@ -76,7 +77,8 @@ include '../client/verificationSessionPatient.php';
 
                 <?php
                 // CONSULTAR A BASE DE DATOS LOS NOMBRES DE LOS DOCTORES E IMPRIMIRLOS COMO OPCIÓN
-                $consulta = "SELECT * FROM doctores INNER JOIN usuarios ON doctores.id_usuario = usuarios.id_usuario";
+                $consulta = "SELECT * FROM doctores INNER JOIN datos_personales INNER JOIN cuentas
+                ON doctores.id_usuario = cuentas.id_cuenta AND cuentas.id_dato_personal = datos_personales.id_dato_personal";
                 $query = mysqli_query($conexion, $consulta)
                 ?>
                 <label>Doctor: </label>

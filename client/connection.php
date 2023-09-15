@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'root';
 $password = '';
-$dataBase = 'consultorio';
+$dataBase = 'odontologia';
 $conexion = new mysqli($host, $user, $password, $dataBase);
 
 if($conexion->connect_error){

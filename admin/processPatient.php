@@ -44,8 +44,8 @@ include '../client/orderDate.php';
         // OBTENER LA INFORMACIÓN DE LA CITA QUE SERÁ CONFIRMADA
         include '../client/connection.php'; //Conexión con base de datos
 
-        $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
-        ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
+        $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
+        ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
         AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
         WHERE consultas.id_consulta = '$idConsulta'";
         $query = mysqli_query($conexion, $consulta);
@@ -97,14 +97,6 @@ include '../client/orderDate.php';
         </form>
 
         <?php
-        $fechaAtencion = $resultado['fecha_atencion'];
-
-        $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
-        ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
-        AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-        WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaAtencion'
-        ORDER BY hora_inicio ASC";
-        
         $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
         ?>
 
@@ -124,9 +116,10 @@ include '../client/orderDate.php';
             <?php
             $fechaAtencion = $resultado['fecha_atencion'];
 
-            $consulta = "SELECT * FROM consultas INNER JOIN usuarios INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta ON consultas.id_paciente = usuarios.id_usuario AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
+            $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
+            ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
             AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-            WHERE consultas.id_doctor = '$id_doctor' AND consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaAtencion'
+            WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaAtencion'
             ORDER BY hora_inicio ASC";
 
             $query = mysqli_query($conexion, $consulta);
@@ -138,7 +131,7 @@ include '../client/orderDate.php';
                     <div class="tbody"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                     <div class="tbody"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
+                    <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
                     <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>       
                     <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>      
                 </div>
