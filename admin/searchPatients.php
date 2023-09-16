@@ -98,8 +98,7 @@ include '../client/orderDate.php';
             // HISTORIAL DE LAS CONSULTAS DEL PACIENTE
             $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
             ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
-            AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-            WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = '1' AND consultas.id_paciente = '$idPaciente'
+            AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = '1' AND consultas.id_paciente = '$idPaciente'
             ORDER BY fecha_atencion DESC";
             $query = mysqli_query($conexion, $consulta);
 

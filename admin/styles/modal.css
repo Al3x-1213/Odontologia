@@ -108,6 +108,11 @@ select {
     outline: none;
 }
 
+#filter2 {
+    position: relative;
+    top: 15px;
+}
+
 p{
     text-align: center;
 }

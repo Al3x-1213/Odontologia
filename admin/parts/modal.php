@@ -14,16 +14,15 @@
             include '../client/insert/registerCita.php';
             ?>
 
-            <!-- <div id="grupo_cedula" class="grupo">
-                <label>Cédula:</label>
-                <div class="input-icon">
-                    <input type="number" maxlength="8" required name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i><i class="icon-checkmark confirm display"></i>
-                </div>
-                <div class="paragraf__error display">La cédula debe tener 7 u 8 caractéres</div>
-            </div>-->
-
             <label>Cédula: </label>
-            <input type="number" maxlength="8" required="true" name="cedula" class="input__form">
+            <div class="searchPatients">
+                <div class="inputs">
+                    <div class="inputRecibe">
+                        <label for="search">Buscar pacientes: </label><input type="text" placeholder="Datos del Paciente:" name="search2" id="search2">
+                    </div>
+                </div>
+                    <select id="filter2"></select>
+            </div>
 
             <?php
             // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
@@ -74,4 +73,3 @@
         </form>
     </div>
 </div>
-<!-- <script src="../js/validacionRegistrarse.js"></script> -->
