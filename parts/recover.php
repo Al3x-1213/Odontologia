@@ -29,31 +29,18 @@ session_destroy();
     <body>
         <div class="flex__container flex__container-alternative">
             <form class="form form-alternative" method="POST">
-                <!-- CODIGO DE ICONO -->
-                <a href="../"><i class="icon-cross"></i></a>
-                <div class="icon__form">
-                  <div class="icon__head"></div>
-                  <div class="icon__body"></div>
-                </div>
 
-                <!-- TITULO -->
-                <h2 class="title__form">Iniciar Sesión</h2>
+                <h2 class="title__form">Recuperar Contraseña</h2>
 
                 <?php
-                include '../client/validationLogin.php';
+                include '../client/recoverPassword.php';
                 ?>
 
                 <div class="fields__form">
-                    <label>Usuario:</label>
+                    <label>Ingresa tu usuario:</label>
                     <input type="text" maxlength="30" required="true" name="usuario" class="input__form" autocomplete="off">
 
-                    <label>Contraseña:</label>
-                    <input type="password" maxlength="35" required="true" name="clave" class="input__form">
-
-                    <input class="button" type="submit" value="Enviar" name="boton_log">
-
-                    <p>¿No tienes una cuenta? <a href="register.php">Regístrate</a></p>
-                    <p>¿Has olvidado tu contraseña? <a href="recover.php">Recupérala aquí</a></p>
+                    <input class="button" type="submit" value="Enviar" name="boton_rec">
                 </div>
             </form>
         </div>
