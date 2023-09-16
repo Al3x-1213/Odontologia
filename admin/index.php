@@ -96,8 +96,8 @@ $fechaActual = date("Y-m-d");
                         <div class="tbody contacto"><?php echo $resultado['telefono_1']." ".$resultado['telefono_2'] ; ?></div>
             
                         <div class="tbody">
-                            <a href="../client/botones/atendido.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-checkmark1 icon"></i></button></a>
-                            <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon"></i></button></a>
+                            <a href="../client/botones/attend.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-checkmark1 icon"></i></button></a>
+                            <a href="../client/botones/cancel.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon"></i></button></a>
                         </div>
                     </div>
                 <?php
@@ -123,7 +123,7 @@ $fechaActual = date("Y-m-d");
                     <div class="thead">Hora de Inicio</div>
                     <div class="thead">Hora de Culminación</div>
                     <div class="thead">Teléfono</div>
-                    <div class="thead"> Acciones </div>
+                    <!-- <div class="thead">Acciones</div> -->
                 </div>
 
                 <?php
@@ -139,7 +139,7 @@ $fechaActual = date("Y-m-d");
                         <div class="tbody"><?php echo $horaFin; ?></div>
                         <div class="tbody contacto"><?php echo $resultado['telefono_1']." ".$resultado['telefono_2'] ; ?></div>
                 
-                        <div class="tbody"><a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="eliminar">Eliminar</button></a></div>
+                        <!-- <div class="tbody"><a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="eliminar">Eliminar</button></a></div> -->
                     </div>
                 <?php
                 }

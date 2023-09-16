@@ -96,15 +96,17 @@ $year = date("Y");
                         <div class="tbody contacto"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
 
                         <div class="tbody">
-                            <a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon"></i></button></a>
+                            <a href="../client/botones/cancel.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon"></i></button></a>
                         </div>
                     </div>
                 <?php
                 }
                 ?>
             </div>
-            <?php
-        }else{ ?>
+        <?php
+        }
+        else{ 
+        ?>
             <h2 class="dia"><?php echo ordenarFecha($fechaBuscar); ?></h2>
 
             <div class="table">
