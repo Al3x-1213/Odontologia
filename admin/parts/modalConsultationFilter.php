@@ -33,11 +33,11 @@ while ($resultado = $query->fetch(PDO::FETCH_ASSOC)){
         $resultado2= mysqli_num_rows($query2);
 
         if ($resultado2 == 0){
-            $contenido .= "<option value='" . $resultado['id_dato_personal'] . "'>" . $resultado['nombre'] . " ". $resultado['apellido'] ."<span class='cedulaSearch'> (".  $resultado["cedula"]. ") </span></option>";
+            $contenido .= "<option value='". $resultado['id_dato_personal']. "'>". $resultado['nombre']. " ". $resultado['apellido']."<span class='cedulaSearch'> (".  $resultado["cedula"]. ") </span></option>";
         }
     }
     else{
-        $contenido .= "<option value='" . $resultado['id_dato_personal'] . "'>" . $resultado['nombre'] . " ". $resultado['apellido'] ."<span class='cedulaSearch'> (".  $resultado["cedula"]. ") </span></option>";
+        $contenido .= "<option value='". $resultado['id_dato_personal']. "'>". $resultado['nombre']. " ". $resultado['apellido']."<span class='cedulaSearch'> (".  $resultado["cedula"]. ") </span></option>";
     }
 }
 echo json_encode($contenido, JSON_UNESCAPED_UNICODE);

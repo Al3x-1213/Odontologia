@@ -21,7 +21,7 @@
                         <label for="search">Buscar pacientes: </label><input type="text" placeholder="Datos del Paciente:" name="search2" id="search2">
                     </div>
                 </div>
-                    <select id="filter2"></select>
+                    <select id="filter2" name="id_paciente"></select>
             </div>
 
             <?php
