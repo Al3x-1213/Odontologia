@@ -23,8 +23,3 @@ function filtrarInformacion() {
         filtro.style.display = 'none'
     }
 }
-
-function mostrar(nombre) {
-    filtro.style.display = 'none'
-    alert("CP: " + nombre)
-}
