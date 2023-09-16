@@ -52,7 +52,8 @@ $year = date("Y");
         $Year = $fechaSeparada[0];
 
         // OBTENER EL ID_DOCTOR según el ID_USUARIO
-        include '../client/obtenerId.php';?>
+        include '../client/obtenerId.php';
+        ?>
 
         <?php 
         if($day >= $dia && $month >= $mes && $Year >= $year){
