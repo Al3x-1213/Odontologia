@@ -73,3 +73,4 @@
         </form>
     </div>
 </div>
+<script src="js/searchConsulta.js"></script>

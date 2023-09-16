@@ -24,7 +24,7 @@ function filtrarInformacion() {
     }
 }
 
-function mostrar(nombre) {
-    filtro.style.display = 'none'
-    alert("CP: " + nombre)
-}
+// function mostrar(nombre) {
+//     filtro.style.display = 'none'
+//     alert("CP: " + nombre)
+// }

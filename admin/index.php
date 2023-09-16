@@ -157,7 +157,6 @@ $fechaActual = date("Y-m-d");
         // include '../client/eliminar_no_atendidas.php';
         ?>
 
-        <script src="js/searchConsulta.js"></script>
         <script src="js/confirm.js"></script>
         <script src="js/modal.js"></script>
     </body>
