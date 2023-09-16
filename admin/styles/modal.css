@@ -110,7 +110,8 @@ select {
 
 #filter2 {
     position: relative;
-    top: 15px;
+    top: 20px;
+    margin-bottom: 15px;
 }
 
 p{
@@ -170,4 +171,14 @@ p a{
 .confirm{
     color: #00a92d;
     padding: 0 2%;
+}
+
+.searchPatient {
+    gap: 20px;
+}
+
+
+
+option {
+    color: #333;
 }

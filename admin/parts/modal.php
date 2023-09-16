@@ -18,10 +18,10 @@
             <div class="searchPatients">
                 <div class="inputs">
                     <div class="inputRecibe">
-                        <label for="search">Buscar pacientes: </label><input type="text" placeholder="Datos del Paciente:" name="search2" id="search2">
+                        <label for="search"> Buscar pacientes: </label><input type="text" placeholder="Datos del Paciente:" name="search2" id="search2">
                     </div>
                 </div>
-                    <select id="filter2" name="id_paciente"></select>
+                <select id="filter2" name="id_paciente" class="display input__form"></select>
             </div>
 
             <?php
@@ -50,12 +50,12 @@
             $fechaActual = date("Y-m-d");
             ?>
             <label>Fecha de Atención:</label>
-            <input type="date" required="true" name="atencion" min="<?= $fechaActual; ?>" class="input__form">
+            <input type="date" required name="atencion" min="<?= $fechaActual; ?>" class="input__form">
 
             <label>Turno:</label>
             <div class="seleccion">
-                <input type="radio" required="true" value="1" name="turno" class=""> Mañana
-                <input type="radio" required="true" value="2" name="turno" class=""> Tarde
+                <input type="radio" required value="1" name="turno" class=""> Mañana
+                <input type="radio" required value="2" name="turno" class=""> Tarde
             </div>
 
             <?php
