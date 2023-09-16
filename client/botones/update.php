@@ -39,7 +39,6 @@ include '../verificationSessionAdmin.php';
                 include '../update/updateInformationUser.php';
                 ?>
 
-                <!-- TITULO -->
                 <h2 class="title__form"><a href="pacientes.php">Editar</a></h2>
 
                 <div class="fields__form">

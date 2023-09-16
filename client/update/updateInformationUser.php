@@ -27,7 +27,6 @@ if (!empty($_POST['button_upd'])){
 
         $consulta = "UPDATE datos_personales SET nombre = '$nombre', apellido = '$apellido', cedula = '$cedula', edad = '$edad',
         fecha_nacimiento = '$nacimiento', telefono_1 = '$telefono_1', telefono_2 = '$telefono_2', correo = '$correo' WHERE id_dato_personal = '$idPaciente'";
-        echo $consulta;
         $query = mysqli_query($conexion, $consulta);
 
         if ($query){

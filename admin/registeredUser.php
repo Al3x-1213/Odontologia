@@ -51,7 +51,6 @@ include '../client/orderDate.php';
         <div class="table slice"> <!--slice-->
             <div class="thead__table">
                 <div class="thead">Paciente</div>
-                <!-- <div class="thead">Usuario</div> -->
                 <div class="thead cedula">Cédula</div>
                 <div class="thead edad">Edad</div>
                 <div class="thead">Fecha de Nacimiento</div>
@@ -66,7 +65,6 @@ include '../client/orderDate.php';
             ?>
                 <div class="tbody__table">
                     <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-                    <!-- <div class="tbody"><?php echo $resultado['usuario']; ?></div> -->
                     <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
                     <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
                     <div class="tbody"><?php echo $fechaNacimiento; ?></div>
