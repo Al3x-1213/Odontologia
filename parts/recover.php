@@ -40,7 +40,7 @@ session_destroy();
                     <label>Ingresa tu usuario:</label>
                     <input type="text" maxlength="30" required="true" name="usuario" class="input__form" autocomplete="off">
 
-                    <input class="button" type="submit" value="Enviar" name="boton_rec">
+                    <input class="button" type="submit" value="Enviar" name="button_rec">
                 </div>
             </form>
         </div>
