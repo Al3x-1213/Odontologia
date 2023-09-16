@@ -123,7 +123,6 @@ $fechaActual = date("Y-m-d");
                     <div class="thead">Hora de Inicio</div>
                     <div class="thead">Hora de Culminación</div>
                     <div class="thead">Teléfono</div>
-                    <!-- <div class="thead">Acciones</div> -->
                 </div>
 
                 <?php
@@ -138,8 +137,6 @@ $fechaActual = date("Y-m-d");
                         <div class="tbody"><?php echo $horaInicio; ?></div>
                         <div class="tbody"><?php echo $horaFin; ?></div>
                         <div class="tbody contacto"><?php echo $resultado['telefono_1']." ".$resultado['telefono_2'] ; ?></div>
-                
-                        <!-- <div class="tbody"><a href="../client/botones/cancelar.php?id=<?php echo $resultado['id_consulta'] ?>"><button class="eliminar">Eliminar</button></a></div> -->
                     </div>
                 <?php
                 }
