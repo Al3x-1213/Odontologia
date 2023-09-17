@@ -1,10 +1,15 @@
-<div>
-    <button class="insertar">Registrar una Cita</button>
+<div class="buttonsIndex">
+    <div class="divInsert">
+        <button class="insertar">Registrar una Cita</button>
+    </div>
+    <div class="divPrint">
+        <a href="../client/botones/printReport.php"><button title="Reporte" class="print printReport"><i class="icon-printer icon"></i></button></a>
+    </div>
 </div>
 
 <div class="modal disable">
     <div class="flex-container">
-        <form id="formulario" class="form-login" method="POST">
+        <form method="POST" id="formulario" class="form-login">
             <div class="header__form">
                 <h2>Agendar una Cita</h2> <span class="icon-cross"></span>
             </div>

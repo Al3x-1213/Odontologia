@@ -79,47 +79,20 @@ body {
   min-width: 5%;
 }
 
-/* BOTONES */
-
-a{
-  text-decoration: none;
+.buttonsIndex{
+  display: flex;
+  margin-top: 1%;
 }
 
-.attend, .cancel, .process, .update, .delete, .print{
-  background: transparent;
-  cursor: pointer;
-  cursor: hand;
-  border: none;
-  border-radius: 2px;
+.buttonsIndex .divInsert{
+  width: 50%;
 }
 
-.attend i, .cancel i, .process i, .update i, .delete i, .print i{
-  padding: 2px;
-  color: #333;
-}
-
-.attend i, .process i{
-  font-size: 150%;
-}
-
-.cancel i, .update i, .delete i, .print i{
-  font-size: 130%;
-}
-
-.attend i:hover{
-  color: #00ff00;
-}
-
-.process i:hover, .update i:hover{
-  color: #0000ff;
-}
-
-.cancel i:hover, .delete i:hover{
-  color: #ff0000;
-}
-
-.print i:hover{
-  color: #E67F4F;
+.buttonsIndex .divPrint{
+  width: 50%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
 
 .insertar{
@@ -132,6 +105,8 @@ a{
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
+
+  /* border: solid blue 1px; */
 }
 
 .confirmar {

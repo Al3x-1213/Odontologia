@@ -21,6 +21,7 @@ $fechaActual = date("Y-m-d");
         <!-- <link rel="stylesheet" href="styles/buscador.css"> -->
         <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="../styles/mensajes.css">
+        <link rel="stylesheet" href="styles/iconsButtons.css">
         <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/modal.css">
         <link rel="stylesheet" href="../Iconos/style.css">
