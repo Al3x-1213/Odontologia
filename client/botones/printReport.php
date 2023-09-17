@@ -23,7 +23,6 @@ $query = mysqli_query($conexion, $consulta);
 
 $fechaActual = ordenarFecha($fechaActual);
 
-
 // GENERAR PDF CON LA INFORMACIÓN NECESARIA
 use Dompdf\Dompdf;
 
@@ -40,25 +39,35 @@ $html = '
     <body>
         <h2>'. $fechaActual. '</h2>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Paciente</th>
-                    <th>Cédula</th>
-                    <th>Motivo de la Consulta</th>
-                    <th>Hora de Atención</th>
-                    <th>Teléfono</th>
-                </tr>
-            </thead>
-            <tbody>'.
-                while ($resultado = mysqli_fetch_array($query)){.
-                    '<tr>
-                        <td></td>
-                    </tr>'.
-                }.
-            '</tbody>
-        </table>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Paciente</th>
+                        <th>Cédula</th>
+                        <th>Motivo de la Consulta</th>
+                        <th>Hora de Atención</th>
+                        <th>Teléfono</th>
+                    </tr>
+                </thead>
+                <tbody>
+';
 
+while ($resultado = mysqli_fetch_array($query)){
+    $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+    $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
+
+    $html .= '<tr><td>'. $resultado['nombre']. ' '. $resultado['apellido']. '</td>';
+    $html .= '<td>'. $resultado['cedula']. '</td>';
+    $html .= '<td>'. $resultado['causa_consulta']. '</td>';
+    $html .= '<td>'. $horaInicio. ' - '. $horaFin. '</td>';
+    $html .= '<td>'. $resultado['telefono_1']. ' '. $resultado['telefono_2']. '</td></tr>';
+}
+
+$html .= '
+                </tbody>
+            </table>
+        </div>
     </body>
 </html>
 ';
@@ -70,21 +79,35 @@ $domPdf->stream("documento.pdf", array('Attachment' => '0'));
 // $domPdf->stream('documento.pdf');
 
 ?>
-<table>
+
+<!-- <table>
     <thead>
         <tr>
-            <th>Paciente</th>
-            <th>Cédula</th>
-            <th>Motivo de la Consulta</th>
-            <th>Hora de Atención</th>
-            <th>Teléfono</th>
+        <th>Paciente</th>
+        <th>Cédula</th>
+        <th>Motivo de la Consulta</th>
+        <th>Hora de Atención</th>
+        <th>Teléfono</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td></td>
-        </tr>
+        <?php
+        while($resultado = mysqli_fetch_array($query)){
+            $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+            $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
+        ?>
+            <tr>
+                <td><?php echo $resultado['nombre']. " ". $resultado['apellido']; ?></td>
+                <td><?php echo $resultado['cedula']; ?></td>
+                <td><?php echo $resultado['causa_consulta']; ?></td>
+                <td><?php echo $horaInicio. " - ". $horaFin; ?></td>
+                <td><?php echo $resultado['telefono_1']. " " .$resultado['telefono_2']; ?></td>
+            </tr>
+        <?php
+        }
+        ?>
     </tbody>
-</table>
+</table> -->
+
 
 

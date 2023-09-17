@@ -1,3 +1,20 @@
+/* TÍTULO */
+
 h2{
+    text-align: center;
+}
+
+/* TABLA */
+
+.table{
+    width: 70%;
+    padding: 5px;
+    border: solid red 1px;
+}
+
+table {
+    width: 100%;
+    margin-top: 21px;
+    border-collapse: collapse;
     text-align: center;
 }
