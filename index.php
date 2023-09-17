@@ -38,11 +38,10 @@ session_destroy();
   
   <a name="about"></a>
   <div class="flex__about">
-    <div class="text__about">
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis explicabo magnam inventore illum, culpa hic odit similique ratione, incidunt fugiat esse quo ipsam sit reprehenderit, voluptas at natus optio maiores.
-      Magni beatae, porro expedita exercitationem autem id modi, illum dolore asperiores alias velit nam assumenda ipsa perspiciatis similique adipisci. Itaque mollitia excepturi ex molestias soluta, ab sed repellat unde perspiciatis?</p>
+    <div class="text text__about">
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis explicabo magnam inventore illum, culpa hic odit similique ratione, incidunt fugiat esse quo ipsam sit reprehenderit, voluptas at natus optio maiores.</p>
     </div>
-    <aside class="aside__about">
+    <aside class="text aside">
       <h3>¿Qué ofrecemos?</h3>
       <ul>
         <li>Consulta Diagnóstica</li>
@@ -55,10 +54,10 @@ session_destroy();
   </div>
 
   <div class="contact__container">
-    <div class="text__contact">
+    <div class="text">
       <h3> Contáctenos </h3>
-      <a name="contactanos"></a>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad illo sapiente nulla dolor odit? Autem facere eligendi tempora saepe quas aliquid blanditiis, vitae laboriosam necessitatibus ullam itaque aut obcaecati! Fuga!</p>
+      <a name="contact"></a>
+      <p>vitae laboriosam necessitatibus ullam itaque aut obcaecati! Fuga!</p>
       <p>Teléfono: <b>+58 xxxx xxxx  ||  +58 xxxx xxxx</b></p>
     </div>
     <div class="direccion">

@@ -21,6 +21,7 @@
   .content__footer {
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 70px;
   }
   
   .social__footer {
@@ -31,7 +32,7 @@
   
   .social__footer>a {
     text-decoration: none;
-    color: #FFFFE8;
+    color: aliceblue;
   }
   
   .social__footer>a:hover {
@@ -39,7 +40,7 @@
   }
   
   .border__footer {
-    border-right: 1px solid #FFFFE8;
+    border-right: 1px solid aliceblue;
   }
   
   .menu {
@@ -50,7 +51,7 @@
   
   .menu>a {
     text-decoration: none;
-    color: #FFFFE8;
+    color: aliceblue;
   }
   
   .menu>a:hover {
