@@ -10,7 +10,8 @@ if (!empty($_POST['button_rec'])){
         ?>
         <div class= "alerta">No deben haber campos vacios</div>
         <?php
-    }else{
+    }
+    else{
         // USUARIO RECIBIDO DEL FORMULARIO
         $usuario = $_POST['usuario'];
 
@@ -31,8 +32,9 @@ if (!empty($_POST['button_rec'])){
             $respuesta = mysqli_fetch_array($query);
             $idCuenta = $respuesta['id_cuenta'];
 
-            $consulta = "SELECT nombre, apellido, correo FROM datos_personales INNER JOIN cuentas
-            ON datos_personales.id_dato_personal = cuentas.id_dato_personal WHERE id_cuenta = '$idCuenta'";
+            $consulta = "SELECT * FROM datos_personales INNER JOIN cuentas
+            ON datos_personales.id_dato_personal = cuentas.id_dato_personal
+            WHERE id_cuenta = '$idCuenta'";
             $query = mysqli_query($conexion, $consulta);
 
             $respuesta = mysqli_fetch_array($query);
@@ -67,7 +69,7 @@ if (!empty($_POST['button_rec'])){
                 $mail->Body = 'Hola '. $nombre. ' '. $apellido. ', '. '<br>'.
                 'Te enviamos este mensaje porque recibimos una solicitud para restablecer tu contraseña. Si no hiciste esta solicitud, puedes ignorar este mensaje.'. '<br><br>'.
                 'Para crear una nueva contraseña, haz clic en el enlace adjunto.'. '<br><br>'.
-                '<a href="http://localhost/tesis/odontologia/">Recuperar Contraseña</a>'. '<br><br>'.
+                '<a href="http://localhost/tesis/odontologia/recover.php?id='. $respuesta['id_dato_personal']. '">Recuperar Contraseña</a>'. '<br><br>'.
                 'Agradecemos tu confianza.'. '<br>'.
                 '<b>'. 'Consultorio Odontológico Marisol Díaz'. '</b>';
                 $mail->send();
@@ -77,9 +79,9 @@ if (!empty($_POST['button_rec'])){
             catch (Exception $e) {
                 echo 'Mensaje ' . $mail->ErrorInfo;
             }
+            
         }
     }
 }
-
 
 ?>

@@ -13,10 +13,10 @@ session_destroy();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- ESTILOS CSS -->
-        <link rel="stylesheet" href="../styles/normalize.css">
-        <link rel="stylesheet" href="../styles/login.css">
-        <link rel="stylesheet" href="../styles/mensajes.css">
-        <link rel="stylesheet" href="../Iconos/style.css">
+        <link rel="stylesheet" href="styles/normalize.css">
+        <link rel="stylesheet" href="styles/login.css">
+        <link rel="stylesheet" href="styles/mensajes.css">
+        <link rel="stylesheet" href="Iconos/style.css">
 
         <!-- LETRAS UTILIZADAS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,12 +33,20 @@ session_destroy();
                 <h2 class="title__form">Recuperar Contraseña</h2>
 
                 <?php
-                include '../client/recoverPassword.php';
+                include 'client/update/recoverPassword.php';
                 ?>
 
                 <div class="fields__form">
-                    <label>Ingresa tu usuario:</label>
-                    <input type="text" maxlength="30" required="true" name="usuario" class="input__form" autocomplete="off">
+                    <?php
+                    $idDatoPersonal = $_GET['id'];
+                    ?>
+                    <input type="hidden" name="id_dato_personal" value="<?php echo $idDatoPersonal; ?>">
+
+                    <label for="clave">Contraseña Nueva:</label>
+                    <input type="password" maxlength="35" required name="clave" class="input__form">
+
+                    <label for="clave">Confirmar Contraseña Nueva:</label>
+                    <input type="password" maxlength="35" required name="clave2" class="input__form">
 
                     <input class="button" type="submit" value="Enviar" name="button_rec">
                 </div>
