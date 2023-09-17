@@ -15,7 +15,7 @@ session_destroy();
 
   <!-- ESTILOS CSS -->
   <link rel="stylesheet" href="styles/normalize.css">
-  <link rel="stylesheet" href="styles/menu.css">
+  <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/index.css">
   <link rel="stylesheet" href="styles/footer.css">
   <link rel="stylesheet" href="Iconos/style.css">
@@ -33,16 +33,16 @@ session_destroy();
 
 <body>
   <a name="menu"></a>
-  <?php include 'components/menu.html' ?>
-  <div class="img__container"> <img src="img/consultorio riccio.jpg" alt="consultio de riccio" class="img"></div>
+  <?php include 'components/menu.html'; ?>
+  <?php include 'responsive/header.php'; ?>
   
-  <a name="acercade"></a>
-  <div class="container flex">
-    <div class="text__container text1">
+  <a name="about"></a>
+  <div class="flex__about">
+    <div class="text__about">
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis explicabo magnam inventore illum, culpa hic odit similique ratione, incidunt fugiat esse quo ipsam sit reprehenderit, voluptas at natus optio maiores.
       Magni beatae, porro expedita exercitationem autem id modi, illum dolore asperiores alias velit nam assumenda ipsa perspiciatis similique adipisci. Itaque mollitia excepturi ex molestias soluta, ab sed repellat unde perspiciatis?</p>
     </div>
-    <aside class="text__container text2">
+    <aside class="aside__about">
       <h3>¿Qué ofrecemos?</h3>
       <ul>
         <li>Consulta Diagnóstica</li>
@@ -54,17 +54,17 @@ session_destroy();
     </aside>
   </div>
 
-  <div class="contactanos">
-    <div class="address">
+  <div class="contact__container">
+    <div class="text__contact">
       <h3> Contáctenos </h3>
       <a name="contactanos"></a>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad illo sapiente nulla dolor odit? Autem facere eligendi tempora saepe quas aliquid blanditiis, vitae laboriosam necessitatibus ullam itaque aut obcaecati! Fuga!</p>
       <p>Teléfono: <b>+58 xxxx xxxx  ||  +58 xxxx xxxx</b></p>
     </div>
-    <div class="imgadd">
+    <div class="direccion">
       <!-- <img src="img/direccion.jpeg" alt="direccion de consultio riccio" class="direccion"> -->
       <a title="Dirección" href="https://www.google.com/maps/place/Edificio+Lucerna/@10.4923621,-66.8570139,20.29z/data=!4m14!1m7!3m6!1s0x8c2a59db0c04f0d5:0x9e88ed05b996221f!2sEdificio+Lucerna!8m2!3d10.49236!4d-66.8568355!16s%2Fg%2F11srjp38h9!3m5!1s0x8c2a59db0c04f0d5:0x9e88ed05b996221f!8m2!3d10.49236!4d-66.8568355!16s%2Fg%2F11srjp38h9?hl=es&entry=ttu">
-        <img src="img/direccion.png" alt="direccion de consultio riccio" class="direccion">
+        <img src="img/direccion.png" alt="direccion de consultio riccio" class="address">
       </a>
     </div>
   </div>
