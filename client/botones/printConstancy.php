@@ -37,7 +37,7 @@ $html = '
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../../admin/styles/constancia.css">
+        <link rel="stylesheet" href="../../admin/styles/constancy.css">
     </head>
     <body>
         <header>
