@@ -2,9 +2,9 @@ const button = document.querySelector(".insertar");
 const modal = document.querySelector(".modal");
 
 button.addEventListener("click", () => {
-    modal.classList.remove("disable");
+    modal.classList.remove("display")
 })
 
-document.querySelector(".icon-cross").addEventListener("click", () => {
-    modal.classList.add("disable");
+document.querySelector(".xModal").addEventListener("click", () => {
+    modal.classList.add("display")
 })

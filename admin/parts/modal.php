@@ -7,11 +7,11 @@
     </div>
 </div>
 
-<div class="modal disable">
+<div class="modal display">
     <div class="flex-container">
         <form method="POST" id="formulario" class="form-login">
             <div class="header__form">
-                <h2>Agendar una Cita</h2> <span class="icon-cross"></span>
+                <h2>Agendar una Cita</h2> <span class="icon-cross xModal"></span>
             </div>
 
             <?php

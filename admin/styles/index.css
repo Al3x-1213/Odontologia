@@ -132,3 +132,7 @@ body {
 .nombre_paciente {
   color: #E67F4F;
 }
+
+@media only screen and (max-width: 800px){
+  
+}
