@@ -39,6 +39,7 @@ $fechaActual = date("Y-m-d");
         <?php
         include 'components/menu.html';
         include 'components/menu2.php';
+        include 'responsive/header.php';
 
         include 'parts/modal.php';
         ?>

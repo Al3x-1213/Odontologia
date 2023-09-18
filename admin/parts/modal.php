@@ -2,11 +2,11 @@
     <button class="insertar">Registrar una Cita</button>
 </div>
 
-<div class="modal disable">
+<div class="modal display">
     <div class="flex-container">
         <form id="formulario" class="form-login" method="POST">
             <div class="header__form">
-                <h2>Agendar una Cita</h2> <span class="icon-cross"></span>
+                <h2>Agendar una Cita</h2> <span class="icon-cross xModal"></span>
             </div>
 
             <?php

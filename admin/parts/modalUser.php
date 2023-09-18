@@ -2,12 +2,12 @@
     <button class="insertar">Registrar un Usuario</button>
 </div>
 
-<div class="modal disable">
+<div class="modal display">
     <div class="flex-container">
         <form action="../client/insert/insertDoctor.php" method="POST" class="form-login">
 
             <div class="header__form">
-                <h2>Registrar un Usuario</h2> <span class="icon-cross"></span>
+                <h2>Registrar un Usuario</h2> <span class="icon-cross xModal"></span>
             </div>
 
             <h3>Tu cuenta: </h3>
