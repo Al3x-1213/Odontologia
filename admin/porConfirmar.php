@@ -15,6 +15,7 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/tables.css">
         <link rel="stylesheet" href="styles/iconsButtons.css">
         <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/modal.css">
@@ -43,48 +44,65 @@ include '../client/orderDate.php';
         // OBTENER LA INFORMACIÓN DE TODAS LAS CITAS POR CONFIRMAR DEL DOCTOR QUE ESTÁ LOGUEADO
         include '../client/connection.php'; //Conexión con base de datos
 
-        $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
-        ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
-        AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-        WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = 3
-        ORDER BY fecha_atencion ASC";
+        $consulta = "SELECT * FROM consultas WHERE id_doctor = '$idDoctor' AND id_status_consulta = 3";
         $query = mysqli_query($conexion, $consulta);
+
+        // VALIDACIÓN PARA COMPROBAR QUE LA TABLA NO ESTÉ VACIA
+        if($query->num_rows == 0){
         ?>
+            <h2 class="dia">No Hay Citas Por Confirmar</h2>
+        <?php
+        }
+        else
+        {
+        ?>
+            <!-- CITAS POR CONFIRMAR -->
+            <h2 class="dia">Citas por Confirmar</h2>
 
-        <h2 class="dia">Citas por Confirmar</h2>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Paciente</th>
+                            <th>Cédula</th>
+                            <th>Edad</th>
+                            <th>Motivo de la Consulta</th>
+                            <th>Fecha de Atención</th>
+                            <th>Turno</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
+                        ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
+                        AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
+                        WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = 3
+                        ORDER BY fecha_atencion ASC";
+                        $query = mysqli_query($conexion, $consulta);
 
-        <div class="table">
-            <div class="thead__table">
-                <div class="thead">Paciente</div>
-                <div class="thead">Cédula</div>
-                <div class="thead edad">Edad</div>
-                <div class="thead causa">Causa de la Consulta</div>
-                <div class="thead">Fecha de Atención</div>
-                <div class="thead">Turno</div>
-                <div class="thead">Acciones</div>
+                        while ($resultado = mysqli_fetch_array($query)){
+                            $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
+                        ?>
+                            <tr>
+                                <td><?php echo $resultado['nombre']. " ". $resultado['apellido']; ?></td>
+                                <td><?php echo $resultado['cedula']; ?></td>
+                                <td><?php echo $resultado['edad']; ?></td>
+                                <td><?php echo $resultado['causa_consulta']; ?></td>
+                                <td><?php echo $fechaAtencion; ?></td>
+                                <td><?php echo $resultado['turno_consulta']; ?></td>
+                                <td><a href="processPatient.php?id=<?php echo $resultado['id_consulta']?>"><button title="Procesar" class="process"><i class="icon-cogs icon"></i></button></a></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
             </div>
-
-            <?php
-            while ($resultado = mysqli_fetch_array($query)){
-                $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
-            ?>
-                <div class="tbody__table">
-                    <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-                    <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-                    <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody"><?php echo $fechaAtencion; ?></div>
-                    <div class="tbody"><?php echo $resultado['turno_consulta']; ?></div>
-                    
-                    <div class="tbody">
-                        <a href="processPatient.php?id=<?php echo $resultado['id_consulta']?>"><button title="Procesar" class="process"><i class="icon-cogs icon"></i></button></a>
-                    </div>
-                </div>
-            <?php
-            }
-            mysqli_close($conexion);
-            ?>
-        </div>
+        <?php
+        }
+        mysqli_close($conexion);
+        ?>
 
         <div class="space"></div>
         
