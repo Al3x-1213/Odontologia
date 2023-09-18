@@ -11,6 +11,7 @@ $year = $fecha[0];
 $month = $fecha[1];
 $day = $fecha[2];
 $mesAño = mesAño($month);
+$fechaActual = ordenarFecha($fechaActual);
 
 // OBTENER LA INFORMACIÓN DEL PACIENTE
 $idPaciente = $_GET['id'];
@@ -73,11 +74,12 @@ $html = '
 </html>
 ';
 
+$nombre = "Constancia médica. ". $nombre. " ". $apellido. ". ". $fechaActual. ".pdf";
+
 $domPdf->set_paper('letter', 'landscape');
 $domPdf->load_html($html);
 $domPdf->render();
-$domPdf->stream("documento.pdf", array('Attachment' => '0'));
-// $domPdf->stream('documento.pdf');
+$domPdf->stream($nombre, array('Attachment' => '0'));
 
 ?>
 
