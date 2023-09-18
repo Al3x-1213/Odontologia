@@ -15,6 +15,7 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/iconsButtons.css">
         <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/modal.css">
         <link rel="stylesheet" href="styles/tabla.css">

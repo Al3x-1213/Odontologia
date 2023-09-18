@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 50%;
+    margin: 5px;
+    border-right: dotted #333 1px;
+}
+
+p{
+    margin: 10px;
+}
+
+.franja{
+    margin-top: 30px;
+    background-color: #333;
+    font-size: 6px;
+}
+
+/* ENCABEZADO */
+
+header{
+    margin-top: 10px;
+    border: solid transparent 1px;
+}
+
+header .linea1, header .linea2, header .linea3{
+    text-align: center;
+}
+
+header .linea1{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+header .linea2{
+    font-size: 18px;
+}
+
+header .linea3{
+    font-size: 14px;
+}
+
+/* CUERPO */
+
+h2, .atentamente .linea1, .atentamente .linea2, .pie .linea1, .pie .linea2{
+    text-align: center;
+}
+
+.parrafo1, .parrafo2, .atentamente .linea1, .atentamente .linea2{
+    font-size: 18px;
+}
+
+.cuerpo{
+    margin-top: 40px;
+}
+
+.contenido{
+    margin-top: 40px;
+}
+
+.parrafo1, .parrafo2{
+    text-align: justify;
+}
+
+.atentamente{
+    margin-top: 150px;
+    margin-bottom: 10px;
+}
+
+/* PIE*/
+
+.pie .linea1, .pie .linea2{
+    text-align: center;
+}

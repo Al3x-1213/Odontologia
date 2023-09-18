@@ -16,6 +16,7 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/iconsButtons.css">
         <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/usuarios.css">
         <link rel="stylesheet" href="styles/modal.css">
@@ -41,14 +42,39 @@ include '../client/orderDate.php';
 
         <h2 class="dia">Usuarios</h2>
 
+        <div class="searchPatients">
+            <form action="" method= "POST" autocomplete="off">
+                <div class="inputs">
+                    <div class="inputRecibe">
+                        <label for="search">Buscar usuarios: </label><input type="text" placeholder="Datos del Usuario:" name="search" id="search">
+                    </div>
+                </div>
+            </form>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Paciente</th>
+                            <th>Cédula</th>
+                            <th>Edad</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Teléfono</th>
+                            <th>Correo Electrónico</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="content">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <?php
         include '../client/connection.php'; //Conexión con base de datos
-
-        $consulta = "SELECT * FROM datos_personales";
-        $query = mysqli_query($conexion, $consulta);
         ?>
 
-        <div class="table slice"> <!--slice-->
+        <!-- <div class="table slice">
             <div class="thead__table">
                 <div class="thead">Paciente</div>
                 <div class="thead cedula">Cédula</div>
@@ -79,7 +105,7 @@ include '../client/orderDate.php';
             <?php
             }
             ?>
-        </div>
+        </div> -->
         
         <?php
         mysqli_close($conexion);
@@ -93,5 +119,6 @@ include '../client/orderDate.php';
 
         <script src="js/confirm.js"></script>
         <script src="js/modal.js"></script>
+        <script src="js/searchTable.js"></script>
     </body>
 </html>

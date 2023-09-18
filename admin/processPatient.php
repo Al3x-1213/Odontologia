@@ -15,6 +15,7 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/tables.css">
         <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/modal.css">
         <link rel="stylesheet" href="../Iconos/style.css">
@@ -43,7 +44,9 @@ include '../client/orderDate.php';
       
         // OBTENER LA INFORMACIÓN DE LA CITA QUE SERÁ CONFIRMADA
         include '../client/connection.php'; //Conexión con base de datos
+        ?>
 
+        <?php
         $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
         ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
         AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
@@ -53,91 +56,100 @@ include '../client/orderDate.php';
         $resultado = mysqli_fetch_array($query);
         ?>
 
+        <!-- ASIGNAR HORARIO Y CONFIRMAR CITA -->
         <h2 class="dia"><?php echo "Confirmar Cita de <span class=nombre_paciente>".$resultado['nombre']." ".$resultado["apellido"]."</span>"; ?></h2>
 
         <form method="POST" action="../client/botones/confirmar.php">
             <div class="table">
-                <div class="thead__table">
-                    <div class="thead">Cédula</div>
-                    <div class="thead edad">Edad</div>
-                    <div class="thead causa">Causa de la Consulta</div>
-                    <div class="thead">Teléfono</div>
-                    <div class="thead">Turno</div>
-                    <div class="thead">Hora de Inicio</div>
-                    <div class="thead">Hora de Culminación</div>
-                </div>
-
-                <div class="tbody__table">
-                    <input type="hidden" name="id_consulta" value="<?php echo $resultado['id_consulta'] ?>">
-
-                    <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-                    <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
-                    <div class="tbody"><?php echo $resultado['turno_consulta']; ?></div>
-                    <?php
-                    if ($resultado['id_turno_consulta'] == 1){
-                    ?>
-                        <div class="tbody"><input type="time" required min="08:00" max="12:00" name="hora_inicio"></div>
-                        <div class="tbody"><input type="time" required min="08:00" max="12:00" name="hora_fin"></div>
-                    <?php
-                    }
-                    elseif ($resultado['id_turno_consulta'] == 2){
-                    ?>
-                        <div class="tbody"><input type="time" required min="13:00" max="16:00" name="hora_inicio"></div>
-                        <div class="tbody"><input type="time" required min="13:00" max="16:00" name="hora_fin"></div>
-                    <?php
-                    }
-                    ?>
-                    <input type="hidden" value="<?php echo $resultado['fecha_atencion']; ?>" name="fechaAtencion">
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cédula</th>
+                            <th>Edad</th>
+                            <th>Motivo de la Consulta</th>
+                            <th>Teléfono</th>
+                            <th>Turno</th>
+                            <th>Hora de Inicio</th>
+                            <th>Hora de Culminación</th>
+                        </tr>
+                    </thead>
+                    <tbody>                        
+                        <tr>
+                            <td><?php echo $resultado['cedula']; ?></td>
+                            <td><?php echo $resultado['edad']; ?></td>
+                            <td><?php echo $resultado['causa_consulta']; ?></td>
+                            <td><?php echo $resultado['telefono_1']. "<br>". $resultado['telefono_2']; ?></td>
+                            <td><?php echo $resultado['turno_consulta']; ?></td>
+                            <?php
+                            if ($resultado['id_turno_consulta'] == 1){
+                            ?>
+                                <td><input type="time" required min="08:00" max="12:00" name="hora_inicio"></td>
+                                <td><input type="time" required min="08:00" max="12:00" name="hora_fin"></td>
+                            <?php
+                            }
+                            elseif ($resultado['id_turno_consulta'] == 2){
+                            ?>
+                                <td><input type="time" required min="13:00" max="16:00" name="hora_inicio"></td>
+                                <td><input type="time" required min="13:00" max="16:00" name="hora_fin"></td>
+                            <?php
+                            }
+                            ?>
+                            <input type="hidden" value="<?php echo $resultado['fecha_atencion']; ?>" name="fechaAtencion">
+                        </tr>   
+                    </tbody>
+                </table>
             </div>
-
             <input type="submit" class="confirmar" value="Confirmar Cita">
         </form>
+
+        <!-- CITAS PARA EL DÍA DE ATENCIÓN -->
 
         <?php
         $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
         ?>
 
-        <h2 class="dia"><?php echo "Citas del ".$fechaAtencion; ?></h2>
+        <h2 class="dia"><?php echo "Citas del ". $fechaAtencion; ?></h2>
 
         <div class="table">
-            <div class="thead__table">
-                <div class="thead">Paciente</div>
-                <div class="thead">Cédula</div>
-                <div class="thead edad">Edad</div>
-                <div class="thead">Causa de la Consulta</div>
-                <div class="thead"> Telefono </div>
-                <div class="thead">Hora de Inicio</div>
-                <div class="thead"> Hora de Culminación </div>
-            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Paciente</th>
+                        <th>Cédula</th>
+                        <th>Edad</th>
+                        <th>Motivo de la Consulta</th>
+                        <th>Teléfono</th>
+                        <th>Hora de Atención</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $fechaAtencion = $resultado['fecha_atencion'];
 
-            <?php
-            $fechaAtencion = $resultado['fecha_atencion'];
+                    $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
+                    ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
+                    AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
+                    WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaAtencion'
+                    ORDER BY hora_inicio ASC";
+                    $query = mysqli_query($conexion, $consulta);
 
-            $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
-            ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
-            AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-            WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaAtencion'
-            ORDER BY hora_inicio ASC";
-
-            $query = mysqli_query($conexion, $consulta);
-            
-            while ($resultado = mysqli_fetch_array($query)){
-            ?>
-                <div class="tbody__table">
-                    <div class="tbody"><?php echo $resultado['nombre'] . " ". $resultado['apellido']; ?></div>
-                    <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-                    <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
-                    <div class="tbody"><?php echo $resultado['hora_inicio']; ?></div>       
-                    <div class="tbody"><?php echo $resultado['hora_fin']; ?></div>      
-                </div>
-            <?php
-            }
-            ?>
+                    while ($resultado = mysqli_fetch_array($query)){
+                        $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+                        $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
+                    ?>
+                        <tr>
+                            <td><?php echo $resultado['nombre']. " ". $resultado['apellido']; ?></td>
+                            <td><?php echo $resultado['cedula']; ?></td>
+                            <td><?php echo $resultado['edad']; ?></td>
+                            <td><?php echo $resultado['causa_consulta']; ?></td>
+                            <td><?php echo $resultado['telefono_1']. "<br>". $resultado['telefono_2']; ?></td>
+                            <td><?php echo $horaInicio. " - ". $horaFin; ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
         
         <div class="space"></div>
