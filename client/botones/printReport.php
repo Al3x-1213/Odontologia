@@ -37,20 +37,27 @@ $html = '
         <link rel="stylesheet" href="../../admin/styles/report.css">
     </head>
     <body>
+        <header>
+            <p class="linea1">Dra. Marisol Díaz Aira</p>
+            <p class="linea2">Odontólogo / Estética - Protesis</p>
+        </header>
+
+        <p class="franja">____________________________________________________________________________________________________</p>
+        
+        <h2 class="title">REPORTE DE CONSULTAS</h2>
         <h2>'. $fechaActual. '</h2>
 
-        <div class="table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Paciente</th>
-                        <th>Cédula</th>
-                        <th>Motivo de la Consulta</th>
-                        <th>Hora de Atención</th>
-                        <th>Teléfono</th>
-                    </tr>
-                </thead>
-                <tbody>
+        <table>
+            <thead>
+                <tr>
+                    <th>Paciente</th>
+                    <th>Cédula</th>
+                    <th>Motivo de la Consulta</th>
+                    <th>Hora de Atención</th>
+                    <th>Teléfono</th>
+                </tr>
+            </thead>
+            <tbody>
 ';
 
 while ($resultado = mysqli_fetch_array($query)){
@@ -61,53 +68,21 @@ while ($resultado = mysqli_fetch_array($query)){
     $html .= '<td>'. $resultado['cedula']. '</td>';
     $html .= '<td>'. $resultado['causa_consulta']. '</td>';
     $html .= '<td>'. $horaInicio. ' - '. $horaFin. '</td>';
-    $html .= '<td>'. $resultado['telefono_1']. ' '. $resultado['telefono_2']. '</td></tr>';
+    $html .= '<td>'. $resultado['telefono_1']. '<br>'. $resultado['telefono_2']. '</td></tr>';
 }
 
 $html .= '
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </body>
 </html>
 ';
 
+$nombre = "Reporte ". $fechaActual. ".pdf";
+
 $domPdf->set_paper ('a4','landscape');
 $domPdf->load_html($html);
 $domPdf->render();
-$domPdf->stream("documento.pdf", array('Attachment' => '0'));
-// $domPdf->stream('documento.pdf');
+$domPdf->stream($nombre, array('Attachment' => '0'));
 
 ?>
-
-<!-- <table>
-    <thead>
-        <tr>
-        <th>Paciente</th>
-        <th>Cédula</th>
-        <th>Motivo de la Consulta</th>
-        <th>Hora de Atención</th>
-        <th>Teléfono</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        while($resultado = mysqli_fetch_array($query)){
-            $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
-            $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
-        ?>
-            <tr>
-                <td><?php echo $resultado['nombre']. " ". $resultado['apellido']; ?></td>
-                <td><?php echo $resultado['cedula']; ?></td>
-                <td><?php echo $resultado['causa_consulta']; ?></td>
-                <td><?php echo $horaInicio. " - ". $horaFin; ?></td>
-                <td><?php echo $resultado['telefono_1']. " " .$resultado['telefono_2']; ?></td>
-            </tr>
-        <?php
-        }
-        ?>
-    </tbody>
-</table> -->
-
-
-
