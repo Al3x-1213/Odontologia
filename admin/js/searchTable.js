@@ -1,23 +1,21 @@
+filtrarInformacion()
+
+document.getElementById("searchUser").addEventListener("keyup", filtrarInformacion);
+
 function filtrarInformacion(){
-    let inputBuscar = document.getElementById("search").value;
+    let inputBuscar = document.getElementById("searchUser").value;
     let tabla = document.getElementById("content");
 
-    if (inputBuscar.length > 0) {
-        let contenido = new FormData()
-        contenido.append("search", inputBuscar)
+    let contenido = new FormData()
+    contenido.append("searchUser", inputBuscar)
 
-        fetch("registeredUserSearch.php", {
-            method: "POST",
-            body: contenido,
-            mode: "cors"
-        }).then(response => response.json())
-            .then(data => {
-                filtro.style.display = 'block'
-                filtro.innerHTML = data
-            })
-            .catch(error => console.log(error))
-    }
-    else {
-        filtro.style.display = 'none'
-    }
+    fetch("registeredUserSearch.php", {
+        method: "POST",
+        body: contenido,
+        mode: "cors"
+    }).then(response => response.json())
+    .then(data => {
+        tabla.innerHTML = data
+    })
+    .catch(error => console.log(error))
 }
