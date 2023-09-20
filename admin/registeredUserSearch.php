@@ -36,7 +36,7 @@ if ($resultado > 0){
         $contenido .= '<td>'. $respuesta['cedula']. '</td>';
         $contenido .= '<td>'. $respuesta['edad']. '</td>';
         $contenido .= '<td>'. $fechaNacimiento. '</td>';
-        $contenido .= '<td>'. $respuesta['telefono_1']. ' '. $respuesta['telefono_2']. '</td>';
+        $contenido .= '<td>'. $respuesta['telefono_1']. '<br>'. $respuesta['telefono_2']. '</td>';
         $contenido .= '<td>'. $respuesta['correo']. '</td>';        
         $contenido .= '<td><a href="../client/botones/update.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
         <a href="../client/eliminar.php?id='. $respuesta['id_dato_personal']. '"><button title="Eliminar" class="delete"><i class="icon-bin icon"></i></button></a></td>';        
