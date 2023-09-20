@@ -1,5 +1,19 @@
 /* MODAL */
 
+.buttons__modal {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+.insertar {
+    background: linear-gradient(45deg, #EAEDF3, #33548A);
+    border-radius: 4%;
+    box-shadow: 0 0 5px .1px #777;
+    cursor: pointer;
+}
+
 .modal{
     position: fixed;
     z-index: 10;

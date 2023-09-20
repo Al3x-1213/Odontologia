@@ -1,10 +1,7 @@
-<div class="buttonsIndex">
-    <div class="divInsert">
-        <button class="insertar">Registrar una Cita</button>
-    </div>
-    <div class="divPrint">
-        <a href="../client/botones/printReport.php"><button title="Reporte" class="print printReport"><i class="icon-printer icon"></i></button></a>
-    </div>
+<div class="buttons__modal">
+    <button class="insertar">Registrar una Cita</button>
+    
+    <a href="../client/botones/printReport.php"><button title="Reporte" class="print printReport"><i class="icon-printer icon"></i></button></a>
 </div>
 
 <div class="modal display">
