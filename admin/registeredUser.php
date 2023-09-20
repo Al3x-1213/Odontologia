@@ -16,6 +16,8 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/search.css">
+        <link rel="stylesheet" href="styles/tables.css">
         <link rel="stylesheet" href="styles/iconsButtons.css">
         <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/usuarios.css">
@@ -40,72 +42,40 @@ include '../client/orderDate.php';
         include 'parts/modalUser.php';
         ?>
 
-        <h2 class="dia">Usuarios</h2>
+        <h2 class="dia">Usuarios Registrados</h2>
 
-        <div class="searchPatients">
+        <div class="searchUsers">
             <form action="" method= "POST" autocomplete="off">
                 <div class="inputs">
                     <div class="inputRecibe">
-                        <label for="search">Buscar usuarios: </label><input type="text" placeholder="Datos del Usuario:" name="search" id="search">
+                        <label for="searchUser">Buscar usuarios: </label><input type="text" placeholder="Datos del Usuario:" name="searchUser" id="searchUser">
                     </div>
                 </div>
             </form>
-            <div class="table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Paciente</th>
-                            <th>Cédula</th>
-                            <th>Edad</th>
-                            <th>Fecha de Nacimiento</th>
-                            <th>Teléfono</th>
-                            <th>Correo Electrónico</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="content">
+        </div>
+
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Paciente</th>
+                        <th>Cédula</th>
+                        <th>Edad</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Teléfono</th>
+                        <th>Correo Electrónico</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="content">
                         
-                    </tbody>
-                </table>
-            </div>
+                 </tbody>
+            </table>
         </div>
 
         <?php
         include '../client/connection.php'; //Conexión con base de datos
         ?>
-
-        <!-- <div class="table slice">
-            <div class="thead__table">
-                <div class="thead">Paciente</div>
-                <div class="thead cedula">Cédula</div>
-                <div class="thead edad">Edad</div>
-                <div class="thead">Fecha de Nacimiento</div>
-                <div class="thead">Télefono</div>
-                <div class="thead correo">Correo Electrónico</div>
-                <div class="thead">Acciones</div>
-            </div>
-
-            <?php
-            while ($resultado = mysqli_fetch_array($query)) {
-                $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento']);
-            ?>
-                <div class="tbody__table">
-                    <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-                    <div class="tbody cedula"><?php echo $resultado['cedula']; ?></div>
-                    <div class="tbody edad"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody"><?php echo $fechaNacimiento; ?></div>
-                    <div class="tbody contacto"><?php echo $resultado['telefono_1']." ". $resultado['telefono_2']; ?></div>
-                    <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
-
-                    <div class="tbody">
-                        <a href="../client/botones/update.php?id=<?php echo $resultado['id_dato_personal']?>"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_dato_personal']?>"><button title="Eliminar" class="delete"><i class="icon-bin icon"></i></button></a>
-                    </div>                
-                </div>
-            <?php
-            }
-            ?>
-        </div> -->
         
         <?php
         mysqli_close($conexion);
