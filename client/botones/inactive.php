@@ -1,23 +1,15 @@
 <?php
 
-session_start();
-ob_start();
-$sesion = $_SESSION['sesion'];
-
-// POR CORREGIR
-
-include 'connection.php';
-
-/* datos del formulario de registro */
+include '../connection.php';
 
 $id = $_GET['id'];
 
-$peticion = "UPDATE SET id_status_usuario = 2 FROM cuentas WHERE id_datos_personales = '$id'";
-$eliminar = ($conexion->query($peticion));
+$consulta = "UPDATE SET id_status_usuario = 2 FROM cuentas WHERE id_datos_personales = '$id'";
+$query = ($conexion->query($consulta));
 
-if($eliminar == 1){
+if($query){
     mysqli_close($conexion);
-    header("location:../admin/registeredUser.php");
+    header("location:../../admin/registeredUser.php");
 }
 
 ?>
