@@ -13,69 +13,15 @@ body {
   font-size: 34px;
 }
 
-/* .table {
+table {
   width: 95%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 3% auto 2%;
+  margin: 3% auto 7%;
   font-size: 16px;
   border: none;
   box-shadow: 0 0 10px 1px #333;
-  margin-bottom: 5%;
 }
 
-.thead, .tbody {
-  padding: 8px;
-  border: 1px solid #789dc9;
-  width: 15%;
-  min-width: 12%;
-  height: 40px;
-  max-height: 50px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.thead {
-  color: aliceblue;
-  background: #3e3d3d;
-  height: 50px;
-  max-height: 50px;
-}
-
-.tbody__table, .thead__table {
-  display: flex;
-  width: 100%;
-}
-
-.causa {
-  width: 26% !important;
-}
-
-.contacto {
-  display: flex;
-  text-align: center;
-  line-height: 20px;
-
-}
-
-.correo {
-  width: 26%;
-  overflow-x: hidden;
-}
-
-.edad {
-  min-width: 4%;
-  width: 4%;
-}
-
-.cedula {
-  min-width: 5%;
-} */
-
-.buttonsIndex{
+/*.buttonsIndex{
   display: flex;
   margin-top: 1%;
 }
@@ -95,15 +41,14 @@ body {
   width: 180px;
   margin: 1% 2% 1% 2%;
   padding: 5px 10px;
-  /* background: linear-gradient(70deg, #789dc9, #EAEDF3); */
+  background: linear-gradient(70deg, #789dc9, #EAEDF3); 
   background-color: #EAEDF3;
   border: solid #789DC9 2px;
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
-
-  /* border: solid blue 1px; */
-}
+  border: solid blue 1px; 
+}*/
 
 .confirmar {
   position: relative;

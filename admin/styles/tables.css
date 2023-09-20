@@ -1,12 +1,6 @@
-.table{
-    width: 95%;
-    margin: 0 auto;
-    box-shadow: 0 0 10px 1px #333;
-}
-
 table{
     margin-top: 40px;
-    width: 100%;
+    width: 95%;
     border-collapse: collapse;
     text-align: center;
 }
@@ -22,4 +16,4 @@ thead{
     height: 50px;
     max-height: 50px;
     color: aliceblue;
-}
+} 

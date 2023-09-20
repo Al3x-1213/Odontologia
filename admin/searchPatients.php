@@ -18,7 +18,7 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="styles/iconsButtons.css">
         <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/modal.css">
-        <link rel="stylesheet" href="styles/tabla.css">
+        <link rel="stylesheet" href="styles/tables.css">
         <link rel="stylesheet" href="../Iconos/style.css">
 
         <!-- LETRAS UTILIZADAS -->
@@ -52,49 +52,48 @@ include '../client/orderDate.php';
     
         <h2 class="dia">Pacientes</h2>
 
-        <div class="table">
-            <div class="thead__table">
-                <div class="thead">Paciente</div>
-                <div class="thead">Cédula</div>
-                <div class="thead">Edad</div>
-                <div class="thead">Fecha de Nacimiento</div>
-                <div class="thead contacto">Télefono</div>
-                <div class="thead correo">Correo Electrónico</div>
-                <div class="thead">Acciones</div>
-            </div>
-
-            <?php
-            while ($resultado = mysqli_fetch_array($query)) {
-                $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento']);
-            ?>
-                <div class="tbody__table">
-                    <div class="tbody nom"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></div>
-                    <div class="tbody"><?php echo $resultado['cedula']; ?></div>
-                    <div class="tbody"><?php echo $resultado['edad']; ?></div>
-                    <div class="tbody"><?php echo $fechaNacimiento; ?></div>
-                    <div class="tbody"><?php echo $resultado['telefono_1']. " ". $resultado['telefono_2']; ?></div>
-                    <div class="tbody correo"><?php echo $resultado['correo']; ?></div>
-                    <div class="tbody">
-                        <a href="../client/botones/printConstancy.php?id=<?php echo $resultado['id_dato_personal']?>"><button title="Constancia" class="print"><i class="icon-printer icon"></i></button></a>
-                        <a href="editar.php?id=<?php echo $resultado['id_datos_personal']?>"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
-                        <a href="../client/eliminar.php?id=<?php echo $resultado['id_dato_personal']?>"><button title="Eliminar" class="delete"><i class="icon-bin icon"></i></button></a>
-                    </div>
-                </div>
-            <?php
-            }
-            ?>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Paciente</th>
+                    <th>Cédula</th>
+                    <th>Edad</th>
+                    <th>Teléfono</th>
+                    <th>Correo Electrónico</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                while ($resultado = mysqli_fetch_array($query)) {
+                ?>
+                    <tr>
+                        <td><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></td>
+                        <td><?php echo $resultado['cedula']; ?></td>
+                        <td><?php echo $resultado['edad']; ?></td>
+                        <td><?php echo $resultado['telefono_1'] . "<br>" . $resultado['telefono_2']; ?></td>
+                        <td><?php echo $resultado['correo']; ?></td>
+                        <td><a href="edit.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-pencil icon"></i></button></a>
+                            <a href="../client/inactive.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Eliminar" class="cancel"><i class="icon-cross icon"></i></button></a>
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
 
         <h2 class="dia">Historial de consultas</h2>
 
-        <div class="table table2">
-            <div class="thead__table">
-                <div class="thead thead2">Causa de la Consulta</div>
-                <div class="thead thead2">Fecha de Atención</div>
-                <div class="thead thead2">Hora de Inicio</div>
-                <div class="thead thead2">Hora de Culminación</div>
-            </div>
-
+        <table>
+            <thead>
+                <tr>
+                    <th>Motivo de la Consulta</th>
+                    <th>Fecha de Atención</th>
+                    <th>Hora de Atención</th>
+                </tr>
+            </thead>
+            <tbody>
             <?php
             // HISTORIAL DE LAS CONSULTAS DEL PACIENTE
             $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
@@ -108,16 +107,16 @@ include '../client/orderDate.php';
                 $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
                 $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
             ?>
-                <div class="tbody__table">
-                    <div class="tbody tbody2"><?php echo $resultado['causa_consulta']; ?></div>
-                    <div class="tbody tbody2"><?php echo $fechaAtencion; ?></div>
-                    <div class="tbody tbody2"><?php echo $horaInicio; ?></div>
-                    <div class="tbody tbody2"><?php echo $horaFin; ?></div>
-                </div>
+                <tr class="tbody__table">
+                    <td><?php echo $resultado['causa_consulta']; ?></td>
+                    <td><?php echo $fechaAtencion; ?></td>
+                    <td><?php echo $horaInicio . " - " . $horaFin; ?></td>
+                </tr>
             <?php
             }
             ?>
-        </div>
+            </tbody>
+        </table>
 
         <?php
         mysqli_close($conexion);

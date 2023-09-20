@@ -12,7 +12,7 @@ include 'connection.php';
 
 $id = $_GET['id'];
 
-$peticion = "DELETE FROM usuarios WHERE id_usuario = '$id'";
+$peticion = "UPDATE SET id_status_usuario = 2 FROM cuentas WHERE id_datos_personales = '$id'";
 $eliminar = ($conexion->query($peticion));
 
 if($eliminar == 1){
