@@ -73,10 +73,6 @@ if ($resultado > 0){
                 <a href="../client/botones/active.php?id='. $respuesta['id_dato_personal']. '"><button title="Activar" class="active"><i class="icon-toggle-on icon"></i></button></a></td>';        
                 $contenido .= '</tr>';
             }
-
-
-
-
         }
     }
 }
