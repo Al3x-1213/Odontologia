@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?udc6ot');
-  src:  url('fonts/icomoon.eot?udc6ot#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?udc6ot') format('truetype'),
-    url('fonts/icomoon.woff?udc6ot') format('woff'),
-    url('fonts/icomoon.svg?udc6ot#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?cxelb5');
+  src:  url('fonts/icomoon.eot?cxelb5#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?cxelb5') format('truetype'),
+    url('fonts/icomoon.woff?cxelb5') format('woff'),
+    url('fonts/icomoon.svg?cxelb5#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-printer1:before {
+  content: "\e903";
+}
+.icon-user-times:before {
+  content: "\e907";
+}
+.icon-toggle-on:before {
+  content: "\e906";
+}
 .icon-x:before {
   content: "\e904";
 }
@@ -57,9 +66,6 @@
 }
 .icon-stopwatch:before {
   content: "\e952";
-}
-.icon-printer:before {
-  content: "\e954";
 }
 .icon-undo2:before {
   content: "\e967";

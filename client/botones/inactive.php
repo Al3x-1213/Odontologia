@@ -2,10 +2,16 @@
 
 include '../connection.php';
 
-$id = $_GET['id'];
+$idDatoPersonal = $_GET['id'];
 
-$consulta = "UPDATE SET id_status_usuario = 2 FROM cuentas WHERE id_datos_personales = '$id'";
-$query = ($conexion->query($consulta));
+$consulta = "SELECT id_cuenta FROM cuentas WHERE id_dato_personal = '$idDatoPersonal'";
+$query = mysqli_query($conexion, $consulta);
+
+$respuesta = mysqli_fetch_array($query);
+$idCuenta = $respuesta['id_cuenta'];
+
+$consulta = "UPDATE cuentas SET id_status_usuario = 2 WHERE id_cuenta = '$idCuenta'";
+$query = mysqli_query($conexion, $consulta);
 
 if($query){
     mysqli_close($conexion);

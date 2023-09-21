@@ -3,8 +3,12 @@
 a{
     text-decoration: none;
 }
+
+.active{
+    transform: scaleX(-1);
+}
   
-.attend, .cancel, .process, .update, .delete, .print{
+.attend, .cancel, .process, .update, .delete, .print, .inactive, .active, .noUser{
     background: transparent;
     cursor: pointer;
     cursor: hand;
@@ -12,7 +16,7 @@ a{
     border-radius: 2px;
 }
   
-.attend i, .cancel i, .process i, .update i, .delete i, .print i{
+.attend i, .cancel i, .process i, .update i, .delete i, .print i, .inactive i, .active i, .noUser i{
     padding: 2px;
     color: #333;
 }
@@ -21,7 +25,7 @@ a{
     font-size: 150%;
 }
   
-.cancel i, .update i, .delete i, .print i{
+.cancel i, .update i, .delete i, .print i, .inactive i, .active i, .noUser i{
     font-size: 130%;
 }
   
