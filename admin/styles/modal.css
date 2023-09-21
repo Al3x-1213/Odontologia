@@ -1,16 +1,21 @@
 /* MODAL */
 
 .buttons__modal {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 15px;
 }
 
 .insertar {
+    width: 12%;
+    height: 40px;
+    margin-left: 30px;
     background: linear-gradient(45deg, #EAEDF3, #33548A);
     border-radius: 4%;
     box-shadow: 0 0 5px .1px #777;
+    border: solid #333 1px;
     cursor: pointer;
 }
 

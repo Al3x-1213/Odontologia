@@ -1,4 +1,4 @@
-<div>
+<div class="buttons__modal">
     <button class="insertar">Registrar un Usuario</button>
 </div>
 

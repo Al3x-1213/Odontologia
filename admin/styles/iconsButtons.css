@@ -46,9 +46,12 @@ a{
 }
 
 .printReport{
-    margin-right: 35px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-right: 30px;
 }
 
 .printReport i{
-    font-size: 190%;
+    font-size: 180%;
 }
