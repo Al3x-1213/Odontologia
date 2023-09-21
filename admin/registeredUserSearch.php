@@ -50,7 +50,7 @@ if ($resultado > 0){
 
         if ($resultado2 == 0){
             $contenido .= '<td><a href="../client/botones/update.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
-            <a href="../client/botones/active.php?id='. $respuesta['id_dato_personal']. '"><button title="Sin cuenta" class="noUser"><i class="icon-user-times icon"></i></button></a></td>';        
+            <a><button title="Sin cuenta" class="noUser"><i class="icon-user-times icon"></i></button></a></td>';        
             $contenido .= '</tr>';
         }
         else{
