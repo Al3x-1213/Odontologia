@@ -48,7 +48,7 @@ include '../client/orderDate.php';
             <form action="" method= "POST" autocomplete="off">
                 <div class="inputs">
                     <div class="inputRecibe">
-                        <label for="searchUser">Buscar usuarios: </label><input type="text" placeholder="Datos del Usuario:" name="searchUser" id="searchUser">
+                        <label for="searchUser">Buscar usuarios: </label><input type="text" placeholder="Datos del Usuario" name="searchUser" id="searchUser">
                     </div>
                 </div>
             </form>

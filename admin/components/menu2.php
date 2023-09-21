@@ -54,7 +54,7 @@
 	                    <div class="inputs__menu2">
                             <label for="search"> Buscar Pacientes: </label>
 	                        <div class="input__data">
-	                            <input type="text" placeholder="Datos del Paciente:" name="search" id="search">
+	                            <input type="text" placeholder="Datos del Paciente" name="search" id="search">
 	                        </div>
 	                    </div>
 	                    <div class="filter">
