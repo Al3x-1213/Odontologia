@@ -64,6 +64,8 @@ include '../client/orderDate.php';
                         <th>Fecha de Nacimiento</th>
                         <th>Teléfono</th>
                         <th>Correo Electrónico</th>
+                        <th>Alergia</th>
+                        <th>Discapacidad</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>

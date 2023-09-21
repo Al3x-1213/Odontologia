@@ -20,7 +20,9 @@ if ($buscar != null){
     $busqueda .= ")";
 }
 
-$consulta = "SELECT * FROM datos_personales $busqueda ";
+$consulta = "SELECT * FROM datos_personales INNER JOIN alergias INNER JOIN discapacidades
+ON datos_personales.id_alergia = alergias.id_alergia AND datos_personales.id_discapacidad = discapacidades.id_discapacidad
+$busqueda ";
 $query = mysqli_query($conexion, $consulta);
 
 $resultado = mysqli_num_rows($query);
@@ -38,6 +40,8 @@ if ($resultado > 0){
         $contenido .= '<td>'. $fechaNacimiento. '</td>';
         $contenido .= '<td>'. $respuesta['telefono_1']. '<br>'. $respuesta['telefono_2']. '</td>';
         $contenido .= '<td>'. $respuesta['correo']. '</td>';
+        $contenido .= '<td>'. $respuesta['alergia']. '</td>';
+        $contenido .= '<td>'. $respuesta['discapacidad']. '</td>';
         
         $idDatoPersonal = $respuesta['id_dato_personal'];
 
