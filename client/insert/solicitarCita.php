@@ -29,7 +29,6 @@ if (!empty($_POST['boton_c'])){
 
         // COMPROBAR QUE EL PACIENTE NO TENGA UNA CITA POR ATENDER
         $consulta = "SELECT id_consulta FROM consultas WHERE id_paciente = '$idPaciente' AND (id_status_consulta = 3 OR id_status_consulta = 2)";
-        // echo $consulta;
         $query = mysqli_query($conexion, $consulta);
 
         $resultado= mysqli_num_rows($query);
