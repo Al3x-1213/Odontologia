@@ -22,12 +22,12 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="../Iconos/style.css">
 
         <!-- LETRAS UTILIZADAS -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet"> -->
 
         <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
@@ -73,8 +73,8 @@ include '../client/orderDate.php';
                         <td><?php echo $resultado['edad']; ?></td>
                         <td><?php echo $resultado['telefono_1'] . "<br>" . $resultado['telefono_2']; ?></td>
                         <td><?php echo $resultado['correo']; ?></td>
-                        <td><a href="edit.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-pencil icon"></i></button></a>
-                            <a href="../client/inactive.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Eliminar" class="cancel"><i class="icon-cross icon"></i></button></a>
+                        <td><a href="edit.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Editar" class="attend"><i class="icon-pencil icon"></i></button></a>
+                            <a href="../client/inactive.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Desactivar Cuenta" class="cancel"><i class="icon-cross icon"></i></button></a>
                         </td>
                     </tr>
                 <?php

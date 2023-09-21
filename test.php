@@ -9,16 +9,24 @@
     <title>Marisol Díaz - ADMINISTRADOR</title>
 </head>
 
-</html>
-<form method="post">
-    <label> Paciente: </label>
-    <input type="text" name="paciente">
+<!-- <body>
+    <form method="post" action="client/blockCitation.php">
 
-    <input type="submit" value="enviar">
-</form>
+        <label> Fecha: </label>
+        <input type="date" name="fecha">
+
+        <label> Turno:</label>
+        <input type="radio" value="1" name="turno"> Mañana
+        <input type="radio" value="2" name="turno"> Tarde
+
+        <input type="submit" value="enviar">
+    </form>
+</body> -->
 
 <?php
 
-echo phpversion();
+include 'client/clear.php';
 
 ?>
+
+</html>

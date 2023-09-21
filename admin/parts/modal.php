@@ -15,8 +15,7 @@
             include '../client/connection.php'; //Conexión con base de datos
             include '../client/insert/registerCita.php';
             ?>
-
-            <label>Cédula: </label>
+            
             <div class="searchPatients">
                 <div class="inputs">
                     <div class="inputRecibe">

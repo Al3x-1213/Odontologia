@@ -19,9 +19,9 @@ session_destroy();
         <link rel="stylesheet" href="../Iconos/style.css">
 
         <!-- LETRAS UTILIZADAS -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> -->
 
         <title>Marisol Díaz - INICIAR SESIÓN</title>
     </head>

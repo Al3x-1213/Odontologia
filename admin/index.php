@@ -1,11 +1,10 @@
 <?php
 include '../client/verificationSessionAdmin.php';
-
 include '../client/orderDate.php';
-?>
-<?php
+
 date_default_timezone_set('America/Caracas');
 $fechaActual = date("Y-m-d");
+
 ?>
 
 <!DOCTYPE html>
@@ -29,21 +28,27 @@ $fechaActual = date("Y-m-d");
     <link rel="stylesheet" href="../Iconos/style.css">
 
     <!-- LETRAS UTILIZADAS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet"> -->
 
     <title>Marisol Díaz - ADMINISTRADOR</title>
 </head>
 
 <body>
     <?php
+    // MENUS DE LOS INDEX
     include 'components/menu.html';
     include 'components/menu2.php';
+
+    //RESPONSIVE TABLE
     include 'responsive/header.php';
+
+    //MARCAR COMO ATENIDAS LAS CONSULTAS QUE LA DOCTORA OLVIDÓ
+    include '../client/clear.php';
 
     include 'parts/modal.php';
     ?>
