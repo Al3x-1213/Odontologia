@@ -26,6 +26,11 @@ session_destroy();
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> -->
 
     <title>Marisol Díaz - REGISTRARSE</title>
+    <style>
+        .filter{
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,9 +48,9 @@ session_destroy();
             <div id="grupo_usuario" class="grupo">
                 <label>Usuario:</label>
                 <div class="input-icon">
-                    <input type="text" id="search" maxlength="30"  name="usuario" class="input__form base" autocomplete="off">
-                    <div class="filter display">
-                        <p class="paragraf__error">Nombre de usuario Registrado <i class="icon-warning"></i></p>
+                    <input type="text" maxlength="30" name="usuario" class="input__form base" id="usuario" autocomplete="off">
+                    <div class="filterUsuario">
+                        
                     </div>
                     <i class="icon-warning display"></i>
                     <i class="icon-checkmark1 display"></i>
@@ -106,7 +111,13 @@ session_destroy();
 
             <div id="grupo_cedula" class="grupo">
                 <label>Cédula:</label>
-                <div class="input-icon"><input type="number" maxlength="8"  name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="input-icon"><input type="number" maxlength="8" name="cedula" class="input__form base" id="cedula" autocomplete="off">
+                <div class="filterCedula">
+                        
+                </div>
+                <i class="icon-warning display"></i>
+                <i class="icon-checkmark1 display"></i>
+            </div>
                 <div class="paragraf__error1 display">
                     <p>El campo no debe estar vacío<br>Debe tener entre 7 a 8 caracteres</p>
                 </div>
@@ -186,6 +197,6 @@ session_destroy();
     </div>
 </body>
 
-<!-- <script src="../js/searchFilter.js"></script> -->
+<script src="../js/searchFilter.js"></script>
 <script src="../js/validacionRegistrarse.js"></script>
 </html>
