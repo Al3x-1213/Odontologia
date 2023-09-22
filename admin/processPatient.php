@@ -31,6 +31,22 @@ include '../client/orderDate.php';
         <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
     <body>
+        <style>
+        .enlaces{
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+        }
+
+        .enlace{
+            width: 14%;
+            text-align:center;
+            margin: 2px 16px 15px 16px;
+            box-shadow: 1px 1px 2px 0.5px rgb(148, 147, 147);
+            border: solid white 1px;
+        }
+        </style>
         <?php
         include 'components/menu.html';
         include 'components/menu2.php';
@@ -112,6 +128,47 @@ include '../client/orderDate.php';
 
         <div class="table">
             <table>
+                <?php
+                $fechaAtencion = $resultado['fecha_atencion'];
+                $turnoConsulta = $resultado['id_turno_consulta'];
+
+                $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
+                ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
+                AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
+                WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = 2 AND 
+                consultas.fecha_atencion = '$fechaAtencion' AND consultas.id_turno_consulta = '$turnoConsulta'
+                ORDER BY hora_inicio ASC";
+                $query = mysqli_query($conexion, $consulta);
+                $query2 = mysqli_query($conexion, $consulta);
+                ?>
+                
+                <thead>
+                    <?php
+                    while ($resultado = mysqli_fetch_array($query)){
+                        $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+                        $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
+                    ?>
+                        <th class="tamaño"><?php echo $horaInicio. " - ". $horaFin; ?></th>
+                    <?php
+                    }
+                    ?>
+                </thead>
+                <tbody>
+                    <?php
+                    while ($resultado2 = mysqli_fetch_array($query2)){
+                        $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+                        $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
+                    ?>
+                        <td class="tamaño"><?php echo $resultado2['nombre']. " ". $resultado2['apellido']. "<br>". $resultado2['causa_consulta']. "<br>"; ?></td>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- <div class="table">
+            <table>
                 <thead>
                     <tr>
                         <th>Paciente</th>
@@ -123,19 +180,19 @@ include '../client/orderDate.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    $fechaAtencion = $resultado['fecha_atencion'];
+                <?php
+                    // $fechaAtencion = $resultado['fecha_atencion'];
 
-                    $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
-                    ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
-                    AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-                    WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaAtencion'
-                    ORDER BY hora_inicio ASC";
-                    $query = mysqli_query($conexion, $consulta);
+                    // $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
+                    // ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
+                    // AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
+                    // WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaAtencion'
+                    // ORDER BY hora_inicio ASC";
+                    // $query = mysqli_query($conexion, $consulta);
 
-                    while ($resultado = mysqli_fetch_array($query)){
-                        $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
-                        $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
+                    // while ($resultado = mysqli_fetch_array($query)){
+                    //     $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+                    //     $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
                     ?>
                         <tr>
                             <td><?php echo $resultado['nombre']. " ". $resultado['apellido']; ?></td>
@@ -146,11 +203,11 @@ include '../client/orderDate.php';
                             <td><?php echo $horaInicio. " - ". $horaFin; ?></td>
                         </tr>
                     <?php
-                    }
+                    // }
                     ?>
                 </tbody>
             </table>
-        </div>
+        </div> -->
         
         <div class="space"></div>
 
@@ -166,3 +223,6 @@ include '../client/orderDate.php';
         <script src="js/modal.js"></script>
     </body>
 </html>
+
+<!-- <td><?php echo $resultado['nombre']. " ". $resultado['apellido']; ?></td> -->
+<!-- . "<br>". $resultado['causa_consulta']. "<br>". $horaInicio. " - ". $horaFin -->
