@@ -35,9 +35,9 @@ include '../client/orderDate.php';
         <?php
         include 'components/menu.html';
         include 'components/menu2.php';
-        ?>
 
-        <?php
+        include '../client/clearStatus3.php';
+
         // OBTENER EL ID_DOCTOR SEGÚN EL ID_USUARIO
         include '../client/obtenerId.php';
       

@@ -62,15 +62,11 @@ if (!empty($_POST['boton_reg'])){
                 $query = mysqli_query($conexion, $consulta);
 
                 if($query){
-                    // header ("location: ../../parts/login.php");
-                    ?>
-                    <div class= "mensaje"><a href= "login.php">Usuario regitrado correctamente</a></div> 
-                    <?php
+                    $_SESSION['mensaje'] = 1;
+                    header ("location: login.php");
                 }else{
-                    // header ("location: ../../parts/register.php");
-                    ?>
-                    <div class= "alerta">No se pudo realizar el registro</div> 
-                    <?php
+                    $_SESSION['mensaje'] = 2;
+                    header ("location: login.php");
                 }
             }
             else{
@@ -83,9 +79,3 @@ if (!empty($_POST['boton_reg'])){
 }
 
 ?>
-
-<!-- <body>
-
-<div class= "mensaje"><a href= "../../parts/login.php">Usuario regitrado correctamente</a></div>
-
-</body> -->

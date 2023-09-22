@@ -1,8 +1,11 @@
 <?php
 session_start();
 ob_start();
+$mensaje = $_SESSION['mensaje'];
 session_destroy();
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -27,6 +30,17 @@ session_destroy();
     </head>
 
     <body>
+        <?php 
+            if($mensaje == 1){ 
+                ?>
+                <div class="messagge messagge__success"> Usuario Registrado Exitosamente <i class="icon-cross messagge__icon"></i> </div>
+                <?php
+            }else if($mensaje == 2){
+                ?>
+                <div class="messagge messagge__error"> Error al registrar usuario <i class="icon-cross messagge__icon"></i> </div>
+                <?php
+            }
+        ?>
         <div class="flex__container flex__container-alternative">
             <form class="form form-alternative" method="POST">
                 <!-- CODIGO DE ICONO -->
@@ -58,4 +72,6 @@ session_destroy();
             </form>
         </div>
     </body>
+
+    <script src="../js/messagge.js"></script>
 </html>

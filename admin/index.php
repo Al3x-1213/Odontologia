@@ -18,7 +18,6 @@ $fechaActual = date("Y-m-d");
     <!-- ESTILOS CSS -->
     <link rel="stylesheet" href="../styles/normalize.css">
     <link rel="stylesheet" href="styles/menu.css">
-    <!-- <link rel="stylesheet" href="styles/buscador.css"> -->
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/tables.css">
     <link rel="stylesheet" href="../styles/mensajes.css">
@@ -48,8 +47,9 @@ $fechaActual = date("Y-m-d");
     include 'responsive/header.php';
 
     //MARCAR COMO ATENIDAS LAS CONSULTAS QUE LA DOCTORA OLVIDÓ
-    include '../client/clear.php';
+    include '../client/clearStatus2.php';
 
+    //MODAL PARA ELIMINAR PACIENTES
     include 'parts/modal.php';
     ?>
 
