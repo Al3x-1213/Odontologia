@@ -29,3 +29,34 @@
   background-color: #999;
   cursor: not-allowed;
 }
+
+.messagge {
+  box-sizing: border-box;
+  position: relative;
+  top: 30px;
+  margin: 0 auto;
+  width: 30%;
+  padding: 20px 20px 20px 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2%;
+}
+
+.messagge__success {
+  border: 1px solid #0d750d;
+  background: #96fc96be;
+  color: #0d750d;
+  font-weight: bold;
+}
+
+.messagge__error {
+  border: 1px solid #aa0000;
+  background: #da4c4cd2;
+  color: #aa0000;
+  font-weight: bold;
+}
+
+.messagge__icon {
+  cursor: pointer;
+}
