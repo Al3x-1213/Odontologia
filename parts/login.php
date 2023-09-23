@@ -73,5 +73,5 @@ session_destroy();
         </div>
     </body>
 
-    <script src="../js/messagge.js"></script>
+    <!-- <script src="../js/messagge.js"></script> -->
 </html>
