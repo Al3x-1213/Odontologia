@@ -24,24 +24,16 @@
                 <select id="filter2" name="id_paciente" class="display input__form"></select>
             </div>
 
-            <?php
-            // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
-
-            $consulta = "SELECT * FROM causa_consulta";
-            $query = mysqli_query($conexion, $consulta)
-            ?>
-            <label>Motivo: </label>
-            <select name="causa">
+            <label>Tipo de Paciente: </label>
+            <select name="tipoPaciente" id="tipoPaciente">
                 <option value="0"></option>
-                <?php
-                $i = 0;
-                while ($resultado = mysqli_fetch_array($query)) {
-                    $i = $i + 1;
-                ?>
-                    <option value="<?php echo $i; ?>"><?php echo $resultado['causa_consulta']; ?></option>
-                <?php
-                }
-                ?>
+                <option value="1">Asegurado</option>
+                <option value="2">Particular</option>
+            </select>
+
+            <label>Motivo de la Consulta: </label>
+            <select name="causa" id="causa">
+                    
             </select>
 
             <?php
@@ -74,3 +66,4 @@
     </div>
 </div>
 <script src="js/searchConsulta.js"></script>
+<script src="js/searchReason.js"></script>
