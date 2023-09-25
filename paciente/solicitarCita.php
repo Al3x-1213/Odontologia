@@ -68,7 +68,10 @@ include '../client/verificationSessionPatient.php';
                 $fechaActual = date("Y-m-d");
                 ?>
                 <label>Fecha de Atención:</label>
-                <input type="date" required="true" name="atencion" min="<?= $fechaActual; ?>" class="input__form">
+                <input type="date" required name="atencion" min="<?= $fechaActual; ?>" class="input__form" id="atencion">
+                <div id="blockedDate">
+
+                </div>
 
                 <label>Turno:</label>
                 <div class="seleccion">
@@ -103,5 +106,6 @@ include '../client/verificationSessionPatient.php';
             </form>
         </div>
         <script src="js/searchReason.js"></script>
+        <script src="js/searchBlockedDates.js"></script>
     </body>
 </html>
