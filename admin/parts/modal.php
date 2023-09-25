@@ -42,7 +42,10 @@
             $fechaActual = date("Y-m-d");
             ?>
             <label>Fecha de Atención:</label>
-            <input type="date" required name="atencion" min="<?= $fechaActual; ?>" class="input__form">
+            <input type="date" required name="atencion" min="<?= $fechaActual; ?>" class="input__form" id="atencion">
+            <div id="blockedDate">
+
+            </div>
 
             <label>Turno:</label>
             <div class="seleccion">
@@ -67,3 +70,4 @@
 </div>
 <script src="js/searchConsulta.js"></script>
 <script src="js/searchReason.js"></script>
+<script src="js/searchBlockedDates.js"></script>
