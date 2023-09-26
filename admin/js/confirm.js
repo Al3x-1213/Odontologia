@@ -7,15 +7,6 @@ document.querySelectorAll(".atend").forEach(button=>{
     }})
 })
 
-document.querySelectorAll(".editar").forEach(button=>{
-    button.addEventListener("click", e=>{
-        if(confirm("Realmente quiere editar el registro de este paciente?")){
-            return true
-        }else{
-            e.preventDefault()
-    }})
-})
-
 document.querySelectorAll(".cancel").forEach(button=>{
     button.addEventListener("click", e=>{
         if(confirm("Realmente quiere eliminar esta consulta?")){
