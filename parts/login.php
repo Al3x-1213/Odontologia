@@ -4,6 +4,8 @@ ob_start();
 session_destroy();
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -58,4 +60,6 @@ session_destroy();
             </form>
         </div>
     </body>
+
+    <script src="../js/messagge.js"></script>
 </html>

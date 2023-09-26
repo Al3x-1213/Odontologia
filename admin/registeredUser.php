@@ -14,6 +14,7 @@ include '../client/orderDate.php';
 
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
+        <link rel="stylesheet" href="../styles/mensajes.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="styles/search.css">
@@ -38,6 +39,19 @@ include '../client/orderDate.php';
         <?php
         include 'components/menu.html';
         include 'components/menu2.php';
+
+        //RESPONSIVE TABLE
+        include 'responsive/header.php';
+
+        if(isset($_SESSION['mensaje']) && isset($_SESSION['error']) && $_SESSION['error'] == 2){
+            ?> <div class="messagge messagge__success"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
+            unset($_SESSION['mensaje']);
+            unset($_SESSION['error']);
+        }else if(isset($_SESSION['mensaje']) && isset($_SESSION['error']) && $_SESSION['error'] == 1){
+            ?> <div class="messagge messagge__error"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
+            unset($_SESSION['mensaje']);
+            unset($_SESSION['error']);
+        }
 
         include 'parts/modalUser.php';
         ?>
@@ -69,7 +83,7 @@ include '../client/orderDate.php';
                 </thead>
                 <tbody id="content">
                         
-                 </tbody>
+                </tbody>
             </table>
         </div>
 
@@ -88,6 +102,7 @@ include '../client/orderDate.php';
         ?>
 
         <script src="js/confirm.js"></script>
+        <script src="../js/messagge.js"></script>
         <script src="js/modal.js"></script>
         <script src="js/searchTable.js"></script>
     </body>

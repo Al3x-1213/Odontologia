@@ -1,21 +1,4 @@
-document.querySelector(".login").addEventListener("click", (e)=>{
-    if(confirm("Realmente quiere Cerrar Sesion?")){
-        return true;
-    }else{
-        e.preventDefault();
-    }
-})
-
-document.querySelectorAll(".volver").forEach(button=>{
-    button.addEventListener("click", e=>{
-        if(confirm("Realmente quiere devolver a este paciente a la lista de no atendidos?")){
-            return true
-        }else{
-            e.preventDefault()
-    }})
-})
-
-document.querySelectorAll(".atendido").forEach(button=>{
+document.querySelectorAll(".atend").forEach(button=>{
     button.addEventListener("click", e=>{
         if(confirm("Realmente quiere marcar a este paciente como ya atendido?")){
             return true
@@ -33,7 +16,7 @@ document.querySelectorAll(".editar").forEach(button=>{
     }})
 })
 
-document.querySelectorAll(".eliminar").forEach(button=>{
+document.querySelectorAll(".cancel").forEach(button=>{
     button.addEventListener("click", e=>{
         if(confirm("Realmente quiere eliminar esta consulta?")){
             return true

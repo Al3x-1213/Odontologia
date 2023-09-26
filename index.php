@@ -63,7 +63,7 @@ session_destroy();
     <div class="direccion">
       <!-- <img src="img/direccion.jpeg" alt="direccion de consultio riccio" class="direccion"> -->
       <a title="Dirección" href="https://www.google.com/maps/place/Edificio+Lucerna/@10.4923621,-66.8570139,20.29z/data=!4m14!1m7!3m6!1s0x8c2a59db0c04f0d5:0x9e88ed05b996221f!2sEdificio+Lucerna!8m2!3d10.49236!4d-66.8568355!16s%2Fg%2F11srjp38h9!3m5!1s0x8c2a59db0c04f0d5:0x9e88ed05b996221f!8m2!3d10.49236!4d-66.8568355!16s%2Fg%2F11srjp38h9?hl=es&entry=ttu">
-        <img src="img/direccion.png" alt="direccion de consultio riccio" class="address">
+        <img src="img/direccion.png" alt="direccion de consultorio marisol dias" class="address">
       </a>
     </div>
   </div>

@@ -13,6 +13,7 @@ include '../client/orderDate.php';
 
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
+        <link rel="stylesheet" href="../styles/mensajes.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="styles/tables.css">
@@ -32,11 +33,18 @@ include '../client/orderDate.php';
     </head>
     <body>
         <?php
+
         include 'components/menu.html';
         include 'components/menu2.php';
-        ?>
 
-        <?php
+        //RESPONSIVE TABLE
+        include 'responsive/header.php';
+        
+        if(isset($_SESSION['mensaje'])){
+            ?> <div class="messagge messagge__error"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
+            unset($_SESSION['mensaje']);
+        }
+
         $idConsulta = $_GET['id'];
 
         // OBTENER EL ID_DOCTOR SEGÚN EL ID_USUARIO
@@ -59,7 +67,7 @@ include '../client/orderDate.php';
         <!-- ASIGNAR HORARIO Y CONFIRMAR CITA -->
         <h2 class="dia"><?php echo "Confirmar Cita de <span class=nombre_paciente>".$resultado['nombre']." ".$resultado["apellido"]."</span>"; ?></h2>
 
-        <form method="POST" action="../client/botones/confirmar.php">
+        <form method="POST" action="../client/botones/confirmar.php?id= <?php echo $idConsulta ?>">
             <div class="table">
                 <table>
                     <thead>
@@ -164,5 +172,6 @@ include '../client/orderDate.php';
 
         <script src="js/confirm.js"></script>
         <script src="js/modal.js"></script>
+        <script src="../js/messagge.js"></script>
     </body>
 </html>

@@ -18,7 +18,6 @@ $fechaActual = date("Y-m-d");
     <!-- ESTILOS CSS -->
     <link rel="stylesheet" href="../styles/normalize.css">
     <link rel="stylesheet" href="styles/menu.css">
-    <!-- <link rel="stylesheet" href="styles/buscador.css"> -->
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/tables.css">
     <link rel="stylesheet" href="../styles/mensajes.css">
@@ -40,16 +39,28 @@ $fechaActual = date("Y-m-d");
 
 <body>
     <?php
+
     // MENUS DE LOS INDEX
     include 'components/menu.html';
     include 'components/menu2.php';
+
+    if(isset($_SESSION['mensaje']) && isset($_SESSION['error']) && $_SESSION['error'] == 2){
+        ?> <div class="messagge messagge__success"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
+        unset($_SESSION['mensaje']);
+        unset($_SESSION['error']);
+    }else if(isset($_SESSION['mensaje']) && isset($_SESSION['error']) && $_SESSION['error'] == 1){
+        ?> <div class="messagge messagge__error"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
+        unset($_SESSION['mensaje']);
+        unset($_SESSION['error']);
+    }
 
     //RESPONSIVE TABLE
     include 'responsive/header.php';
 
     //MARCAR COMO ATENIDAS LAS CONSULTAS QUE LA DOCTORA OLVIDÓ
-    include '../client/clear.php';
+    include '../client/clearStatus2.php';
 
+    //MODAL PARA ELIMINAR PACIENTES
     include 'parts/modal.php';
     ?>
 
@@ -103,8 +114,8 @@ $fechaActual = date("Y-m-d");
                         <td><?php echo $resultado['causa_consulta']; ?></td>
                         <td><?php echo $horaInicio . " - " . $horaFin; ?></td>
                         <td><?php echo $resultado['telefono_1'] . "<br>" . $resultado['telefono_2']; ?></td>
-                        <td><a href="../client/botones/attend.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-checkmark1 icon"></i></button></a>
-                            <a href="../client/botones/cancel.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon"></i></button></a>
+                        <td><a href="../client/botones/attend.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-checkmark1 icon atend"></i></button></a>
+                            <a href="../client/botones/cancel.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon cancel"></i></button></a>
                         </td>
                     </tr>
                 <?php
@@ -159,11 +170,11 @@ $fechaActual = date("Y-m-d");
 
     <?php
     include 'components/footer.html';
-    // include '../client/eliminar_no_atendidas.php';
     ?>
 
     <script src="js/confirm.js"></script>
     <script src="js/modal.js"></script>
+    <script src="../js/messagge.js"></script>
 </body>
 
 </html>

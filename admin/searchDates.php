@@ -41,6 +41,9 @@ $year = date("Y");
         <?php
         include 'components/menu.html';
         include 'components/menu2.php';
+
+        //RESPONSIVE TABLE
+        include 'responsive/header.php';
         ?>
         <?php
         // FECHA PARA BUSCAR

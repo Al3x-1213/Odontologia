@@ -4,16 +4,16 @@ const formulario = document.getElementById("formulario");
 const inputs = document.querySelectorAll('.grupo input');
 
 const expresiones = {
-    usuario: /^[a-zA-Z0-9\_\-\.\/]{3,35}$/, // Letras, numeros, guion y guion_bajo
-    nombre: /^[a-zA-ZÀ-ÿ\s]{2,25}$/, // Letras y espacios, pueden llevar acentos.
+    usuario: /^[a-zA-Z0-9\_\-\.\/]{4,35}$/, // Letras, numeros, guion y guion_bajo
+    nombre: /^[a-zA-ZÀ-ÿ\s]{3,25}$/, // Letras y espacios, pueden llevar acentos.
     password: /^.{8,35}$/, // 4 a 12 digitos.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    telefono: /^\d{11}$/, // 7 a 14 numeros.
+    telefono: /^\d{7}$/, // 7 a 14 numeros.
     cedula: /^\d{7,8}$/ // 7 a 14 numeros.
 }
 
 function CharacterSpecials(str) {
-    var regex = /[!@#$%^&*()+\=\[\]{};':"\\|,<>\?]+/;
+    var regex = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\?]+/;
     return regex.test(str);
 }
 
@@ -131,27 +131,29 @@ const validarFormulario = (e) => {
             }
         break;
         case "nombre":
-            if(expresiones.nombre.test(e.target.value)){
+            if(!(expresiones.nombre.test(e.target.value))){
+                nombre = false;
+                if(CharacterNoAllowN(e.target.value)){
+                    error(e.target.name, 2);
+                }else{
+                    error(e.target.name, 1);
+                }
+            }else{
                 success(e.target.name);
                 nombre = true;
-            }else if(CharacterNoAllowN(e.target.value)){
-                error(e.target.name, 1);
-                nombre = false;
-            }else{
-                error(e.target.name, 2);
-                nombre = false;
             }
         break;
         case "apellido":
-            if(expresiones.nombre.test(e.target.value)){
+            if(!(expresiones.nombre.test(e.target.value))){
+                apellido = false;
+                if(CharacterNoAllowN(e.target.value)){
+                    error(e.target.name, 2);
+                }else{
+                    error(e.target.name, 1);
+                }
+            }else{
                 success(e.target.name);
                 apellido = true;
-            }else if(CharacterNoAllowN(e.target.value)){
-                error(e.target.name, 1);
-                apellido = false;
-            }else{
-                error(e.target.name, 2);
-                apellido = false;
             }
         break;
         case "cedula":
@@ -168,13 +170,8 @@ const validarFormulario = (e) => {
         break;
         case "nacimiento":
             if(compareDate(e.target.value)){
-                success(e.target.name);
                 nacimiento = true;
-                console.log(e.target.name);
-            }else if(e.target.value.lenght == 0){
-                nacimiento = false;
             }else{
-                error(e.target.name, 2);
                 nacimiento = false;
             }
         case "telefono1":
@@ -190,7 +187,7 @@ const validarFormulario = (e) => {
             }
         break;
         case "telefono2":
-            if(e.target.value.length == 0 || e.target.value.length == 11){
+            if(e.target.value.length == 0 || e.target.value.length == 7){
                 success(e.target.name);
                 telefono2 = true;
             }else if(CharacterNoAllowC(e.target.value)){

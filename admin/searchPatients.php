@@ -35,6 +35,9 @@ include '../client/orderDate.php';
         <?php
         include 'components/menu.html';
         include 'components/menu2.php';
+
+        //RESPONSIVE TABLE
+        include 'responsive/header.php';
         ?>
         <?php
         // PACIENTE PARA BUSCAR
