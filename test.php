@@ -1,3 +1,9 @@
+<?php
+session_start();
+ob_start();
+$_SESSION['mesaje'] = 1;
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,5 +23,6 @@
 </form>
 
 <script src="js/messagge.js"></script>
+</body>
 
 </html>
