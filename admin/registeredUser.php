@@ -62,7 +62,7 @@ include '../client/orderDate.php';
             <form action="" method= "POST" autocomplete="off">
                 <div class="inputs">
                     <div class="inputRecibe">
-                        <label for="searchUser">Buscar usuarios: </label><input type="text" placeholder="Datos del Usuario:" name="searchUser" id="searchUser">
+                        <label for="searchUser">Buscar usuarios: </label><input type="text" placeholder="Datos del Usuario" name="searchUser" id="searchUser">
                     </div>
                 </div>
             </form>
@@ -78,6 +78,8 @@ include '../client/orderDate.php';
                         <th>Fecha de Nacimiento</th>
                         <th>Teléfono</th>
                         <th>Correo Electrónico</th>
+                        <th>Alergia</th>
+                        <th>Discapacidad</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>

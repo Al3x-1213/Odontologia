@@ -40,22 +40,21 @@
 					</form>
 				</div>
 
-				<div class="searchPatients">
-					<form action="" method="POST" autocomplete="off">
-						<div class="inputs__menu2">
-							<label for="search"> Buscar Pacientes: </label>
-							<div class="input__data">
-								<input type="text" placeholder="Datos del Paciente:" name="search" id="search">
-							</div>
-						</div>
-						<div class="filter">
-							<ul id="filter"></ul>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<script src="js/searchFilter.js"></script>
+	            <div class="searchPatients">
+	                <form action="" method="POST" autocomplete="off">
+	                    <div class="inputs__menu2">
+                            <label for="search"> Buscar Pacientes: </label>
+	                        <div class="input__data">
+	                            <input type="text" placeholder="Datos del Paciente" name="search" id="search">
+	                        </div>
+	                    </div>
+	                    <div class="filter">
+	                        <ul id="filter"></ul>
+	                    </div>
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+	    <script src="js/searchFilter.js"></script>
 	</body>
-
-	</html>
+</html>

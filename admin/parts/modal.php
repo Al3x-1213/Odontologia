@@ -1,7 +1,6 @@
 <div class="buttons__modal">
     <button class="insertar">Registrar una Cita</button>
-    
-    <a href="../client/botones/printReport.php"><button title="Reporte" class="print printReport"><i class="icon-printer icon"></i></button></a>
+    <a href="../client/botones/printReport.php"><button title="Reporte" class="print printReport"><i class="icon-printer1 icon"></i></button></a>
 </div>
 
 <div class="modal display">
@@ -25,24 +24,16 @@
                 <select id="filter2" name="id_paciente" class="display input__form"></select>
             </div>
 
-            <?php
-            // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
-
-            $consulta = "SELECT * FROM causa_consulta";
-            $query = mysqli_query($conexion, $consulta)
-            ?>
-            <label>Motivo: </label>
-            <select name="causa">
+            <label>Tipo de Paciente: </label>
+            <select name="tipoPaciente" id="tipoPaciente">
                 <option value="0"></option>
-                <?php
-                $i = 0;
-                while ($resultado = mysqli_fetch_array($query)) {
-                    $i = $i + 1;
-                ?>
-                    <option value="<?php echo $i; ?>"><?php echo $resultado['causa_consulta']; ?></option>
-                <?php
-                }
-                ?>
+                <option value="1">Asegurado</option>
+                <option value="2">Particular</option>
+            </select>
+
+            <label>Motivo de la Consulta: </label>
+            <select name="causa" id="causa">
+                    
             </select>
 
             <?php
@@ -51,7 +42,10 @@
             $fechaActual = date("Y-m-d");
             ?>
             <label>Fecha de Atención:</label>
-            <input type="date" required name="atencion" min="<?= $fechaActual; ?>" class="input__form">
+            <input type="date" required name="atencion" min="<?= $fechaActual; ?>" class="input__form" id="atencion">
+            <div id="blockedDate">
+
+            </div>
 
             <label>Turno:</label>
             <div class="seleccion">
@@ -75,3 +69,5 @@
     </div>
 </div>
 <script src="js/searchConsulta.js"></script>
+<script src="js/searchReason.js"></script>
+<script src="js/searchBlockedDates.js"></script>

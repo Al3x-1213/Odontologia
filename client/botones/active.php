@@ -1,23 +1,21 @@
 <?php
 
-session_start();
-ob_start();
-$sesion = $_SESSION['sesion'];
+include '../connection.php';
 
-// POR CORREGIR
+$idDatoPersonal = $_GET['id'];
 
-include 'connection.php';
+$consulta = "SELECT id_cuenta FROM cuentas WHERE id_dato_personal = '$idDatoPersonal'";
+$query = mysqli_query($conexion, $consulta);
 
-/* datos del formulario de registro */
+$respuesta = mysqli_fetch_array($query);
+$idCuenta = $respuesta['id_cuenta'];
 
-$id = $_GET['id'];
+$consulta = "UPDATE cuentas SET id_status_usuario = 1 WHERE id_cuenta = '$idCuenta'";
+$query = mysqli_query($conexion, $consulta);
 
-$peticion = "UPDATE SET id_status_usuario = 1 FROM cuentas WHERE id_datos_personales = '$id'";
-$eliminar = ($conexion->query($peticion));
-
-if($eliminar == 1){
+if($query){
     mysqli_close($conexion);
-    header("location:../admin/registeredUser.php");
+    header("location:../../admin/registeredUser.php");
 }
 
 ?>

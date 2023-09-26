@@ -114,8 +114,14 @@ $fechaActual = date("Y-m-d");
                         <td><?php echo $resultado['causa_consulta']; ?></td>
                         <td><?php echo $horaInicio . " - " . $horaFin; ?></td>
                         <td><?php echo $resultado['telefono_1'] . "<br>" . $resultado['telefono_2']; ?></td>
+<<<<<<< HEAD
                         <td><a href="../client/botones/attend.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-checkmark1 icon atend"></i></button></a>
                             <a href="../client/botones/cancel.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon cancel"></i></button></a>
+=======
+                        <td>
+                            <a href="../client/botones/attend.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-checkmark1 icon"></i></button></a>
+                            <a href="../client/botones/cancel.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon"></i></button></a>
+>>>>>>> 5f43250a0831f4717282a36eeb4ed10bd779547a
                         </td>
                     </tr>
                 <?php

@@ -40,6 +40,16 @@ include '../client/verificationSessionPatient.php';
                 include '../client/insert/solicitarCita.php'
                 ?>
 
+                <label>Tipo de Paciente: </label>
+                    <!-- Asegurado<input type="radio" value="1" name="tipoPaciente" id="tipoPaciente">
+                    Particular<input type="radio" value="2" name="tipoPaciente" id="tipoPaciente"> -->
+                    <!-- <input type="text" name="tipoPaciente" id="tipoPaciente"> -->
+                    <select name="tipoPaciente" id="tipoPaciente">
+                        <option value="0"></option>
+                        <option value="1">Asegurado</option>
+                        <option value="2">Particular</option>
+                    </select>
+
                 <?php
                 // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
                 include '../client/connection.php'; //Conexión con base de datos
@@ -48,17 +58,8 @@ include '../client/verificationSessionPatient.php';
                 $query = mysqli_query($conexion, $consulta)
                 ?>
                 <label>Motivo: </label>
-                <select name="causa">
-                    <option value="0"></option>
-                    <?php
-                    $i = 0;
-                    while ($resultado = mysqli_fetch_array($query)) {
-                        $i = $i + 1;
-                    ?>
-                    <option value="<?php echo $i; ?>"><?php echo $resultado['causa_consulta']; ?></option>
-                    <?php
-                    }
-                    ?>
+                <select name="causa" id="causa">
+                    
                 </select>
 
                 <?php
@@ -67,7 +68,10 @@ include '../client/verificationSessionPatient.php';
                 $fechaActual = date("Y-m-d");
                 ?>
                 <label>Fecha de Atención:</label>
-                <input type="date" required="true" name="atencion" min="<?= $fechaActual; ?>" class="input__form">
+                <input type="date" required name="atencion" min="<?= $fechaActual; ?>" class="input__form" id="atencion">
+                <div id="blockedDate">
+
+                </div>
 
                 <label>Turno:</label>
                 <div class="seleccion">
@@ -101,5 +105,7 @@ include '../client/verificationSessionPatient.php';
                 </div>
             </form>
         </div>
+        <script src="js/searchReason.js"></script>
+        <script src="js/searchBlockedDates.js"></script>
     </body>
 </html>
