@@ -49,8 +49,8 @@ include '../client/verificationSessionPatient.php';
                     <!-- <input type="text" name="tipoPaciente" id="tipoPaciente"> -->
                     <select name="tipoPaciente" id="tipoPaciente">
                         <option value="0"></option>
-                        <option value="1">Asegurado</option>
-                        <option value="2">Particular</option>
+                        <option value="1">Particular</option>
+                        <option value="2">Asegurado</option>
                     </select>
 
                 <?php

@@ -30,8 +30,8 @@
             <label>Tipo de Paciente: </label>
             <select name="tipoPaciente" id="tipoPaciente">
                 <option value="0"></option>
-                <option value="1">Asegurado</option>
-                <option value="2">Particular</option>
+                <option value="1">Particular</option>
+                <option value="2">Asegurado</option>
             </select>
 
             <label>Motivo de la Consulta: </label>
