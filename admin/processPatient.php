@@ -32,22 +32,6 @@ include '../client/orderDate.php';
         <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
     <body>
-        <style>
-        .enlaces{
-            padding: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: left;
-        }
-
-        .enlace{
-            width: 14%;
-            text-align:center;
-            margin: 2px 16px 15px 16px;
-            box-shadow: 1px 1px 2px 0.5px rgb(148, 147, 147);
-            border: solid white 1px;
-        }
-        </style>
         <?php
 
         include 'components/menu.html';
@@ -134,7 +118,7 @@ include '../client/orderDate.php';
 
         <h2 class="dia"><?php echo "Citas del ". $fechaAtencion; ?></h2>
 
-        <div class="table">
+        <div class="table tableCitations">
             <table>
                 <?php
                 $fechaAtencion = $resultado['fecha_atencion'];
@@ -167,7 +151,7 @@ include '../client/orderDate.php';
                         $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
                         $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
                     ?>
-                        <td class="tamaño"><?php echo $resultado2['nombre']. " ". $resultado2['apellido']. "<br>". $resultado2['causa_consulta']. "<br>"; ?></td>
+                        <td><?php echo "--- ". $resultado2['nombre']. " ". $resultado2['apellido']. " ---". "<br><br>". $resultado2['causa_consulta']. "<br>"; ?></td>
                     <?php
                     }
                     ?>
