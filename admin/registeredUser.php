@@ -47,11 +47,15 @@ include '../client/orderDate.php';
         include 'responsive/header.php';
 
         if(isset($_SESSION['mensaje']) && isset($_SESSION['error']) && $_SESSION['error'] == 2){
-            ?> <div class="messagge messagge__success"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
+            ?>
+            <div class="messagge messagge__success"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> 
+            <?php
             unset($_SESSION['mensaje']);
             unset($_SESSION['error']);
         }else if(isset($_SESSION['mensaje']) && isset($_SESSION['error']) && $_SESSION['error'] == 1){
-            ?> <div class="messagge messagge__error"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
+            ?>
+            <div class="messagge messagge__error"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div>
+            <?php
             unset($_SESSION['mensaje']);
             unset($_SESSION['error']);
         }
@@ -61,14 +65,20 @@ include '../client/orderDate.php';
 
         <h2 class="dia">Usuarios Registrados</h2>
 
-        <div class="searchUsers">
-            <form action="" method= "POST" autocomplete="off">
-                <div class="inputs">
-                    <div class="inputRecibe">
-                        <label for="searchUser">Buscar usuarios: </label><input type="text" placeholder="Datos del Usuario" name="searchUser" id="searchUser">
-                    </div>
-                </div>
-            </form>
+        <div class="searchTable">
+            <div class="receive">
+                <label for="searchUser">Buscar: </label>
+                <input type="text" placeholder="Datos del usuario " autocomplete="off" name="searchUser" id="searchUser">
+            </div>
+            <div class="show">
+                <label for="numeroRegistros">Mostrar: </label>
+                <select name="numeroRegistros" id="numeroRegistros">
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="numeroRegistros"> registros</label>
+            </div>
         </div>
 
         <div class="table">
@@ -92,13 +102,14 @@ include '../client/orderDate.php';
             </table>
         </div>
 
-        <?php
-        include '../client/connection.php'; //Conexión con base de datos
-        ?>
-        
-        <?php
-        mysqli_close($conexion);
-        ?>
+        <div class="pagination">
+            <div class="quantityDisplayed">
+                <label id="numeroPagina"></label>
+            </div>
+            <div class="navPagination" id="navPaginacion">
+
+            </div>
+        </div>
 
         <div class="space"></div>
 
@@ -109,6 +120,6 @@ include '../client/orderDate.php';
         <script src="js/confirm.js"></script>
         <script src="../js/messagge.js"></script>
         <script src="js/modal.js"></script>
-        <script src="js/searchTable.js"></script>
+        <script src="js/searchUsers.js"></script>
     </body>
 </html>

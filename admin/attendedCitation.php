@@ -19,6 +19,7 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/search.css">
         <link rel="stylesheet" href="styles/tables.css">
         <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/modal.css">
@@ -55,51 +56,55 @@ include '../client/orderDate.php';
         $query = mysqli_query($conexion, $consulta);
 
         // VALIDACIÓN PARA COMPROBAR QUE LA TABLA NO ESTÉ VACIA
-        if ($query->num_rows == 0) {
+        if ($query->num_rows == 0){
         ?>
             <h2 class="dia">No Hay Pacientes Por Atender Para Hoy</h2>
         <?php
-        } else {
+        }
+        else{
         ?>
 
             <!-- CITAS ATENDIDAS -->
             <h2 class="dia">Citas Atendidas</h2>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Paciente</th>
-                        <th>Cédula</th>
-                        <th>Motivo de la Consulta</th>
-                        <th>Fecha de Atención</th>
-                        <th>Hora de Atención</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
-                            ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
-                            AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-                            WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = 1";
-                    $query = mysqli_query($conexion, $consulta);
+            <div class="searchTable">
+                <div class="show">
+                    <label for="numeroRegistros">Mostrar: </label>
+                    <select name="numeroRegistros" id="numeroRegistros">
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                    <label for="numeroRegistros"> registros</label>
+                </div>
+            </div>
 
-                    while ($resultado = mysqli_fetch_array($query)) {
-                        $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
-                        $horaInicio = date("g:i a", strtotime($resultado['hora_inicio']));
-                        $horaFin = date("g:i a", strtotime($resultado['hora_fin']));
-                    ?>
+            <div class="table">
+                <table>
+                    <thead>
                         <tr>
-                            <td><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></td>
-                            <td><?php echo $resultado['cedula']; ?></td>
-                            <td><?php echo $resultado['causa_consulta']; ?></td>
-                            <td><?php echo $fechaAtencion; ?></td>
-                            <td><?php echo $horaInicio . " - " . $horaFin; ?></td>
+                            <th>Paciente</th>
+                            <th>Cédula</th>
+                            <th>Motivo de la Consulta</th>
+                            <th>Fecha de Atención</th>
+                            <th>Hora de Atención</th>
                         </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody id="content">
+                            
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <div class="quantityDisplayed">
+                    <label id="numeroPagina"></label>
+                </div>
+                <div class="navPagination" id="navPaginacion">
+
+                </div>
+            </div>
+
         <?php
         }
         ?>
@@ -115,7 +120,7 @@ include '../client/orderDate.php';
         ?>
 
         <script src="js/confirm.js"></script>
-        <script src="js/modal.js"></script>
+        <!-- <script src="js/modal.js"></script> -->
+        <script src="js/searchAttended.js"></script>
     </body>
-
 </html>
