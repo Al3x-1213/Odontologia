@@ -29,3 +29,41 @@
   background-color: #999;
   cursor: not-allowed;
 }
+
+.messagge {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 100;
+  top: 30px;
+  width: 30%;
+  left: 35%;
+  padding: 15px 20px 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2%;
+  gap: 30px;
+}
+
+.messagge__success {
+  border: 1px solid #0d750d;
+  background: #9dfa9d;
+  color: #0d750d;
+}
+
+.messagge__error {
+  border: 1px solid #aa0000;
+  background: #ff5050;
+  color: #aa0000;
+}
+
+.messagge__info {
+  border: 1px solid #004bee;
+  background: #649ee0;
+  color: #004bee;
+}
+
+
+.messagge__icon {
+  cursor: pointer;
+}

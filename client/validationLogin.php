@@ -36,29 +36,32 @@ if (!empty($_POST['boton_log'])){
         // VALIDACIÓN DEL USUARIO INGRESADO
         if($tipoUsuario == 1){ // Administrador - Doctor
             if($statusUsuario == 1){
-                header("location: ../admin/index.php");
+                $_SESSION['mensaje'] = "Bienvenido ". $usuario;
+                $_SESSION['error'] = 3;
+                header ("location: ../admin/index.php");
             }
             else{
-                ?>
-                <div class= "alerta">Usuario inactivo</div>
-                <?php
+                $_SESSION['mensaje'] = "El usuario: ". $usuario. " actualmente se encuentra inactivo";
+                $_SESSION['error'] = 3;
+                header ("location: ../parts/login.php");
             }
         }
         else if($tipoUsuario == 2){ // Paciente
             if($statusUsuario == 1){
-                header("location: ../paciente/index.php");
+                $_SESSION['mensaje'] = "Bienvenido ". $usuario;
+                $_SESSION['error'] = 3;
+                header ("location: ../paciente/index.php");
             }
             else{
-                ?>
-                <div class= "alerta">Usuario inactivo</div>
-                <?php
+                $_SESSION['mensaje'] = "El usuario: ". $usuario. " actualmente se encuentra inactivo";
+                $_SESSION['error'] = 3;
+                header ("location: ../parts/login.php");
             }
         }
         else{
-            ?>
-            <div class= "alerta">Usuario / Contraseña</div>
-            <div class= "alerta">Incorrecto</div>
-            <?php
+            $_SESSION['mensaje'] = "usuario o contraseña incorrecto";
+            $_SESSION['error'] = 1;
+            header ("location: ../parts/login.php");
         }
         mysqli_close($conexion); //Cerrar la conexion con la base de datos
     }

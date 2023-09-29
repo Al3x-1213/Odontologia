@@ -1,3 +1,9 @@
+<?php
+session_start();
+ob_start();
+session_destroy();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -35,28 +41,53 @@
 
             <div id="grupo_cedula" class="grupo">
                 <label>Cédula:</label>
-                <div class="input-icon"><input type="number" maxlength="8" required name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error display"></div>
+                <div class="input-icon"><input type="number" maxlength="8"  name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>El campo no debe estar vacío<br>Debe tener entre 7 a 8 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter no permitido</p>
+                </div>
             </div>
 
             <h3>Tu cuenta: </h3>
 
             <div id="grupo_usuario" class="grupo">
                 <label>Usuario:</label>
-                <div class="input-icon"><input type="text" maxlength="30" required name="usuario" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="input-icon">
+                    <input type="text" maxlength="30" name="usuario" class="input__form base" id="usuario" autocomplete="off">
+                    <i class="icon-warning display"></i>
+                    <i class="icon-checkmark1 display"></i>
+                </div>
+                <div class="paragraf__error1 display">
+                    <p>Usuario no puede estar vacío<br>No pueden ser menos de 4 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter especial no permitido</p>
+                </div>
+                <div class="filterUsuario"></div>
             </div>
 
             <div id="grupo_clave" class="grupo">
                 <label>Contraseña:</label>
-                <div class="input-icon"><input type="password" maxlength="35" required name="clave" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="input-icon"><input type="password" maxlength="35"  name="clave" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>Debe tener al menos 8 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Debe tener al menos 1 caracter especial <br>Debe que tener al menos una letra en mayuscula</p>
+                </div>
             </div>
 
             <div id="grupo_clave2" class="grupo">
                 <label>Confirmar Contraseña:</label>
-                <div class="input-icon"><input type="password" maxlength="35" required name="clave2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error"></div>
+                <div class="input-icon"><input type="password" maxlength="35"  name="clave2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>La clave debe coincidir</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Este campo no puede estar vacío<br>Debe tener al menos 8 caracteres</p>
+                </div>
             </div>
 
             <input class="button" type="submit" value="Registrarse" name="boton_reg">
@@ -66,6 +97,7 @@
     </div>
 </body>
 
-<!-- <script src="../js/validacionRegistrarse.js"></script> -->
+<script src="../js/validacionRegistrarseSc.js"></script>
+<script src="../js/searchFilterSc.js"></script>
 
 </html>

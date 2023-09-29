@@ -9,7 +9,7 @@
             <a href="toConfirm.php" class="item__menu-responsive"><li>Confirmar Citas</li><i class="icon-checkmark1"></i></a>
             <a href="attendedCitation.php" class="item__menu-responsive"><li>Citas Atendidas</li><i class="icon-folder"></i></a>
             <a href="registeredUser.php" class="item__menu-responsive"><li>Usuarios Registrados</li><i class="icon-address-book"></i></a>
-            <a href="../client/logout.php" class="item__menu-responsive"><li>Cerrar Sesión</li></a>
+            <a href="../client/botones/logout.php" class="item__menu-responsive"><li>Cerrar Sesión</li></a>
         </ul>
     </nav>
 </div>

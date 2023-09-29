@@ -13,42 +13,13 @@ body {
   font-size: 34px;
 }
 
-table {
+.table {
   width: 95%;
   margin: 3% auto 7%;
   font-size: 16px;
   border: none;
   box-shadow: 0 0 10px 1px #333;
 }
-
-/*.buttonsIndex{
-  display: flex;
-  margin-top: 1%;
-}
-
-.buttonsIndex .divInsert{
-  width: 50%;
-}
-
-.buttonsIndex .divPrint{
-  width: 50%;
-  display: flex;
-  justify-content: right;
-  align-items: center;
-}
-
-.insertar{
-  width: 180px;
-  margin: 1% 2% 1% 2%;
-  padding: 5px 10px;
-  background: linear-gradient(70deg, #789dc9, #EAEDF3); 
-  background-color: #EAEDF3;
-  border: solid #789DC9 2px;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  border: solid blue 1px; 
-}*/
 
 .confirmar {
   position: relative;
@@ -72,8 +43,4 @@ table {
 
 .nombre_paciente {
   color: #E67F4F;
-}
-
-@media only screen and (max-width: 800px){
-  
 }

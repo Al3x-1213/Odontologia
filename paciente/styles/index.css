@@ -27,7 +27,6 @@ body {
 .thead, .tbody {
   padding: 8px;
   border: 1px solid #14a9e9;
-  /* border: 1px solid #33548A; */
   width: 30%;
   text-align: center;
   max-height: 50px;
@@ -125,4 +124,10 @@ span {
   right: 0;
   top: 0;
   margin: 5%;
+}
+
+@media only screen and (max-width: 800px) {
+  .table {
+    width: 90%;
+  }
 }

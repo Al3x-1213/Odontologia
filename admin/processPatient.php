@@ -13,6 +13,7 @@ include '../client/orderDate.php';
 
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
+        <link rel="stylesheet" href="../styles/mensajes.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="styles/tables.css">
@@ -20,23 +21,27 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="styles/modal.css">
         <link rel="stylesheet" href="../Iconos/style.css">
 
-        <!-- LETRAS UTILIZADAS
+        <!-- LETRAS UTILIZADAS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
         <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
     <body>
         <?php
+
         include 'components/menu.html';
         include 'components/menu2.php';
-        ?>
 
-        <?php
+        //RESPONSIVE TABLE
+        include 'responsive/header.php';
+        
+        include '../client/messagge.php';
+
         $idConsulta = $_GET['id'];
 
         // OBTENER EL ID_DOCTOR SEGÚN EL ID_USUARIO
@@ -59,7 +64,7 @@ include '../client/orderDate.php';
         <!-- ASIGNAR HORARIO Y CONFIRMAR CITA -->
         <h2 class="dia"><?php echo "Confirmar Cita de <span class=nombre_paciente>".$resultado['nombre']." ".$resultado["apellido"]."</span>"; ?></h2>
 
-        <form method="POST" action="../client/botones/confirmar.php">
+        <form method="POST" action="../client/botones/confirmar.php?id= <?php echo $idConsulta ?>">
             <div class="table">
                 <table>
                     <thead>
@@ -162,7 +167,6 @@ include '../client/orderDate.php';
         include 'components/footer.html';
         ?>
 
-        <script src="js/confirm.js"></script>
-        <script src="js/modal.js"></script>
+        <script src="../js/messagge.js"></script>
     </body>
 </html>

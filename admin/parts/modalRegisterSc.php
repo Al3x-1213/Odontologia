@@ -12,9 +12,7 @@ include '../../client/verificationSessionAdmin.php';
 
     <!-- ESTILOS CSS -->
     <link rel="stylesheet" href="../../styles/normalize.css">
-    <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../../styles/mensajes.css">
-    <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../../styles/registrarse.css">
     <link rel="stylesheet" href="../../Iconos/style.css">
 
@@ -44,20 +42,39 @@ include '../../client/verificationSessionAdmin.php';
 
             <div id="grupo_nombre" class="grupo">
                 <label>Nombre:</label>
-                <div class="input-icon"><input type="text" maxlength="25" required name="nombre" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error display"> Nombre no puede tener numeros ni caracteres especiales </div>
+                <div class="input-icon"><input type="text" maxlength="25"  name="nombre" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>Este campo no debe estar vacío<br>No deben haber menos de 3 caracteres ni más de 25</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Carácter no permitido</p>
+                </div>
             </div>
 
             <div id="grupo_apellido" class="grupo">
                 <label>Apellido:</label>
-                <div class="input-icon"><input type="text" maxlength="25" required name="apellido" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error display"> Apellido no puede tener numeros ni caracteres especiales </div>
+                <div class="input-icon"><input type="text" maxlength="25"  name="apellido" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>Este campo no debe estar vacío<br>No deben haber menos de 3 caracteres ni más de 25</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter no permitido</p>
+                </div>
             </div>
 
             <div id="grupo_cedula" class="grupo">
                 <label>Cédula:</label>
-                <div class="input-icon"><input type="number" maxlength="8" required name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error display"> Cedula tiene que tener de 7 a 8 caractéres </div>
+                <div class="input-icon"><input type="number" maxlength="8" name="cedula" class="input__form base" id="cedula" autocomplete="off">
+                    <i class="icon-warning display"></i>
+                    <i class="icon-checkmark1 display"></i>
+                </div>
+                <div class="paragraf__error1 display">
+                    <p>El campo no debe estar vacío<br>Debe tener entre 7 a 8 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter no permitido</p>
+                </div>
+                <div class="filterCedula"></div>
             </div>
 
             <?php
@@ -67,26 +84,42 @@ include '../../client/verificationSessionAdmin.php';
             ?>
             <div id="grupo_nacimiento" class="grupo">
                 <label>Fecha de Nacimiento:</label>
-                <div class="input-icon"><input type="date" required name="nacimiento" max="<?= $fechaActual; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error display"> la fecha no puede ser la misma o posterior a la de hoy </div>
+                <div class="input-icon">
+                    <input type="date"  name="nacimiento" max="<?= $fechaActual; ?>" class="input__form base">
+                </div>
             </div>
 
             <div id="grupo_telefono1" class="grupo">
                 <label>Telefono celular:</label>
-                <div class="input-icon"><input type="number" maxlength="11" required name="telefono1" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error display"> Telefono sólo puede tener 11 caracteres </div>
+                <div class="input-icon"><input type="number" maxlength="11"  name="telefono1" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>El campo no debe estar vacío <br>Deben haber 11 digitos</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter no permitido</p>
+                </div>
             </div>
 
             <div id="grupo_telefono2" class="grupo">
                 <label>Telefono (Opcional):</label>
-                <div class="input-icon"><input type="number" maxlength="11" required name="telefono2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error display"> Telefono sólo puede tener 11 caracteres </div>
+                <div class="input-icon"><input type="number" maxlength="11" name="telefono2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>Deben haber 11 digitos</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter no permitido</p>
+                </div>
             </div>
 
             <div id="grupo_correo" class="grupo">
                 <label>Correo Electrónico:</label>
-                <div class="input-icon"><input type="email" maxlength="60" required name="correo" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark display"></i></div>
-                <div class="paragraf__error display"> Correo debe contener @ y . </div>
+                <div class="input-icon"><input type="email" maxlength="60"  name="correo" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>debe contener "@" y "."</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>El campo no puede estar vacío<br>No debe tener más 60 caracteres<br>No debe tener menos de 11 caracteres</p>
+                </div>
             </div>
 
             <!------------------------------------------------>
@@ -135,10 +168,12 @@ include '../../client/verificationSessionAdmin.php';
             // BLOQUEAR DÍAS DEL CALENDARIO
             date_default_timezone_set('America/Caracas');
             $fechaActual = date("Y-m-d");
+            $fechaLimite = strtotime($fechaActual."+ 21 days");
+            $fechaLimite = date("Y-m-d", $fechaLimite);
             ?>
             <div id="grupo_atencion" class="grupo">
                 <label>Fecha de Atención:</label>
-                <input type="date" required name="atencion" min="<?= $fechaActual; ?>" class="input__form base">
+                <input type="date" required name="atencion" max="<?= $fechaLimite; ?>" class="input__form base">
             </div>
             
             <div id="grupo_seleccion" class="grupo">
@@ -162,6 +197,7 @@ include '../../client/verificationSessionAdmin.php';
         </form>
     </div>
 
-<!-- <script src="../../js/validacionRegistrarse.js"></script> -->
+<script src="../js/searchFilterIc.js"></script>
+<script src="../../js/validacionRegistrarse.js"></script>
 </body>
 </html>

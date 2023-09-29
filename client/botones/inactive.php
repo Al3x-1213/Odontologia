@@ -17,7 +17,7 @@ $eliminar = ($conexion->query($peticion));
 
 if($eliminar == 1){
     mysqli_close($conexion);
-    header("location:../admin/registeredUser.php");
+    header("location: ../../admin/registeredUser.php");
 }
 
 ?>
