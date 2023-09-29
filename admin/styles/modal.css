@@ -23,7 +23,6 @@
     position: fixed;
     z-index: 10;
     top: 0;
-    /* background: linear-gradient(45deg, #EAEDF377, #33548A77); */
     background: #66666677;
     width: 100vw;
     height: 100vh;
@@ -44,8 +43,7 @@
     gap: 16px;
     flex-direction: column;
     padding: 30px;
-    min-width: 35%;
-    min-height: 50%;
+    width: 35%;
     background: #333;
     color: #EAEDF3;
     border: 1px solid #242424;
@@ -73,6 +71,25 @@
 
 .header__form>.icon-cross:hover{
     color: #E67F4FAA;
+}
+
+.search__patients {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+label[for="search"]{
+    margin-bottom: 30px;
+}
+
+input[name="search2"]{
+    height: 25px;
+    width: 35%;
+}
+
+select[name="id_paciente"]{
+    width: 60%;
 }
 
 .input__form{
@@ -121,12 +138,6 @@ select {
     color: #333;
     background-color: #789dc9;
     outline: none;
-}
-
-#filter2 {
-    position: relative;
-    top: 20px;
-    margin-bottom: 15px;
 }
 
 p{
@@ -192,8 +203,6 @@ p a{
 .searchPatient {
     gap: 20px;
 }
-
-
 
 option {
     color: #333;

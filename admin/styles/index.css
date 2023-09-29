@@ -13,7 +13,7 @@ body {
   font-size: 34px;
 }
 
-table {
+.table {
   width: 95%;
   margin: 3% auto 7%;
   font-size: 16px;
@@ -43,8 +43,4 @@ table {
 
 .nombre_paciente {
   color: #E67F4F;
-}
-
-@media only screen and (max-width: 800px){
-  
 }

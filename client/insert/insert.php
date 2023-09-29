@@ -1,14 +1,17 @@
 <?php
 
-if (!empty($_POST['boton_reg'])){
+if (!empty($_POST['boton_reg'])) {
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
-    if (empty($_POST['usuario']) || empty($_POST['clave']) || empty($_POST['clave2'])
-    || empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['cedula'])
-    || empty($_POST['nacimiento']) || empty($_POST['telefono1']) || empty($_POST['correo']) || empty($_POST['discapacidad']) || empty($_POST['alergia'])){
-        ?>
-        <div class= "alerta">No deben haber campos vacios</div>
-        <?php
-    }else{
+    if (
+        empty($_POST['usuario']) || empty($_POST['clave']) || empty($_POST['clave2'])
+        || empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['cedula'])
+        || empty($_POST['nacimiento']) || empty($_POST['telefono1']) || empty($_POST['correo']) || empty($_POST['discapacidad']) || empty($_POST['alergia'])
+    ) {
+        session_start();
+        $_SESSION['mensaje'] = "No deben haber campos vacios";
+        $_SESSION['error'] = 1;
+        header("location: login.php");
+    } else {
         //DATOS DEL FORMULARIO DE REGISTRO
         $usuario = $_POST['usuario'];
         $clave = $_POST['clave'];
@@ -28,14 +31,17 @@ if (!empty($_POST['boton_reg'])){
         $discapacidad = $_POST['discapacidad'];
         $alergia = $_POST['alergia'];
 
+
+        $telefonoCP_1 = $prefijo1.$telefono_1;
+        $telefonoCP_2 = $prefijo2.$telefono_2;
+
         // VERIFICAR QUE AMBAS CONTRASEÑAS SEAN IGUALES
-        if ($clave != $claveConfirm){
-            ?>
-            <div class= "alerta">Las contraseñas deben coincidir</div>
-            <div class= "alerta">Por favor verificar</div>
-            <?php
-        }
-        else{
+        if ($clave != $claveConfirm) {
+            session_start();
+            $_SESSION['mensaje'] = "Las contraseñas deben coincidir";
+            $_SESSION['error'] = 1;
+            header("location: login.php");
+        } else {
             // CALCULAR EDAD
             // include '../calcularEdad.php';
             include '../client/calcularEdad.php';
@@ -46,13 +52,13 @@ if (!empty($_POST['boton_reg'])){
 
             $consulta = "INSERT INTO datos_personales (id_dato_personal, nombre, apellido, cedula, edad, fecha_nacimiento, telefono_1,
             telefono_2, correo, id_discapacidad, id_alergia, fecha_registro) VALUES (NULL, '$nombre', '$apellido', '$cedula',
-            '$edad', '$nacimiento', '$telefono_1', '$telefono_2', '$correo', '$discapacidad', '$alergia', now())";
+            '$edad', '$nacimiento', '$telefonoCP_1', '$telefonoCP_2', '$correo', '$discapacidad', '$alergia', now())";
             $query = mysqli_query($conexion, $consulta);
 
-            if ($query){
+            if ($query) {
                 $consulta = "SELECT id_dato_personal FROM datos_personales WHERE cedula = '$cedula'";
                 $query = mysqli_query($conexion, $consulta);
-        
+
                 $respuesta = mysqli_fetch_array($query);
                 $idDatoPersonal = $respuesta['id_dato_personal'];
 
@@ -63,18 +69,22 @@ if (!empty($_POST['boton_reg'])){
                 VALUES (NULL, '$usuario', '$clave', '$idDatoPersonal', '$tipoUsuario', '$statusUsuario')";
                 $query = mysqli_query($conexion, $consulta);
 
-                if($query){
-                    $_SESSION['mensaje'] = 1;
-                    header ("location: login.php");
-                }else{
-                    $_SESSION['mensaje'] = 2;
-                    header ("location: login.php");
+                if ($query) {
+                    session_start();
+                    $_SESSION['mensaje'] = "Usuario Registrado Exitosamente";
+                    $_SESSION['error'] = 2;
+                    header("location: login.php");
+                } else {
+                    session_start();
+                    $_SESSION['mensaje'] = "Error al Intentar registrar usuario";
+                    $_SESSION['error'] = 1;
+                    header("location: login.php");
                 }
-            }
-            else{
-                ?>
-                <div class= "alerta">No se pudo realizar el registro</div> 
-                <?php
+            } else {
+                session_start();
+                $_SESSION['mensaje'] = "No se pudo registrar usuario";
+                $_SESSION['error'] = 1;
+                header("location: login.php");
             }
         }
     }

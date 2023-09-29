@@ -9,11 +9,13 @@ $fechaAtencion = $_POST['fechaAtencion'];
 $horaInicio = $_POST['hora_inicio'];
 $horaFin = $_POST['hora_fin'];
 
-if (strtotime($horaInicio) >= strtotime($horaFin)) {
+if (strtotime($horaInicio) >= strtotime($horaFin)){
     session_start();
     $_SESSION['mensaje'] = "La hora de inicio no puede <br>ser mayor que la hora de finalización";
+    $_SESSION['error'] = 1;
     header("location: ../../admin/processPatient.php?id=" . $idConsulta);
-} else {
+}
+else{
     // FECHA DE ATENCIÓN
     include '../orderDate.php';
     $diaSemana = diaSemana($fechaAtencion); // Saber que día de la semana cae
@@ -32,11 +34,7 @@ if (strtotime($horaInicio) >= strtotime($horaFin)) {
     $consulta = "UPDATE consultas SET id_status_consulta = 2, hora_inicio = '$horaInicio', hora_fin = '$horaFin' WHERE id_consulta = '$idConsulta'";
     $query = mysqli_query($conexion, $consulta);
 
-    if ($query) {
-        // session_start();
-        // $_SESSION['mensaje'] = "Cita procesada de manera exitosa";
-        // $_SESSION['error'] = 2;
-        // header("location: ../../admin/toConfirm.php");
+    if ($query){
 
         // OBTENER EL ID DEL PACIENTE QUE SERÁ ATENDIDO
         $consulta = "SELECT id_paciente FROM consultas WHERE id_consulta = '$idConsulta'";
@@ -61,7 +59,7 @@ if (strtotime($horaInicio) >= strtotime($horaFin)) {
 
         $mail = new PHPMailer(true);
 
-        try {
+        try{
             // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
@@ -108,5 +106,3 @@ if (strtotime($horaInicio) >= strtotime($horaFin)) {
         header("location: ../../admin/toConfirm.php");
     }
 }
-
-?>

@@ -8,23 +8,21 @@
 
 <div class="modal display">
     <div class="flex-container">
-        <form method="POST" id="formulario" class="form-login">
+        <form method="POST" action="../client/insert/registerCita.php" id="formulario" class="form-login">
             <div class="header__form">
                 <h2>Agendar una Cita</h2> <span class="icon-cross xModal"></span>
             </div>
 
             <?php
             include '../client/connection.php'; //Conexión con base de datos
-            include '../client/insert/registerCita.php';
             ?>
-            
+
             <div class="searchPatients">
-                <div class="inputs">
-                    <div class="inputRecibe">
-                        <label for="search"> Buscar pacientes: </label><input type="text" placeholder="Datos del Paciente:" name="search2" id="search2">
-                    </div>
+                <label for="search"> Buscar pacientes: </label>
+                <div class="search__patients">
+                    <input type="text" placeholder="Datos del Paciente:" name="search2" id="search2">
+                    <select id="filter2" name="id_paciente" class="display input__form"></select>
                 </div>
-                <select id="filter2" name="id_paciente" class="display input__form"></select>
             </div>
 
             <label>Tipo de Paciente: </label>
@@ -32,11 +30,12 @@
                 <option value="0"></option>
                 <option value="1">Particular</option>
                 <option value="2">Asegurado</option>
+
             </select>
 
             <label>Motivo de la Consulta: </label>
             <select name="causa" id="causa">
-                    
+
             </select>
 
             <?php
@@ -46,9 +45,20 @@
             ?>
             <label>Fecha de Atención:</label>
             <input type="date" required name="atencion" min="<?= $fechaActual; ?>" class="input__form" id="atencion">
-            <div id="blockedDate">
+            <div id="blockedDate"></div>
 
-            </div>
+            <script>
+                const formulario = document.querySelector(".form-login");
+
+                formulario.addEventListener("submit", (e)=>{
+                    fechas = document.getElementById("blockedDate");
+                    if(fechas.textContent.length != 0){
+                        e.preventDefault();
+                    }else{
+                        return true;
+                    }
+                })
+            </script>
 
             <label>Turno:</label>
             <div class="seleccion">

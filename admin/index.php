@@ -9,14 +9,10 @@ $fechaActual = date("Y-m-d");
 
 <!DOCTYPE html>
 <html lang="es">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!-- FAVICON -->
-        <link rel="icon" type="image/png" href="../img/favicon.png"/>
 
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
@@ -30,12 +26,12 @@ $fechaActual = date("Y-m-d");
         <link rel="stylesheet" href="../Iconos/style.css">
 
         <!-- LETRAS UTILIZADAS -->
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
         <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
@@ -47,21 +43,17 @@ $fechaActual = date("Y-m-d");
         include 'components/menu.html';
         include 'components/menu2.php';
 
-        if(isset($_SESSION['mensaje']) && isset($_SESSION['error']) && $_SESSION['error'] == 2){
-            ?> <div class="messagge messagge__success"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
-            unset($_SESSION['mensaje']);
-            unset($_SESSION['error']);
-        }else if(isset($_SESSION['mensaje']) && isset($_SESSION['error']) && $_SESSION['error'] == 1){
-            ?> <div class="messagge messagge__error"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
-            unset($_SESSION['mensaje']);
-            unset($_SESSION['error']);
-        }
+        include '../client/messagge.php'
 
         //RESPONSIVE TABLE
         include 'responsive/header.php';
 
         //MARCAR COMO ATENIDAS LAS CONSULTAS QUE LA DOCTORA OLVIDÓ
         include '../client/clearStatus2.php';
+
+        //ACTUALIZAR EDAD DE USUARIOS EN CASO DE SER NECESARIO
+        include '../client/connection.php';;
+        include '../client/update/updateOldYear.php';
 
         //MODAL PARA ELIMINAR PACIENTES
         include 'parts/modal.php';
@@ -117,8 +109,7 @@ $fechaActual = date("Y-m-d");
                             <td><?php echo $resultado['causa_consulta']; ?></td>
                             <td><?php echo $horaInicio . " - " . $horaFin; ?></td>
                             <td><?php echo $resultado['telefono_1'] . "<br>" . $resultado['telefono_2']; ?></td>
-                            <td>
-                                <a href="../client/botones/attend.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-checkmark1 icon atend"></i></button></a>
+                            <td><a href="../client/botones/attend.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-checkmark1 icon atend"></i></button></a>
                                 <a href="../client/botones/cancel.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon cancel"></i></button></a>
                             </td>
                         </tr>
@@ -180,5 +171,4 @@ $fechaActual = date("Y-m-d");
         <script src="js/modal.js"></script>
         <script src="../js/messagge.js"></script>
     </body>
-
 </html>

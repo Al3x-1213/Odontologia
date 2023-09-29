@@ -14,7 +14,7 @@ $query->execute([$buscar]);
 $contenido = "";
 
 while ($resultado = $query->fetch(PDO::FETCH_ASSOC)){
-    $contenido .= "<p class='paragraf__error'>Número de cédula registrado <i class='icon-warning'></i></p>";
+    $contenido .= "<p class='paragraf__error3'>Esta cedula ya se encuentra registrada</p>";
 }
 
 echo json_encode($contenido, JSON_UNESCAPED_UNICODE);

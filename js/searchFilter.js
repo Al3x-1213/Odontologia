@@ -1,9 +1,14 @@
 document.getElementById("usuario").addEventListener("keyup", filtrarInformacion);
+document.getElementById("usuario").addEventListener("blur", filtrarInformacion);
 document.getElementById("cedula").addEventListener("keyup", filtrarInformacion1);
+document.getElementById("cedula").addEventListener("blur", filtrarInformacion1);
+
+var filtroUser;
+var filtroIc;
 
 function filtrarInformacion() {
     let inputBuscar = document.getElementById("usuario").value;
-    let filtro = document.querySelector(".filterUsuario");
+    filtroUser = document.querySelector(".filterUsuario");
 
     if (inputBuscar.length > 0) {
         let contenido = new FormData()
@@ -15,19 +20,28 @@ function filtrarInformacion() {
             mode: "cors"
         }).then(response => response.json())
             .then(data => {
-                filtro.style.display = 'block'
-                filtro.innerHTML = data
+                filtroUser.innerHTML = data
+                if (filtroUser.textContent.length != 0) {
+                    document.querySelector(`#grupo_usuario .icon-checkmark1`).classList.add("display");
+                    document.querySelector(`#grupo_usuario .input__form`).classList.remove("success");
+            
+                    document.querySelector(`#grupo_usuario .icon-warning`).classList.remove("display");
+                    document.querySelector(`#grupo_usuario .input__form`).classList.remove("base");
+                    document.querySelector(`#grupo_usuario .input__form`).classList.add("error");
+                }else{
+                    document.querySelector(`#grupo_usuario .icon-warning`).classList.add("display");
+                    document.querySelector(`#grupo_usuario .input__form`).classList.add("base");
+                    document.querySelector(`#grupo_usuario .input__form`).classList.remove("error");
+                }
             })
-            // .catch(error => console.log(error))
-    }
-    else {
+    } else {
         filtro.style.display = 'none'
     }
 }
 
 function filtrarInformacion1() {
     let inputBuscar = document.getElementById("cedula").value;
-    let filtro = document.querySelector(".filterCedula");
+    filtroIc = document.querySelector(".filterCedula");
 
     if (inputBuscar.length > 0) {
         let contenido = new FormData()
@@ -39,12 +53,28 @@ function filtrarInformacion1() {
             mode: "cors"
         }).then(response => response.json())
             .then(data => {
-                filtro.style.display = 'block'
-                filtro.innerHTML = data
+                filtroIc.innerHTML = data
+                if (filtroIc.textContent.length != 0) {
+                    document.querySelector(`#grupo_cedula .icon-checkmark1`).classList.add("display");
+                    document.querySelector(`#grupo_cedula .input__form`).classList.remove("success");
+            
+                    document.querySelector(`#grupo_cedula .icon-warning`).classList.remove("display");
+                    document.querySelector(`#grupo_cedula .input__form`).classList.remove("base");
+                    document.querySelector(`#grupo_cedula .input__form`).classList.add("error");
+                }else{
+                    document.querySelector(`#grupo_cedula .icon-warning`).classList.add("display");
+                    document.querySelector(`#grupo_cedula .input__form`).classList.add("base");
+                    document.querySelector(`#grupo_cedula .input__form`).classList.remove("error");
+                }
             })
-            // .catch(error => console.log(error))
-    }
-    else {
-        filtro.style.display = 'none'
     }
 }
+
+
+formulario.addEventListener("submit", (e) => {
+    if (filtroUser.textContent.length == 0 && filtroIc.textContent.length == 0) {
+        return true;
+    } else {
+        e.preventDefault();
+    }
+})

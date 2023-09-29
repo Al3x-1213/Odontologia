@@ -21,13 +21,13 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="styles/modal.css">
         <link rel="stylesheet" href="../Iconos/style.css">
 
-        <!-- LETRAS UTILIZADAS
+        <!-- LETRAS UTILIZADAS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
         <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
@@ -39,11 +39,8 @@ include '../client/orderDate.php';
 
         //RESPONSIVE TABLE
         include 'responsive/header.php';
-        
-        if(isset($_SESSION['mensaje'])){
-            ?> <div class="messagge messagge__error"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
-            unset($_SESSION['mensaje']);
-        }
+        include '../client/messagge.php';
+
 
         $idConsulta = $_GET['id'];
 
@@ -158,48 +155,6 @@ include '../client/orderDate.php';
                 </tbody>
             </table>
         </div>
-
-        <!-- <div class="table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Paciente</th>
-                        <th>Cédula</th>
-                        <th>Edad</th>
-                        <th>Motivo de la Consulta</th>
-                        <th>Teléfono</th>
-                        <th>Hora de Atención</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-                    // $fechaAtencion = $resultado['fecha_atencion'];
-
-                    // $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
-                    // ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
-                    // AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-                    // WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaAtencion'
-                    // ORDER BY hora_inicio ASC";
-                    // $query = mysqli_query($conexion, $consulta);
-
-                    // while ($resultado = mysqli_fetch_array($query)){
-                    //     $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
-                    //     $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
-                    ?>
-                        <tr>
-                            <td><?php echo $resultado['nombre']. " ". $resultado['apellido']; ?></td>
-                            <td><?php echo $resultado['cedula']; ?></td>
-                            <td><?php echo $resultado['edad']; ?></td>
-                            <td><?php echo $resultado['causa_consulta']; ?></td>
-                            <td><?php echo $resultado['telefono_1']. "<br>". $resultado['telefono_2']; ?></td>
-                            <td><?php echo $horaInicio. " - ". $horaFin; ?></td>
-                        </tr>
-                    <?php
-                    // }
-                    ?>
-                </tbody>
-            </table>
-        </div> -->
         
         <div class="space"></div>
 
@@ -216,6 +171,3 @@ include '../client/orderDate.php';
         <script src="../js/messagge.js"></script>
     </body>
 </html>
-
-<!-- <td><?php echo $resultado['nombre']. " ". $resultado['apellido']; ?></td> -->
-<!-- . "<br>". $resultado['causa_consulta']. "<br>". $horaInicio. " - ". $horaFin -->

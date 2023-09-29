@@ -14,7 +14,7 @@ $query->execute([$buscar]);
 $contenido = "";
 
 while ($resultado = $query->fetch(PDO::FETCH_ASSOC)){
-    $contenido .= "<p class='paragraf__error'>Nombre de usuario registrado <i class='icon-warning'></i></p>";
+    $contenido .= "<p class='paragraf__error3'>Este nombre de usuario ya se encuentra registrado</p>";
 }
 
 echo json_encode($contenido, JSON_UNESCAPED_UNICODE);

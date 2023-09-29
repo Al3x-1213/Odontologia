@@ -16,6 +16,7 @@ include '../client/orderDate.php';
 
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
+        <link rel="stylesheet" href="../styles/mensajes.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="styles/footer.css">
@@ -36,6 +37,12 @@ include '../client/orderDate.php';
         <?php
         include 'components/menu.html';
         include 'components/menu2.php';
+
+        include 'components/modal.php';
+
+        include '../client/messagge.php';
+
+        include 'responsive/header.php';
         ?>
 
         <?php
@@ -89,5 +96,14 @@ include '../client/orderDate.php';
             mysqli_close($conexion);
             ?>
         </div>
+
+        <?php
+        
+        include 'components/footer.html';
+
+        ?>
     </body>
+
+    <script src="../js/messagge.js"></script>
+    <script src="js/modal.js"></script>
 </html>

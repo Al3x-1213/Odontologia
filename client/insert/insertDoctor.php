@@ -26,10 +26,10 @@ if (!empty($_POST['boton_reg'])) {
 
         // VERIFICAR QUE AMBAS CONTRASEÑAS SEAN IGUALES
         if ($clave != $claveConfirm) {
-        ?>
-            <div class="alerta">Las contraseñas deben coincidir</div>
-            <div class="alerta">Por favor verificar</div>
-            <?php
+            session_start();
+            $_SESSION['mensaje'] = "las claves deben coincidir";
+            $_SESSION['error'] = 1;
+            header("location: ../../admin/registeredUser.php");
         } else {
             // CALCULAR EDAD
             // include '../client/calcularEdad.php';

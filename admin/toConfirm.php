@@ -26,12 +26,12 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="../Iconos/style.css">
 
         <!-- LETRAS UTILIZADAS -->
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
         <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
@@ -43,15 +43,7 @@ include '../client/orderDate.php';
         //RESPONSIVE TABLE
         include 'responsive/header.php';
 
-        if(isset($_SESSION['mensaje']) && isset($_SESSION['error']) && $_SESSION['error'] == 2){
-            ?> <div class="messagge messagge__success"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
-            unset($_SESSION['mensaje']);
-            unset($_SESSION['error']);
-        }else if(isset($_SESSION['mensaje']) && isset($_SESSION['error']) && $_SESSION['error'] == 1){
-            ?> <div class="messagge messagge__error"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
-            unset($_SESSION['mensaje']);
-            unset($_SESSION['error']);
-        }
+        include '../client/messagge.php';
 
         include '../client/clearStatus3.php';
 

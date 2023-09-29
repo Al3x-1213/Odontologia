@@ -1,5 +1,5 @@
 <?php
-include '../client/verificationSessionPatient.php';
+include '../client/verificationSessionAdmin.php';
 
 include '../client/orderDate.php';
 ?>
@@ -7,36 +7,18 @@ include '../client/orderDate.php';
 <!DOCTYPE html>
 <html lang="es">
 
-<<<<<<< HEAD
-        <!-- FAVICON -->
-        <link rel="icon" type="image/png" href="../img/favicon.png"/>
-
-        <!-- ESTILOS CSS -->
-        <link rel="stylesheet" href="../styles/normalize.css">
-        <link rel="stylesheet" href="styles/menu.css">
-        <link rel="stylesheet" href="styles/menu2.css">
-        <!-- <link rel="stylesheet" href="styles/index.css"> -->
-        <link rel="stylesheet" href="styles/tablasPerfil.css">
-        <link rel="stylesheet" href="styles/iconosEditProfile.css">
-        <link rel="stylesheet" href="styles/footer.css">
-        <link rel="stylesheet" href="styles/modal.css">
-        <link rel="stylesheet" href="../Iconos/style.css">
-=======
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
->>>>>>> 9b9d086bcecced9c3d0cd6cc524b8edad033f730
 
     <!-- ESTILOS CSS -->
     <link rel="stylesheet" href="../styles/normalize.css">
     <link rel="stylesheet" href="../styles/mensajes.css">
     <link rel="stylesheet" href="styles/menu.css">
     <link rel="stylesheet" href="styles/menu2.css">
-    <link rel="stylesheet" href="styles/tablasPerfil.css">
-    <link rel="stylesheet" href="styles/iconosEditProfile.css">
+    <link rel="stylesheet" href="styles/editProfile.css">
     <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/modal.css">
     <link rel="stylesheet" href="../Iconos/style.css">
 
     <!-- LETRAS UTILIZADAS -->
@@ -151,7 +133,7 @@ include '../client/orderDate.php';
                         </div>
                         <div class="row b">
                             <div class="column">Contraseña</div>
-                            <div class="column" id="password">
+                            <div class="column password">
                                 <?php
                                 $clave = $resultado['clave'];
                                 $claveArray = str_split($clave);
@@ -175,6 +157,6 @@ include '../client/orderDate.php';
     ?>
 </body>
 <script src="js/editarPerfil.js"></script>
-<script src="js/messagge.js"></script>
+<script src="../js/messagge.js"></script>
 
 </html>

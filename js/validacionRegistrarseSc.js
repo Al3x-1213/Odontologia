@@ -32,7 +32,7 @@ function CharacterUpper(str) {
     return regex.test(str);
 }
 
-var usuario = false, clave = false, clave2 = false, nombre = false, apellido = false, cedula = false, nacimiento = false, telefono1 = false, telefono2 = true, correo = false;
+var usuario = false, clave = false, clave2 = false, cedula = false;
 
 var claves = [];
 
@@ -55,32 +55,6 @@ const error = (grupo, error) => {
     document.querySelector(`#grupo_${grupo} .input__form`).classList.remove("base");
     document.querySelector(`#grupo_${grupo} .input__form`).classList.add("error");
     document.querySelector(`#grupo_${grupo} .paragraf__error${error}`).style.display = "block";
-}
-
-const getDate = ()=>{
-    var fecha = new Date();
-    year = fecha.getFullYear();
-    month = fecha.getMonth()+1;
-    day = fecha.getDate();
-    return date = [year, month, day];
-}
-
-const compareDate = (born)=>{
-    date = getDate();
-    born = born.split("-");
-    if(!(born[0] < date[0])){
-        if(!(born[1] < date[1])){
-            if(!(born[2] <= date[2])){
-                return false;
-            }else{
-                return true;
-            }
-        }else{
-            return true;
-        }
-    }else{
-        return true;
-    }
 }
 
 const validarFormulario = (e) => {
@@ -130,32 +104,6 @@ const validarFormulario = (e) => {
                 clave2 = false;
             }
         break;
-        case "nombre":
-            if(!(expresiones.nombre.test(e.target.value))){
-                nombre = false;
-                if(CharacterNoAllowN(e.target.value)){
-                    error(e.target.name, 2);
-                }else{
-                    error(e.target.name, 1);
-                }
-            }else{
-                success(e.target.name);
-                nombre = true;
-            }
-        break;
-        case "apellido":
-            if(!(expresiones.nombre.test(e.target.value))){
-                apellido = false;
-                if(CharacterNoAllowN(e.target.value)){
-                    error(e.target.name, 2);
-                }else{
-                    error(e.target.name, 1);
-                }
-            }else{
-                success(e.target.name);
-                apellido = true;
-            }
-        break;
         case "cedula":
             if(expresiones.cedula.test(e.target.value)){
                 success(e.target.name);
@@ -168,48 +116,6 @@ const validarFormulario = (e) => {
                 cedula = false;
             }
         break;
-        case "nacimiento":
-            if(compareDate(e.target.value)){
-                nacimiento = true;
-            }else{
-                nacimiento = false;
-            }
-        case "telefono1":
-            if(expresiones.telefono.test(e.target.value)){
-                success(e.target.name);
-                telefono1 = true;
-            }else if(CharacterNoAllowC(e.target.value)){
-                error(e.target.name, 2);
-                telefono1 = false;
-            }else{
-                error(e.target.name, 1);
-                telefono1 = false;
-            }
-        break;
-        case "telefono2":
-            if(e.target.value.length == 0 || e.target.value.length == 7){
-                success(e.target.name);
-                telefono2 = true;
-            }else if(CharacterNoAllowC(e.target.value)){
-                error(e.target.name, 2);
-                telefono2 = false;
-            }else{
-                error(e.target.name, 1);
-                telefono2 = false;
-            }
-        break;
-        case "correo":
-            if(expresiones.correo.test(e.target.value)){
-                success(e.target.name);
-                correo = true;
-            }else if(e.target.value.lenght <= 11 || e.target.value.lenght > 60){
-                error(e.target.name, 2);
-                correo = false;
-            }else{
-                error(e.target.name, 1);
-                correo = false;
-            }
-        break;
     };
 }
 
@@ -218,7 +124,7 @@ inputs.forEach(input => {
 });
 
 formulario.addEventListener("submit", (e)=>{
-    if(usuario && clave && clave2 && nombre && apellido && cedula && nacimiento && telefono1 && telefono2 && correo){
+    if(usuario && clave && clave2 && cedula){
         return true;
     }else{
         e.preventDefault();
