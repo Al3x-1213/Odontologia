@@ -54,21 +54,30 @@
             <label for="correo">Correo Electrónico:</label>
             <input type="email" maxlength="60" required name="correo" class="input__form" autocomplete="off">
 
-            <!------------------------------------------------>
+            <?php
+            // CONSULTAR A BASE DE DATOS LAS DISCAPACIDADES E IMPRIMIRLOS COMO OPCIÓN
+            include '../client/connection.php';
 
-            <label>¿Tiene alguna Discapacidad?:</label>
-            <div class="hora">
-                <input type="radio" required value="2" name="discapacidad" class=""> Sí
-                <input type="radio" required value="1" name="discapacidad" class=""> No
-            </div>
+            $consulta = "SELECT * FROM discapacidades";
+            $query = mysqli_query($conexion, $consulta)
+            ?>
+            <label>¿Tiene alguna Discapacidad:</label>
+            <select name="discapacidad">
+                <option value="0"></option>
+                <?php
+                while ($resultado = mysqli_fetch_array($query)) {
+                ?>
+                    <option value="<?php echo $resultado['id_discapacidad']; ?>"><?php echo $resultado['discapacidad']; ?></option>
+                <?php
+                }
+                ?>
+            </select>
 
             <label>¿Tiene alguna Alergia?:</label>
             <div class="hora">
                 <input type="radio" required value="2" name="alergia" class=""> Sí
                 <input type="radio" required value="1" name="alergia" class=""> No
             </div>
-
-            <!------------------------------------------------>
 
             <div class="buttons__form">
                 <input type="reset" value="Borrar" name="clear" class="button__form">

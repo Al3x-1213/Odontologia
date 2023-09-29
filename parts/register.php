@@ -197,11 +197,24 @@ session_destroy();
                 </div>
             </div>
 
+            <?php
+            // CONSULTAR A BASE DE DATOS LAS DISCAPACIDADES E IMPRIMIRLOS COMO OPCIÓN
+            include '../client/connection.php';
+
+            $consulta = "SELECT * FROM discapacidades";
+            $query = mysqli_query($conexion, $consulta)
+            ?>
             <label>¿Tiene alguna Discapacidad:</label>
-            <div class="hora">
-                <input type="radio"  value="2" name="discapacidad"> Sí
-                <input type="radio"  value="1" name="discapacidad"> No
-            </div>
+            <select name="discapacidad">
+                <option value="0"></option>
+                <?php
+                while ($resultado = mysqli_fetch_array($query)) {
+                ?>
+                    <option value="<?php echo $resultado['id_discapacidad']; ?>"><?php echo $resultado['discapacidad']; ?></option>
+                <?php
+                }
+                ?>
+            </select>
 
             <label>¿Es alergico a algun medicamento:</label>
             <div class="hora">
