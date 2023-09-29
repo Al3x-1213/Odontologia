@@ -92,11 +92,9 @@ include '../client/verificationSessionPatient.php';
                 <select name="doctor">
                     <option value="0"></option>
                     <?php
-                    $i = 0;
                     while ($resultado = mysqli_fetch_array($query)) {
-                        $i = $i + 1;
                     ?>
-                        <option value="<?php echo $i; ?>"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></option>
+                        <option value="<?php echo $resultado['id_dato_personal']; ?>"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></option>
                     <?php
                     }
                     ?>
