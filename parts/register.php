@@ -1,7 +1,6 @@
 <?php
 session_start();
 ob_start();
-session_destroy();
 ?>
 
 
@@ -29,6 +28,11 @@ session_destroy();
 </head>
 
 <body>
+
+    <?php 
+    include '../client/messagge.php';
+    ?>
+    
     <div class="flex__container">
         <form method="POST" id="formulario" class="form">
 
@@ -222,5 +226,6 @@ session_destroy();
 </body>
 
 <script src="../js/validacionRegistrarse.js"></script>
+<script src="../js/messagge.js"></script>
 <script src="../js/searchFilter.js"></script>
 </html>
