@@ -80,82 +80,88 @@ $fechaActual = date("Y-m-d");
             <!-- CITAS POR ATENDER -->
             <h2 class="dia"><?php echo ordenarFecha($fechaActual); ?></h2>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Paciente</th>
-                        <th>Cédula</th>
-                        <th>Motivo de la Consulta</th>
-                        <th>Hora de Atención</th>
-                        <th>Teléfono</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores
-                            ON consultas.id_paciente = datos_personales.id_dato_personal AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
-                            WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$idDoctor'
-                            ORDER BY hora_inicio ASC";
-                    $query = mysqli_query($conexion, $consulta);
-
-                    while ($resultado = mysqli_fetch_array($query)) {
-                        $horaInicio = date("g:i a", strtotime($resultado['hora_inicio']));
-                        $horaFin = date("g:i a", strtotime($resultado['hora_fin']));
-                    ?>
+            <div class="table">
+                <table>
+                    <thead>
                         <tr>
-                            <td><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></td>
-                            <td><?php echo $resultado['cedula']; ?></td>
-                            <td><?php echo $resultado['causa_consulta']; ?></td>
-                            <td><?php echo $horaInicio . " - " . $horaFin; ?></td>
-                            <td><?php echo $resultado['telefono_1'] . "<br>" . $resultado['telefono_2']; ?></td>
-                            <td><a href="../client/botones/attend.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-checkmark1 icon atend"></i></button></a>
-                                <a href="../client/botones/cancel.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon cancel"></i></button></a>
-                            </td>
+                            <th>Paciente</th>
+                            <th>Cédula</th>
+                            <th>Motivo de la Consulta</th>
+                            <th>Hora de Atención</th>
+                            <th>Teléfono</th>
+                            <th>Acciones</th>
                         </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores
+                                ON consultas.id_paciente = datos_personales.id_dato_personal AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
+                                WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$idDoctor'
+                                ORDER BY hora_inicio ASC";
+                        $query = mysqli_query($conexion, $consulta);
+
+                        while ($resultado = mysqli_fetch_array($query)) {
+                            $horaInicio = date("g:i a", strtotime($resultado['hora_inicio']));
+                            $horaFin = date("g:i a", strtotime($resultado['hora_fin']));
+                        ?>
+                            <tr>
+                                <td><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></td>
+                                <td><?php echo $resultado['cedula']; ?></td>
+                                <td><?php echo $resultado['causa_consulta']; ?></td>
+                                <td><?php echo $horaInicio . " - " . $horaFin; ?></td>
+                                <td><?php echo $resultado['telefono_1'] . "<br>" . $resultado['telefono_2']; ?></td>
+                                <td><a href="../client/botones/attend.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-checkmark1 icon atend"></i></button></a>
+                                    <a href="../client/botones/cancel.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon cancel"></i></button></a>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            
 
             <!-- CITAS ATENDIDAS -->
             <h2 class="dia"> Atendidos </h2>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Paciente</th>
-                        <th>Cédula</th>
-                        <th>Motivo de la Consulta</th>
-                        <th>Hora de Atención</th>
-                        <th>Teléfono</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores
-                            ON consultas.id_paciente = datos_personales.id_dato_personal AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
-                            WHERE consultas.id_status_consulta = 1 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$idDoctor'
-                            ORDER BY hora_inicio DESC";
-                    $query = mysqli_query($conexion, $consulta);
-
-                    while ($resultado = mysqli_fetch_array($query)) {
-                        $horaInicio = date("g:i a", strtotime($resultado['hora_inicio']));
-                        $horaFin = date("g:i a", strtotime($resultado['hora_fin']));
-                    ?>
+            <div class="table">
+                <table>
+                    <thead>
                         <tr>
-                            <td><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></td>
-                            <td><?php echo $resultado['cedula']; ?></td>
-                            <td><?php echo $resultado['causa_consulta']; ?></td>
-                            <td><?php echo $horaInicio . " - " . $horaFin; ?></td>
-                            <td><?php echo $resultado['telefono_1'] . "<br>" . $resultado['telefono_2']; ?></td>
+                            <th>Paciente</th>
+                            <th>Cédula</th>
+                            <th>Motivo de la Consulta</th>
+                            <th>Hora de Atención</th>
+                            <th>Teléfono</th>
                         </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores
+                                ON consultas.id_paciente = datos_personales.id_dato_personal AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
+                                WHERE consultas.id_status_consulta = 1 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$idDoctor'
+                                ORDER BY hora_inicio DESC";
+                        $query = mysqli_query($conexion, $consulta);
+
+                        while ($resultado = mysqli_fetch_array($query)) {
+                            $horaInicio = date("g:i a", strtotime($resultado['hora_inicio']));
+                            $horaFin = date("g:i a", strtotime($resultado['hora_fin']));
+                        ?>
+                            <tr>
+                                <td><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></td>
+                                <td><?php echo $resultado['cedula']; ?></td>
+                                <td><?php echo $resultado['causa_consulta']; ?></td>
+                                <td><?php echo $horaInicio . " - " . $horaFin; ?></td>
+                                <td><?php echo $resultado['telefono_1'] . "<br>" . $resultado['telefono_2']; ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            
         <?php
         }
         mysqli_close($conexion);

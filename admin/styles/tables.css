@@ -1,8 +1,14 @@
 /* TABLAS GENERALES */
 
-table{
+.table{
+    display: flex;
+    justify-content: center;
     margin-top: 40px;
-    width: 95%;
+
+}
+
+table{
+    width: 100%;
     border-collapse: collapse;
     text-align: center;
 }
