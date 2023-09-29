@@ -170,7 +170,7 @@
             $consulta = "SELECT * FROM discapacidades";
             $query = mysqli_query($conexion, $consulta)
             ?>
-            <label>¿Tiene alguna Discapacidad:</label>
+            <label>¿Tiene alguna discapacidad?</label>
             <select name="discapacidad">
                 <option value="0"></option>
                 <?php

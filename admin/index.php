@@ -43,7 +43,7 @@ $fechaActual = date("Y-m-d");
         include 'components/menu.html';
         include 'components/menu2.php';
 
-        include '../client/messagge.php'
+        include '../client/messagge.php';
 
         //RESPONSIVE TABLE
         include 'responsive/header.php';
@@ -52,7 +52,7 @@ $fechaActual = date("Y-m-d");
         include '../client/clearStatus2.php';
 
         //ACTUALIZAR EDAD DE USUARIOS EN CASO DE SER NECESARIO
-        include '../client/connection.php';;
+        include '../client/connection.php';
         include '../client/update/updateOldYear.php';
 
         //MODAL PARA ELIMINAR PACIENTES

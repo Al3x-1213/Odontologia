@@ -15,5 +15,5 @@ function filtrarInformacion() {
         .then(data => {
             filtro.innerHTML = data
         })
-        .catch(error => console.log(error))
+        // .catch(error => console.log(error))
 }

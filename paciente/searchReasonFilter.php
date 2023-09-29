@@ -29,7 +29,7 @@ elseif ($tipoPaciente == 1){
         $contenido .= '<option value="'. $respuesta['id_causa_consulta']. '">'. $respuesta['codigo']. ' - '. $respuesta['causa_consulta']. '</option>';
     }
 }
-elseif ($tipoPaciente == 0){
+else{
     $contenido = '<option value="0"></option>';
 }
 

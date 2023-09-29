@@ -56,17 +56,12 @@
   background: #ff5050;
   color: #aa0000;
 }
-
-<<<<<<< HEAD
-=======
 .messagge__info {
   border: 1px solid #004bee;
   background: #649ee0;
   color: #004bee;
 }
 
-
->>>>>>> 9b9d086bcecced9c3d0cd6cc524b8edad033f730
 .messagge__icon {
   cursor: pointer;
 }
