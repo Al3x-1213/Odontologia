@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-session_destroy();
+// session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +11,9 @@ session_destroy();
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- FAVICON -->
+        <link rel="icon" type="image/png" href="img/favicon.png"/>
 
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="styles/normalize.css">
@@ -27,6 +30,10 @@ session_destroy();
     </head>
 
     <body>
+        <?php 
+        include 'client/messagge.php';
+        ?>
+
         <div class="flex__container">
             <form class="form__recover" method="POST">
 
@@ -53,4 +60,5 @@ session_destroy();
             </form>
         </div>
     </body>
+    <script src="js/messagge.js"></script>
 </html>

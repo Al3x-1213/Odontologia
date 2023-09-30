@@ -2,22 +2,15 @@
 
 if (!empty($_POST['boton_reg'])) {
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
-    if (empty($_POST['usuario']) || empty($_POST['clave']) || empty($_POST['clave2']) || empty($_POST['nombre'])
-        || empty($_POST['apellido']) || empty($_POST['cedula']) || empty($_POST['nacimiento']) || empty($_POST['prefNumber1'])
-        || empty($_POST['telefono1']) || empty($_POST['correo']) || empty($_POST['discapacidad']) || empty($_POST['alergia'])){
+    if (empty($_POST['usuario']) || empty($_POST['clave']) || empty($_POST['clave2']) || empty($_POST['nombre']) || empty($_POST['apellido'])
+        || empty($_POST['cedula']) || empty($_POST['nacimiento']) || empty($_POST['prefNumber1']) || empty($_POST['telefono1'])
+        || empty($_POST['correo']) || empty($_POST['discapacidad']) || empty($_POST['alergia'])){
         session_start();
         $_SESSION['mensaje'] = "No deben haber campos vacios";
         $_SESSION['error'] = 1;
         header("location: login.php");
     }
     else{
-        // if ((!empty($_POST['telefono2']) && empty($_POST['prefNumber2'])) || (!empty($_POST['prefNumber2']) && empty($_POST['telefono2']))){
-        //     session_start();
-        //     $_SESSION['mensaje'] = "No deben haber campos vacios";
-        //     $_SESSION['error'] = 1;
-        //     header("location: login.php");
-        // }
-
         //DATOS DEL FORMULARIO DE REGISTRO
         $usuario = $_POST['usuario'];
         $clave = $_POST['clave'];

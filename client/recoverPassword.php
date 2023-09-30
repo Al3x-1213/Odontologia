@@ -24,9 +24,10 @@ if (!empty($_POST['button_rec'])){
         $resultado= mysqli_num_rows($query);
 
         if ($resultado == 0){
-            ?>
-            <div class= "alerta">Este usuario no existe</div>
-            <?php
+            session_start();
+            $_SESSION['mensaje'] = "Este usuario no existe";
+            $_SESSION['error'] = 1;
+            header("location: ../parts/recover.php");
         }
         else{
             $respuesta = mysqli_fetch_array($query);
@@ -74,10 +75,16 @@ if (!empty($_POST['button_rec'])){
                 '<b>'. 'Consultorio Odontológico Marisol Díaz'. '</b>';
                 $mail->send();
                 
-                echo "Link para recuperar contraseña enviado correctamente";
+                session_start();
+                $_SESSION['mensaje'] = "Para recuperar tu contraseña accede <br> al link enviado al correo registrado";
+                $_SESSION['error'] = 2;
+                header("location: ../parts/recover.php");
             }
             catch (Exception $e) {
-                echo 'Mensaje ' . $mail->ErrorInfo;
+                session_start();
+                $_SESSION['mensaje'] = "Error al procesar la cita";
+                $_SESSION['error'] = 1;
+                header("location: ../parts/recover.php");
             }
             
         }

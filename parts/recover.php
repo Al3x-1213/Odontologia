@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-session_destroy();
+// session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +28,11 @@ session_destroy();
 
         <title>Marisol Díaz - RECUPERAR CONTRASEÑA</title>
     </head>
-
     <body>
+        <?php 
+        include '../client/messagge.php';
+        ?>
+
         <div class="flex__container">
             <form class="form__recover" method="POST">
                 <a href="login.php"><i class="icon-cross"></i></a>
@@ -49,4 +52,5 @@ session_destroy();
             </form>
         </div>
     </body>
+    <script src="../js/messagge.js"></script>
 </html>
