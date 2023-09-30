@@ -12,18 +12,6 @@ body {
   font-size: 34px;
 }
 
-.table {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 3% auto 2%;
-  font-size: 16px;
-  border: none;
-  box-shadow: 0 0 10px 1px #333;
-  margin-bottom: 5%;
-}
-
 .thead, .tbody {
   padding: 8px;
   border: 1px solid #14a9e9;

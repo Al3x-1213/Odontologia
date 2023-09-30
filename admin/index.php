@@ -67,15 +67,16 @@ $fechaActual = date("Y-m-d");
         include '../client/connection.php';
 
         $consulta = "SELECT * FROM consultas WHERE fecha_atencion = '$fechaActual' AND id_doctor = '$idDoctor'
-            AND id_status_consulta != 3 AND id_status_consulta != 4";
+        AND id_status_consulta != 3 AND id_status_consulta != 4";
         $query = mysqli_query($conexion, $consulta);
 
         // VALIDACIÓN PARA COMPROBAR QUE LA TABLA NO ESTÉ VACIA
         if ($query->num_rows == 0) {
-        ?>
+            ?>
             <h2 class="dia">No Hay Pacientes Por Atender Para Hoy</h2>
-        <?php
-        } else {
+            <?php
+        }
+        else{
         ?>
             <!-- CITAS POR ATENDER -->
             <h2 class="dia"><?php echo ordenarFecha($fechaActual); ?></h2>
