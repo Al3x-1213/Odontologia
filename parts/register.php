@@ -143,7 +143,7 @@ ob_start();
                             <option value="0416">0416</option>
                             <option value="0426">0426</option>
                         </select>
-                        <input type="number" maxlength="11"  name="telefono1" class="input__form phone base" autocomplete="off">
+                        <input type="number" maxlength="7"  name="telefono1" class="input__form phone base" autocomplete="off">
                         <i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i>
                     </div>
                     <div class="paragraf__error1 display">
@@ -166,7 +166,7 @@ ob_start();
                             <option value="0416">0416</option>
                             <option value="0426">0426</option>
                         </select>
-                        <input type="number" maxlength="11" name="telefono2" class="input__form phone base" autocomplete="off">
+                        <input type="number" maxlength="7" name="telefono2" class="input__form phone base" autocomplete="off">
                         <i class="icon-warning display"></i><i class="icon-checkmark1 display"></i>
                     </div>
                     <div class="paragraf__error1 display">

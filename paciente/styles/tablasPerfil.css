@@ -26,18 +26,18 @@ body {
     border-radius: 5px;
 }
 
-.tableAccount {
+/* .tableAccount {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 3%;
-}
+} */
 
-.accountInformation {
+/* .accountInformation {
     width: 70%;
-}
+} */
 
-.thead {
+.thead{
     display: flex;
     padding: 40px 20px 40px 25px;
     font-size: 26px;
@@ -50,16 +50,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* border: solid red 1px; */
 }
 
-.titulo {
+/* .titulo {
     width: 60%;
-}
+} */
 
-.titulo2 {
+/* .titulo2 {
     text-align: center;
     width: 100%;
-}
+} */
 
 .buttonEditable,
 .buttonEditable2 {
@@ -70,7 +71,7 @@ body {
     align-items: center;
 }
 
-input[name="boton_upd"] {
+input[name="button_upd"] {
     font-size: .9em;
     font-weight: bold;
     padding: 5px 7.5px;
@@ -100,6 +101,11 @@ input[name="boton_upd"] {
     height: 30px;
     font-size: 20px;
 }
+
+/* .container{
+    border: solid red 1px;
+
+} */
 
 /* INPUT PARA EDITAR */
 

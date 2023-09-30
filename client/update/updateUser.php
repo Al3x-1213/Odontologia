@@ -1,14 +1,14 @@
 <?php
-include '../verificationSession.php';
-?>
-<?php
+session_start();
+ob_start();
 
-if (!empty($_POST['boton_upd'])){
+if (!empty($_POST['button_upd'])){
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
     if (empty($_POST['usuario'])){
-        ?>
-        <div class= "alerta">No deben haber campos vacios</div>
-        <?php
+        session_start();
+        $_SESSION['mensaje'] = "No deben haber campos vacios";
+        $_SESSION['error'] = 1;
+        header("location: ../../paciente/perfilPaciente.php");
     }
     else{
         // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
@@ -17,26 +17,23 @@ if (!empty($_POST['boton_upd'])){
         //DATOS DEL FORMULARIO
         $usuario = $_POST['usuario'];
 
-        // echo $idUsuario. "<br>";
-        // echo $usuario. "<br>";
-
         //HACER REGISTRO EN BASE DE DATOS
         include '../connection.php'; //Conexión con base de datos
 
         $consulta = "UPDATE cuentas SET usuario = '$usuario' WHERE id_cuenta = '$idUsuario'";
-        // echo $consulta;
         $query = mysqli_query($conexion, $consulta);
 
-        if($query){
+        if ($query){
+            session_start();
+            $_SESSION['mensaje'] = "Usuario actualizado correctamente";
+            $_SESSION['error'] = 2;
             header("location: ../../paciente/perfilPaciente.php");
-            ?>
-            <!-- <div class= "mensaje"><a href= "../perfilPaciente.php">Actualizado correctamente</a></div> -->
-            <?php
         }
         else{
-            ?>
-            <!-- <div class= "alerta">No se pudo actualizar</div> -->
-            <?php
+            session_start();
+            $_SESSION['mensaje'] = "No se pudo actualizar";
+            $_SESSION['error'] = 1;
+            header("location: ../../paciente/perfilPaciente.php");
         }  
     }
 }

@@ -11,17 +11,6 @@ include '../client/orderDate.php';
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- ESTILOS CSS -->
-        <link rel="stylesheet" href="../styles/normalize.css">
-        <link rel="stylesheet" href="../styles/mensajes.css">
-        <link rel="stylesheet" href="styles/menu.css">
-        <link rel="stylesheet" href="styles/menu2.css">
-        <link rel="stylesheet" href="styles/tablasPerfil.css">
-        <link rel="stylesheet" href="styles/iconosEditProfile.css">
-        <link rel="stylesheet" href="styles/footer.css">
-        <link rel="stylesheet" href="styles/modal.css">
-        <link rel="stylesheet" href="../Iconos/style.css">
-
         <!-- FAVICON -->
         <link rel="icon" type="image/png" href="../img/favicon.png"/>
 
@@ -29,6 +18,7 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/menu2.css">
+        <link rel="stylesheet" href="../styles/mensajes.css">
         <!-- <link rel="stylesheet" href="styles/index.css"> -->
         <link rel="stylesheet" href="styles/tablasPerfil.css">
         <link rel="stylesheet" href="styles/iconosEditProfile.css">
@@ -61,16 +51,17 @@ include '../client/orderDate.php';
         // OBTENER LA INFORMACIÓN DEL PACIENTE QUE ESTÁ LOGUEADO
         include '../client/connection.php'; //Conexión con base de datos
 
-        $consulta = "SELECT * FROM datos_personales INNER JOIN cuentas
-            ON datos_personales.id_dato_personal = cuentas.id_dato_personal
-            WHERE id_cuenta = '$idUsuario'";
+        $consulta = "SELECT * FROM datos_personales INNER JOIN cuentas INNER JOIN discapacidades INNER JOIN alergias
+        ON datos_personales.id_dato_personal = cuentas.id_dato_personal AND datos_personales.id_discapacidad = discapacidades.id_discapacidad
+        AND datos_personales.id_alergia = alergias.id_alergia
+        WHERE id_cuenta = '$idUsuario'";
         $query = mysqli_query($conexion, $consulta);
         ?>
 
         <h2 class="dia">Perfil de Usuario</h2>
 
         <?php
-        while ($resultado = mysqli_fetch_array($query)) {
+        while ($resultado = mysqli_fetch_array($query)){
             $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento'])
         ?>
             <div class="tables">
@@ -98,7 +89,7 @@ include '../client/orderDate.php';
                     <div class="thead">
                         <div class="row container">
                             <div class="column titulo">Información de Contacto</div>
-                            <div class="buttonEditable hide"><input type="submit" form="editContactInformation" value="Guardar Cambios" name="boton_upd"></div>
+                            <div class="buttonEditable hide"><input type="submit" form="editContactInformation" value="Guardar Cambios" name="button_upd"></div>
                         </div>
                     </div>
                     <form action="../client/update/updateContactInformation.php" method="post" id="editContactInformation">
@@ -128,12 +119,29 @@ include '../client/orderDate.php';
                     </form>
                 </div>
             </div>
-            <div class="tableAccount">
+
+            <div class="tables">
+                <div class="table medicalInformation">
+                    <div class="thead">
+                        <div class="column">Información Médica</div>
+                    </div>
+                    <div class="tbody">
+                        <div class="row b">
+                            <div class="column">Discapacidad</div>
+                            <div class="column"><?php echo $resultado['discapacidad']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="column">Alergia</div>
+                            <div class="column"><?php echo $resultado['alergia']; ?></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="table accountInformation">
                     <div class="thead">
                         <div class="row container">
-                            <div class="column titulo2">Cuenta de Usuario</div>
-                            <div class="buttonEditable2 hide"><input type="submit" form="editAccountInformation" value="Guardar Cambios" name="boton_upd"></div>
+                            <div class="column titulo">Cuenta de Usuario</div>
+                            <div class="buttonEditable2 hide"><input type="submit" form="editAccountInformation" value="Guardar Cambios" name="button_upd"></div>
                         </div>
                     </div>
                     <form action="../client/update/updateUser.php" method="post" id="editAccountInformation">
@@ -155,7 +163,7 @@ include '../client/orderDate.php';
                                     $contador = 0;
                                     foreach ($claveArray as $elemento) {
                                         $contador = $contador + 1;
-                                        echo "*";
+                                        echo "•";
                                     }
                                     ?>
                                 </div>
@@ -171,5 +179,5 @@ include '../client/orderDate.php';
         ?>
     </body>
     <script src="js/editarPerfil.js"></script>
-    <script src="js/messagge.js"></script>
+    <script src="../js/messagge.js"></script>
 </html>

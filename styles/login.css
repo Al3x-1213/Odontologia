@@ -4,6 +4,10 @@ body {
   background: linear-gradient(100deg, #789DC9, #E67F4F73);
 }
 
+.changePassword{
+  background: linear-gradient(45deg, #789dc9, #EAEDF3);
+}
+
 .flex__container {
   width: 100%;
   height: 100vh;
