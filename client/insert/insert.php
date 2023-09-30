@@ -40,14 +40,7 @@ if (!empty($_POST['boton_reg'])) {
         $telefonoCP_1 = $prefijo1.$telefono_1;
         $telefonoCP_2 = $prefijo2.$telefono_2;
 
-
-        if(strlen($telefonoCP_2) != 11 || strlen($telefonoCP_2) != 0){
-            session_start();
-            $_SESSION['mensaje'] = "No deben haber campos vacios";
-            $_SESSION['error'] = 1;
-            header("location: register.php");
-        }
-        else{
+        if(strlen($telefonoCP_2) == 11 || $telefonoCP_2 == 0){
             // VERIFICAR QUE AMBAS CONTRASEÑAS SEAN IGUALES
             if ($clave != $claveConfirm){
                 session_start();
@@ -56,6 +49,10 @@ if (!empty($_POST['boton_reg'])) {
                 header("location: login.php");
             }
             else{
+                if ($telefonoCP_2 == 0){
+                    $telefonoCP_2 = "";
+                }
+
                 // CALCULAR EDAD
                 // include '../calcularEdad.php';
                 include '../client/calcularEdad.php';
@@ -103,6 +100,12 @@ if (!empty($_POST['boton_reg'])) {
                     header("location: login.php");
                 }
             }
+        }
+        else{
+            session_start();
+            $_SESSION['mensaje'] = "No deben haber campos vacios";
+            $_SESSION['error'] = 1;
+            header("location: register.php");
         }
     }
 }
