@@ -1,0 +1,46 @@
+/* TABLAS GENERALES */
+
+.table{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td{
+    padding: 10px;
+    border: solid #789dc9 2px;
+}
+
+thead{
+    background: #3e3d3d;
+    height: 50px;
+    max-height: 50px;
+    color: #f0f8ff;
+}
+
+/* MENSAJES */
+
+.status{
+    border-radius: 2px;
+}
+
+.statusAttend{
+    border: 1px solid #0d750d;
+    background: #9dfa9d;
+}
+
+.statusToAttend{
+    border: 1px solid #004bee;
+    background: #649ee0;
+}
+
+.statusToConfirm{
+    border: 1px solid #aa0000;
+    background: #ff5050;
+}
