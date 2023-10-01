@@ -82,7 +82,7 @@ if (!empty($_POST['button_rec'])){
             }
             catch (Exception $e) {
                 session_start();
-                $_SESSION['mensaje'] = "Error al procesar la cita";
+                $_SESSION['mensaje'] = "Error al procesar su solicitud";
                 $_SESSION['error'] = 1;
                 header("location: ../parts/recover.php");
             }
