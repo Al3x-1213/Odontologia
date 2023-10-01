@@ -41,19 +41,20 @@
 
             <?php
             // CONSULTAR A BASE DE DATOS LOS NOMBRES DE LOS DOCTORES E IMPRIMIRLOS COMO OPCIÓN
+            include '../client/connection.php'; //Conexión con base de datos
+
             $consulta = "SELECT * FROM doctores INNER JOIN datos_personales INNER JOIN cuentas
-                ON doctores.id_usuario = cuentas.id_cuenta AND cuentas.id_dato_personal = datos_personales.id_dato_personal";
-            $query = mysqli_query($conexion, $consulta)
+            ON doctores.id_usuario = cuentas.id_cuenta AND cuentas.id_dato_personal = datos_personales.id_dato_personal";
+            $query = mysqli_query($conexion, $consulta);
+            
             ?>
             <label>Doctor: </label>
             <select name="doctor">
                 <option value="0"></option>
                 <?php
-                $i = 0;
-                while ($resultado = mysqli_fetch_array($query)) {
-                    $i = $i + 1;
+                while ($respuesta = mysqli_fetch_array($query)){
                 ?>
-                    <option value="<?php echo $i; ?>"><?php echo $resultado['nombre'] . " " . $resultado['apellido']; ?></option>
+                    <option value="<?php echo $respuesta['id_dato_personal']; ?>"><?php echo $respuesta['nombre'] . " " . $respuesta['apellido']; ?></option>
                 <?php
                 }
                 ?>

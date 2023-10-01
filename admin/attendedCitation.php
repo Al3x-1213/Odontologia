@@ -57,7 +57,7 @@ include '../client/orderDate.php';
         // VALIDACIÓN PARA COMPROBAR QUE LA TABLA NO ESTÉ VACIA
         if ($query->num_rows == 0){
         ?>
-            <h2 class="dia">No Hay Pacientes Por Atender Para Hoy</h2>
+            <h2 class="dia">No Hay Citas Atendidas</h2>
         <?php
         }
         else{

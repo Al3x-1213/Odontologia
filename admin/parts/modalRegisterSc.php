@@ -93,9 +93,21 @@ include '../../client/verificationSessionAdmin.php';
 
                 <div id="grupo_telefono1" class="grupo">
                     <label>Telefono celular:</label>
-                    <div class="input-icon"><input type="number" maxlength="11"  name="telefono1" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                    <div class="input-icon">
+                        <select class="pref__numberPhone" name="prefNumber1" required>
+                            <option value="0"> - </option>
+                            <option value="0212">0212</option>
+                            <option value="0412">0412</option>
+                            <option value="0414">0414</option>
+                            <option value="0424">0424</option>
+                            <option value="0416">0416</option>
+                            <option value="0426">0426</option>
+                        </select>
+                        <input type="number" maxlength="7"  name="telefono1" class="input__form phone base" autocomplete="off">
+                        <i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i>
+                    </div>
                     <div class="paragraf__error1 display">
-                        <p>El campo no debe estar vacío <br>Deben haber 11 digitos</p>
+                        <p>El campo no debe estar vacío <br>Deben haber 7 digitos</p>
                     </div>
                     <div class="paragraf__error2 display">
                         <p>Caracter no permitido</p>
@@ -104,9 +116,21 @@ include '../../client/verificationSessionAdmin.php';
 
                 <div id="grupo_telefono2" class="grupo">
                     <label>Telefono (Opcional):</label>
-                    <div class="input-icon"><input type="number" maxlength="11" name="telefono2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                    <div class="input-icon">
+                        <select class="pref__numberPhone" name="prefNumber2" required>
+                            <option value="0"> - </option>
+                            <option value="0212">0212</option>
+                            <option value="0412">0412</option>
+                            <option value="0414">0414</option>
+                            <option value="0424">0424</option>
+                            <option value="0416">0416</option>
+                            <option value="0426">0426</option>
+                        </select>
+                        <input type="number" maxlength="7" name="telefono2" class="input__form phone base" autocomplete="off">
+                        <i class="icon-warning display"></i><i class="icon-checkmark1 display"></i>
+                    </div>
                     <div class="paragraf__error1 display">
-                        <p>Deben haber 11 digitos</p>
+                        <p>Deben haber 7 digitos</p>
                     </div>
                     <div class="paragraf__error2 display">
                         <p>Caracter no permitido</p>
@@ -124,21 +148,30 @@ include '../../client/verificationSessionAdmin.php';
                     </div>
                 </div>
 
-                <!------------------------------------------------>
+                <?php
+                // CONSULTAR A BASE DE DATOS LAS DISCAPACIDADES E IMPRIMIRLOS COMO OPCIÓN
+                include '../../client/connection.php';
 
-                <label>¿Tiene alguna Discapacidad:</label>
-                <div class="hora">
-                    <input type="radio" required value="2" name="discapacidad" class=""> Sí
-                    <input type="radio" required value="1" name="discapacidad" class=""> No
-                </div>
+                $consulta = "SELECT * FROM discapacidades";
+                $query = mysqli_query($conexion, $consulta)
+                ?>
+                <label>¿Tiene alguna discapacidad?</label>
+                <select name="discapacidad">
+                    <option value="0"></option>
+                    <?php
+                    while ($resultado = mysqli_fetch_array($query)) {
+                    ?>
+                        <option value="<?php echo $resultado['id_discapacidad']; ?>"><?php echo $resultado['discapacidad']; ?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
 
                 <label>¿Tiene alguna Alergia:</label>
                 <div class="hora">
                     <input type="radio" required value="2" name="alergia" class=""> Sí
                     <input type="radio" required value="1" name="alergia" class=""> No
                 </div>
-
-                <!------------------------------------------------>
 
                 <h3>Datos de la Cita: </h3>
 
