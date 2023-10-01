@@ -23,7 +23,7 @@
 <body>
 	<div class="container__menu2">
 		<div class="name__menu2">
-			<a href="editProfile.php">@<?php echo $_SESSION['usuario']; ?></a>
+			<a href="userProfile.php" title="Perfil de Usuario">@<?php echo $_SESSION['usuario']; ?></a>
 		</div>
 		<div class="search__menu2">
 			<div class="searchDate__menu2">

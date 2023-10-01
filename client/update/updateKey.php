@@ -2,12 +2,19 @@
 session_start();
 ob_start();
 
+$tipoUsuario = $_SESSION['tipo_usuario'];
+
 if (!empty($_POST['button_upd'])){
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
     if (empty($_POST['claveAnt']) || empty($_POST['clave']) || empty($_POST['clave2'])){
         $_SESSION['mensaje'] = "No deben haber campos vacios";
         $_SESSION['error'] = 1;
-        header("location: ../../paciente/editarPerfil/editarClave.php");
+        if ($tipoUsuario == 1){
+            header("location: ../../admin/editarPerfil/editarClave.php");
+        }
+        elseif ($tipoUsuario == 2){
+            header("location: ../../paciente/editarPerfil/editarClave.php");
+        }
     }
     else{
         // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
@@ -31,14 +38,24 @@ if (!empty($_POST['button_upd'])){
         if($claveDB != $claveAnt){
             $_SESSION['mensaje'] = "La contraseña no es correcta";
             $_SESSION['error'] = 1;
-            header("location: ../../paciente/editarPerfil/editarClave.php");
+            if ($tipoUsuario == 1){
+                header("location: ../../admin/editarPerfil/editarClave.php");
+            }
+            elseif ($tipoUsuario == 2){
+                header("location: ../../paciente/editarPerfil/editarClave.php");
+            }
         }
         else{
             // VERIFICAR QUE AMBAS CONTRASEÑAS SEAN IGUALES
             if ($clave != $claveConfirm){
                 $_SESSION['mensaje'] = "Las contraseñas deben coincidir";
                 $_SESSION['error'] = 1;
-                header("location: ../../paciente/editarPerfil/editarClave.php");
+                if ($tipoUsuario == 1){
+                    header("location: ../../admin/editarPerfil/editarClave.php");
+                }
+                elseif ($tipoUsuario == 2){
+                    header("location: ../../paciente/editarPerfil/editarClave.php");
+                }
             }
             else{
                 $clave= md5($clave);
@@ -49,12 +66,22 @@ if (!empty($_POST['button_upd'])){
                 if ($query){
                     $_SESSION['mensaje'] = "Contraseña actualizada correctamente";
                     $_SESSION['error'] = 2;
-                    header("location: ../../paciente/perfilPaciente.php");
+                    if ($tipoUsuario == 1){
+                        header("location: ../../admin/userProfile.php");
+                    }
+                    elseif ($tipoUsuario == 2){
+                        header("location: ../../paciente/perfilPaciente.php");
+                    }
                 }
                 else{
                     $_SESSION['mensaje'] = "No se pudo actualizar";
                     $_SESSION['error'] = 1;
-                    header("location: ../../paciente/editarPerfil/editarClave.php");
+                    if ($tipoUsuario == 1){
+                        header("location: ../../admin/editarPerfil/editarClave.php");
+                    }
+                    elseif ($tipoUsuario == 2){
+                        header("location: ../../paciente/editarPerfil/editarClave.php");
+                    }
                 }
             }
         }

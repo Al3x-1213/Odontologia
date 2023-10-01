@@ -2,13 +2,20 @@
 session_start();
 ob_start();
 
+$tipoUsuario = $_SESSION['tipo_usuario'];
+
 if (!empty($_POST['button_upd'])){
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
     if (empty($_POST['usuario'])){
         session_start();
         $_SESSION['mensaje'] = "No deben haber campos vacios";
         $_SESSION['error'] = 1;
-        header("location: ../../paciente/perfilPaciente.php");
+        if ($tipoUsuario == 1){
+            header("location: ../../admin/userProfile.php");
+        }
+        elseif ($tipoUsuario == 2){
+            header("location: ../../paciente/perfilPaciente.php");
+        }
     }
     else{
         // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
@@ -27,13 +34,23 @@ if (!empty($_POST['button_upd'])){
             session_start();
             $_SESSION['mensaje'] = "Usuario actualizado correctamente";
             $_SESSION['error'] = 2;
-            header("location: ../../paciente/perfilPaciente.php");
+            if ($tipoUsuario == 1){
+                header("location: ../../admin/userProfile.php");
+            }
+            elseif ($tipoUsuario == 2){
+                header("location: ../../paciente/perfilPaciente.php");
+            }
         }
         else{
             session_start();
             $_SESSION['mensaje'] = "No se pudo actualizar";
             $_SESSION['error'] = 1;
-            header("location: ../../paciente/perfilPaciente.php");
+            if ($tipoUsuario == 1){
+                header("location: ../../admin/userProfile.php");
+            }
+            elseif ($tipoUsuario == 2){
+                header("location: ../../paciente/perfilPaciente.php");
+            }
         }  
     }
 }

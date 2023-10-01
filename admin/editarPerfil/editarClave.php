@@ -1,5 +1,5 @@
 <?php
-include '../../client/verificationSessionPatient.php';
+include '../../client/verificationSessionAdmin.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ include '../../client/verificationSessionPatient.php';
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
-        <title>Marisol Díaz - PACIENTE</title>
+        <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
 
     <body class="changePassword">
