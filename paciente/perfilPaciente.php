@@ -65,7 +65,7 @@ include '../client/orderDate.php';
             $fechaNacimiento = ordenarFecha($resultado['fecha_nacimiento'])
         ?>
             <div class="tables">
-                <div class="table">
+                <div class="tableEdit">
                     <div class="thead">
                         <div class="column">Información Básica</div>
                     </div>
@@ -85,7 +85,7 @@ include '../client/orderDate.php';
                     </div>
                 </div>
 
-                <div class="table contactInformation">
+                <div class="tableEdit contactInformation">
                     <div class="thead">
                         <div class="row container">
                             <div class="column titulo">Información de Contacto</div>
@@ -98,14 +98,31 @@ include '../client/orderDate.php';
                                 <div class="column">Télefono Principal</div>
                                 <div class="column" id="divEditable1"><?php echo $resultado['telefono_1']; ?></div>
                                 <div class="inputEditable hide" id="inputEditable1">
-                                    <input type="number" maxlength="11" required value="<?php echo $resultado['telefono_1']; ?>" name="telefono1">
+                                    <select name="prefNumber1" class="pref__input">
+                                        <option value="<?php echo substr($resultado['telefono_1'], 0, 4) ?>"> <?php echo substr($resultado['telefono_1'], 0, 4) ?> </option>
+                                        <option value="0212">0212</option>
+                                        <option value="0412">0412</option>
+                                        <option value="0414">0414</option>
+                                        <option value="0424">0424</option>
+                                        <option value="0416">0416</option>
+                                        <option value="0426">0426</option>
+                                        </select><input type="number" maxlength="7" required value="<?php echo substr($resultado['telefono_1'], 4, 10); ?>" name="telefono1">
                                 </div>
                             </div>
                             <div class="row b">
                                 <div class="column">Télefono Secundario</div>
                                 <div class="column" id="divEditable2"><?php echo $resultado['telefono_2']; ?></div>
                                 <div class="inputEditable hide" id="inputEditable2">
-                                    <input type="number" maxlength="11" value="<?php echo $resultado['telefono_2']; ?>" name="telefono2">
+                                    <select name="prefNumber2" class="pref__input">
+                                        <option value="<?php echo substr($resultado['telefono_2'], 0, 4) ?>"> <?php echo substr($resultado['telefono_2'], 0, 4) ?> </option>
+                                        <option value="0">-</option>
+                                        <option value="0212">0212</option>
+                                        <option value="0412">0412</option>
+                                        <option value="0414">0414</option>
+                                        <option value="0424">0424</option>
+                                        <option value="0416">0416</option>
+                                        <option value="0426">0426</option>
+                                    </select><input type="number" maxlength="7" value="<?php echo substr($resultado['telefono_2'], 4, 10); ?>" name="telefono2">
                                 </div>
                             </div>
                             <div class="row">
@@ -121,7 +138,7 @@ include '../client/orderDate.php';
             </div>
 
             <div class="tables">
-                <div class="table medicalInformation">
+                <div class="tableEdit medicalInformation">
                     <div class="thead">
                         <div class="column">Información Médica</div>
                     </div>
@@ -137,7 +154,7 @@ include '../client/orderDate.php';
                     </div>
                 </div>
 
-                <div class="table accountInformation">
+                <div class="tableEdit accountInformation">
                     <div class="thead">
                         <div class="row container">
                             <div class="column titulo">Cuenta de Usuario</div>

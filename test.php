@@ -19,17 +19,15 @@
     </form>
 </body>
 
-<?php 
+<?php
 
-$telefono = $_POST['telefono'];
-$pref = $_POST['pref'];
+$cadena = "04128050440";
 
-$numero = $pref.$telefono;
+$numPre1 =  substr($cadena, 0, 4);
+$num1 =  substr($cadena, 4, 10);
 
-echo "<br><br>".strlen($numero);
-
-if(strlen($numero) != 11){
-    echo "hola mundo";
-}
+echo $cadena. "<br>";
+echo $numPre1. "<br>";
+echo $num1. "<br>";
 ?>
 </html>

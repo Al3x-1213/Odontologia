@@ -3,7 +3,6 @@ session_start();
 ob_start();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -61,8 +60,8 @@ ob_start();
                 <div id="grupo_clave" class="grupo">
                     <label>Contraseña:</label>
                     <div class="input-icon"><input type="password" maxlength="35"  name="clave" class="input__form base" autocomplete="off">
-                    <i class="icon-pencil"></i>
-                    <i class="icon-folder"></i>
+                    <i class="icon-eye"></i>
+                    <i class="icon-eye-blocked display"></i>
                     <i class="icon-warning display"></i> 
                     <i class="icon-checkmark1 display"></i>
                     </div>
@@ -77,8 +76,8 @@ ob_start();
                 <div id="grupo_clave2" class="grupo">
                     <label>Confirmar Contraseña:</label>
                     <div class="input-icon"><input type="password" maxlength="35"  name="clave2" class="input__form base" autocomplete="off">
-                    <i class="icon-pencil"></i>
-                    <i class="icon-folder"></i>
+                    <i class="icon-eye"></i>
+                    <i class="icon-eye-blocked display"></i>
                     <i class="icon-warning display"></i> 
                     <i class="icon-checkmark1 display"></i>
                     </div>
