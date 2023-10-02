@@ -18,7 +18,9 @@ if (!empty($_POST['boton_log'])){
 
         include 'connection.php'; // Conexión con base de datos
 
-        $consulta = "SELECT * FROM cuentas WHERE usuario = '$usuario' and clave = '$clave'";
+        $consulta = "SELECT * FROM cuentas INNER JOIN datos_personales
+        ON cuentas.id_dato_personal = datos_personales.id_dato_personal
+        WHERE usuario = '$usuario' and clave = '$clave'";
         $query = mysqli_query($conexion, $consulta);
 
         $respuesta = mysqli_fetch_array($query);
@@ -28,6 +30,9 @@ if (!empty($_POST['boton_log'])){
         $tipoUsuario = $respuesta['id_tipo_usuario'];
         $statusUsuario = $respuesta['id_status_usuario'];
 
+        $nombre = $respuesta['nombre'];
+        $apellido = $respuesta['apellido'];
+
         // VARIABLES GLOBALES
         $_SESSION['id'] = $idUsuario;
         $_SESSION['usuario'] = $usuario;
@@ -36,7 +41,7 @@ if (!empty($_POST['boton_log'])){
         // VALIDACIÓN DEL USUARIO INGRESADO
         if($tipoUsuario == 1){ // Administrador - Doctor
             if($statusUsuario == 1){
-                $_SESSION['mensaje'] = "Bienvenido ". $usuario;
+                $_SESSION['mensaje'] = "Bienvenido/a ". $nombre. " ". $apellido;
                 $_SESSION['error'] = 3;
                 header ("location: ../admin/index.php");
             }
@@ -48,7 +53,7 @@ if (!empty($_POST['boton_log'])){
         }
         else if($tipoUsuario == 2){ // Paciente
             if($statusUsuario == 1){
-                $_SESSION['mensaje'] = "Bienvenido ". $usuario;
+                $_SESSION['mensaje'] = "Bienvenido/a ". $nombre. " ". $apellido;
                 $_SESSION['error'] = 3;
                 header ("location: ../paciente/index.php");
             }
