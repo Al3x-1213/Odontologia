@@ -2,15 +2,15 @@
 
 if (!empty($_POST['boton_c'])) {
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
-    if (
-        empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['cedula']) || empty($_POST['nacimiento'])
+    if (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['cedula']) || empty($_POST['nacimiento'])
         || empty($_POST['prefNumber1']) || empty($_POST['telefono1']) || empty($_POST['correo']) || empty($_POST['discapacidad'])
-        || empty($_POST['alergia']) || empty($_POST['causa']) || empty($_POST['atencion']) || empty($_POST['turno']) || empty($_POST['id_doctor'])
-    ) {
-?>
-        <div class="alerta">No deben haber campos vacios</div>
-<?php
-    } else {
+        || empty($_POST['alergia']) || empty($_POST['causa']) || empty($_POST['atencion']) || empty($_POST['turno']) || empty($_POST['id_doctor'])){
+        session_start();
+        $_SESSION['mensaje'] = "No deben haber campos vacios";
+        $_SESSION['error'] = 1;
+        header("location: ../../admin/parts/modalRegisterSc.php");
+    }
+    else{
         //DATOS DEL FORMULARIO
         $tipoUsuario = "2";
         $statusUsuario = "3";
@@ -33,10 +33,10 @@ if (!empty($_POST['boton_c'])) {
         $idDoctor = $_POST['id_doctor'];
         $idStatusConsulta = 3;
 
-        $telefonoCP_1 = $prefijo1 . $telefono_1;
-        $telefonoCP_2 = $prefijo2 . $telefono_2;
+        $telefonoCP_1 = $prefijo1. $telefono_1;
+        $telefonoCP_2 = $prefijo2. $telefono_2;
 
-        if(strlen($telefonoCP_2) == 11 || $telefonoCP_2 == 0){
+        if (strlen($telefonoCP_2) == 11 || $telefonoCP_2 == 0){
             // CALCULAR EDAD
             include '../../client/calcularEdad.php';
 
@@ -63,7 +63,7 @@ if (!empty($_POST['boton_c'])) {
 
                 if ($query){
                     session_start();
-                    $_SESSION['mensaje'] = "Cita y Persona registrada exitosamente";
+                    $_SESSION['mensaje'] = "Consulta y datos personales registrados exitosamente";
                     $_SESSION['error'] = 2;
                     header("location: ../index.php");
                 }

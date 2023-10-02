@@ -1,5 +1,6 @@
 <?php
 include '../../client/verificationSessionAdmin.php';
+include '../../client/messagge.php';
 ?>
 
 <!DOCTYPE html>
@@ -234,5 +235,6 @@ include '../../client/verificationSessionAdmin.php';
 
     <script src="../js/searchFilterIc.js"></script>
     <script src="../../js/validacionRegistrarse.js"></script>
+    <script src="../../js/messagge.js"></script>
     </body>
 </html>
