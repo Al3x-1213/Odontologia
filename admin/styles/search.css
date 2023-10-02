@@ -2,12 +2,15 @@
 
 .searchTable{
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin: 3%;
 }
 
 .searchTable .receive{
+    width: 50%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
     margin-left: 4%;
 }
 
@@ -22,6 +25,10 @@
 }
 
 .searchTable .show{
+    width: 50%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
     margin-right: 4%;
 }
 

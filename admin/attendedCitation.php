@@ -67,6 +67,9 @@ include '../client/orderDate.php';
             <h2 class="dia">Citas Atendidas</h2>
 
             <div class="searchTable">
+                <div class="receive">
+                    
+                </div>
                 <div class="show">
                     <label for="numeroRegistros">Mostrar: </label>
                     <select name="numeroRegistros" id="numeroRegistros">
