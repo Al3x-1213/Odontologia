@@ -149,8 +149,50 @@ include '../client/orderDate.php';
 
         <div class="space"></div>
 
+<<<<<<< HEAD
         <?php
         include 'components/footer.html';
+=======
+        <div class="table">
+            <div class="thead__table">
+                <div class="thead causa">Causa de la Consulta</div>
+                <div class="thead">Fecha de Atención</div>
+                <div class="thead">Doctor</div>
+            </div>
+
+            <?php
+            while ($resultado = mysqli_fetch_array($query)) {
+            ?>
+                <div class="tbody__table">
+                    <div class="tbody causa"><?php echo $resultado['causa_consulta']; ?></div>
+                    <?php
+                    $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
+                    ?>
+                    <div class="tbody"><?php echo $fechaAtencion; ?></div>
+
+                    <div class="tbody"><?php
+                    $idDoctor = $resultado['id_doctor'];
+
+                    $consulta = "SELECT * FROM doctores INNER JOIN datos_personales INNER JOIN cuentas
+                    ON doctores.id_usuario = cuentas.id_cuenta AND cuentas.id_dato_personal = datos_personales.id_dato_personal
+                    WHERE id_doctor = '$idDoctor'";
+                    $query2 = mysqli_query($conexion, $consulta);
+
+                    $resultado = mysqli_fetch_array($query2);
+                    echo $resultado['nombre'] . " " . $resultado['apellido'];                    
+                    ?></div>
+                </div>
+            <?php
+            }
+            mysqli_close($conexion);
+            ?>
+        </div>
+
+        <?php
+        
+        include 'components/footer.html';
+
+>>>>>>> 588531af67ccb31ff6d55b80fe830628f6606714
         ?>
     </body>
 

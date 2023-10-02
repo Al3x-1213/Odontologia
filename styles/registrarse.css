@@ -69,6 +69,10 @@ h3 {
   padding: 0 2%;
 }
 
+.icon-folder {
+  display: none;
+}
+
 /* Formulario nivel específico */
 
 .grupo {

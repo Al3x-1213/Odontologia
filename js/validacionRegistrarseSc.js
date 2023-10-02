@@ -72,9 +72,10 @@ const validarFormulario = (e) => {
             }
         break;
         case "clave":
-            if(!expresiones.password.test(e.target.value)){
-                error(e.target.name, 1);
-                clave = false;
+            if(expresiones.password.test(e.target.value)){
+                success(e.target.name);
+                claves[0] = e.target.value;
+                clave = true;
             }else if(!CharacterUpper(e.target.value)){
                 document.querySelector(`#grupo_clave .paragraf__error1`).style.display = "none";
                 error(e.target.name, 2);
@@ -84,9 +85,8 @@ const validarFormulario = (e) => {
                 error(e.target.name, 2);
                 clave = false;
             }else{
-                success(e.target.name);
-                claves[0] = e.target.value;
-                clave = true;
+                error(e.target.name, 1);
+                clave = false;
             }
         break;
         case "clave2":
@@ -120,6 +120,7 @@ const validarFormulario = (e) => {
 }
 
 inputs.forEach(input => {
+    input.addEventListener("keyup", validarFormulario);
     input.addEventListener("blur", validarFormulario);
 });
 

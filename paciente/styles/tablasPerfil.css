@@ -26,17 +26,6 @@ body {
     border-radius: 5px;
 }
 
-/* .tableAccount {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 3%;
-} */
-
-/* .accountInformation {
-    width: 70%;
-} */
-
 .thead{
     display: flex;
     padding: 40px 20px 40px 25px;
@@ -50,17 +39,26 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* border: solid red 1px; */
 }
 
-/* .titulo {
-    width: 60%;
-} */
 
-/* .titulo2 {
+.buttonEditable,
+.buttonEditable2 {
+    width: 40%;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo {
+    width: 60%;
+}
+
+.titulo2 {
     text-align: center;
     width: 100%;
-} */
+}
 
 .buttonEditable,
 .buttonEditable2 {
@@ -101,11 +99,6 @@ input[name="button_upd"] {
     height: 30px;
     font-size: 20px;
 }
-
-/* .container{
-    border: solid red 1px;
-
-} */
 
 /* INPUT PARA EDITAR */
 

@@ -39,3 +39,16 @@ divEditable4.addEventListener("dblclick", function(){
     document.getElementById("inputEditable4").classList.remove("hide");
         divEditable4.classList.add("hide");
 });
+
+
+document.getElementById("editContactInformation").addEventListener("submit", (e)=>{
+    if(document.querySelector("#divEditable1 input").value.length != 7 && document.querySelector("#divEditable1 select").value.length != 4){
+        e.preventDefault();
+    }else if(document.querySelector("#divEditable2 input").value.length == 7 && document.querySelector("#divEditable2 select").value.length != 4){
+        e.preventDefault();
+    }else if(document.querySelector("#divEditable2 input").value.length == 0 && document.querySelector("#divEditable2 select").value.length == 4){
+        e.preventDefault();
+    }else{
+        return true;
+    }
+})

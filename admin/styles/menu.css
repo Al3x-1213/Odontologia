@@ -158,7 +158,7 @@ header {
   }
 
   .displaced {
-    left: -500px;
+    left: -750px;
     transition: all .6s;
   }
 
@@ -191,5 +191,4 @@ header {
   a i {
     padding-left: 7px
   }
-  
 }

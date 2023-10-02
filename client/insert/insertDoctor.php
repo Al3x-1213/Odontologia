@@ -168,4 +168,5 @@ if (!empty($_POST['boton_reg'])) {
         }
     }
 }
+
 ?>

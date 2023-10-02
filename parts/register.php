@@ -3,6 +3,7 @@ session_start();
 ob_start();
 ?>
 
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -11,14 +12,11 @@ ob_start();
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- FAVICON -->
-        <link rel="icon" type="image/png" href="../img/favicon.png"/>
-
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
-        <link rel="stylesheet" href="../styles/mensajes.css">
         <link rel="stylesheet" href="../styles/registrarse.css">
         <link rel="stylesheet" href="../Iconos/style.css">
+        <link rel="stylesheet" href="../styles/mensajes.css">
 
         <!-- LETRAS UTILIZADAS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +26,7 @@ ob_start();
         <title>Marisol Díaz - REGISTRARSE</title>
     </head>
     <body>
+
         <?php 
         include '../client/messagge.php';
         ?>
@@ -61,7 +60,12 @@ ob_start();
 
                 <div id="grupo_clave" class="grupo">
                     <label>Contraseña:</label>
-                    <div class="input-icon"><input type="password" maxlength="35"  name="clave" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                    <div class="input-icon"><input type="password" maxlength="35"  name="clave" class="input__form base" autocomplete="off">
+                    <i class="icon-pencil"></i>
+                    <i class="icon-folder"></i>
+                    <i class="icon-warning display"></i> 
+                    <i class="icon-checkmark1 display"></i>
+                    </div>
                     <div class="paragraf__error1 display">
                         <p>Debe tener al menos 8 caracteres</p>
                     </div>
@@ -72,7 +76,12 @@ ob_start();
 
                 <div id="grupo_clave2" class="grupo">
                     <label>Confirmar Contraseña:</label>
-                    <div class="input-icon"><input type="password" maxlength="35"  name="clave2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                    <div class="input-icon"><input type="password" maxlength="35"  name="clave2" class="input__form base" autocomplete="off">
+                    <i class="icon-pencil"></i>
+                    <i class="icon-folder"></i>
+                    <i class="icon-warning display"></i> 
+                    <i class="icon-checkmark1 display"></i>
+                    </div>
                     <div class="paragraf__error1 display">
                         <p>La clave debe coincidir</p>
                     </div>
@@ -143,11 +152,11 @@ ob_start();
                             <option value="0416">0416</option>
                             <option value="0426">0426</option>
                         </select>
-                        <input type="number" maxlength="7"  name="telefono1" class="input__form phone base" autocomplete="off">
+                        <input type="number" maxlength="11"  name="telefono1" class="input__form phone base" autocomplete="off">
                         <i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i>
                     </div>
                     <div class="paragraf__error1 display">
-                        <p>El campo no debe estar vacío <br>Deben haber 7 digitos</p>
+                        <p> Debe llenar los dos campos <br> Deben haber 7 digitos</p>
                     </div>
                     <div class="paragraf__error2 display">
                         <p>Caracter no permitido</p>
@@ -166,11 +175,11 @@ ob_start();
                             <option value="0416">0416</option>
                             <option value="0426">0426</option>
                         </select>
-                        <input type="number" maxlength="7" name="telefono2" class="input__form phone base" autocomplete="off">
+                        <input type="number" maxlength="11" name="telefono2" class="input__form phone base" autocomplete="off">
                         <i class="icon-warning display"></i><i class="icon-checkmark1 display"></i>
                     </div>
                     <div class="paragraf__error1 display">
-                        <p>Deben haber 7 digitos</p>
+                        <p>Debe llenar los dos campos</p>
                     </div>
                     <div class="paragraf__error2 display">
                         <p>Caracter no permitido</p>
@@ -225,6 +234,7 @@ ob_start();
     </body>
 
     <script src="../js/validacionRegistrarse.js"></script>
+    <script src="../js/seePassword.js"></script>
     <script src="../js/messagge.js"></script>
     <script src="../js/searchFilter.js"></script>
 </html>

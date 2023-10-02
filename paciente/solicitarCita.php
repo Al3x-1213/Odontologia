@@ -44,14 +44,11 @@ include '../client/verificationSessionPatient.php';
                 ?>
 
                 <label>Tipo de Paciente: </label>
-                    <!-- Asegurado<input type="radio" value="1" name="tipoPaciente" id="tipoPaciente">
-                    Particular<input type="radio" value="2" name="tipoPaciente" id="tipoPaciente"> -->
-                    <!-- <input type="text" name="tipoPaciente" id="tipoPaciente"> -->
-                    <select name="tipoPaciente" id="tipoPaciente">
-                        <option value="0"></option>
-                        <option value="1">Particular</option>
-                        <option value="2">Asegurado</option>
-                    </select>
+                <select name="tipoPaciente" id="tipoPaciente">
+                    <option value="0"></option>
+                    <option value="1">Particular</option>
+                    <option value="2">Asegurado</option>
+                </select>
 
                 <?php
                 // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
