@@ -8,17 +8,15 @@ include '../client/orderDate.php';
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="../img/favicon.png" />
 
     <!-- ESTILOS CSS -->
     <link rel="stylesheet" href="../styles/normalize.css">
     <link rel="stylesheet" href="../styles/mensajes.css">
     <link rel="stylesheet" href="styles/menu.css">
-    <link rel="stylesheet" href="styles/menu2.css">
+    <link rel="stylesheet" href="../admin/styles/menu2.css">
     <link rel="stylesheet" href="styles/tablasPerfil.css">
-    <link rel="stylesheet" href="styles/iconosEditProfile.css">
     <link rel="stylesheet" href="styles/footer.css">
     <link rel="stylesheet" href="styles/modal.css">
     <link rel="stylesheet" href="../Iconos/style.css">
@@ -40,6 +38,8 @@ include '../client/orderDate.php';
     include 'components/menu2.php';
 
     include '../client/messagge.php';
+
+    include 'responsive/header.php';
     ?>
 
     <?php
@@ -159,6 +159,6 @@ include '../client/orderDate.php';
     ?>
 </body>
 <script src="js/editarPerfil.js"></script>
-<script src="js/messagge.js"></script>
+<script src="../js/messagge.js"></script>
 
 </html>

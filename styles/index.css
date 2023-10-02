@@ -46,7 +46,11 @@ body {
   background-size: 24px 24px;
 }
 
+<<<<<<< HEAD
+@media only screen and (max-width: 800px) {
+=======
 @media only screen and (max-width: 1000px) {
+>>>>>>> 9b9d086bcecced9c3d0cd6cc524b8edad033f730
 
   /* header */
 

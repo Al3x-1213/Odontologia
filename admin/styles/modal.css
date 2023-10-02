@@ -1,16 +1,22 @@
 /* MODAL */
 
 .buttons__modal {
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 15px;
+    margin-right: 0;
 }
 
 .insertar {
+    width: 15%;
+    height: 40px;
+    margin-left: 30px;
     background: linear-gradient(45deg, #EAEDF3, #33548A);
     border-radius: 4%;
     box-shadow: 0 0 5px .1px #777;
+    border: solid #333 1px;
     cursor: pointer;
 }
 
@@ -109,7 +115,6 @@ select[name="id_paciente"]{
 }
 
 .button__form{
-    margin: 10px;
     width: 40%; 
     background-color: #789dc9;
     height: 2em;
@@ -201,4 +206,10 @@ p a{
 
 option {
     color: #333;
+}
+
+@media only screen and(max-width: 800px){
+    .form-login {
+        width: 55%;
+    }
 }

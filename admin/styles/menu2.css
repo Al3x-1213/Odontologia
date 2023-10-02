@@ -113,6 +113,7 @@
 }
 
 @media only screen and (max-width: 800px){
+
   .inputs__menu2 label {
     padding: 0;
     position: relative;

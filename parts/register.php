@@ -1,7 +1,6 @@
 <?php
 session_start();
 ob_start();
-session_destroy();
 ?>
 
 
@@ -16,9 +15,9 @@ session_destroy();
 
     <!-- ESTILOS CSS -->
     <link rel="stylesheet" href="../styles/normalize.css">
-    <link rel="stylesheet" href="../styles/mensajes.css">
     <link rel="stylesheet" href="../styles/registrarse.css">
     <link rel="stylesheet" href="../Iconos/style.css">
+    <link rel="stylesheet" href="../styles/mensajes.css">
 
     <!-- LETRAS UTILIZADAS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +28,11 @@ session_destroy();
 </head>
 
 <body>
+
+    <?php 
+    include '../client/messagge.php';
+    ?>
+    
     <div class="flex__container">
         <form method="POST" id="formulario" class="form">
 
@@ -58,7 +62,12 @@ session_destroy();
 
             <div id="grupo_clave" class="grupo">
                 <label>Contraseña:</label>
-                <div class="input-icon"><input type="password" maxlength="35"  name="clave" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="input-icon"><input type="password" maxlength="35"  name="clave" class="input__form base" autocomplete="off">
+                <i class="icon-pencil"></i>
+                <i class="icon-folder"></i>
+                <i class="icon-warning display"></i> 
+                <i class="icon-checkmark1 display"></i>
+                </div>
                 <div class="paragraf__error1 display">
                     <p>Debe tener al menos 8 caracteres</p>
                 </div>
@@ -69,7 +78,12 @@ session_destroy();
 
             <div id="grupo_clave2" class="grupo">
                 <label>Confirmar Contraseña:</label>
-                <div class="input-icon"><input type="password" maxlength="35"  name="clave2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="input-icon"><input type="password" maxlength="35"  name="clave2" class="input__form base" autocomplete="off">
+                <i class="icon-pencil"></i>
+                <i class="icon-folder"></i>
+                <i class="icon-warning display"></i> 
+                <i class="icon-checkmark1 display"></i>
+                </div>
                 <div class="paragraf__error1 display">
                     <p>La clave debe coincidir</p>
                 </div>
@@ -144,7 +158,7 @@ session_destroy();
                     <i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i>
                 </div>
                 <div class="paragraf__error1 display">
-                    <p>El campo no debe estar vacío <br>Deben haber 7 digitos</p>
+                    <p> Debe llenar los dos campos <br> Deben haber 7 digitos</p>
                 </div>
                 <div class="paragraf__error2 display">
                     <p>Caracter no permitido</p>
@@ -167,7 +181,7 @@ session_destroy();
                     <i class="icon-warning display"></i><i class="icon-checkmark1 display"></i>
                 </div>
                 <div class="paragraf__error1 display">
-                    <p>Deben haber 7 digitos</p>
+                    <p>Debe llenar los dos campos</p>
                 </div>
                 <div class="paragraf__error2 display">
                     <p>Caracter no permitido</p>
@@ -185,13 +199,26 @@ session_destroy();
                 </div>
             </div>
 
-            <label>¿Tiene alguna Discapacidad:</label>
-            <div class="hora">
-                <input type="radio"  value="2" name="discapacidad"> Sí
-                <input type="radio"  value="1" name="discapacidad"> No
-            </div>
+            <?php
+            // CONSULTAR A BASE DE DATOS LAS DISCAPACIDADES E IMPRIMIRLOS COMO OPCIÓN
+            include '../client/connection.php';
 
-            <label>¿Es alergico a algun medicamento:</label>
+            $consulta = "SELECT * FROM discapacidades";
+            $query = mysqli_query($conexion, $consulta)
+            ?>
+            <label>¿Tiene alguna discapacidad?</label>
+            <select name="discapacidad">
+                <option value="0"></option>
+                <?php
+                while ($resultado = mysqli_fetch_array($query)) {
+                ?>
+                    <option value="<?php echo $resultado['id_discapacidad']; ?>"><?php echo $resultado['discapacidad']; ?></option>
+                <?php
+                }
+                ?>
+            </select>
+
+            <label>¿Es alergico a algún medicamento?</label>
             <div class="hora">
                 <input type="radio"  value="2" name="alergia"> Sí
                 <input type="radio"  value="1" name="alergia"> No
@@ -209,5 +236,7 @@ session_destroy();
 </body>
 
 <script src="../js/validacionRegistrarse.js"></script>
+<script src="../js/seePassword.js"></script>
+<script src="../js/messagge.js"></script>
 <script src="../js/searchFilter.js"></script>
 </html>

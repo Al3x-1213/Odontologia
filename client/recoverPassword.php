@@ -50,17 +50,17 @@ if (!empty($_POST['button_rec'])){
             $mail = new PHPMailer(true);
 
             try{
-                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'veroitr39@gmail.com';
-                $mail->Password = 'lxhmcqkezlruxppe';
+                $mail->Username = 'odontologiamarisoldiaz@gmail.com';
+                $mail->Password = 'ywususziyehtedag';
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
                 $mail->CharSet = 'UTF-8';
-                $mail->setFrom('veroitr39@gmail.com', 'Doctora Marisol Díaz');
+                $mail->setFrom('odontologiamarisoldiaz@gmail.com', 'Doctora Marisol Díaz');
                 $mail->addAddress($correo, 'RECUPERACIÓN DE CONTRASEÑA');
                 $mail->addCC($correo);
 

@@ -1,5 +1,5 @@
 <?php
 
-header ("location: ../../index.php");
+header ("../../index.php");
 
 ?>

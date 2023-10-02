@@ -1,23 +1,67 @@
-.searchUsers{
-    margin: 0 auto;
-    /* display: flex;
-    justify-content: center; */
-    width: 400px;
-    /* border-radius: 5px;
-    box-shadow: 0 0 5px 1px #333; */
-    /* border: solid red 1px; */
-}
+/* BUSCADOR PARA TABLAS */
 
-.searchUsers form{
+.searchTable{
     display: flex;
-    justify-content: center;
-    padding: 3%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3%;
 }
 
-.searchUsers label{
+.searchTable .receive{
+    margin-left: 4%;
+}
+
+.receive label{
     font-size: 20px;
 }
 
-.searchUsers input{
-    height: 22px;
+.receive input{
+    height: 25px;
+    background: #EAEDF3;
+    border: none;
+}
+
+.searchTable .show{
+    margin-right: 4%;
+}
+
+/* PAGINACIÓN */
+
+.pagination{
+    display: flex;
+    justify-content: right;
+}
+
+.pagination .quantityDisplayed, .pagination .navPagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3%;
+}
+
+.navPagination ul{
+    padding: 0;
+}
+
+.navPagination li{
+    display: inline;
+    margin: 1px;
+    padding: 10px;
+    border: solid #333 1px;
+}
+
+.navPagination a{
+    color: #333;
+}
+
+.navPagination .paginaActiva{
+    background-color: #33548A;
+}
+
+.paginaActiva a{
+    color: #f0f8ff;
+}
+
+.pagination a{
+    text-decoration: none;
 }

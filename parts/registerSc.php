@@ -13,6 +13,9 @@ session_destroy();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="../img/favicon.png"/>
+
     <!-- ESTILOS CSS -->
     <link rel="stylesheet" href="../styles/normalize.css">
     <link rel="stylesheet" href="../styles/mensajes.css">
@@ -70,7 +73,12 @@ session_destroy();
 
             <div id="grupo_clave" class="grupo">
                 <label>Contraseña:</label>
-                <div class="input-icon"><input type="password" maxlength="35"  name="clave" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="input-icon"><input type="password" maxlength="35"  name="clave" class="input__form base" autocomplete="off">
+                <i class="icon-pencil"></i>
+                <i class="icon-folder"></i>
+                <i class="icon-warning display"></i> 
+                <i class="icon-checkmark1 display"></i>
+                </div>
                 <div class="paragraf__error1 display">
                     <p>Debe tener al menos 8 caracteres</p>
                 </div>
@@ -81,7 +89,12 @@ session_destroy();
 
             <div id="grupo_clave2" class="grupo">
                 <label>Confirmar Contraseña:</label>
-                <div class="input-icon"><input type="password" maxlength="35"  name="clave2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="input-icon"><input type="password" maxlength="35"  name="clave2" class="input__form base" autocomplete="off">
+                <i class="icon-pencil"></i>
+                <i class="icon-folder"></i>
+                <i class="icon-warning display"></i> 
+                <i class="icon-checkmark1 display"></i>
+                </div>
                 <div class="paragraf__error1 display">
                     <p>La clave debe coincidir</p>
                 </div>
@@ -98,6 +111,7 @@ session_destroy();
 </body>
 
 <script src="../js/validacionRegistrarseSc.js"></script>
+<script src="../js/seePassword.js"></script>
 <script src="../js/searchFilterSc.js"></script>
 
 </html>

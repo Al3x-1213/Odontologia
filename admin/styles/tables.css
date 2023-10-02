@@ -1,6 +1,14 @@
-table{
+/* TABLAS GENERALES */
+
+.table{
+    display: flex;
+    justify-content: center;
     margin-top: 40px;
-    width: 95%;
+
+}
+
+table{
+    width: 100%;
     border-collapse: collapse;
     text-align: center;
 }
@@ -8,12 +16,30 @@ table{
 th, td{
     padding: 10px;
     border: solid #789dc9 2px;
-
 }
 
 thead{
     background: #3e3d3d;
     height: 50px;
     max-height: 50px;
-    color: aliceblue;
+    color: #f0f8ff;
+}
+
+/* TABLA DE CITAS PARA FECHA ESPECÍFICA EN PROCESAR PACIENTE*/
+
+.tableCitations th, .tableCitations td{
+    width: 20%;
+    padding: 10px;
+    border: solid #33548A 2px;
+}
+
+.tableCitations td{
+    vertical-align: top;
+}
+
+.tableCitations thead{
+    background: #789dc9;
+    height: 50px;
+    max-height: 50px;
+    color: #000000;
 } 

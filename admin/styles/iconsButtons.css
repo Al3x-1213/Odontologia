@@ -1,10 +1,18 @@
 /* BOTONES */
 
+.icons__modals{
+    display: flex;
+}
+
 a{
     text-decoration: none;
 }
+
+.active{
+    transform: scaleX(-1);
+}
   
-.attend, .cancel, .process, .update, .delete, .print{
+.attend, .cancel, .process, .update, .delete, .print, .inactive, .active, .noUser, .block{
     background: transparent;
     cursor: pointer;
     cursor: hand;
@@ -12,7 +20,7 @@ a{
     border-radius: 2px;
 }
   
-.attend i, .cancel i, .process i, .update i, .delete i, .print i{
+.attend i, .cancel i, .process i, .update i, .delete i, .print i, .inactive i, .active i, .noUser i, .block i{
     padding: 2px;
     color: #333;
 }
@@ -21,7 +29,7 @@ a{
     font-size: 150%;
 }
   
-.cancel i, .update i, .delete i, .print i{
+.cancel i, .update i, .delete i, .print i, .inactive i, .active i, .noUser i, .block i{
     font-size: 130%;
 }
   
@@ -33,7 +41,7 @@ a{
     color: #0000ff;
 }
   
-.cancel i:hover, .delete i:hover{
+.cancel i:hover, .delete i:hover, .block i:hover{
     color: #ff0000;
 }
   
@@ -41,10 +49,13 @@ a{
     color: #E67F4F;
 }
 
-.printReport{
-    margin-right: 35px;
+.printReport, .blockDate{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-right: 30px;
 }
 
-.printReport i{
-    font-size: 190%;
+.printReport i, .blockDate i{
+    font-size: 180%;
 }

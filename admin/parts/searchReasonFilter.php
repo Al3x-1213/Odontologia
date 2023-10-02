@@ -7,8 +7,8 @@ $pdo = $conexion->conectar();
 
 $tipoPaciente = $_POST["tipoPaciente"];
 
-if ($tipoPaciente == 1){
-    $consulta = "SELECT * FROM causa_consulta WHERE id_seguro = 1";
+if ($tipoPaciente == 2){
+    $consulta = "SELECT * FROM causa_consulta WHERE id_seguro = 2";
     $query = $pdo->prepare($consulta);
     $query->execute();
 
@@ -18,7 +18,7 @@ if ($tipoPaciente == 1){
         $contenido .= '<option value="'. $respuesta['id_causa_consulta']. '">'. $respuesta['codigo']. ' - '. $respuesta['causa_consulta']. '</option>';
     }
 }
-elseif ($tipoPaciente == 2){
+elseif ($tipoPaciente == 1){
     $consulta = "SELECT * FROM causa_consulta";
     $query = $pdo->prepare($consulta);
     $query->execute();
@@ -29,7 +29,7 @@ elseif ($tipoPaciente == 2){
         $contenido .= '<option value="'. $respuesta['id_causa_consulta']. '">'. $respuesta['codigo']. ' - '. $respuesta['causa_consulta']. '</option>';
     }
 }
-elseif ($tipoPaciente == 0){
+else{
     $contenido = '<option value="0"></option>';
 }
 

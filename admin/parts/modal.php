@@ -1,7 +1,9 @@
 <div class="buttons__modal">
     <button class="insertar">Registrar una Cita</button>
-
-    <a href="../client/botones/printReport.php"><button title="Reporte" class="print printReport"><i class="icon-printer icon"></i></button></a>
+    <div class="icons__modals">
+        <a href="../client/botones/printReport.php"><button title="Imprimir Reporte" class="print printReport"><i class="icon-printer1 icon"></i></button></a>
+        <a href="blockDate.php"><button title="Fechas Bloqueadas" class="block blockDate"><i class="icon-blocked icon"></i></button></a>
+    </div>
 </div>
 
 <div class="modal display">
@@ -26,8 +28,9 @@
             <label>Tipo de Paciente: </label>
             <select name="tipoPaciente" id="tipoPaciente">
                 <option value="0"></option>
-                <option value="1">Asegurado</option>
-                <option value="2">Particular</option>
+                <option value="1">Particular</option>
+                <option value="2">Asegurado</option>
+
             </select>
 
             <label>Motivo de la Consulta: </label>

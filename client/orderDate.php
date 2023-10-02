@@ -6,7 +6,7 @@ function ordenarFecha($fechaOrdenada){
 }
 
 function diaSemana($dia){
-    $dias = array('', 'Lunes ','Martes ','Miercoles ','Jueves ','Viernes ','Sabado ', 'Domingo ');
+    $dias = array('', 'Lunes ','Martes ','Miércoles ','Jueves ','Viernes ','Sábado ', 'Domingo ');
     $fecha = $dias[date('N', strtotime($dia))];
     return $fecha;
 }

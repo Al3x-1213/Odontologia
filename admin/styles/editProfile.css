@@ -82,6 +82,11 @@ input[name="boton_upd"] {
     font-weight: bold
 }
 
+.pref__input {
+    height: 25px;
+    background: linear-gradient(45deg, #33548A, #EAEDF3);
+}
+
 .hide {
     display: none;
 }
