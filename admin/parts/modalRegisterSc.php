@@ -10,6 +10,9 @@ include '../../client/messagge.php';
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <!-- FAVICON -->
+        <link rel="icon" type="image/png" href="../../img/favicon.png"/>
+
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../../styles/normalize.css">
         <link rel="stylesheet" href="../../styles/mensajes.css">
@@ -29,7 +32,7 @@ include '../../client/messagge.php';
 
     <body>
         <div class="flex__container">
-            <form class="form" method="POST">
+            <form class="form" method="POST" id="formulario1">
                 <div class="header__form">
                     <h2 class="title__form"><a href="../index.php">Agendar una Cita</a></h2> <a href="../index.php"><i class="icon-cross"></i></a>
                 </div>
@@ -204,13 +207,10 @@ include '../../client/messagge.php';
                 // BLOQUEAR DÍAS DEL CALENDARIO
                 date_default_timezone_set('America/Caracas');
                 $fechaActual = date("Y-m-d");
-                $fechaLimite = strtotime($fechaActual."+ 21 days");
-                $fechaLimite = date("Y-m-d", $fechaLimite);
                 ?>
-                <div id="grupo_atencion" class="grupo">
-                    <label>Fecha de Atención:</label>
-                    <input type="date" required name="atencion" max="<?= $fechaLimite; ?>" class="input__form base">
-                </div>
+                <label>Fecha de Atención:</label>
+                <input type="date" required name="atencion" min="<?= $fechaActual; ?>" class="input__form" id="atencion">
+                <div id="blockedDate"></div>
                 
                 <div id="grupo_seleccion" class="grupo">
                     <label>Turno:</label>
@@ -234,7 +234,8 @@ include '../../client/messagge.php';
         </div>
 
     <script src="../js/searchFilterIc.js"></script>
-    <script src="../../js/validacionRegistrarse.js"></script>
+    <script src="../js/validacionRegistrarseSc.js"></script>
     <script src="../../js/messagge.js"></script>
+    <script src="../js/searchBlockedDatesSc.js"></script>
     </body>
 </html>
