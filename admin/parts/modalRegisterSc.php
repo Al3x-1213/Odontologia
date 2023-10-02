@@ -41,6 +41,8 @@ include '../../client/messagge.php';
                 include '../../client/insert/registerCitaSc.php';
                 ?>
 
+                <!-- DATOS DEL PACIENTE -->
+
                 <h3>Datos Personales: </h3>
 
                 <div id="grupo_nombre" class="grupo">
@@ -177,31 +179,22 @@ include '../../client/messagge.php';
                     <input type="radio" required value="1" name="alergia" class=""> No
                 </div>
 
+                <!-- DATOS DE LA CONSULTA -->
+
                 <h3>Datos de la Cita: </h3>
 
-                <?php
-                // CONSULTAR A BASE DE DATOS LAS CAUSAS DE CONSULTAS REGISTRADAS E IMPRIMIRLAS COMO OPCIÓN
-                include '../../client/connection.php'; //Conexión con base de datos
+                <label>Tipo de Paciente: </label>
+                <select name="tipoPaciente" id="tipoPaciente">
+                    <option value="0"></option>
+                    <option value="1">Particular</option>
+                    <option value="2">Asegurado</option>
 
-                $consulta = "SELECT * FROM causa_consulta";
-                $query = mysqli_query($conexion, $consulta)
-                ?>
+                </select>
 
-                <div id="grupo_causa" class="grupo">
-                    <label>Motivo: </label>
-                    <select name="causa">
-                        <option value="0"></option>
-                        <?php
-                        $i = 0;
-                        while ($resultado = mysqli_fetch_array($query)) {
-                            $i = $i + 1;
-                        ?>
-                            <option value="<?php echo $i; ?>"><?php echo $resultado['causa_consulta']; ?></option>
-                        <?php
-                        }
-                        ?>
-                    </select>
-                </div>
+                <label>Motivo de la Consulta: </label>
+                <select name="causa" id="causa">
+
+                </select>
 
                 <?php
                 // BLOQUEAR DÍAS DEL CALENDARIO
@@ -236,6 +229,7 @@ include '../../client/messagge.php';
     <script src="../js/searchFilterIc.js"></script>
     <script src="../js/validacionRegistrarseSc.js"></script>
     <script src="../../js/messagge.js"></script>
+    <script src="../js/searchReasonSc.js"></script>
     <script src="../js/searchBlockedDatesSc.js"></script>
     </body>
 </html>

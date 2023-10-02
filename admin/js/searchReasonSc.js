@@ -1,13 +1,13 @@
 document.getElementById("tipoPaciente").addEventListener("change", filtrarInformacion);
 
-function filtrarInformacion() {
+function filtrarInformacion(){
     let tipoPaciente = document.getElementById("tipoPaciente").value;
     let filtro = document.getElementById("causa");
 
     let contenido = new FormData()
     contenido.append("tipoPaciente", tipoPaciente)
 
-    fetch("parts/searchReasonFilter.php", {
+    fetch("../parts/searchReasonFilter.php", {
         method: "POST",
         body: contenido,
         mode: "cors"
@@ -15,5 +15,5 @@ function filtrarInformacion() {
         .then(data => {
             filtro.innerHTML = data
         })
-        .catch(error => console.log(error))
+        // .catch(error => console.log(error))
 }
