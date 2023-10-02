@@ -3,12 +3,9 @@
 if (!empty($_POST['button_rec'])) {
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
     if (empty($_POST['clave']) || empty($_POST['clave2'])){
-        ?>
-        <!-- <div class="alerta">No deben haber campos vacios</div> -->
-        <?php
         $_SESSION['mensaje'] = "No deben haber campos vacios";
         $_SESSION['error'] = 1;
-        header("location: ../../recover.php");
+        header("location: recover.php?id=". $idDatoPersonal);
     }
     else{
         // //DATOS DEL FORMULARIO
@@ -20,7 +17,7 @@ if (!empty($_POST['button_rec'])) {
         if ($clave != $claveConfirm){
             session_start();
             $_SESSION['mensaje'] = "Las contraseñas no coinciden";
-            $_SESSION['error'] = 4;
+            $_SESSION['error'] = 1;
             header("location: recover.php?id=". $idDatoPersonal);
         }
         else{
@@ -48,7 +45,7 @@ if (!empty($_POST['button_rec'])) {
             else{
                 session_start();
                 $_SESSION['mensaje'] = "No se pudo restablecer la contraseña";
-                $_SESSION['error'] = 4;
+                $_SESSION['error'] = 1;
                 header("location: ../../parts/recover.php");
             }
         }
