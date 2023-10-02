@@ -13,6 +13,8 @@ include '../client/orderDate.php';
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- ESTILOS CSS -->
+        <link rel="stylesheet" href="styles/modal.css">
+        <link rel="stylesheet" href="styles/modalUser.css">
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="../styles/mensajes.css">
         <link rel="stylesheet" href="styles/menu.css">
@@ -21,17 +23,15 @@ include '../client/orderDate.php';
         <link rel="stylesheet" href="styles/tables.css">
         <link rel="stylesheet" href="styles/iconsButtons.css">
         <link rel="stylesheet" href="styles/footer.css">
-        <link rel="stylesheet" href="styles/usuarios.css">
-        <link rel="stylesheet" href="styles/modal.css">
         <link rel="stylesheet" href="../Iconos/style.css">
 
         <!-- LETRAS UTILIZADAS -->
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
         <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
@@ -105,5 +105,7 @@ include '../client/orderDate.php';
         <script src="../js/messagge.js"></script>
         <script src="js/modal.js"></script>
         <script src="js/searchTable.js"></script>
+        <script src="js/validacionRegistrarse.js"></script>
+        <script src="../js/searchFilter.js"></script>
     </body>
 </html>

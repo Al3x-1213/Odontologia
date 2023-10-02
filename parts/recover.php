@@ -27,8 +27,9 @@ session_destroy();
     </head>
 
     <body>
-        <div class="flex__container flex__container-alternative">
-            <form class="form form-alternative" method="POST">
+        <div class="flex__container">
+            <form class="form__recover" method="POST">
+                <a href="login.php"><i class="icon-cross"></i></a>
 
                 <h2 class="title__form">Recuperar Contraseña</h2>
 
@@ -40,7 +41,7 @@ session_destroy();
                     <label>Ingresa tu usuario:</label>
                     <input type="text" maxlength="30" required="true" name="usuario" class="input__form" autocomplete="off">
 
-                    <input class="button" type="submit" value="Enviar" name="button_rec">
+                    <input class="input__button" type="submit" value="Enviar solicitud" name="button_rec">
                 </div>
             </form>
         </div>

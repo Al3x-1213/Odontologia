@@ -21,21 +21,16 @@ session_destroy();
     <link rel="stylesheet" href="../Iconos/style.css">
 
     <!-- LETRAS UTILIZADAS -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
     <title>Marisol Díaz - REGISTRARSE</title>
-    <style>
-        .filter{
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
     <div class="flex__container">
-        <form method="POST" id="formulario" class="form"> <!-- action="../client/insert/insert.php" -->
+        <form method="POST" id="formulario" class="form">
 
             <a href="../"><i class="icon-cross"></i></a>
             <!-- TITULO -->
@@ -47,20 +42,18 @@ session_destroy();
 
             <div id="grupo_usuario" class="grupo">
                 <label>Usuario:</label>
-                <s class="input-icon">
+                <div class="input-icon">
                     <input type="text" maxlength="30" name="usuario" class="input__form base" id="usuario" autocomplete="off">
-                    <div class="filterUsuario">
-                        
-                    </div>
                     <i class="icon-warning display"></i>
                     <i class="icon-checkmark1 display"></i>
-                </s>
+                </div>
                 <div class="paragraf__error1 display">
                     <p>Usuario no puede estar vacío<br>No pueden ser menos de 4 caracteres</p>
                 </div>
                 <div class="paragraf__error2 display">
                     <p>Caracter especial no permitido</p>
                 </div>
+                <div class="filterUsuario"></div>
             </div>
 
             <div id="grupo_clave" class="grupo">
@@ -112,9 +105,6 @@ session_destroy();
             <div id="grupo_cedula" class="grupo">
                 <label>Cédula:</label>
                 <div class="input-icon"><input type="number" maxlength="8" name="cedula" class="input__form base" id="cedula" autocomplete="off">
-                    <div class="filterCedula">
-                            
-                    </div>
                     <i class="icon-warning display"></i>
                     <i class="icon-checkmark1 display"></i>
                 </div>
@@ -124,6 +114,7 @@ session_destroy();
                 <div class="paragraf__error2 display">
                     <p>Caracter no permitido</p>
                 </div>
+                <div class="filterCedula"></div>
             </div>
 
             <?php
@@ -208,15 +199,15 @@ session_destroy();
 
             <input class="button" type="submit" value="Registrarse" name="boton_reg">
 
+            <?php 
+            include '../client/insert/insert.php';
+            ?>
+
             <p>¿Tienes una cuenta? <a href="login.php">Inicia Sesión</a></p>
         </form>
-
-        <?php
-            include '../client/insert/insert.php';
-        ?>
     </div>
 </body>
 
-<script src="../js/searchFilter.js"></script>
 <script src="../js/validacionRegistrarse.js"></script>
+<script src="../js/searchFilter.js"></script>
 </html>

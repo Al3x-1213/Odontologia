@@ -1,16 +1,20 @@
 <?php
-include '../verificationSession.php';
-?>
-<?php
+session_start();
+ob_start();
 
-if (!empty($_POST['boton_upd'])){
+if (!(isset($_SESSION['id'])) && !(isset($_SESSION['usuario'])) && !(isset($_SESSION['tipo_usuario']))){
+    $_SESSION['mensaje'] = "Error al intentar actualizar los datos del usuario";
+    $_SESSION['error'] = 1;
+    header("location: ../../admin/editProfile.php");
+}
+
+if (!empty($_POST['boton_upd'])) {
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
-    if (empty($_POST['telefono1'])){
-        ?>
-        <div class= "alerta">No deben haber campos vacios</div>
+    if (empty($_POST['telefono1'])) {
+?>
+        <div class="alerta">No deben haber campos vacios</div>
         <?php
-    }
-    else{
+    } else {
         // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
         $idUsuario = $_SESSION['id'];
 
@@ -31,18 +35,24 @@ if (!empty($_POST['boton_upd'])){
         $consulta = "UPDATE datos_personales SET telefono_1 = '$telefono_1', telefono_2 = '$telefono_2', correo = '$correo'
         WHERE id_dato_personal = '$idDatoPersonal'";
         $query = mysqli_query($conexion, $consulta);
-        
-        if($query){
+
+        if($query && $_SESSION['tipo_usuario'] == 1) {
+            $_SESSION['mensaje'] = "Datos de usuario actualizados";
+            $_SESSION['error'] = 3;
+            header("location: ../../admin/editProfile.php");
+        }else if($query && $_SESSION['tipo_usuario'] == 2) {
+            $_SESSION['mensaje'] = "Datos de usuario actualizados";
+            $_SESSION['error'] = 3;
             header("location: ../../paciente/perfilPaciente.php");
-            ?>
-            <div class= "mensaje"><a href= "../perfilPaciente.php">Actualizado correctamente</a></div>
-            <?php
+        }else if(!($query) && $_SESSION['tipo_usuario'] == 1){
+            $_SESSION['mensaje'] = "Error al intentar actualizar los datos del usuario";
+            $_SESSION['error'] = 1;
+            header("location: ../../admin/editProfile.php");
+        }else{
+            $_SESSION['mensaje'] = "Error al intentar actualizar los datos del usuario";
+            $_SESSION['error'] = 1;
+            header("location: ../../paciente/perfilPaciente.php");
         }
-        else{
-            ?>
-            <div class= "alerta">No se pudo actualizar</div>
-            <?php
-        }  
     }
 }
 

@@ -21,12 +21,11 @@ a {
 
 /* ICONO PRINCIPAL DEL LOGIN */
 
-.form {
+.form__login {
   display: flex;
   flex-direction: column;
   width: 425px;
-  min-height: 650px;
-  height: 650px;
+  height: 625px;
   border-radius: 2%;
   position: relative;
   box-shadow: 0px 0px 10px 1px #333;
@@ -42,8 +41,10 @@ a {
 }
 
 .icon__form {
-  width: 150px;
-  height: 150px;
+  min-width: 150px;
+  min-height: 150px;
+  max-width: 150px;
+  max-height: 150px;
   border: 5px solid #333;
   border-radius: 50%;
   margin: 15% auto 2.5%;
@@ -60,7 +61,7 @@ a {
 .icon__body {
   position: relative;
   width: 72%;
-  height: 40%;
+  height: 47%;
   /* border-top: 4px solid #14f3ca; */
   /* border-top: 4px solid #33548A; */
   border-top: 4px solid #111;
@@ -103,10 +104,10 @@ a {
   font-size: 1.2em;
 }
 
-.button {
+.input__button {
   margin: 5% 0;
   align-self: center;
-  width: 65%;
+  min-width: 65%;
   padding: 5px;
   font-size: 1.25em;
   border: none;
@@ -117,7 +118,7 @@ a {
   transition: all ease .6s;
 }
 
-.button:hover {
+.input__button:hover {
   box-shadow: 0 0 5px 1px #333;
   cursor: pointer;
 }
@@ -125,6 +126,7 @@ a {
 /* REGISTRARSE */
 
 p{
+  margin: 10px 0 0 0;
   text-align: center;
 }
 
@@ -132,12 +134,24 @@ p a{
   color: #33548A;
 }
 
-.t {
-  width: 100%;
-  position: absolute;
-  top: 85px;
-  left: 44%;
+/* recover */
+
+.form__recover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 425px;
+  height: 50%;
+  border-radius: 2%;
+  position: relative;
+  box-shadow: 0px 0px 10px 1px #333;
+  margin: 30px 0;
 }
+
+.form__recover .title__form {
+  margin: 50px 0 5px 0;
+}
+
 
 @media (600px <= width <= 800px){
   .title__form{

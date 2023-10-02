@@ -25,14 +25,14 @@ if (!empty($_POST['boton_c'])){
         $query = mysqli_query($conexion, $consulta);
         if($query){
             session_start();
-            $_SESSION['mensaje'] = "Cita procesada de manera exitosa";
-            $_SESSION['error'] = 2;
-            header("location: index.php");
+            $_SESSION['mensaje'] = "Cita registrada, en espera de confirmacion";
+            $_SESSION['error'] = 3;
+            header("location: ../../admin/index.php");
         }else{
             session_start();
             $_SESSION['mensaje'] = "Error al procesar la cita";
             $_SESSION['error'] = 1;
-            header("location: index.php");
+            header("location: ../../admin/index.php");
         }
     }
 }

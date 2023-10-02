@@ -27,8 +27,8 @@ session_destroy();
     </head>
 
     <body>
-        <div class="flex__container flex__container-alternative">
-            <form class="form form-alternative" method="POST">
+        <div class="flex__container">
+            <form class="form__recover" method="POST">
 
                 <h2 class="title__form">Recuperar Contraseña</h2>
 
@@ -48,7 +48,7 @@ session_destroy();
                     <label for="clave">Confirmar Contraseña Nueva:</label>
                     <input type="password" maxlength="35" required name="clave2" class="input__form">
 
-                    <input class="button" type="submit" value="Enviar" name="button_rec">
+                    <input class="input__button" type="submit" value="Restablecer Contraseña" name="button_rec">
                 </div>
             </form>
         </div>

@@ -57,6 +57,13 @@
   color: #aa0000;
 }
 
+.messagge__info {
+  border: 1px solid #004bee;
+  background: #649ee0;
+  color: #004bee;
+}
+
+
 .messagge__icon {
   cursor: pointer;
 }

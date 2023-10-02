@@ -1,5 +1,5 @@
 <?php
 
-include '../client/verificationSessionAdmin.php';
+header ("location: ../../index.php");
 
 ?>

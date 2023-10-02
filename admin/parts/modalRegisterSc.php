@@ -64,13 +64,17 @@ include '../../client/verificationSessionAdmin.php';
 
             <div id="grupo_cedula" class="grupo">
                 <label>Cédula:</label>
-                <div class="input-icon"><input type="number" maxlength="8"  name="cedula" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                <div class="input-icon"><input type="number" maxlength="8" name="cedula" class="input__form base" id="cedula" autocomplete="off">
+                    <i class="icon-warning display"></i>
+                    <i class="icon-checkmark1 display"></i>
+                </div>
                 <div class="paragraf__error1 display">
                     <p>El campo no debe estar vacío<br>Debe tener entre 7 a 8 caracteres</p>
                 </div>
                 <div class="paragraf__error2 display">
                     <p>Caracter no permitido</p>
                 </div>
+                <div class="filterCedula"></div>
             </div>
 
             <?php
@@ -193,6 +197,7 @@ include '../../client/verificationSessionAdmin.php';
         </form>
     </div>
 
+<script src="../js/searchFilterIc.js"></script>
 <script src="../../js/validacionRegistrarse.js"></script>
 </body>
 </html>

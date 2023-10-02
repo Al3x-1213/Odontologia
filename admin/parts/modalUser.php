@@ -4,7 +4,7 @@
 
 <div class="modal display">
     <div class="flex-container">
-        <form action="../client/insert/insertDoctor.php" method="POST" class="form-login">
+        <form action="../client/insert/insertDoctor.php" method="POST" class="form-login alternative">
 
             <div class="header__form">
                 <h2>Registrar un Usuario</h2> <span class="icon-cross xModal"></span>
@@ -12,14 +12,43 @@
 
             <h3>Tu cuenta: </h3>
 
-            <label for="nombre">Usuario:</label>
-            <input type="text" maxlength="30" required name="usuario" class="input__form" autocomplete="off">
+            <div id="grupo_usuario" class="grupo">
+                <label>Usuario:</label>
+                <div class="input-icon">
+                    <input type="text" maxlength="30" name="usuario" class="input__form base" id="usuario" autocomplete="off">
+                    <i class="icon-warning display"></i>
+                    <i class="icon-checkmark1 check display"></i>
+                </div>
+                <div class="paragraf__error1 display">
+                    <p>Usuario no puede estar vacío<br>No pueden ser menos de 4 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter especial no permitido</p>
+                </div>
+                <div class="filterUsuario"></div>
+            </div>
 
-            <label for="clave">Contraseña:</label>
-            <input type="password" maxlength="35" required name="clave" class="input__form">
+            <div id="grupo_clave" class="grupo">
+                <label>Contraseña:</label>
+                <div class="input-icon"><input type="password" maxlength="35"  name="clave" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 check display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>Debe tener al menos 8 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Debe tener al menos 1 caracter especial <br>Debe que tener al menos una letra en mayuscula</p>
+                </div>
+            </div>
 
-            <label for="clave">Confirmar Contraseña:</label>
-            <input type="password" maxlength="35" required name="clave2" class="input__form">
+            <div id="grupo_clave2" class="grupo">
+                <label>Confirmar Contraseña:</label>
+                <div class="input-icon"><input type="password" maxlength="35"  name="clave2" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 check display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>La clave debe coincidir</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Este campo no puede estar vacío<br>Debe tener al menos 8 caracteres</p>
+                </div>
+            </div>
 
             <label for="clave">Tipo de Usuario:</label>
             <div class="seleccion">
@@ -30,29 +59,109 @@
 
             <h3>Datos Personales: </h3>
 
-            <label for="nombre">Nombre:</label>
-            <input type="text" maxlength="25" required name="nombre" class="input__form" autocomplete="off">
+            <div id="grupo_nombre" class="grupo">
+                <label>Nombre:</label>
+                <div class="input-icon"><input type="text" maxlength="25"  name="nombre" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 check display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>Este campo no debe estar vacío<br>No deben haber menos de 3 caracteres ni más de 25</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Carácter no permitido</p>
+                </div>
+            </div>
 
-            <label for="apellido">Apellido:</label>
-            <input type="text" maxlength="25" required name="apellido" class="input__form">
+            <div id="grupo_apellido" class="grupo">
+                <label>Apellido:</label>
+                <div class="input-icon"><input type="text" maxlength="25"  name="apellido" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 check display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>Este campo no debe estar vacío<br>No deben haber menos de 3 caracteres ni más de 25</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter no permitido</p>
+                </div>
+            </div>
 
-            <label for="cedula">Cédula:</label>
-            <input type="number" maxlength="8" required name="cedula" class="input__form">
+            <div id="grupo_cedula" class="grupo">
+                <label>Cédula:</label>
+                <div class="input-icon"><input type="number" maxlength="8" name="cedula" class="input__form base" id="cedula" autocomplete="off">
+                    <i class="icon-warning display"></i>
+                    <i class="icon-checkmark1 check display"></i>
+                </div>
+                <div class="paragraf__error1 display">
+                    <p>El campo no debe estar vacío<br>Debe tener entre 7 a 8 caracteres</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter no permitido</p>
+                </div>
+                <div class="filterCedula"></div>
+            </div>
 
             <?php
             $limite_fecha = date("Y-m-d");
             ?>
-            <label for="edad">Fecha de Nacimiento:</label>
-            <input type="date" required name="nacimiento" max="<?= $limite_fecha; ?>" class="input__form">
+            <div id="grupo_nacimiento" class="grupo">
+                <label>Fecha de Nacimiento:</label>
+                <div class="input-icon">
+                    <input type="date"  name="nacimiento" max="<?= $limite_fecha; ?>" class="input__form base">
+                </div>
+            </div>
 
-            <label for="numero">Número de Teléfono Celular:</label>
-            <input type="number" maxlength="11" required name="telefono1" class="input__form">
+            <div id="grupo_telefono1" class="grupo">
+                <label>Telefono celular:</label>
+                <div class="input-icon">
+                    <select class="pref__numberPhone" name="prefNumber1" required>
+                        <option value="0"> - </option>
+                        <option value="0212">0212</option>
+                        <option value="0412">0412</option>
+                        <option value="0414">0414</option>
+                        <option value="0424">0424</option>
+                        <option value="0416">0416</option>
+                        <option value="0426">0426</option>
+                    </select>
+                    <input type="number" maxlength="11"  name="telefono1" class="input__form phone base" autocomplete="off">
+                    <i class="icon-warning display"></i> <i class="icon-checkmark1 check display"></i>
+                </div>
+                <div class="paragraf__error1 display">
+                    <p>El campo no debe estar vacío <br>Deben haber 7 digitos</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter no permitido</p>
+                </div>
+            </div>
 
-            <label for="numero">Número de Teléfono (opcional):</label>
-            <input type="number" maxlength="11" name="telefono2" class="input__form">
+            <div id="grupo_telefono2" class="grupo">
+                <label>Telefono (Opcional):</label>
+                <div class="input-icon">
+                    <select class="pref__numberPhone" name="prefNumber2" required>
+                        <option value="0"> - </option>
+                        <option value="0212">0212</option>
+                        <option value="0412">0412</option>
+                        <option value="0414">0414</option>
+                        <option value="0424">0424</option>
+                        <option value="0416">0416</option>
+                        <option value="0426">0426</option>
+                    </select>
+                    <input type="number" maxlength="11" name="telefono2" class="input__form phone base" autocomplete="off">
+                    <i class="icon-warning display"></i><i class="icon-checkmark1 check display"></i>
+                </div>
+                <div class="paragraf__error1 display">
+                    <p>Deben haber 7 digitos</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>Caracter no permitido</p>
+                </div>
+            </div>
 
-            <label for="correo">Correo Electrónico:</label>
-            <input type="email" maxlength="60" required name="correo" class="input__form" autocomplete="off">
+            <div id="grupo_correo" class="grupo">
+                <label>Correo Electrónico:</label>
+                <div class="input-icon"><input type="email" maxlength="60"  name="correo" class="input__form base" autocomplete="off"><i class="icon-warning display"></i> <i class="icon-checkmark1 check display"></i></div>
+                <div class="paragraf__error1 display">
+                    <p>debe contener "@" y "."</p>
+                </div>
+                <div class="paragraf__error2 display">
+                    <p>El campo no puede estar vacío<br>No debe tener más 60 caracteres<br>No debe tener menos de 11 caracteres</p>
+                </div>
+            </div>
 
             <!------------------------------------------------>
 

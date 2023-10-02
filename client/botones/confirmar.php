@@ -12,6 +12,7 @@ $horaFin = $_POST['hora_fin'];
 if (strtotime($horaInicio) >= strtotime($horaFin)) {
     session_start();
     $_SESSION['mensaje'] = "la hora de inicio no puede <br>ser mayor que la hora de finalizacion";
+    $_SESSION['error'] = 1;
     header("location: ../../admin/processPatient.php?id=" . $idConsulta);
 } else {
     // FECHA DE ATENCIÓN

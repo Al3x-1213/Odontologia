@@ -27,12 +27,12 @@ $fechaActual = date("Y-m-d");
     <link rel="stylesheet" href="../Iconos/style.css">
 
     <!-- LETRAS UTILIZADAS -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <title>Marisol Díaz - ADMINISTRADOR</title>
 </head>
@@ -52,6 +52,10 @@ $fechaActual = date("Y-m-d");
         ?> <div class="messagge messagge__error"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
         unset($_SESSION['mensaje']);
         unset($_SESSION['error']);
+    }else if(isset($_SESSION['mensaje']) && isset($_SESSION['error']) && $_SESSION['error'] == 3){
+        ?> <div class="messagge messagge__info"><?php echo $_SESSION['mensaje']; ?><i class="icon-cross messagge__icon"></i></div> <?php
+        unset($_SESSION['mensaje']);
+        unset($_SESSION['error']);
     }
 
     //RESPONSIVE TABLE
@@ -59,6 +63,11 @@ $fechaActual = date("Y-m-d");
 
     //MARCAR COMO ATENIDAS LAS CONSULTAS QUE LA DOCTORA OLVIDÓ
     include '../client/clearStatus2.php';
+
+    //ACTUALIZAR EDAD DE USUARIOS EN CASO DE SER NECESARIO
+
+    include '../client/connection.php';;
+    include '../client/update/updateOldYear.php';
 
     //MODAL PARA ELIMINAR PACIENTES
     include 'parts/modal.php';

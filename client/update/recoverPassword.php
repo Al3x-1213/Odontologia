@@ -1,25 +1,24 @@
 <?php
 
-if (!empty($_POST['button_rec'])){
+if (!empty($_POST['button_rec'])) {
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
-    if (empty($_POST['clave']) || empty($_POST['clave2'])){
-        ?>
-        <div class= "alerta">No deben haber campos vacios</div>
-        <?php
-    }else{
+    if (empty($_POST['clave']) || empty($_POST['clave2'])) {
+?>
+        <div class="alerta">No deben haber campos vacios</div>
+<?php
+    } else {
         // //DATOS DEL FORMULARIO
         $idDatoPersonal = $_POST['id_dato_personal'];
         $clave = $_POST['clave'];
         $claveConfirm = $_POST['clave2'];
-        
+
         // VERIFICAR QUE AMBAS CONTRASEÑAS SEAN IGUALES
-        if ($clave != $claveConfirm){
-            ?>
-            <div class= "alerta">Las contraseñas deben coincidir</div>
-            <div class= "alerta">Por favor verificar</div>
-            <?php
-        }
-        else{
+        if ($clave != $claveConfirm) {
+            session_start();
+            $_SESSION['mensaje'] = "Las contraseñas no coinciden";
+            $_SESSION['error'] = 4;
+            header("location: ../../recover.php");
+        } else {
             // OBTENER EL ID DE LA CUENTA
             include 'client/connection.php'; //Conexión con base de datos        
 
@@ -35,15 +34,16 @@ if (!empty($_POST['button_rec'])){
             $consulta = "UPDATE cuentas SET clave = '$clave' WHERE id_cuenta = '$idCuenta'";
             $query = mysqli_query($conexion, $consulta);
 
-            if ($query){
-                ?>
-                <div class= "mensaje"><a href= "../../admin/registeredUser.php">Usuario actualizado correctamente</a></div> 
-                <?php
-            }
-            else{
-                ?>
-                <div class= "alerta">No se pudo actualizar el usuario</div> 
-                <?php
+            if ($query) {
+                session_start();
+                $_SESSION['mensaje'] = "Clave restablecida";
+                $_SESSION['error'] = 3;
+                header("location: ../../parts/login.php");
+            } else {
+                session_start();
+                $_SESSION['mensaje'] = "No se pudo restablecer las claves";
+                $_SESSION['error'] = 4;
+                header("location: ../../parts/recover.php");
             }
         }
     }

@@ -14,13 +14,13 @@ function filtrarInformacion() {
             mode: "cors"
         }).then(response => response.json())
             .then(data => {
-                filtro.classList.toggle('display');
+                filtro.classList.remove('display');
                 filtro.innerHTML = data
             })
             .catch(error => console.log(error))
     }
     else {
-        filtro.classList.toggle('display');
+        filtro.classList.add('display');
     }
 }
 

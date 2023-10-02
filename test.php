@@ -1,9 +1,3 @@
-<?php
-session_start();
-ob_start();
-$_SESSION['mesaje'] = 1;
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,12 +11,12 @@ $_SESSION['mesaje'] = 1;
     <title>Marisol Díaz - ADMINISTRADOR</title>
 </head>
 
+<?php 
 
-<form method="post">
-    <div class="messagge messagge__error"> Error washu washu <i class="icon-cross messagge__icon"></i> </div>
-</form>
+include 'client/connection.php';
 
-<script src="js/messagge.js"></script>
-</body>
+date_default_timezone_set('America/Caracas');
+$fechaActual = date("Y-m-d");
+?>
 
 </html>
