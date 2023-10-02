@@ -9,7 +9,7 @@
             <h2>Solicitar una Cita</h2><span class="icon-cross xModal"></span>
 
             <?php
-            include '../client/insert/solicitarCita.php'
+            // include '../client/insert/solicitarCita.php'
             ?>
 
             <label>Tipo de Paciente: </label>
@@ -64,6 +64,7 @@
                 <input type="reset" value="Borrar" class="button__form">
                 <input type="submit" value="Solicitar Cita" class="button__form loginSend" name="boton_c">
             </div>
+        </form>
     </div>
 </div>
 <script src="js/searchConsulta.js"></script>
