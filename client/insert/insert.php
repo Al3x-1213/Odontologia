@@ -30,6 +30,12 @@ if (!empty($_POST['boton_reg'])) {
         $discapacidad = $_POST['discapacidad'];
         $alergia = $_POST['alergia'];
 
+        $nombre = strtolower($nombre);
+        $nombre = ucwords($nombre);
+
+        $apellido = strtolower($apellido);
+        $apellido = ucwords($apellido);
+
         $telefonoCP_1 = $prefijo1.$telefono_1;
         $telefonoCP_2 = $prefijo2.$telefono_2;
 

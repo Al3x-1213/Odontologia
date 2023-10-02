@@ -33,6 +33,12 @@ if (!empty($_POST['boton_c'])) {
         $idDoctor = $_POST['id_doctor'];
         $idStatusConsulta = 3;
 
+        $nombre = strtolower($nombre);
+        $nombre = ucwords($nombre);
+
+        $apellido = strtolower($apellido);
+        $apellido = ucwords($apellido);
+
         $telefonoCP_1 = $prefijo1. $telefono_1;
         $telefonoCP_2 = $prefijo2. $telefono_2;
 

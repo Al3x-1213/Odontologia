@@ -21,13 +21,27 @@
 
 <?php
 
-$cadena = "04128050440";
+$cadena = "hola mundo";
 
-$numPre1 =  substr($cadena, 0, 4);
-$num1 =  substr($cadena, 4, 10);
+$cadenaMayuscula = ucfirst($cadena);
 
+// echo $cadena. "<br>";
+// echo $cadenaMayuscula. "<br>";
+
+$cadenaMayusculaL = ucwords($cadena);
+// echo $cadenaMayusculaL. "<br>";
+
+// *****************************************
+
+$cadena = "hOLa muNdO";
 echo $cadena. "<br>";
-echo $numPre1. "<br>";
-echo $num1. "<br>";
+$cadena = strtolower($cadena);
+echo $cadena. "<br>";
+$cadena = ucwords($cadena);
+echo $cadena. "<br>";
+
+
+
+
 ?>
 </html>
