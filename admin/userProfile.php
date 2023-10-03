@@ -169,7 +169,7 @@ include '../client/orderDate.php';
                                 <div class="inputEditable hide" id="inputEditable4">
                                     <input type="text" maxlength="30" required value="<?php echo $resultado['usuario']; ?>" name="usuario">
                                 </div>
-                                <div class="column icono"><button onclick="event.preventDefault()" title="Editar" class="edit" id="button4"><i class="icon-arrow_forward_ios icon"></i></button></div>
+                                <!-- <div class="column icono"><button onclick="event.preventDefault()" title="Editar" class="edit" id="button4"><i class="icon-arrow_forward_ios icon"></i></button></div> -->
                             </div>
                             <div class="row b">
                                 <div class="column">Contraseña</div>
