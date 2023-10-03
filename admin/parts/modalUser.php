@@ -1,5 +1,7 @@
 <div class="buttons__modal">
-    <button class="insertar">Registrar un Usuario</button>
+    <div class="button__modal">
+        <button class="insertar">Registrar un Usuario</button>
+    </div>
 </div>
 
 <div class="modal display">

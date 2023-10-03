@@ -1,5 +1,7 @@
 <div class="buttons__modal">
-    <button class="insertar">Registrar una Cita</button>
+    <div class="button__modal">
+        <button class="insertar">Registrar una Cita</button>
+    </div>
     <div class="icons__modals">
         <a href="../client/botones/printReport.php"><button title="Imprimir Reporte" class="print printReport"><i class="icon-printer1 icon"></i></button></a>
         <a href="blockDate.php"><button title="Fechas Bloqueadas" class="block blockDate"><i class="icon-blocked icon"></i></button></a>
