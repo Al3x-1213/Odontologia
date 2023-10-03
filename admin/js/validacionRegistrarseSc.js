@@ -172,12 +172,21 @@ inputs.forEach(input => {
 });
 
 document.querySelector(".loginSend").addEventListener("click", (e)=>{
-    e.preventDefault();
     if(document.getElementById("blockedDate").textContent.length != 0){
-        alert("fecha no está vacio");
-    }else if(!nombre && !apellido && !cedula && !nacimiento && !telefono1 && !telefono2 && !correo){
-        alert("formulario no fino");
+        e.preventDefault();
+    }else if(!nombre){
+        e.preventDefault();
+    }else if(!apellido){
+        e.preventDefault();
+    }else if(!cedula){
+        e.preventDefault();
+    }else if(!nacimiento){
+        e.preventDefault();
+    }else if(!telefono1){
+        e.preventDefault();
+    }else if(!correo){
+        e.preventDefault();
     }else{
-        alert("todo fino menor");
+        return true;
     }
 });

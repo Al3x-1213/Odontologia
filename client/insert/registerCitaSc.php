@@ -43,6 +43,9 @@ if (!empty($_POST['boton_c'])) {
         $telefonoCP_2 = $prefijo2. $telefono_2;
 
         if (strlen($telefonoCP_2) == 11 || $telefonoCP_2 == 0){
+            if ($telefonoCP_2 == 0){
+                $telefonoCP_2 = "";
+            }
             // CALCULAR EDAD
             include '../../client/calcularEdad.php';
 

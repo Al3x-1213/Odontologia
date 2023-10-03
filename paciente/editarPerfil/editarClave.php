@@ -15,6 +15,7 @@ include '../../client/verificationSessionPatient.php';
 
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../../styles/normalize.css">
+        <link rel="stylesheet" href="../../styles/registrarse.css">
         <link rel="stylesheet" href="../../styles/login.css">
         <link rel="stylesheet" href="../../styles/mensajes.css">
         <link rel="stylesheet" href="../../Iconos/style.css">
@@ -35,6 +36,8 @@ include '../../client/verificationSessionPatient.php';
         <div class="flex__container">
             <form action="../../client/update/updateKey.php" method="POST" class="form__recover">
 
+                <a href="../perfilPaciente.php"><i class="icon-undo2"></i></a>
+
                 <h2 class="title__form">Cambiar Contraseña</h2>
 
                 <div class="fields__form">
@@ -46,16 +49,44 @@ include '../../client/verificationSessionPatient.php';
                     <label for="clave">Contraseña Anterior:</label>
                     <input type="password" required name="claveAnt" class="input__form">
 
-                    <label for="clave">Contraseña Nueva:</label>
-                    <input type="password" required maxlength="35" name="clave"  class="input__form">
+                    <div id="grupo_clave" class="grupo">
+                    <label>Contraseña:</label>
+                    <div class="input-icon"><input type="password" maxlength="35" name="clave" class="input__form base" autocomplete="off">
+                        <i class="icon-eye"></i>
+                        <i class="icon-eye-blocked display"></i>
+                        <i class="icon-warning display"></i>
+                        <i class="icon-checkmark1 display"></i>
+                    </div>
+                    <div class="paragraf__error1 display">
+                        <p>Debe tener al menos 8 caracteres</p>
+                    </div>
+                    <div class="paragraf__error2 display">
+                        <p>Debe tener al menos 1 caracter especial <br>Debe que tener al menos una letra en mayuscula</p>
+                    </div>
+                </div>
 
-                    <label for="clave">Confirmar Contraseña Nueva:</label>
-                    <input type="password" required maxlength="35" name="clave2"  class="input__form">
+                <div id="grupo_clave2" class="grupo">
+                    <label>Confirmar Contraseña:</label>
+                    <div class="input-icon"><input type="password" maxlength="35" name="clave2" class="input__form base" autocomplete="off">
+                        <i class="icon-eye"></i>
+                        <i class="icon-eye-blocked display"></i>
+                        <i class="icon-warning display"></i>
+                        <i class="icon-checkmark1 display"></i>
+                    </div>
+                    <div class="paragraf__error1 display">
+                        <p>La clave debe coincidir</p>
+                    </div>
+                    <div class="paragraf__error2 display">
+                        <p>Este campo no puede estar vacío<br>Debe tener al menos 8 caracteres</p>
+                    </div>
+                </div>
 
-                    <input class="input__button" type="submit" value="Cambiar Contraseña" name="button_upd">
+                <input class="input__button" type="submit" value="Cambiar Contraseña" name="button_upd">
                 </div>
             </form>
         </div>
     </body>
     <script src="../../js/messagge.js"></script>
+    <script src="../../js/seePassword.js"></script>
+    <script src="../js/editPassword.js"></script>
 </html>

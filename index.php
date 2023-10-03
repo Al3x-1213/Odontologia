@@ -45,15 +45,13 @@ session_destroy();
       <p>En nuestro consultorio, nos enfocamos en brindar una atención personalizada y de calidad a cada uno de nuestros pacientes, esforzándonos para ofrecer soluciones integrales y efectivas para cada necesidad dental.<br><br>
       Nos apasiona ayudar a nuestros pacientes a lograr una sonrisa saludable y radiante, y estamos comprometidos en hacer que su experiencia en nuestro consultorio sea lo más cómoda y agradable posible.</p>
     </div>
-    <aside class="text aside">
+    <aside class="text aside ofrece">
       <h3>¿Qué ofrecemos?</h3>
-      <ul>
-        <li>Consulta Diagnóstica</li>
-        <li>Limpieza Bucal</li>
-        <li>Blanqueamiento Dental</li>
-        <li>Limpieza bucal</li>
-        <li>Obturación de Caries</li>
-      </ul>
+        <p>Consulta Diagnóstica</p>
+        <p>Limpieza Bucal</p>
+        <p>Blanqueamiento Dental</p>
+        <p>Limpieza bucal</p>
+        <p>Obturación de Caries</p>
     </aside>
   </div>
 
