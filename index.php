@@ -42,7 +42,8 @@ session_destroy();
   <a name="about"></a>
   <div class="flex__about">
     <div class="text text__about">
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis explicabo magnam inventore illum, culpa hic odit similique ratione, incidunt fugiat esse quo ipsam sit reprehenderit, voluptas at natus optio maiores.</p>
+      <p>En nuestro consultorio, nos enfocamos en brindar una atención personalizada y de calidad a cada uno de nuestros pacientes, esforzándonos para ofrecer soluciones integrales y efectivas para cada necesidad dental.<br><br>
+      Nos apasiona ayudar a nuestros pacientes a lograr una sonrisa saludable y radiante, y estamos comprometidos en hacer que su experiencia en nuestro consultorio sea lo más cómoda y agradable posible.</p>
     </div>
     <aside class="text aside">
       <h3>¿Qué ofrecemos?</h3>
@@ -60,13 +61,11 @@ session_destroy();
     <div class="text">
       <h3> Contáctenos </h3>
       <a name="contact"></a>
-      <p>vitae laboriosam necessitatibus ullam itaque aut obcaecati! Fuga!</p>
-      <p>Teléfono: <b>+58 xxxx xxxx  ||  +58 xxxx xxxx</b></p>
+      <p>Puedes contactarnos a los siguientes números telefónicos</p>
+      <p><b>0414 1369613  ||  0212 2667455  ||  0212 2644194</b></p>
     </div>
     <div class="direccion">
-      <a title="Dirección" href="https://www.google.com/maps/place/Edificio+Lucerna/@10.4923621,-66.8570139,20.29z/data=!4m14!1m7!3m6!1s0x8c2a59db0c04f0d5:0x9e88ed05b996221f!2sEdificio+Lucerna!8m2!3d10.49236!4d-66.8568355!16s%2Fg%2F11srjp38h9!3m5!1s0x8c2a59db0c04f0d5:0x9e88ed05b996221f!8m2!3d10.49236!4d-66.8568355!16s%2Fg%2F11srjp38h9?hl=es&entry=ttu">
-        <img src="img/direccion.png" alt="direccion de consultorio marisol dias" class="address">
-      </a>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4665.387422099399!2d-66.85731362144323!3d10.49218665969381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a59db0c04f0d5%3A0x9e88ed05b996221f!2sEdificio%20Lucerna!5e0!3m2!1ses!2sve!4v1696034311054!5m2!1ses!2sve" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 

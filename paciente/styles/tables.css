@@ -3,12 +3,11 @@
 .table{
     display: flex;
     justify-content: center;
-    width: 95%;
+    width: 80%;
     margin: 3% auto 7%;
     font-size: 16px;
     border: none;
     box-shadow: 0 0 10px 1px #333;
-    margin-top: 40px;
 }
 
 table{
@@ -29,21 +28,23 @@ thead{
     color: #f0f8ff;
 }
 
-/* TABLA DE CITAS PARA FECHA ESPECÍFICA EN PROCESAR PACIENTE*/
+/* MENSAJES */
 
-.tableCitations th, .tableCitations td{
-    width: 20%;
-    padding: 10px;
-    border: solid #33548A 2px;
+.status{
+    border-radius: 2px;
 }
 
-.tableCitations td{
-    vertical-align: top;
+.statusAttend{
+    border: 1px solid #0d750d;
+    background: #9dfa9d;
 }
 
-.tableCitations thead{
-    background: #789dc9;
-    height: 50px;
-    max-height: 50px;
-    color: #000000;
-} 
+.statusToAttend{
+    border: 1px solid #004bee;
+    background: #649ee0;
+}
+
+.statusToConfirm{
+    border: 1px solid #aa0000;
+    background: #ff5050;
+}

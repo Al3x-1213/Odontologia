@@ -1,8 +1,8 @@
-let eyes = document.querySelector("#grupo_clave .icon-pencil");
-let antiEyes = document.querySelector("#grupo_clave .icon-folder");
+let eyes = document.querySelector("#grupo_clave .icon-eye");
+let antiEyes = document.querySelector("#grupo_clave .icon-eye-blocked");
 
-let eyes2 = document.querySelector("#grupo_clave2 .icon-pencil");
-let antiEyes2 = document.querySelector("#grupo_clave2 .icon-folder");
+let eyes2 = document.querySelector("#grupo_clave2 .icon-eye");
+let antiEyes2 = document.querySelector("#grupo_clave2 .icon-eye-blocked");
 
 eyes.addEventListener("click", ()=>{
     document.querySelector("#grupo_clave input").setAttribute("type","text");

@@ -3,9 +3,10 @@
 if (!empty($_POST['boton_c'])){
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
     if (empty($_POST['causa']) || empty($_POST['atencion']) || empty($_POST['turno']) || empty($_POST['doctor'])){
-        ?>
-        <div class= "alerta">No deben haber campos vacios</div>
-        <?php
+        session_start();
+        $_SESSION['mensaje'] = "No deben haber campos vacios";
+        $_SESSION['error'] = 1;
+        header("location: ../paciente/index.php");
     }
     else{
         // VARIABLE GLOBAL: ID DEL USUARIO LOGUEADO
@@ -34,9 +35,10 @@ if (!empty($_POST['boton_c'])){
         $resultado= mysqli_num_rows($query);
 
         if ($resultado != 0){
-            ?>
-            <div class= "mensaje"><a href= "index.php">Solicitud no enviada. Ya tiene una cita por atender</a></div>
-            <?php
+            session_start();
+            $_SESSION['mensaje'] = "Solicitud no enviada <br> Ya tiene una cita por atender";
+            $_SESSION['error'] = 3;
+            header("location: ../paciente/index.php");
         }
         else{
             // INGRESAR LA CONSULTA A BASE DE DATOS
@@ -45,15 +47,17 @@ if (!empty($_POST['boton_c'])){
             '$fechaAtencion', '$turno', NULL, NULL, '$idDoctor', '$idStatusConsulta', now())";
             $query = mysqli_query($conexion, $consulta);
 
-            if($query){
-                ?>
-                <div class= "mensaje"><a href= "index.php">Su solicitud fue enviada correctamente</a></div>
-                <?php
+            if ($query){
+                session_start();
+                $_SESSION['mensaje'] = "Su solicitud fue enviada correctamente";
+                $_SESSION['error'] = 2;
+                header("location: ../paciente/index.php");
             }
             else{
-                ?>
-                <div class= "alerta">No se pudo realizar la solicitud</div>
-                <?php
+                session_start();
+                $_SESSION['mensaje'] = "No se pudo realizar la solicitud";
+                $_SESSION['error'] = 2;
+                header("location: ../paciente/index.php");
             }
         }
     }

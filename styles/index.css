@@ -14,15 +14,21 @@ body {
   margin-bottom: 50px;
 }
 
-.text, .direccion{
+.text{
   width: 35%;
   height: 200px;
   padding: 15px;
-  background: #ededed;
+  background: #EAEDF3;
   border-radius: 5px;
   box-shadow: 0 0 10px 1px #333;
   margin: 10px;
   text-align: center;
+}
+
+.text__about{
+  display: flex;
+  align-items: center;
+  text-align: justify;
 }
 
 .aside {
@@ -46,11 +52,7 @@ body {
   background-size: 24px 24px;
 }
 
-<<<<<<< HEAD
 @media only screen and (max-width: 800px) {
-=======
-@media only screen and (max-width: 1000px) {
->>>>>>> 9b9d086bcecced9c3d0cd6cc524b8edad033f730
 
   /* header */
 
@@ -64,7 +66,7 @@ body {
   .text, .direccion{
     width: 45%;
     height: 225px;
-    background: #ededed;
+    background: #EAEDF3;
     border-radius: 5px;
     box-shadow: 0 0 10px 1px #333;
     margin: 10px;

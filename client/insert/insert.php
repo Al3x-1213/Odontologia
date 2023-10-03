@@ -2,22 +2,15 @@
 
 if (!empty($_POST['boton_reg'])) {
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
-    if (empty($_POST['usuario']) || empty($_POST['clave']) || empty($_POST['clave2']) || empty($_POST['nombre'])
-        || empty($_POST['apellido']) || empty($_POST['cedula']) || empty($_POST['nacimiento']) || empty($_POST['prefNumber1'])
-        || empty($_POST['telefono1']) || empty($_POST['correo']) || empty($_POST['discapacidad']) || empty($_POST['alergia'])){
+    if (empty($_POST['usuario']) || empty($_POST['clave']) || empty($_POST['clave2']) || empty($_POST['nombre']) || empty($_POST['apellido'])
+        || empty($_POST['cedula']) || empty($_POST['nacimiento']) || empty($_POST['prefNumber1']) || empty($_POST['telefono1'])
+        || empty($_POST['correo']) || empty($_POST['discapacidad']) || empty($_POST['alergia'])){
         session_start();
         $_SESSION['mensaje'] = "No deben haber campos vacios";
         $_SESSION['error'] = 1;
         header("location: login.php");
     }
     else{
-        // if ((!empty($_POST['telefono2']) && empty($_POST['prefNumber2'])) || (!empty($_POST['prefNumber2']) && empty($_POST['telefono2']))){
-        //     session_start();
-        //     $_SESSION['mensaje'] = "No deben haber campos vacios";
-        //     $_SESSION['error'] = 1;
-        //     header("location: login.php");
-        // }
-
         //DATOS DEL FORMULARIO DE REGISTRO
         $usuario = $_POST['usuario'];
         $clave = $_POST['clave'];
@@ -40,14 +33,7 @@ if (!empty($_POST['boton_reg'])) {
         $telefonoCP_1 = $prefijo1.$telefono_1;
         $telefonoCP_2 = $prefijo2.$telefono_2;
 
-
-        if(strlen($telefonoCP_2) != 11 || strlen($telefonoCP_2) != 0){
-            session_start();
-            $_SESSION['mensaje'] = "No deben haber campos vacios";
-            $_SESSION['error'] = 1;
-            header("location: register.php");
-        }
-        else{
+        if(strlen($telefonoCP_2) == 11 || $telefonoCP_2 == 0){
             // VERIFICAR QUE AMBAS CONTRASEÑAS SEAN IGUALES
             if ($clave != $claveConfirm){
                 session_start();
@@ -56,6 +42,10 @@ if (!empty($_POST['boton_reg'])) {
                 header("location: login.php");
             }
             else{
+                if ($telefonoCP_2 == 0){
+                    $telefonoCP_2 = "";
+                }
+
                 // CALCULAR EDAD
                 // include '../calcularEdad.php';
                 include '../client/calcularEdad.php';
@@ -103,6 +93,12 @@ if (!empty($_POST['boton_reg'])) {
                     header("location: login.php");
                 }
             }
+        }
+        else{
+            session_start();
+            $_SESSION['mensaje'] = "No deben haber campos vacios";
+            $_SESSION['error'] = 1;
+            header("location: register.php");
         }
     }
 }

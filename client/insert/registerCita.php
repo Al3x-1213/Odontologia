@@ -3,9 +3,10 @@
 if (!empty($_POST['boton_c'])){
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
     if (empty($_POST['id_paciente']) || empty($_POST['causa']) || empty($_POST['atencion']) || empty($_POST['turno']) || empty($_POST['id_doctor'])){
-        ?>
-        <div class= "alerta">No deben haber campos vacios</div>
-        <?php
+        session_start();
+        $_SESSION['mensaje'] = "No deben haber campos vacios";
+        $_SESSION['error'] = 1;
+        header("location: ../../admin/index.php");
     }
     else{
         //DATOS DEL FORMULARIO
@@ -16,23 +17,44 @@ if (!empty($_POST['boton_c'])){
         $idDoctor = $_POST['id_doctor'];
         $idStatusConsulta = 3;
 
+        // COMPROBAR QUE EL PACIENTE NO TENGA UNA CITA POR ATENDER
         include '../connection.php'; //Conexión con base de datos
 
-        // INGRESAR LA CONSULTA A BASE DE DATOS
-        $consulta = "INSERT INTO consultas (id_consulta, id_paciente, id_causa_consulta, fecha_atencion, id_turno_consulta, hora_inicio,
-        hora_fin, id_doctor, id_status_consulta, fecha_solicitud) VALUES (NULL, '$idPaciente', '$causa', '$fechaAtencion', '$turno',
-        NULL, NULL, '$idDoctor', '$idStatusConsulta', now())";
+        $consulta = "SELECT id_consulta FROM consultas WHERE id_paciente = '$idPaciente' AND (id_status_consulta = 3 OR id_status_consulta = 2)";
         $query = mysqli_query($conexion, $consulta);
-        if($query){
+
+        $resultado= mysqli_num_rows($query);
+
+        if ($resultado != 0){
+            $consulta = "SELECT nombre, apellido FROM datos_personales WHERE id_dato_personal = '$idPaciente'";
+            $query = mysqli_query($conexion, $consulta);
+
+            $respuesta = mysqli_fetch_array($query);
+            $nombre = $respuesta['nombre'];
+            $apellido = $respuesta['apellido'];
+
             session_start();
-            $_SESSION['mensaje'] = "Cita registrada, en espera de confirmacion";
+            $_SESSION['mensaje'] = "Solicitud no enviada <br>". $nombre . " ". $apellido. " ya tiene una cita por atender";
             $_SESSION['error'] = 3;
             header("location: ../../admin/index.php");
-        }else{
-            session_start();
-            $_SESSION['mensaje'] = "Error al procesar la cita";
-            $_SESSION['error'] = 1;
-            header("location: ../../admin/index.php");
+        }
+        else{
+            // INGRESAR LA CONSULTA A BASE DE DATOS
+            $consulta = "INSERT INTO consultas (id_consulta, id_paciente, id_causa_consulta, fecha_atencion, id_turno_consulta, hora_inicio,
+            hora_fin, id_doctor, id_status_consulta, fecha_solicitud) VALUES (NULL, '$idPaciente', '$causa', '$fechaAtencion', '$turno',
+            NULL, NULL, '$idDoctor', '$idStatusConsulta', now())";
+            $query = mysqli_query($conexion, $consulta);
+            if($query){
+                session_start();
+                $_SESSION['mensaje'] = "Cita registrada, en espera de confirmacion";
+                $_SESSION['error'] = 3;
+                header("location: ../../admin/index.php");
+            }else{
+                session_start();
+                $_SESSION['mensaje'] = "No se pudo realizar la solicitud";
+                $_SESSION['error'] = 1;
+                header("location: ../../admin/index.php");
+            }
         }
     }
 }

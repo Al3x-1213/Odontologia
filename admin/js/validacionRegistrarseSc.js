@@ -1,6 +1,6 @@
-//Para hacerle seguimiento al formulario
-const formulario = document.getElementById("formulario");
 //Para hacerle seguimiento a los inputs
+
+const formulario = document.querySelector(".form-login");
 const inputs = document.querySelectorAll('.grupo input');
 
 const expresiones = {
@@ -171,10 +171,13 @@ inputs.forEach(input => {
     input.addEventListener("blur", validarFormulario);
 });
 
-formulario.addEventListener("submit", (e)=>{
-    if(nombre && apellido && cedula && nacimiento && telefono1 && telefono2 && correo){
-        return true;
+document.querySelector(".loginSend").addEventListener("click", (e)=>{
+    e.preventDefault();
+    if(document.getElementById("blockedDate").textContent.length != 0){
+        alert("fecha no está vacio");
+    }else if(!nombre && !apellido && !cedula && !nacimiento && !telefono1 && !telefono2 && !correo){
+        alert("formulario no fino");
     }else{
-        e.preventDefault();
+        alert("todo fino menor");
     }
 });

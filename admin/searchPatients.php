@@ -63,71 +63,68 @@ include '../client/orderDate.php';
         ?>
     
         <h2 class="dia"><?php echo $respuesta['nombre'] . " " . $respuesta['apellido']; ?></h2>
-        <div class="table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Cédula</th>
-                        <th>Edad</th>
-                        <th>Teléfono</th>
-                        <th>Correo Electrónico</th>
-                        <th>Alergia</th>
-                        <th>Discapacidad</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?php echo $respuesta['cedula']; ?></td>
-                        <td><?php echo $respuesta['edad']; ?></td>
-                        <td><?php echo $respuesta['telefono_1'] . "<br>" . $respuesta['telefono_2']; ?></td>
-                        <td><?php echo $respuesta['correo']; ?></td>
-                        <td><?php echo $respuesta['alergia']; ?></td>
-                        <td><?php echo $respuesta['discapacidad']; ?></td>
-                        <td>
-                            <a href="../client/botones/printConstancy.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Constancia" class="print"><i class="icon-printer1 icon"></i></button></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Cédula</th>
+                    <th>Edad</th>
+                    <th>Teléfono</th>
+                    <th>Correo Electrónico</th>
+                    <th>Alergia</th>
+                    <th>Discapacidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><?php echo $respuesta['cedula']; ?></td>
+                    <td><?php echo $respuesta['edad']; ?></td>
+                    <td><?php echo $respuesta['telefono_1'] . "<br>" . $respuesta['telefono_2']; ?></td>
+                    <td><?php echo $respuesta['correo']; ?></td>
+                    <td><?php echo $respuesta['alergia']; ?></td>
+                    <td><?php echo $respuesta['discapacidad']; ?></td>
+                    <td>
+                        <a href="../client/botones/printConstancy.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Constancia" class="print"><i class="icon-printer1 icon"></i></button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <h2 class="dia">Historial de consultas</h2>
 
-        <div class="table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Motivo de la Consulta</th>
-                        <th>Fecha de Atención</th>
-                        <th>Hora de Atención</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-                // HISTORIAL DE LAS CONSULTAS DEL PACIENTE
-                $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
-                ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
-                AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = '1' AND consultas.id_paciente = '$idPaciente'
-                ORDER BY fecha_atencion DESC";
-                $query = mysqli_query($conexion, $consulta);
+        <table>
+            <thead>
+                <tr>
+                    <th>Motivo de la Consulta</th>
+                    <th>Fecha de Atención</th>
+                    <th>Hora de Atención</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+            // HISTORIAL DE LAS CONSULTAS DEL PACIENTE
+            $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta
+            ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta
+            AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = '1' AND consultas.id_paciente = '$idPaciente'
+            ORDER BY fecha_atencion DESC";
+            $query = mysqli_query($conexion, $consulta);
 
-                while ($respuesta = mysqli_fetch_array($query)) {
-                    $fechaAtencion = ordenarFecha($respuesta['fecha_atencion']);
-                    $horaInicio = date("g:i a",strtotime($respuesta['hora_inicio']));
-                    $horaFin = date("g:i a",strtotime($respuesta['hora_fin']));
-                ?>
-                    <tr class="tbody__table">
-                        <td><?php echo $respuesta['causa_consulta']; ?></td>
-                        <td><?php echo $fechaAtencion; ?></td>
-                        <td><?php echo $horaInicio . " - " . $horaFin; ?></td>
-                    </tr>
-                <?php
-                }
-                ?>
-                </tbody>
-            </table>
-        </div>
+            while ($respuesta = mysqli_fetch_array($query)) {
+                $fechaAtencion = ordenarFecha($respuesta['fecha_atencion']);
+                $horaInicio = date("g:i a",strtotime($respuesta['hora_inicio']));
+                $horaFin = date("g:i a",strtotime($respuesta['hora_fin']));
+            ?>
+                <tr class="tbody__table">
+                    <td><?php echo $respuesta['causa_consulta']; ?></td>
+                    <td><?php echo $fechaAtencion; ?></td>
+                    <td><?php echo $horaInicio . " - " . $horaFin; ?></td>
+                </tr>
+            <?php
+            }
+            ?>
+            </tbody>
+        </table>
 
         <?php
         mysqli_close($conexion);

@@ -14,6 +14,9 @@ $fechaActual = date("Y-m-d");
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <!-- FAVICON -->
+        <link rel="icon" type="image/png" href="../img/favicon.png"/>
+
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
@@ -67,15 +70,16 @@ $fechaActual = date("Y-m-d");
         include '../client/connection.php';
 
         $consulta = "SELECT * FROM consultas WHERE fecha_atencion = '$fechaActual' AND id_doctor = '$idDoctor'
-            AND id_status_consulta != 3 AND id_status_consulta != 4";
+        AND id_status_consulta != 3 AND id_status_consulta != 4";
         $query = mysqli_query($conexion, $consulta);
 
         // VALIDACIÓN PARA COMPROBAR QUE LA TABLA NO ESTÉ VACIA
         if ($query->num_rows == 0) {
-        ?>
+            ?>
             <h2 class="dia">No Hay Pacientes Por Atender Para Hoy</h2>
-        <?php
-        } else {
+            <?php
+        }
+        else{
         ?>
             <!-- CITAS POR ATENDER -->
             <h2 class="dia"><?php echo ordenarFecha($fechaActual); ?></h2>
@@ -95,9 +99,9 @@ $fechaActual = date("Y-m-d");
                     <tbody>
                         <?php
                         $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores
-                                ON consultas.id_paciente = datos_personales.id_dato_personal AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
-                                WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$idDoctor'
-                                ORDER BY hora_inicio ASC";
+                        ON consultas.id_paciente = datos_personales.id_dato_personal AND causa_consulta.id_causa_consulta = consultas.id_causa_consulta AND doctores.id_doctor = consultas.id_doctor
+                        WHERE consultas.id_status_consulta = 2 AND consultas.fecha_atencion = '$fechaActual' AND consultas.id_doctor = '$idDoctor'
+                        ORDER BY hora_inicio ASC";
                         $query = mysqli_query($conexion, $consulta);
 
                         while ($resultado = mysqli_fetch_array($query)) {
@@ -110,7 +114,8 @@ $fechaActual = date("Y-m-d");
                                 <td><?php echo $resultado['causa_consulta']; ?></td>
                                 <td><?php echo $horaInicio . " - " . $horaFin; ?></td>
                                 <td><?php echo $resultado['telefono_1'] . "<br>" . $resultado['telefono_2']; ?></td>
-                                <td><a href="../client/botones/attend.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-checkmark1 icon atend"></i></button></a>
+                                <td>
+                                    <a href="../client/botones/attend.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Atendido" class="attend"><i class="icon-checkmark1 icon atend"></i></button></a>
                                     <a href="../client/botones/cancel.php?id=<?php echo $resultado['id_consulta'] ?>"><button title="Cancelar" class="cancel"><i class="icon-cross icon cancel"></i></button></a>
                                 </td>
                             </tr>
