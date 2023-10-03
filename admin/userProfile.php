@@ -105,6 +105,7 @@ include '../client/orderDate.php';
                                         <option value="0426">0426</option>
                                         </select><input type="number" maxlength="7" required value="<?php echo substr($resultado['telefono_1'], 4, 10); ?>" name="telefono1">
                                 </div>
+                                <div class="column icono"><button onclick="event.preventDefault()" title="Editar" class="edit" id="button1"><i class="icon-arrow_forward_ios icon"></i></button></div>
                             </div>
                             <div class="row b">
                                 <div class="column">Télefono Secundario</div>
@@ -113,6 +114,7 @@ include '../client/orderDate.php';
                                     <select name="prefNumber2" class="pref__input">
                                         <option value="<?php echo substr($resultado['telefono_2'], 0, 4) ?>"> <?php echo substr($resultado['telefono_2'], 0, 4) ?> </option>
                                         <option value="0">-</option>
+                                        <option value="0212">0212</option>
                                         <option value="0412">0412</option>
                                         <option value="0414">0414</option>
                                         <option value="0424">0424</option>
@@ -120,6 +122,7 @@ include '../client/orderDate.php';
                                         <option value="0426">0426</option>
                                     </select><input type="number" maxlength="7" value="<?php echo substr($resultado['telefono_2'], 4, 10); ?>" name="telefono2">
                                 </div>
+                                <div class="column icono"><button onclick="event.preventDefault()" title="Editar" class="edit" id="button2"><i class="icon-arrow_forward_ios icon"></i></button></div>
                             </div>
                             <div class="row">
                                 <div class="column">Correo Electrónico</div>
@@ -127,6 +130,7 @@ include '../client/orderDate.php';
                                 <div class="inputEditable hide" id="inputEditable3">
                                     <input type="email" maxlength="60" required value="<?php echo $resultado['correo']; ?>" name="correo">
                                 </div>
+                                <div class="column icono"><button onclick="event.preventDefault()" title="Editar" class="edit" id="button3"><i class="icon-arrow_forward_ios icon"></i></button></div>
                             </div>
                         </div>
                     </form>
@@ -165,6 +169,7 @@ include '../client/orderDate.php';
                                 <div class="inputEditable hide" id="inputEditable4">
                                     <input type="text" maxlength="30" required value="<?php echo $resultado['usuario']; ?>" name="usuario">
                                 </div>
+                                <div class="column icono"><button onclick="event.preventDefault()" title="Editar" class="edit" id="button4"><i class="icon-arrow_forward_ios icon"></i></button></div>
                             </div>
                             <div class="row b">
                                 <div class="column">Contraseña</div>
@@ -180,6 +185,7 @@ include '../client/orderDate.php';
                                     }
                                     ?>
                                 </div>
+                                <div class="column icono"><button onclick="event.preventDefault()" title="Editar" class="edit" id="button5"><i class="icon-arrow_forward_ios icon"></i></button></div>
                             </div>
                         </div>
                     </form>

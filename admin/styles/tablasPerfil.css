@@ -88,6 +88,7 @@ input[name="button_upd"] {
 .tbody .row {
     display: flex;
     padding: 25px 40px 20px 40px;
+    /* border: solid red 1px; */
 }
 
 .tbody .b {
@@ -95,10 +96,36 @@ input[name="button_upd"] {
 }
 
 .tbody .column {
-    width: 50%;
+    width: 45%;
     height: 30px;
     font-size: 20px;
+    /* border: solid blue 1px; */
 }
+
+.tbody .icono {
+    width: 10%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    /* border: solid green 1px; */
+}
+
+.tbody .icono .edit{
+    background: transparent;
+    cursor: pointer;
+    cursor: hand;
+    border: none;
+}
+
+.tbody .icono .edit i{
+    color: #333;
+    font-size: 110%;
+}
+
+.tbody .icono .edit i:hover{
+    color: #E67F4F;
+}
+
 
 /* INPUT PARA EDITAR */
 
