@@ -17,6 +17,7 @@ ob_start();
 
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="styles/normalize.css">
+        <link rel="stylesheet" href="styles/registrarse.css">
         <link rel="stylesheet" href="styles/login.css">
         <link rel="stylesheet" href="styles/mensajes.css">
         <link rel="stylesheet" href="Iconos/style.css">
@@ -37,6 +38,8 @@ ob_start();
         <div class="flex__container">
             <form class="form__recover" method="POST">
 
+            <a href="index.php"><i class="icon-undo2"></i></a>
+
                 <h2 class="title__form">Recuperar Contraseña</h2>
 
                 <?php
@@ -49,16 +52,42 @@ ob_start();
                     ?>
                     <input type="hidden" name="id_dato_personal" value="<?php echo $idDatoPersonal; ?>">
 
-                    <label for="clave">Contraseña Nueva:</label>
-                    <input type="password" maxlength="35" required name="clave" class="input__form">
+                    <div id="grupo_clave" class="grupo">
+                    <label>Contraseña:</label>
+                    <div class="input-icon"><input type="password" maxlength="35" name="clave" class="input__form base" autocomplete="off">
+                        <i class="icon-eye"></i>
+                        <i class="icon-eye-blocked display"></i>
+                        <i class="icon-warning display"></i>
+                        <i class="icon-checkmark1 display"></i>
+                    </div>
+                    <div class="paragraf__error1 display">
+                        <p>Debe tener al menos 8 caracteres</p>
+                    </div>
+                    <div class="paragraf__error2 display">
+                        <p>Debe tener al menos 1 caracter especial <br>Debe que tener al menos una letra en mayuscula</p>
+                    </div>
+                </div>
 
-                    <label for="clave">Confirmar Contraseña Nueva:</label>
-                    <input type="password" maxlength="35" required name="clave2" class="input__form">
-
-                    <input class="input__button" type="submit" value="Restablecer Contraseña" name="button_rec">
+                <div id="grupo_clave2" class="grupo">
+                    <label>Confirmar Contraseña:</label>
+                    <div class="input-icon"><input type="password" maxlength="35" name="clave2" class="input__form base" autocomplete="off">
+                        <i class="icon-eye"></i>
+                        <i class="icon-eye-blocked display"></i>
+                        <i class="icon-warning display"></i>
+                        <i class="icon-checkmark1 display"></i>
+                    </div>
+                    <div class="paragraf__error1 display">
+                        <p>La clave debe coincidir</p>
+                    </div>
+                    <div class="paragraf__error2 display">
+                        <p>Este campo no puede estar vacío<br>Debe tener al menos 8 caracteres</p>
+                    </div>
+                </div>
                 </div>
             </form>
         </div>
     </body>
     <script src="js/messagge.js"></script>
+    <script src="admin/js/editPassword.js"></script>
+    <script src="js/seePassword.js"></script>
 </html>

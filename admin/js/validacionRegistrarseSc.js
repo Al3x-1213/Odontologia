@@ -171,13 +171,13 @@ inputs.forEach(input => {
     input.addEventListener("blur", validarFormulario);
 });
 
-formulario.addEventListener("submit", (e)=>{
-    fechas = document.getElementById("blockedDate")
-    if(fechas.textContent.length != 0){
-        e.preventDefault();
-    }else if(nombre && apellido && cedula && nacimiento && telefono1 && telefono2 && correo){
-        e.preventDefault();
+document.querySelector(".loginSend").addEventListener("click", (e)=>{
+    e.preventDefault();
+    if(document.getElementById("blockedDate").textContent.length != 0){
+        alert("fecha no está vacio");
+    }else if(!nombre && !apellido && !cedula && !nacimiento && !telefono1 && !telefono2 && !correo){
+        alert("formulario no fino");
     }else{
-        return true;
+        alert("todo fino menor");
     }
 });
