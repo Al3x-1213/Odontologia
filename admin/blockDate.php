@@ -49,19 +49,22 @@ $fechaActual = date("Y-m-d");
         ?>
         <h2 class="dia">Bloquear Fecha</h2>
 
-        <div class="searchUsers">
-            <form method= "POST" autocomplete="off">
-                <?php
-                include '../client/insert/blockDate.php';
-                ?>
-                <div class="inputs">
-                    <input type="date" required name="bloquear" min="<?= $fechaActual; ?>" class="input__form base">
-                    <input type="submit" value="Bloquear Fecha" name="button_block" class="button">
-                </div>
-            </form>
+        <div class="blockDateForm">
+            <div class="receive">
+                <form action="../client/insert/blockDate.php" method="POST" autocomplete="off">
+                    <?php
+                    // include '../client/insert/blockDate.php';
+                    ?>
+                    <div class="inputs">
+                        <input type="date" required name="bloquear" min="<?= $fechaActual; ?>" class="input__form base">
+                        <button title="Bloquear" class="button__date"><i class="icon-lock"></i></button>
+                        <!-- <input type="submit" value="Bloquear" name="button_block"> -->
+                    </div>
+                </form>
+            </div>
         </div>
 
-        <div class="table">
+        <div class="table blockDate">
             <table>
                 <thead>
                     <tr>
@@ -81,7 +84,7 @@ $fechaActual = date("Y-m-d");
                     ?>
                         <tr>
                             <td><?php echo $fechaBloqueada; ?></td>
-                            <td><a href="../client/delete/deleteBlockeDates.php?id=<?php echo $resultado['id_fecha_bloqueada'] ?>"><button title="Bloquear Fecha" class="block"><i class="icon-blocked icon"></i></button></a></td>
+                            <td><a href="../client/delete/deleteBlockeDates.php?id=<?php echo $resultado['id_fecha_bloqueada'] ?>"><button title="Desbloquear" class="block"><i class="icon-unlocked icon"></i></button></a></td>
                         </tr>
                     <?php
                     }
@@ -95,4 +98,5 @@ $fechaActual = date("Y-m-d");
         mysqli_close($conexion);
         ?>
     </body>
+    <script src="../../js/messagge.js"></script>
 </html>

@@ -3,9 +3,10 @@
 if (!empty($_POST['button_block'])){
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
     if (empty($_POST['bloquear'])){
-        ?>
-        <div class= "alerta">No deben haber campos vacios</div>
-        <?php
+        session_start();
+        $_SESSION['mensaje'] = "No deben haber campos vacios";
+        $_SESSION['error'] = 1;
+        header("location: ../../login.php");
     }
     else{
         // DATOS DEL FORMULARIO

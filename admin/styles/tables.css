@@ -11,6 +11,10 @@
     margin-top: 40px;
 }
 
+.blockDate{
+    width: 50%;
+}
+
 table{
     width: 100%;
     border-collapse: collapse;

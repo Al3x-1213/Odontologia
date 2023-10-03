@@ -29,8 +29,12 @@ a{
     font-size: 150%;
 }
   
-.cancel i, .update i, .delete i, .print i, .inactive i, .active i, .noUser i, .block i{
+.cancel i, .update i, .delete i, .print i, .inactive i, .active i, .noUser i{
     font-size: 130%;
+}
+
+.block i{
+    font-size: 100%;
 }
   
 .attend i:hover{
@@ -41,11 +45,11 @@ a{
     color: #0000ff;
 }
   
-.cancel i:hover, .delete i:hover, .block i:hover{
+.cancel i:hover, .delete i:hover{
     color: #ff0000;
 }
   
-.print i:hover{
+.print i:hover, .block i:hover{
     color: #E67F4F;
 }
 

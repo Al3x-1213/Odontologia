@@ -72,3 +72,26 @@
 .pagination a{
     text-decoration: none;
 }
+
+/* INPUT BLOQUEAR FECHA */
+
+.blockDateForm{
+    display: flex;
+    justify-content: center;
+}
+
+.blockDateForm .inputs{
+    display: flex;
+    align-items: center;
+}
+
+.blockDateForm .button__date{
+    height: 20px;
+    box-sizing: content-box;
+    background-color: #789DC9;
+    background-color: transparent;
+    border: none;
+    padding: 3px 5px 0px;
+    cursor: pointer;
+    cursor: hand;
+  }
