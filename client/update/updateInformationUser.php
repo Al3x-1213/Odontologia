@@ -1,16 +1,20 @@
 <?php
 
+$idPaciente = $_POST['id_dato_personal'];
+
 if (!empty($_POST['button_upd'])){
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
     if (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['cedula'])
     || empty($_POST['nacimiento']) || empty($_POST['telefono1']) || empty($_POST['correo'])){
-        ?>
-        <div class= "alerta">No deben haber campos vacios</div>
-        <?php
-    }else{
+        session_start();
+        $_SESSION['mensaje'] = "No deben haber campos vacios";
+        $_SESSION['error'] = 1;
+        header("location: ../../admin/updateInformationUser.php?id=". $idPaciente);
+    }
+    else{
         //DATOS DEL FORMULARIO
 
-        $idPaciente = $_POST['id_dato_personal'];
+        // $idPaciente = $_POST['id_dato_personal'];
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
         $cedula = $_POST['cedula'];
@@ -30,14 +34,16 @@ if (!empty($_POST['button_upd'])){
         $query = mysqli_query($conexion, $consulta);
 
         if ($query){
-            ?>
-            <div class= "mensaje"><a href= "../../admin/registeredUser.php">Usuario actualizado correctamente</a></div> 
-            <?php
+            session_start();
+            $_SESSION['mensaje'] = "Usuario actualizado correctamente";
+            $_SESSION['error'] = 2;
+            header("location: ../../admin/registeredUser.php");
         }
         else{
-            ?>
-            <div class= "alerta">No se pudo actualizar el usuario</div> 
-            <?php
+            session_start();
+            $_SESSION['mensaje'] = "No deben haber campos vacios";
+            $_SESSION['error'] = 1;
+            header("location: ../../admin/registeredUser.php");
         }
     }
 }

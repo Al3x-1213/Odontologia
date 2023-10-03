@@ -1,5 +1,5 @@
 <?php
-include '../verificationSessionAdmin.php';
+include '../client/verificationSessionAdmin.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,13 +11,13 @@ include '../verificationSessionAdmin.php';
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- FAVICON -->
-        <link rel="icon" type="image/png" href="../../img/favicon.png"/>
+        <link rel="icon" type="image/png" href="../img/favicon.png"/>
 
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
-        <link rel="stylesheet" href="../../styles/mensajes.css">
-        <link rel="stylesheet" href="../../styles/registrarse.css">
-        <link rel="stylesheet" href="../../styles/login.css">
+        <link rel="stylesheet" href="../styles/mensajes.css">
+        <link rel="stylesheet" href="../styles/registrarse.css">
+        <link rel="stylesheet" href="../styles/login.css">
 
         <!-- LETRAS UTILIZADAS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,23 +27,23 @@ include '../verificationSessionAdmin.php';
         <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
     <body>
-        <?php 
+        <?php
+        include '../client/messagge.php';
+
         $idPaciente = $_GET['id'];
 
-        include '../connection.php';
-        $consulta = "SELECT * FROM datos_personales WHERE id_dato_personal = '$idPaciente'";
+        include '../client/connection.php';
+        $consulta = "SELECT * FROM datos_personales INNER JOIN discapacidades INNER JOIN alergias
+        ON datos_personales.id_discapacidad = discapacidades.id_discapacidad AND datos_personales.id_alergia = alergias.id_alergia
+        WHERE id_dato_personal = '$idPaciente'";
         $query = mysqli_query($conexion, $consulta);
 
         $respuesta = mysqli_fetch_array($query)
         ?>
 
         <div class="flex__container">
-            <form method="POST" autocomplete="off" class="form form__alternative">
+            <form action="../client/update/updateInformationUser.php" method="POST" autocomplete="off" class="form form__alternative">
                 <h2 class="title__form"><a href="pacientes.php">Editar Perfil de <?php echo $respuesta['nombre']. " ". $respuesta['apellido']; ?></a></h2>
-
-                <?php
-                include '../update/updateInformationUser.php';
-                ?>
 
                 <input type="hidden" name="id_dato_personal" value="<?php echo $respuesta['id_dato_personal']; ?>">
 
@@ -86,7 +86,7 @@ include '../verificationSessionAdmin.php';
 
                 <div id="grupo_nacimiento" class="grupo">
                     <label>Fecha de Nacimiento:</label>
-                    <div class="input-icon"><input type="date" required name="nacimiento" max="<?= $limiteFecha; ?>" value="<?php echo $respuesta['nacimiento']; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                    <div class="input-icon"><input type="date" required name="nacimiento" max="<?= $limiteFecha; ?>" value="<?php echo date('Y-m-d', strtotime($respuesta['fecha_nacimiento'])); ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
                     <div class="paragraf__error1 display"> 
                         <p>El campo no debe estar vacío</p>
                     </div>
@@ -128,17 +128,42 @@ include '../verificationSessionAdmin.php';
                     </div>
                 </div>
 
-                <!-- <label>¿Tiene alguna Discapacidad:</label>
-                <div class="hora">
-                    <input type="radio" required value="2" name="discapacidad"> Sí
-                    <input type="radio" required value="1" name="discapacidad"> No
-                </div>
+                <?php
+                // CONSULTAR A BASE DE DATOS LAS DISCAPACIDADES E IMPRIMIRLOS COMO OPCIÓN
+                include '../connection.php';
+
+                $consulta = "SELECT * FROM discapacidades";
+                $query = mysqli_query($conexion, $consulta)
+                ?>
+                <label>¿Tiene alguna discapacidad?</label>
+                <select name="discapacidad">
+                    <option value="<?php echo $respuesta['id_discapacidad']; ?>"><?php echo $respuesta['discapacidad']; ?></option>
+                    <?php
+                    while ($resultado = mysqli_fetch_array($query)) {
+                    ?>
+                        <option value="<?php echo $resultado['id_discapacidad']; ?>"><?php echo $resultado['discapacidad']; ?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
 
                 <label>¿Es alergico a algun medicamento:</label>
                 <div class="hora">
-                    <input type="radio" required value="2" name="alergia"> Sí
-                    <input type="radio" required value="1" name="alergia"> No
-                </div> -->
+                    <?php
+                    if ($respuesta['id_alergia'] == 1){
+                    ?>
+                        <input type="radio" required value="2" name="alergia"> Sí
+                        <input type="radio" required value="1" checked name="alergia"> No
+                    <?php
+                    }
+                    elseif ($respuesta['id_alergia'] == 2){
+                    ?>
+                        <input type="radio" required value="2" checked name="alergia"> Sí
+                        <input type="radio" required value="1" name="alergia"> No
+                    <?php 
+                    }
+                    ?> 
+                </div>
 
                 <div class="buttons__form">
                     <input type="reset" value="Borrar" name="clear" class="button">
@@ -150,6 +175,5 @@ include '../verificationSessionAdmin.php';
         mysqli_close($conexion);
         ?>
     </body>
-
-    
+    <script src="../js/messagge.js"></script>
 </html>

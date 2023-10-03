@@ -89,7 +89,7 @@ if ($resultado > 0){
         $resultado2= mysqli_num_rows($query2);
 
         if ($resultado2 == 0){
-            $contenido['data'] .= '<td><a href="../client/botones/update.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+            $contenido['data'] .= '<td><a href="updateInformationUser.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
             <a><button title="Sin cuenta" class="noUser"><i class="icon-user-times icon"></i></button></a></td>';        
             $contenido['data'] .= '</tr>';
         }
@@ -104,12 +104,12 @@ if ($resultado > 0){
             $idStatusUsuario = $respuesta3['id_status_usuario'];
 
             if ($idStatusUsuario == 1){
-                $contenido['data'] .= '<td><a href="../client/botones/update.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                $contenido['data'] .= '<td><a href="updateInformationUser.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
                 <a href="../client/botones/inactive.php?id='. $respuesta['id_dato_personal']. '"><button title="Desactivar" class="inactive"><i class="icon-toggle-on icon"></i></button></a></td>';        
                 $contenido['data'] .= '</tr>';
             }
             elseif ($idStatusUsuario == 2){
-                $contenido['data'] .= '<td><a href="../client/botones/update.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                $contenido['data'] .= '<td><a href="updateInformationUser.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
                 <a href="../client/botones/active.php?id='. $respuesta['id_dato_personal']. '"><button title="Activar" class="active"><i class="icon-toggle-on icon"></i></button></a></td>';        
                 $contenido['data'] .= '</tr>';
             }
