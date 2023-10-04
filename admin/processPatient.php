@@ -41,7 +41,6 @@ include '../client/orderDate.php';
         include 'responsive/header.php';
         include '../client/messagge.php';
 
-
         $idConsulta = $_GET['id'];
 
         // OBTENER EL ID_DOCTOR SEGÚN EL ID_USUARIO
@@ -62,7 +61,7 @@ include '../client/orderDate.php';
         ?>
 
         <!-- ASIGNAR HORARIO Y CONFIRMAR CITA -->
-        <h2 class="dia"><?php echo "Confirmar Cita de <span class=nombre_paciente>".$resultado['nombre']." ".$resultado["apellido"]."</span>"; ?></h2>
+        <h2 class="dia"><?php echo "Confirmar Cita de ".$resultado['nombre']." ".$resultado["apellido"]; ?></h2>
 
         <form method="POST" action="../client/botones/confirmar.php?id= <?php echo $idConsulta ?>">
             <div class="table">
@@ -107,60 +106,73 @@ include '../client/orderDate.php';
             <input type="submit" class="confirmar" value="Confirmar Cita">
         </form>
 
-        <!-- CITAS PARA EL DÍA DE ATENCIÓN -->
-
         <?php
-        $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
+        $consulta = "SELECT * FROM consultas WHERE id_doctor = '$idDoctor' AND id_status_consulta = 2 AND
+        fecha_atencion = '$fechaAtencion' AND id_turno_consulta = '$turnoConsulta'";
+        $query = mysqli_query($conexion, $consulta);
+
+        // VALIDACIÓN PARA COMPROBAR QUE LA TABLA NO ESTÉ VACIA
+        if ($query->num_rows == 0) {
+            ?>
+            <h2 class="dia">No Hay Citas</h2>
+            <?php
+        }
+        else{
         ?>
+            <!-- CITAS PARA EL DÍA DE ATENCIÓN -->
 
-        <h2 class="dia"><?php echo "Citas del ". $fechaAtencion; ?></h2>
+            <?php
+            $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
+            ?>
 
-        <div class="table tableCitations">
-            <table>
-                <?php
-                $fechaAtencion = $resultado['fecha_atencion'];
-                $turnoConsulta = $resultado['id_turno_consulta'];
+            <h2 class="dia"><?php echo "Citas del ". $fechaAtencion; ?></h2>
 
-                $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
-                ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
-                AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
-                WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = 2 AND 
-                consultas.fecha_atencion = '$fechaAtencion' AND consultas.id_turno_consulta = '$turnoConsulta'
-                ORDER BY hora_inicio ASC";
-                $query = mysqli_query($conexion, $consulta);
-                $query2 = mysqli_query($conexion, $consulta);
-                ?>
-                
-                <thead>
+            <div class="table tableCitations">
+                <table>
                     <?php
-                    while ($resultado = mysqli_fetch_array($query)){
-                        $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
-                        $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
-                    ?>
-                        <th class="tamaño"><?php echo $horaInicio. " - ". $horaFin; ?></th>
-                    <?php
-                    }
-                    ?>
-                </thead>
-                <tbody>
-                    <?php
-                    while ($resultado2 = mysqli_fetch_array($query2)){
-                        $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
-                        $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
-                    ?>
-                        <td><?php echo "--- ". $resultado2['nombre']. " ". $resultado2['apellido']. " ---". "<br><br>". $resultado2['causa_consulta']. "<br>"; ?></td>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="space"></div>
+                    $fechaAtencion = $resultado['fecha_atencion'];
+                    $turnoConsulta = $resultado['id_turno_consulta'];
 
-        <?php
+                    $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
+                    ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
+                    AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
+                    WHERE consultas.id_doctor = '$idDoctor' AND consultas.id_status_consulta = 2 AND 
+                    consultas.fecha_atencion = '$fechaAtencion' AND consultas.id_turno_consulta = '$turnoConsulta'
+                    ORDER BY hora_inicio ASC";
+                    $query = mysqli_query($conexion, $consulta);
+                    $query2 = mysqli_query($conexion, $consulta);
+                    ?>
+                    
+                    <thead>
+                        <?php
+                        while ($resultado = mysqli_fetch_array($query)){
+                            $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+                            $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
+                        ?>
+                            <th class="tamaño"><?php echo $horaInicio. " - ". $horaFin; ?></th>
+                        <?php
+                        }
+                        ?>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($resultado2 = mysqli_fetch_array($query2)){
+                            $horaInicio = date("g:i a",strtotime($resultado['hora_inicio']));
+                            $horaFin = date("g:i a",strtotime($resultado['hora_fin']));
+                        ?>
+                            <td><?php echo "--- ". $resultado2['nombre']. " ". $resultado2['apellido']. " ---". "<br><br>". $resultado2['causa_consulta']. "<br>"; ?></td>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php
+        }
         mysqli_close($conexion);
         ?>
+        
+        <div class="space"></div>
         
         <?php
         include 'components/footer.html';

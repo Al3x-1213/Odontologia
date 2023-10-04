@@ -110,6 +110,6 @@ include '../client/orderDate.php';
         <script src="js/modal.js"></script>
         <script src="js/searchUsers.js"></script>
         <script src="js/validacionRegistrarse.js"></script>
-        <script src="../js/searchFilter.js"></script>
+        <!-- <script src="../js/searchFilter.js"></script> -->
     </body>
 </html>

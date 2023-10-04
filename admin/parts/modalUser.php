@@ -197,3 +197,4 @@
         </form>
     </div>
 </div>
+<script src="../js/searchFilter.js"></script>
