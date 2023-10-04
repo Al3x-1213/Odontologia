@@ -162,9 +162,10 @@ header {
   }
 
   .displaced {
-    left: -500px;
+    left: -750px;
     transition: all .6s;
   }
+
 
   .x {
     font-size: 1.3em;

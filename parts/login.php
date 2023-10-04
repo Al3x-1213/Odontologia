@@ -50,10 +50,10 @@ ob_start();
 
             <div class="fields__form">
                 <label>Usuario:</label>
-                <input type="text" maxlength="30" required="true" name="usuario" class="input__form" autocomplete="off">
+                <input type="text" maxlength="30" required="true" name="usuario" class="input__form user" autocomplete="off">
 
                 <label>Contraseña:</label>
-                <input type="password" maxlength="35" required="true" name="clave" class="input__form">
+                <input type="password" maxlength="35"  name="clave" class="input__form base" autocomplete="off">
 
                 <input class="input__button" type="submit" value="Enviar" name="boton_log">
 
@@ -65,6 +65,7 @@ ob_start();
 </body>
 
 <script src="../js/messagge.js"></script>
+<script src="../js/seePassword.js"></script>
 
 <?php 
 session_destroy();

@@ -160,7 +160,7 @@ header {
   header {
     display: none;
   }
-
+  
   .header__responsive-phone {
     display: flex;
     justify-content: space-evenly;

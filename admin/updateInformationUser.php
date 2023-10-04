@@ -15,9 +15,10 @@ include '../client/verificationSessionAdmin.php';
 
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
-        <link rel="stylesheet" href="../styles/mensajes.css">
         <link rel="stylesheet" href="../styles/registrarse.css">
         <link rel="stylesheet" href="../styles/login.css">
+        <link rel="stylesheet" href="../Iconos/style.css">
+        <link rel="stylesheet" href="../styles/mensajes.css">
 
         <!-- LETRAS UTILIZADAS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,15 +42,18 @@ include '../client/verificationSessionAdmin.php';
         $respuesta = mysqli_fetch_array($query)
         ?>
 
-        <div class="flex__container">
+        <div class="flex__container flex__container-alternative">
             <form action="../client/update/updateInformationUser.php" method="POST" autocomplete="off" class="form form__alternative">
+
+                <a href="registeredUser.php"><i class="icon-undo2"></i></a>
+
                 <h2 class="title__form"><a href="pacientes.php">Editar Perfil de <?php echo $respuesta['nombre']. " ". $respuesta['apellido']; ?></a></h2>
 
                 <input type="hidden" name="id_dato_personal" value="<?php echo $respuesta['id_dato_personal']; ?>">
 
                 <div id="grupo_nombre" class="grupo">
                     <label>Nombre:</label>
-                    <div class="input-icon"><input type="text" maxlength="25" required name="nombre" value="<?php echo $respuesta['nombre']; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
+                    <div class="input-icon"><input type="text" maxlength="25" name="nombre" value="<?php echo $respuesta['nombre']; ?>" class="input__form base"><i class="icon-warning display"></i> <i class="icon-checkmark1 display"></i></div>
                     <div class="paragraf__error1 display"> 
                         <p>Nombre no puede estar vacío<br>No pueden ser menos de 3 caracteres</p>
                     </div>
@@ -166,8 +170,7 @@ include '../client/verificationSessionAdmin.php';
                 </div>
 
                 <div class="buttons__form">
-                    <input type="reset" value="Borrar" name="clear" class="button">
-                    <input type="submit" value="Actualizar Usuario" name="button_upd" class="button">
+                    <input type="submit" value="Actualizar Usuario" name="button_upd" class="button loginSend">
                 </div>
             </form>
         </div>
@@ -176,4 +179,5 @@ include '../client/verificationSessionAdmin.php';
         ?>
     </body>
     <script src="../js/messagge.js"></script>
+    <script src="js/validacionRegistrarseSc.js"></script>
 </html>

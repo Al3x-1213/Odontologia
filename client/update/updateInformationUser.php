@@ -4,8 +4,8 @@ $idPaciente = $_POST['id_dato_personal'];
 
 if (!empty($_POST['button_upd'])){
     // VERIFICAR QUE NO HAYAN CAMPOS VACIOS
-    if (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['cedula'])
-    || empty($_POST['nacimiento']) || empty($_POST['telefono1']) || empty($_POST['correo'])){
+    if (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['cedula']) || empty($_POST['nacimiento'])
+    || empty($_POST['telefono1']) || empty($_POST['correo']) || empty($_POST['discapacidad']) || empty($_POST['alergia'])){
         session_start();
         $_SESSION['mensaje'] = "No deben haber campos vacios";
         $_SESSION['error'] = 1;
@@ -22,6 +22,8 @@ if (!empty($_POST['button_upd'])){
         $telefono_1 = $_POST['telefono1'];
         $telefono_2 = $_POST['telefono2'];
         $correo = $_POST['correo'];
+        $idDiscapacidad = $_POST['discapacidad'];
+        $idAlergia = $_POST['alergia'];
 
         // CALCULAR EDAD
         include '../calcularEdad.php';
@@ -29,8 +31,9 @@ if (!empty($_POST['button_upd'])){
         //HACER REGISTRO EN BASE DE DATOS
         include '../connection.php'; //Conexión con base de datos
 
-        $consulta = "UPDATE datos_personales SET nombre = '$nombre', apellido = '$apellido', cedula = '$cedula', edad = '$edad',
-        fecha_nacimiento = '$nacimiento', telefono_1 = '$telefono_1', telefono_2 = '$telefono_2', correo = '$correo' WHERE id_dato_personal = '$idPaciente'";
+        $consulta = "UPDATE datos_personales SET nombre = '$nombre', apellido = '$apellido', cedula = '$cedula', edad = '$edad', fecha_nacimiento = '$nacimiento',
+        telefono_1 = '$telefono_1', telefono_2 = '$telefono_2', correo = '$correo', id_discapacidad = '$idDiscapacidad', id_alergia = '$idAlergia'
+        WHERE id_dato_personal = '$idPaciente'";
         $query = mysqli_query($conexion, $consulta);
 
         if ($query){

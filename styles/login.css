@@ -16,6 +16,10 @@ body {
   align-items: center;
 }
 
+.flex__container-alternative {
+  height: auto;
+}
+
 /* "X" PARA SALIR */
 
 a {
@@ -28,7 +32,7 @@ a {
 .form__login {
   display: flex;
   flex-direction: column;
-  width: 425px;
+  width: 450px;
   height: 625px;
   border-radius: 2%;
   position: relative;

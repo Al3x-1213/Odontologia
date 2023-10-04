@@ -200,12 +200,14 @@ include '../../client/messagge.php';
                 // BLOQUEAR DÍAS DEL CALENDARIO
                 date_default_timezone_set('America/Caracas');
                 $fechaActual = date("Y-m-d");
-                $fechaLimite = strtotime($fechaActual."+ 21 days");
-                $fechaLimite = date("Y-m-d", $fechaLimite);
+                $fechaLimiteMin = strtotime($fechaActual."+ 1 days");
+                $fechaLimiteMin = date("Y-m-d", $fechaLimiteMin);
+                $fechaLimiteMax = strtotime($fechaActual."+ 21 days");
+                $fechaLimiteMax = date("Y-m-d", $fechaLimiteMax);
                 ?>
                 <div id="grupo_atencion" class="grupo">
                     <label>Fecha de Atención:</label>
-                    <input type="date" required name="atencion" min="<?= $fechaActual; ?>" max="<?= $fechaLimite; ?>" class="input__form base" id="atencion">
+                    <input type="date" required name="atencion" min="<?= $fechaLimiteMin; ?>" max="<?= $fechaLimiteMax; ?>" class="input__form base" id="atencion">
                     <div id="blockedDate"></div>
                 </div>
                 
