@@ -51,9 +51,9 @@ include '../client/orderDate.php';
         ?>
 
         <?php
-        $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
+        $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta INNER JOIN discapacidades INNER JOIN alergias
         ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
-        AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta
+        AND consultas.id_doctor = doctores.id_doctor AND consultas.id_status_consulta = status_consulta.id_status_consulta AND datos_personales.id_discapacidad = discapacidades.id_discapacidad AND datos_personales.id_alergia = alergias.id_alergia
         WHERE consultas.id_consulta = '$idConsulta'";
         $query = mysqli_query($conexion, $consulta);
 
@@ -73,6 +73,8 @@ include '../client/orderDate.php';
                             <th>Motivo de la Consulta</th>
                             <th>Teléfono</th>
                             <th>Turno</th>
+                            <th>Discapacidad</th>
+                            <th>Alergia</th>
                             <th>Hora de Inicio</th>
                             <th>Hora de Culminación</th>
                         </tr>
@@ -84,6 +86,8 @@ include '../client/orderDate.php';
                             <td><?php echo $resultado['causa_consulta']; ?></td>
                             <td><?php echo $resultado['telefono_1']. "<br>". $resultado['telefono_2']; ?></td>
                             <td><?php echo $resultado['turno_consulta']; ?></td>
+                            <td><?php echo $resultado['discapacidad']; ?></td>
+                            <td><?php echo $resultado['alergia']; ?></td>
                             <?php
                             if ($resultado['id_turno_consulta'] == 1){
                             ?>

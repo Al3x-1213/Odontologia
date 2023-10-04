@@ -34,5 +34,5 @@ function filtrarInformacion(pagina){
         document.getElementById("numeroPagina").innerHTML = data.totalFiltro + ' de ' + data.totalRegistros
         document.getElementById("navPaginacion").innerHTML = data.paginacion
     })
-    .catch(error => console.log(error))
+    // .catch(error => console.log(error))
 }

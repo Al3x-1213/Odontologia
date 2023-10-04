@@ -1,7 +1,11 @@
 <?php
+session_start();
+
 include '../client/orderDate.php';
 
 include '../client/connection.php';
+
+$idUsuario = $_SESSION['id'];
 
 $buscar = isset($_POST['searchUser']) ? $conexion->real_escape_string($_POST['searchUser']) : null;
 
@@ -9,16 +13,17 @@ $columnas = ['nombre', 'apellido', 'cedula'];
 $busqueda = '';
 
 // BUSQUEDA SI HAY ALGO EN EL INPUT
+$busqueda = "WHERE (";
 if ($buscar != null){
-    $busqueda = "WHERE (";
-
     for ($i = 0; $i < 3; $i++){
         $busqueda .= $columnas[$i]. " LIKE '". $buscar. "%' OR ";
     }
 
     $busqueda = substr_replace($busqueda, "", -3);
-    $busqueda .= ")";
+    $busqueda .= "AND ";
 }
+$busqueda .= "datos_personales.id_dato_personal != 1)";
+
 
 // LÍMITE Y PÁGINA
 $limite = isset($_POST['numeroRegistros']) ? $conexion->real_escape_string($_POST['numeroRegistros']) : 10;
@@ -34,10 +39,14 @@ else{
 
 $condicion = "LIMIT $inicio, $limite";
 
+
 // CONSULTA A BASE DE DATOS
 $consulta = "SELECT SQL_CALC_FOUND_ROWS * FROM datos_personales INNER JOIN alergias INNER JOIN discapacidades
 ON datos_personales.id_alergia = alergias.id_alergia AND datos_personales.id_discapacidad = discapacidades.id_discapacidad
 $busqueda $condicion";
+
+// echo $consulta;
+
 $query = mysqli_query($conexion, $consulta);
 
 $resultado = mysqli_num_rows($query);
@@ -69,7 +78,6 @@ if ($resultado > 0){
     while ($respuesta = $query->fetch_assoc()){
         $fechaNacimiento = ordenarFecha($respuesta['fecha_nacimiento']);
 
-        $contenido['data'] .= '<tr>';
         $contenido['data'] .= '<td>'. $respuesta['nombre'] . ' ' . $respuesta['apellido']. '</td>';
         $contenido['data'] .= '<td>'. $respuesta['cedula']. '</td>';
         $contenido['data'] .= '<td>'. $respuesta['edad']. '</td>';
@@ -78,7 +86,8 @@ if ($resultado > 0){
         $contenido['data'] .= '<td>'. $respuesta['correo']. '</td>';
         $contenido['data'] .= '<td>'. $respuesta['alergia']. '</td>';
         $contenido['data'] .= '<td>'. $respuesta['discapacidad']. '</td>';
-        
+
+        // ACCIONES
         $idDatoPersonal = $respuesta['id_dato_personal'];
 
         $consulta2 = "SELECT id_cuenta FROM cuentas INNER JOIN datos_personales
@@ -93,25 +102,100 @@ if ($resultado > 0){
             <a><button title="Sin cuenta" class="noUser"><i class="icon-user-times icon"></i></button></a></td>';        
             $contenido['data'] .= '</tr>';
         }
-        else{
-            $respuesta2 = mysqli_fetch_array($query2);
-            $idCuenta = $respuesta2['id_cuenta'];
+        else{         
+            if ($idUsuario == 1){
+                $respuesta2 = mysqli_fetch_array($query2);
+                $idCuenta = $respuesta2['id_cuenta'];
 
-            $consulta3 = "SELECT id_status_usuario FROM cuentas WHERE id_cuenta = '$idCuenta'";
-            $query3 = mysqli_query($conexion, $consulta3);
+                // VERIFICAR QUE NO SEA ADMINISTRADOR
+                $consulta4 = "SELECT id_doctor FROM doctores WHERE id_usuario = '$idCuenta'";
+                $query4 = mysqli_query($conexion, $consulta4);
 
-            $respuesta3 = mysqli_fetch_array($query3);
-            $idStatusUsuario = $respuesta3['id_status_usuario'];
+                $resultado4= mysqli_num_rows($query4);
 
-            if ($idStatusUsuario == 1){
-                $contenido['data'] .= '<td><a href="updateInformationUser.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
-                <a href="../client/botones/inactive.php?id='. $respuesta['id_dato_personal']. '"><button title="Desactivar" class="inactive"><i class="icon-toggle-on icon"></i></button></a></td>';        
-                $contenido['data'] .= '</tr>';
+                if ($resultado4 != 0){
+                    $consulta5 = "SELECT id_doctor FROM doctores WHERE id_usuario = '$idCuenta'";
+                    $query5 = mysqli_query($conexion, $consulta5);
+
+                    $resultado5 = mysqli_fetch_array($query5);
+                    $idDoctor = $resultado5['id_doctor'];
+
+
+                    if ($idDoctor == 1){
+                        $contenido['data'] .= '<td><a><button title="Administrador" class="admin"><i class="icon-user-tie icon"></i></button></a></td>';
+                        $contenido['data'] .= '</tr>';
+                    }
+                    else{
+                        $consulta3 = "SELECT id_status_usuario FROM cuentas WHERE id_cuenta = '$idCuenta'";
+                        $query3 = mysqli_query($conexion, $consulta3);
+
+                        $respuesta3 = mysqli_fetch_array($query3);
+                        $idStatusUsuario = $respuesta3['id_status_usuario'];
+
+                        if ($idStatusUsuario == 1){
+                            $contenido['data'] .= '<td><a href="updateInformationUser.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                            <a href="../client/botones/inactive.php?id='. $respuesta['id_dato_personal']. '"><button title="Desactivar" class="inactive"><i class="icon-toggle-on icon"></i></button></a></td>';        
+                            $contenido['data'] .= '</tr>';
+                        }
+                        elseif ($idStatusUsuario == 2){
+                            $contenido['data'] .= '<td><a href="updateInformationUser.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                            <a href="../client/botones/active.php?id='. $respuesta['id_dato_personal']. '"><button title="Activar" class="active atend"><i class="icon-toggle-on icon"></i></button></a></td>';        
+                            $contenido['data'] .= '</tr>';
+                        }
+
+                    }
+                }
+                else{
+                    $consulta3 = "SELECT id_status_usuario FROM cuentas WHERE id_cuenta = '$idCuenta'";
+                    $query3 = mysqli_query($conexion, $consulta3);
+
+                    $respuesta3 = mysqli_fetch_array($query3);
+                    $idStatusUsuario = $respuesta3['id_status_usuario'];
+
+                    if ($idStatusUsuario == 1){
+                        $contenido['data'] .= '<td><a href="updateInformationUser.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                        <a href="../client/botones/inactive.php?id='. $respuesta['id_dato_personal']. '"><button title="Desactivar" class="inactive"><i class="icon-toggle-on icon"></i></button></a></td>';        
+                        $contenido['data'] .= '</tr>';
+                    }
+                    elseif ($idStatusUsuario == 2){
+                        $contenido['data'] .= '<td><a href="updateInformationUser.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                        <a href="../client/botones/active.php?id='. $respuesta['id_dato_personal']. '"><button title="Activar" class="active atend"><i class="icon-toggle-on icon"></i></button></a></td>';        
+                        $contenido['data'] .= '</tr>';
+                    }
+                }
             }
-            elseif ($idStatusUsuario == 2){
-                $contenido['data'] .= '<td><a href="updateInformationUser.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
-                <a href="../client/botones/active.php?id='. $respuesta['id_dato_personal']. '"><button title="Activar" class="active"><i class="icon-toggle-on icon"></i></button></a></td>';        
-                $contenido['data'] .= '</tr>';
+            else{
+                $respuesta2 = mysqli_fetch_array($query2);
+                $idCuenta = $respuesta2['id_cuenta'];
+
+                // VERIFICAR QUE NO SEA ADMINISTRADOR
+                $consulta4 = "SELECT id_doctor FROM doctores WHERE id_usuario = '$idCuenta'";
+                $query4 = mysqli_query($conexion, $consulta4);
+
+                $resultado4= mysqli_num_rows($query4);
+
+                if ($resultado4 != 0){
+                    $contenido['data'] .= '<td><a><button title="Administrador" class="admin"><i class="icon-user-tie icon"></i></button></a></td>';
+                    $contenido['data'] .= '</tr>';
+                }
+                else{
+                    $consulta3 = "SELECT id_status_usuario FROM cuentas WHERE id_cuenta = '$idCuenta'";
+                    $query3 = mysqli_query($conexion, $consulta3);
+
+                    $respuesta3 = mysqli_fetch_array($query3);
+                    $idStatusUsuario = $respuesta3['id_status_usuario'];
+
+                    if ($idStatusUsuario == 1){
+                        $contenido['data'] .= '<td><a href="updateInformationUser.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                        <a href="../client/botones/inactive.php?id='. $respuesta['id_dato_personal']. '"><button title="Desactivar" class="inactive"><i class="icon-toggle-on icon"></i></button></a></td>';        
+                        $contenido['data'] .= '</tr>';
+                    }
+                    elseif ($idStatusUsuario == 2){
+                        $contenido['data'] .= '<td><a href="updateInformationUser.php?id='. $respuesta['id_dato_personal']. '"><button title="Modificar" class="update"><i class="icon-pencil icon"></i></button></a>
+                        <a href="../client/botones/active.php?id='. $respuesta['id_dato_personal']. '"><button title="Activar" class="active atend"><i class="icon-toggle-on icon"></i></button></a></td>';        
+                        $contenido['data'] .= '</tr>';
+                    }
+                }
             }
         }
     }
@@ -160,3 +244,4 @@ if ($contenido['totalRegistros'] > 0){
 echo json_encode($contenido, JSON_UNESCAPED_UNICODE);
 
 ?>
+
