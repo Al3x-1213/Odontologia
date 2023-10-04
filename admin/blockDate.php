@@ -46,19 +46,17 @@ $fechaActual = date("Y-m-d");
 
         include '../client/messagge.php';
 
+        include 'responsive/header.php';
+
         ?>
         <h2 class="dia">Bloquear Fecha</h2>
 
         <div class="blockDateForm">
             <div class="receive">
                 <form action="../client/insert/blockDate.php" method="POST" autocomplete="off">
-                    <?php
-                    // include '../client/insert/blockDate.php';
-                    ?>
                     <div class="inputs">
                         <input type="date" required name="bloquear" min="<?= $fechaActual; ?>" class="input__form base">
                         <button title="Bloquear" class="button__date"><i class="icon-lock"></i></button>
-                        <!-- <input type="submit" value="Bloquear" name="button_block"> -->
                     </div>
                 </form>
             </div>
@@ -69,7 +67,7 @@ $fechaActual = date("Y-m-d");
                 <thead>
                     <tr>
                         <th>Fechas Bloqueadas</th>
-                        <th>Acciones</th>
+                        <th>Desbloquear</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -98,5 +96,5 @@ $fechaActual = date("Y-m-d");
         mysqli_close($conexion);
         ?>
     </body>
-    <script src="../../js/messagge.js"></script>
+    <script src="../js/messagge.js"></script>
 </html>

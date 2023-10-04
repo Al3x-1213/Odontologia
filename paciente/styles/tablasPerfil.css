@@ -183,4 +183,8 @@ input[name="button_upd"] {
     .table {
         width: 90%;
     }
+
+    .tableEdit {
+        width: 90%;
+    }
 }

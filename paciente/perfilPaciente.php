@@ -1,13 +1,12 @@
 <?php
 include '../client/verificationSessionPatient.php';
-
 include '../client/orderDate.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,13 +16,11 @@ include '../client/orderDate.php';
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="../styles/normalize.css">
         <link rel="stylesheet" href="styles/menu.css">
-        <link rel="stylesheet" href="styles/menu2.css">
+        <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="../styles/mensajes.css">
-        <!-- <link rel="stylesheet" href="styles/index.css"> -->
         <link rel="stylesheet" href="styles/tablasPerfil.css">
-        <link rel="stylesheet" href="styles/iconosEditProfile.css">
+        <link rel="stylesheet" href="styles/iconsButtons.css">
         <link rel="stylesheet" href="styles/footer.css">
-        <link rel="stylesheet" href="styles/modal.css">
         <link rel="stylesheet" href="../Iconos/style.css">
 
         <!-- LETRAS UTILIZADAS -->
@@ -34,7 +31,7 @@ include '../client/orderDate.php';
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-        <title>Marisol Díaz - PACIENTE</title>
+        <title>Marisol Díaz - ADMINISTRADOR</title>
     </head>
     <body>
         <?php
@@ -42,6 +39,8 @@ include '../client/orderDate.php';
         include 'components/menu2.php';
 
         include '../client/messagge.php';
+
+        include 'responsive/header.php';
         ?>
 
         <?php
