@@ -8,7 +8,7 @@ if (!empty($_POST['boton_reg'])) {
         session_start();
         $_SESSION['mensaje'] = "No deben haber campos vacios";
         $_SESSION['error'] = 1;
-        header("location: login.php");
+        header("location: register.php");
     }
     else{
         //DATOS DEL FORMULARIO DE REGISTRO
@@ -45,7 +45,7 @@ if (!empty($_POST['boton_reg'])) {
                 session_start();
                 $_SESSION['mensaje'] = "Las contraseñas deben coincidir";
                 $_SESSION['error'] = 1;
-                header("location: login.php");
+                header("location: register.php");
             }
             else{
                 if ($telefonoCP_2 == 0){
@@ -81,22 +81,22 @@ if (!empty($_POST['boton_reg'])) {
 
                     if ($query){
                         session_start();
-                        $_SESSION['mensaje'] = "Usuario Registrado Exitosamente";
+                        $_SESSION['mensaje'] = "Usuario registrado exitosamente";
                         $_SESSION['error'] = 2;
                         header("location: login.php");
                     }
                     else{
                         session_start();
-                        $_SESSION['mensaje'] = "Error al Intentar registrar usuario";
+                        $_SESSION['mensaje'] = "Error al registrar usuario";
                         $_SESSION['error'] = 1;
-                        header("location: login.php");
+                        header("location: register.php");
                     }
                 }
                 else{
                     session_start();
-                    $_SESSION['mensaje'] = "No se pudo registrar usuario";
+                    $_SESSION['mensaje'] = "Error al registrar usuario";
                     $_SESSION['error'] = 1;
-                    header("location: login.php");
+                    header("location: register.php");
                 }
             }
         }

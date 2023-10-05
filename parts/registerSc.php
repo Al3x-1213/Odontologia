@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-session_destroy();
+// session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -29,15 +29,18 @@ session_destroy();
         <title>Marisol Díaz - REGISTRARSE</title>
     </head>
     <body>
+        <?php 
+        include '../client/messagge.php';
+        ?>
         <div class="flex__container">
-            <form id="formulario" class="form" method="POST"> <!--action="../client/insertar.php"-->
+            <form action="../client/insert/insertSc.php" method="POST" class="form" id="formulario"> <!--action="../client/insertar.php"-->
 
                 <a href="../"><i class="icon-cross"></i></a>
                 <!-- TITULO -->
                 <h2 class="title__form"><a href="../index.php">Registrarse</a></h2>
 
                 <?php
-                include '../client/insert/insertSc.php';
+                // include '../client/insert/insertSc.php';
                 ?>
 
                 <div id="grupo_cedula" class="grupo">
@@ -110,4 +113,5 @@ session_destroy();
     <script src="../js/validacionRegistrarseSc.js"></script>
     <script src="../js/seePassword.js"></script>
     <script src="../js/searchFilterSc.js"></script>
+    <script src="../js/messagge.js"></script>
 </html>
