@@ -57,11 +57,11 @@ include '../client/orderDate.php';
         WHERE consultas.id_consulta = '$idConsulta'";
         $query = mysqli_query($conexion, $consulta);
 
-        $resultado = mysqli_fetch_array($query);
+        $respuesta = mysqli_fetch_array($query);
         ?>
 
         <!-- ASIGNAR HORARIO Y CONFIRMAR CITA -->
-        <h2 class="dia"><?php echo "Confirmar Cita de ".$resultado['nombre']." ".$resultado["apellido"]; ?></h2>
+        <h2 class="dia"><?php echo "Confirmar Cita de ".$respuesta['nombre']." ".$respuesta["apellido"]; ?></h2>
 
         <form method="POST" action="../client/botones/confirmar.php?id= <?php echo $idConsulta ?>">
             <div class="table">
@@ -81,28 +81,28 @@ include '../client/orderDate.php';
                     </thead>
                     <tbody>                        
                         <tr>
-                            <td><?php echo $resultado['cedula']; ?></td>
-                            <td><?php echo $resultado['edad']; ?></td>
-                            <td><?php echo $resultado['causa_consulta']; ?></td>
-                            <td><?php echo $resultado['telefono_1']. "<br>". $resultado['telefono_2']; ?></td>
-                            <td><?php echo $resultado['turno_consulta']; ?></td>
-                            <td><?php echo $resultado['discapacidad']; ?></td>
-                            <td><?php echo $resultado['alergia']; ?></td>
+                            <td><?php echo $respuesta['cedula']; ?></td>
+                            <td><?php echo $respuesta['edad']; ?></td>
+                            <td><?php echo $respuesta['causa_consulta']; ?></td>
+                            <td><?php echo $respuesta['telefono_1']. "<br>". $respuesta['telefono_2']; ?></td>
+                            <td><?php echo $respuesta['turno_consulta']; ?></td>
+                            <td><?php echo $respuesta['discapacidad']; ?></td>
+                            <td><?php echo $respuesta['alergia']; ?></td>
                             <?php
-                            if ($resultado['id_turno_consulta'] == 1){
+                            if ($respuesta['id_turno_consulta'] == 1){
                             ?>
                                 <td><input type="time" required min="08:00" max="12:00" name="hora_inicio"></td>
                                 <td><input type="time" required min="08:00" max="12:00" name="hora_fin"></td>
                             <?php
                             }
-                            elseif ($resultado['id_turno_consulta'] == 2){
+                            elseif ($respuesta['id_turno_consulta'] == 2){
                             ?>
                                 <td><input type="time" required min="13:00" max="16:00" name="hora_inicio"></td>
                                 <td><input type="time" required min="13:00" max="16:00" name="hora_fin"></td>
                             <?php
                             }
                             ?>
-                            <input type="hidden" value="<?php echo $resultado['fecha_atencion']; ?>" name="fechaAtencion">
+                            <input type="hidden" value="<?php echo $respuesta['fecha_atencion']; ?>" name="fechaAtencion">
                         </tr>   
                     </tbody>
                 </table>
@@ -111,12 +111,17 @@ include '../client/orderDate.php';
         </form>
 
         <?php
+        $fechaAtencion = $respuesta['fecha_atencion'];
+        $turnoConsulta = $respuesta['id_turno_consulta'];
+
         $consulta = "SELECT * FROM consultas WHERE id_doctor = '$idDoctor' AND id_status_consulta = 2 AND
         fecha_atencion = '$fechaAtencion' AND id_turno_consulta = '$turnoConsulta'";
         $query = mysqli_query($conexion, $consulta);
 
+        $resultado= mysqli_num_rows($query);
+
         // VALIDACIÓN PARA COMPROBAR QUE LA TABLA NO ESTÉ VACIA
-        if ($query->num_rows == 0) {
+        if ($resultado == 0) {
             ?>
             <h2 class="dia">No Hay Citas</h2>
             <?php
@@ -126,7 +131,7 @@ include '../client/orderDate.php';
             <!-- CITAS PARA EL DÍA DE ATENCIÓN -->
 
             <?php
-            $fechaAtencion = ordenarFecha($resultado['fecha_atencion']);
+            $fechaAtencion = ordenarFecha($respuesta['fecha_atencion']);
             ?>
 
             <h2 class="dia"><?php echo "Citas del ". $fechaAtencion; ?></h2>
@@ -134,8 +139,8 @@ include '../client/orderDate.php';
             <div class="table tableCitations">
                 <table>
                     <?php
-                    $fechaAtencion = $resultado['fecha_atencion'];
-                    $turnoConsulta = $resultado['id_turno_consulta'];
+                    $fechaAtencion = $respuesta['fecha_atencion'];
+                    $turnoConsulta = $respuesta['id_turno_consulta'];
 
                     $consulta = "SELECT * FROM consultas INNER JOIN datos_personales INNER JOIN causa_consulta INNER JOIN doctores INNER JOIN status_consulta INNER JOIN turno_consulta
                     ON consultas.id_paciente = datos_personales.id_dato_personal AND consultas.id_causa_consulta = causa_consulta.id_causa_consulta AND consultas.id_turno_consulta = turno_consulta.id_turno_consulta
